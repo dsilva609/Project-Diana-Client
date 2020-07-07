@@ -129,6 +129,7 @@
   },
   "defaultProject": "project-diana-client",
   "cli": {
-    "analytics": false
+    "analytics": false,
+    "defaultCollection": "@datorama/akita"
   }
 }
