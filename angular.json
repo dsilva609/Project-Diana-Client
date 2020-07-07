@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "project-diana-client"
+    }
+  },
+  "defaultProject": "project-diana-client",
+  "cli": {
+    "analytics": false
+  }
 }
