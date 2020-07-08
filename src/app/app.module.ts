@@ -9,9 +9,10 @@ import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
 import { environment } from 'src/environments/environment';
 import { UserComponent } from './user/user.component';
+import { LoginComponent } from './user/login/login.component';
 
 @NgModule({
-  declarations: [AppComponent, UserComponent],
+  declarations: [AppComponent, UserComponent, LoginComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
