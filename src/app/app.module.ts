@@ -2,6 +2,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
@@ -20,6 +21,7 @@ import { LoginComponent } from './user/login/login.component';
     BrowserAnimationsModule,
     environment.production ? [] : AkitaNgDevtools.forRoot(),
     AkitaNgRouterStoreModule.forRoot(),
+    HttpClientModule,
     ReactiveFormsModule,
   ],
   providers: [],
