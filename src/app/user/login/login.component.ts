@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(loginData): void {
-    console.log(loginData);
     this.userService.login(loginData);
   }
 }
