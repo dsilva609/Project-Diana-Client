@@ -3,6 +3,7 @@ import { AppComponent } from './app.component';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { JwtModule } from '@auth0/angular-jwt';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
@@ -12,9 +13,10 @@ import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
 import { environment } from 'src/environments/environment';
 import { UserComponent } from './user/user.component';
 import { LoginComponent } from './user/login/login.component';
+import { WishComponent } from './wish/wish.component';
 
 @NgModule({
-  declarations: [AppComponent, UserComponent, LoginComponent],
+  declarations: [AppComponent, UserComponent, LoginComponent, WishComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -22,6 +24,7 @@ import { LoginComponent } from './user/login/login.component';
     environment.production ? [] : AkitaNgDevtools.forRoot(),
     AkitaNgRouterStoreModule.forRoot(),
     HttpClientModule,
+    JwtModule,
     ReactiveFormsModule,
   ],
   providers: [],
