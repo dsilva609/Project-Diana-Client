@@ -1,16 +1,22 @@
+import { UserQuery } from './../user/state/user.query';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor() {}
+  constructor(private userQuery: UserQuery) {}
 
-  isAuthenticated(): boolean {
+  isAuthenticated(): Observable<boolean> {
     const jwtHelper = new JwtHelperService();
-    const token = localStorage.getItem('token');
 
-    return !jwtHelper.isTokenExpired(token);
+    return this.userQuery.select().pipe(
+      map((user) => {
+        return !jwtHelper.isTokenExpired(user.token);
+      })
+    );
   }
 }

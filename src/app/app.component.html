@@ -24,10 +24,14 @@
     </li>
   </ul>
   <div class="spacer"></div>
-  <a mat-button color="primary" *ngIf="!isLoggedIn()" routerLink="/user/login"
+  <a
+    mat-button
+    color="primary"
+    *ngIf="!(isLoggedIn() | async)"
+    routerLink="/user/login"
     >Login</a
   >
-  <a mat-button *ngIf="isLoggedIn()" (click)="logout()">Logout</a>
+  <a mat-button *ngIf="isLoggedIn() | async" (click)="logout()">Logout</a>
 </div>
 
 <div class="content" role="main">
