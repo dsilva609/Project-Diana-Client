@@ -7,20 +7,14 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class UserService {
-  private baseUserApiUrl: string;
-
-  constructor(private http: HttpClient, private router: Router) {
-    this.baseUserApiUrl = `${environment.apiBaseUrl}/api/user`;
-  }
+  constructor(private http: HttpClient, private router: Router) {}
 
   login(loginRequest): void {
-    this.http
-      .post<string>(`${this.baseUserApiUrl}/login`, loginRequest)
-      .subscribe((result) => {
-        localStorage.setItem('token', result);
+    this.http.post<string>('User/Login', loginRequest).subscribe((result) => {
+      localStorage.setItem('token', result);
 
-        this.router.navigate(['']);
-      });
+      this.router.navigate(['']);
+    });
   }
 
   logout(): void {
