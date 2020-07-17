@@ -28,8 +28,6 @@ export class HttpRequestInterceptor implements HttpInterceptor {
       url: `${apiUrl}/api/${req.url}`,
     });
 
-    console.log(`token: ${this.user.token}`);
-
     return this.userQuery.select().pipe(
       tap((user) => (this.user = user)), // side effect to set token property on auth service
       switchMap((data) => {
@@ -39,7 +37,7 @@ export class HttpRequestInterceptor implements HttpInterceptor {
             Authorization: `Bearer ${data.token}`,
           },
         });
-        console.log(`got token: ${data.token}`);
+
         return next.handle(newRequest);
       })
     );

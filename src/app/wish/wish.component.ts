@@ -1,5 +1,8 @@
-import { WishService } from './wish.service';
+import { WishQuery } from './state/wish.query';
+import { Observable } from 'rxjs';
+import { WishService } from './state/wish.service';
 import { Component, OnInit } from '@angular/core';
+import { Wish } from './state/wish.model';
 
 @Component({
   selector: 'app-wish',
@@ -7,13 +10,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./wish.component.scss'],
 })
 export class WishComponent implements OnInit {
-  list: any;
+  wishList: Observable<Wish[]>;
 
-  constructor(private wishSerice: WishService) {}
+  constructor(private wishQuery: WishQuery, private wishSerice: WishService) {}
 
   ngOnInit(): void {
-    this.wishSerice.getWishList().subscribe((result) => {
-      this.list = result;
-    });
+    this.wishSerice.getWishList();
+
+    this.wishList = this.wishQuery.selectAll();
   }
 }

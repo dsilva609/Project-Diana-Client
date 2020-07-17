@@ -1,3 +1,5 @@
 <p>wish works!</p>
 
-<div>{{ list[0].title }}</div>
+<div *ngFor="let wish of wishList | async">
+  {{ wish.title }}
+</div>

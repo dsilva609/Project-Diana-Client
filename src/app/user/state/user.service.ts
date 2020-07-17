@@ -4,6 +4,7 @@ import { UserStore } from './user.store';
 import { User, createUser } from './user.model';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { resetStores } from '@datorama/akita';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
@@ -12,10 +13,11 @@ export class UserService {
   login(loginRequest): Observable<boolean> {
     return this.http.post<string>('User/Login', loginRequest).pipe(
       map((tokenResult) => {
-        const user: User = createUser();
-        user.id = '1';
-        user.token = tokenResult;
-        console.log(`login result ${tokenResult}, ${JSON.stringify(user)}`);
+        const user: User = {
+          id: 1,
+          token: tokenResult,
+        };
+
         this.userStore.update(user);
 
         return true;
@@ -24,6 +26,6 @@ export class UserService {
   }
 
   logout(): void {
-    this.userStore.reset();
+    resetStores();
   }
 }
