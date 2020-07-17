@@ -6,8 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
+import { AngularMaterialModule } from './angular-material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
@@ -22,6 +21,7 @@ import { WishComponent } from './wish/wish.component';
 @NgModule({
   declarations: [AppComponent, UserComponent, LoginComponent, WishComponent],
   imports: [
+    AngularMaterialModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -29,8 +29,6 @@ import { WishComponent } from './wish/wish.component';
     AkitaNgRouterStoreModule.forRoot(),
     HttpClientModule,
     JwtModule,
-    MatButtonModule,
-    MatInputModule,
     ReactiveFormsModule,
   ],
   providers: [

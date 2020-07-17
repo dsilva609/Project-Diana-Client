@@ -10,6 +10,7 @@ import { Wish } from './state/wish.model';
   styleUrls: ['./wish.component.scss'],
 })
 export class WishComponent implements OnInit {
+  tableColumns: string[] = ['title', 'owned', 'date-added'];
   wishList: Observable<Wish[]>;
 
   constructor(private wishQuery: WishQuery, private wishSerice: WishService) {}

@@ -1,5 +1,26 @@
-<p>wish works!</p>
+<h2>Wish List</h2>
 
-<div *ngFor="let wish of wishList | async">
+<mat-table [dataSource]="wishList | async">
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef>Title</th>
+    <td mat-cell *matCellDef="let wish">{{ wish.title }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="owned">
+    <th mat-header-cell *matHeaderCellDef>Owned</th>
+    <td mat-cell *matCellDef="let wish">{{ wish.owned }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="date-added">
+    <th mat-header-cell *matHeaderCellDef>Date Added</th>
+    <td mat-cell *matCellDef="let wish">{{ wish.dateAdded }}</td>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
+
+  <mat-row *matRowDef="let row; columns: tableColumns"></mat-row>
+</mat-table>
+
+<!-- <div *ngFor="let wish of wishList | async">
   {{ wish.title }}
-</div>
+</div> -->
