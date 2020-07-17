@@ -16,15 +16,17 @@
   </ul>
   <div class="spacer"></div>
   <a
-    mat-button
+    class="btn btn-primary mr-2"
     color="primary"
     *ngIf="!(isLoggedIn() | async)"
     routerLink="/user/login"
     >Login</a
   >
-  <a mat-button *ngIf="isLoggedIn() | async" (click)="logout()">Logout</a>
+  <a class="btn btn-primary" *ngIf="isLoggedIn() | async" (click)="logout()"
+    >Logout</a
+  >
 </div>
 
-<div flex class="content" role="main">
+<div flex class="container" role="main">
   <router-outlet></router-outlet>
 </div>

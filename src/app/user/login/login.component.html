@@ -2,28 +2,30 @@
   <p>Enter login information</p>
 
   <div class="row">
-    <mat-form-field>
+    <div>
       <label for="username">Username:</label>
       <input
-        matInput
+        class="form-control"
         type="username"
         id="username"
         formControlName="username"
       />
-    </mat-form-field>
+    </div>
   </div>
 
   <div class="row">
-    <mat-form-field>
+    <div>
       <label for="password">Password:</label>
       <input
-        matInput
+        class="form-control"
         type="password"
         id="password"
         formControlName="password"
       />
-    </mat-form-field>
+    </div>
   </div>
 
-  <button mat-raised-button color="primary" type="submit">Login</button>
+  <div class="row my-2">
+    <button class="btn btn-primary" type="submit">Login</button>
+  </div>
 </form>

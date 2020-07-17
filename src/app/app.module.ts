@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
-import { AngularMaterialModule } from './angular-material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
@@ -17,11 +16,11 @@ import { environment } from 'src/environments/environment';
 import { UserComponent } from './user/user.component';
 import { LoginComponent } from './user/login/login.component';
 import { WishComponent } from './wish/wish.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [AppComponent, UserComponent, LoginComponent, WishComponent],
   imports: [
-    AngularMaterialModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -30,6 +29,7 @@ import { WishComponent } from './wish/wish.component';
     HttpClientModule,
     JwtModule,
     ReactiveFormsModule,
+    NgbModule,
   ],
   providers: [
     {
