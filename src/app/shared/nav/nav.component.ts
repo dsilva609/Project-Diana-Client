@@ -11,6 +11,7 @@ import { UserService } from 'src/app/user/state/user.service';
 })
 export class NavComponent implements OnInit {
   isCollapsed: boolean;
+
   constructor(
     private authService: AuthService,
     private router: Router,
