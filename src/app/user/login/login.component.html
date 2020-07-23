@@ -1,31 +1,33 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
-  <p>Enter login information</p>
+<div class="d-flex justify-content-center">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+    <p>Enter login information</p>
 
-  <div class="row">
-    <div>
-      <label for="username">Username:</label>
-      <input
-        class="form-control"
-        type="username"
-        id="username"
-        formControlName="username"
-      />
+    <div class="row">
+      <div>
+        <input
+          class="form-control"
+          type="username"
+          id="username"
+          formControlName="username"
+          placeholder="Email Address"
+        />
+      </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div>
-      <label for="password">Password:</label>
-      <input
-        class="form-control"
-        type="password"
-        id="password"
-        formControlName="password"
-      />
+    <div class="row">
+      <div>
+        <input
+          class="form-control"
+          type="password"
+          id="password"
+          formControlName="password"
+          placeholder="Pasword"
+        />
+      </div>
     </div>
-  </div>
 
-  <div class="row my-2">
-    <button class="btn btn-primary" type="submit">Login</button>
-  </div>
-</form>
+    <div class="row my-2">
+      <button class="btn btn-primary btn-block" type="submit">Login</button>
+    </div>
+  </form>
+</div>

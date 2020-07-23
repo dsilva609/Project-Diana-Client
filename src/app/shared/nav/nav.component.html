@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand" routerLink="/">Project Diana</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#mainNav"
+    aria-controls="mainNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+    (click)="isCollapsed = !isCollapsed"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div
+    class="collapse navbar-collapse"
+    id="mainNav"
+    [ngbCollapse]="isCollapsed"
+  >
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="wish">Wish</a>
+      </li>
+    </ul>
+
+    <a
+      class="btn btn-primary mr-2"
+      color="primary"
+      *ngIf="!(isLoggedIn() | async)"
+      routerLink="/user/login"
+      >Login</a
+    >
+    <a class="btn btn-primary" *ngIf="isLoggedIn() | async" (click)="logout()"
+      >Logout</a
+    >
+  </div>
+</nav>

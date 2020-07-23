@@ -14,9 +14,10 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserComponent } from 'src/app/user/user.component';
 import { WishComponent } from 'src/app/wish/wish.component';
+import { NavComponent } from './shared/nav/nav.component';
 
 @NgModule({
-  declarations: [AppComponent, UserComponent, LoginComponent, WishComponent],
+  declarations: [AppComponent, UserComponent, LoginComponent, WishComponent, NavComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
