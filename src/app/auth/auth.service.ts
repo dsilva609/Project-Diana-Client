@@ -1,8 +1,8 @@
-import { UserQuery } from './../user/state/user.query';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { UserQuery } from 'src/app/user/state/user.query';
 
 @Injectable({
   providedIn: 'root',

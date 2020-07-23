@@ -1,8 +1,8 @@
-import { AuthService } from './auth/auth.service';
+import { AuthService } from 'src/app/auth/auth.service';
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { UserService } from './user/state/user.service';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/user/state/user.service';
 
 @Component({
   selector: 'app-root',

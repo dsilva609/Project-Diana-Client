@@ -1,8 +1,8 @@
-import { WISH_ROUTES } from './wish/wish.routes';
-import { USER_ROUTES } from './user/user.routes';
-import { APP_ROUTES } from './app.routes';
+import { APP_ROUTES } from 'src/app/app.routes';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { USER_ROUTES } from 'src/app/user/user.routes';
+import { WISH_ROUTES } from 'src/app/wish/wish.routes';
 
 @NgModule({
   imports: [

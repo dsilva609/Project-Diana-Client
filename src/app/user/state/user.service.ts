@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UserStore } from './user.store';
-import { User, createUser } from './user.model';
+import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { resetStores } from '@datorama/akita';
+import { User } from 'src/app/user/state/user.model';
+import { UserStore } from 'src/app/user/state/user.store';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {

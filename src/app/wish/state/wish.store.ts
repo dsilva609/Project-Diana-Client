@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { Wish } from './wish.model';
 import { EntityState, EntityStore, StoreConfig } from '@datorama/akita';
+import { Injectable } from '@angular/core';
+import { Wish } from 'src/app/wish/state/wish.model';
 
 export interface WishState extends EntityState<Wish> {}
 

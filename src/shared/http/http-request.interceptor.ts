@@ -1,15 +1,15 @@
-import { User } from './../../app/user/state/user.model';
-import { UserQuery } from './../../app/user/state/user.query';
-import { Injectable, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import {
+  HttpEvent,
+  HttpHandler,
   HttpInterceptor,
   HttpRequest,
-  HttpHandler,
-  HttpEvent,
 } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { tap, switchMap } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
+import { User } from 'src/app/user/state/user.model';
+import { UserQuery } from 'src/app/user/state/user.query';
 
 @Injectable()
 export class HttpRequestInterceptor implements HttpInterceptor {

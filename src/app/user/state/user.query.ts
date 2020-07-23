@@ -1,7 +1,7 @@
-import { User } from './user.model';
 import { Injectable } from '@angular/core';
 import { Query } from '@datorama/akita';
-import { UserStore } from './user.store';
+import { User } from 'src/app/user/state/user.model';
+import { UserStore } from 'src/app/user/state/user.store';
 
 @Injectable({ providedIn: 'root' })
 export class UserQuery extends Query<User> {

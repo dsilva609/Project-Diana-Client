@@ -1,8 +1,8 @@
-import { UserService } from './../state/user.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { map, take } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
+import { UserService } from 'src/app/user/state/user.service';
 
 @Component({
   selector: 'app-login',

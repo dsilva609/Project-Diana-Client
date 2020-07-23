@@ -1,6 +1,6 @@
-import { AuthGuardService } from './../auth/auth-guard.service';
-import { WishComponent } from './wish.component';
+import { AuthGuardService } from 'src/app/auth/auth-guard.service';
 import { Routes } from '@angular/router';
+import { WishComponent } from 'src/app/wish/wish.component';
 
 export const WISH_ROUTES: Routes = [
   {

@@ -1,8 +1,7 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { WishStore } from './wish.store';
-import { Wish } from './wish.model';
-import { tap } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { Wish } from 'src/app/wish/state/wish.model';
+import { WishStore } from 'src/app/wish/state/wish.store';
 
 @Injectable({ providedIn: 'root' })
 export class WishService {

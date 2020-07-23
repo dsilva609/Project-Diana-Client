@@ -1,8 +1,8 @@
-import { WishQuery } from './state/wish.query';
-import { Observable } from 'rxjs';
-import { WishService } from './state/wish.service';
 import { Component, OnInit } from '@angular/core';
-import { Wish } from './state/wish.model';
+import { Observable } from 'rxjs';
+import { Wish } from 'src/app/wish/state/wish.model';
+import { WishQuery } from 'src/app/wish/state/wish.query';
+import { WishService } from 'src/app/wish/state/wish.service';
 
 @Component({
   selector: 'app-wish',
