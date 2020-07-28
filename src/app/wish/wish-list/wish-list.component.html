@@ -2,7 +2,7 @@
 
 <br />
 
-<div *ngIf="albumWishes.length">
+<div *ngIf="albumWishes?.length">
   <h3>Albums</h3>
   <table
     *ngFor="let list of albumWishes"
@@ -45,7 +45,7 @@
 
 <br />
 
-<div *ngIf="bookWishes.length">
+<div *ngIf="bookWishes?.length">
   <h3>Books</h3>
   <table
     *ngFor="let list of bookWishes"
@@ -88,7 +88,7 @@
 
 <br />
 
-<div *ngIf="gameWishes.length">
+<div *ngIf="gameWishes?.length">
   <h3>Games</h3>
   <table
     *ngFor="let list of gameWishes"
@@ -131,7 +131,7 @@
 
 <br />
 
-<div *ngIf="movieWishes.length">
+<div *ngIf="movieWishes?.length">
   <h3>Movies.Shows</h3>
   <table
     *ngFor="let list of movieWishes"
