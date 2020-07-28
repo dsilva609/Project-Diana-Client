@@ -1,11 +1,11 @@
-import { AuthGuardService } from 'src/app/auth/auth-guard.service';
 import { Routes } from '@angular/router';
-import { WishComponent } from 'src/app/wish/wish.component';
+import { AuthGuardService } from 'src/app/auth/auth-guard.service';
+import { WishListComponent } from 'src/app/wish/wish-list/wish-List.component';
 
 export const WISH_ROUTES: Routes = [
   {
     path: '',
-    component: WishComponent,
+    component: WishListComponent,
     canActivate: [AuthGuardService],
   },
 ];

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
-import { WishService } from 'src/app/wish/state/wish.service';
+import { WishListService } from 'src/app/wish/wish-list/state/wish-list.service';
 
 @Component({
   selector: 'app-wish-owned',
@@ -16,7 +16,7 @@ export class WishOwnedComponent implements OnInit {
 
   constructor(
     private iconLibrary: FaIconLibrary,
-    private wishService: WishService
+    private wishListService: WishListService
   ) {
     iconLibrary.addIcons(faCheckCircle);
   }
@@ -27,6 +27,6 @@ export class WishOwnedComponent implements OnInit {
     this.isVisible = false;
     this.isOwned = true;
 
-    this.wishService.completeWish(id);
+    this.wishListService.completeWish(id);
   }
 }

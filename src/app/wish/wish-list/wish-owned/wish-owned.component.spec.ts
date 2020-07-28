@@ -1,18 +1,18 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { WishComponent } from 'src/app/wish/wish.component';
+import { WishOwnedComponent } from 'src/app/wish/wish-list/wish-owned/wish-owned.component';
 
-describe('WishComponent', () => {
-  let component: WishComponent;
-  let fixture: ComponentFixture<WishComponent>;
+describe('WishOwnedComponent', () => {
+  let component: WishOwnedComponent;
+  let fixture: ComponentFixture<WishOwnedComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [WishComponent],
+      declarations: [WishOwnedComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WishComponent);
+    fixture = TestBed.createComponent(WishOwnedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

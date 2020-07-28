@@ -1,8 +1,8 @@
+import { Routes } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { AuthGuardService } from 'src/app/auth/auth-guard.service';
-import { Routes } from '@angular/router';
 import { UserComponent } from 'src/app/user/user.component';
-import { WishComponent } from 'src/app/wish/wish.component';
+import { WishListComponent } from 'src/app/wish/wish-list/wish-List.component';
 
 export const APP_ROUTES: Routes = [
   {
@@ -15,7 +15,7 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: 'wish',
-    component: WishComponent,
+    component: WishListComponent,
     canActivate: [AuthGuardService],
   },
 ];
