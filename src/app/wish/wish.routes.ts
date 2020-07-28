@@ -8,4 +8,9 @@ export const WISH_ROUTES: Routes = [
     component: WishListComponent,
     canActivate: [AuthGuardService],
   },
+  {
+    path: 'wish',
+    component: WishListComponent,
+    canActivate: [AuthGuardService],
+  },
 ];
