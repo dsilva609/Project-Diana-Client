@@ -20,4 +20,10 @@ export class WishComponent implements OnInit {
 
     this.wishList = this.wishQuery.selectAll();
   }
+
+  completeWish(id: number): void {
+    document.getElementById(`complete-wish-btn-${id}`).hidden = true;
+
+    this.wishSerice.completeWish(id);
+  }
 }

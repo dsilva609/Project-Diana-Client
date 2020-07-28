@@ -6,6 +6,7 @@
       <th>Title</th>
       <th>Owned</th>
       <th>Date Added</th>
+      <th>Notes</th>
     </tr>
   </thead>
   <tbody>
@@ -16,9 +17,13 @@
       </td>
 
       <td>
-        <input type="checkbox" checked="{{ wish.owned ? 'checked' : '' }}" />
+        <app-wish-owned
+          [isOwned]="wish.owned"
+          [wishId]="wish.id"
+        ></app-wish-owned>
       </td>
       <td>{{ wish.dateAdded }}</td>
+      <td>{{ wish.notes }}</td>
     </tr>
   </tbody>
 </table>

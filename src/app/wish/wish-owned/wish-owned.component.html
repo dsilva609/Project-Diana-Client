@@ -1,0 +1,14 @@
+<fa-icon
+  *ngIf="isOwned"
+  [icon]="['fas', 'check-circle']"
+  class="text-center"
+></fa-icon>
+
+<button
+  *ngIf="!isOwned"
+  id="complete-wish-btn-{{ wishId }}"
+  class="btn btn-primary btn-sm"
+  (click)="completeWish(wishId)"
+>
+  Done
+</button>

@@ -15,9 +15,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UserComponent } from 'src/app/user/user.component';
 import { WishComponent } from 'src/app/wish/wish.component';
 import { NavComponent } from './shared/nav/nav.component';
+import { WishOwnedComponent } from './wish/wish-owned/wish-owned.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
-  declarations: [AppComponent, UserComponent, LoginComponent, WishComponent, NavComponent],
+  declarations: [AppComponent, UserComponent, LoginComponent, WishComponent, NavComponent, WishOwnedComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -28,6 +30,7 @@ import { NavComponent } from './shared/nav/nav.component';
     JwtModule,
     ReactiveFormsModule,
     NgbModule,
+    FontAwesomeModule,
   ],
   providers: [
     {

@@ -12,4 +12,8 @@ export class WishService {
       this.wishStore.set(wishes);
     });
   }
+
+  completeWish(id: number): void {
+    this.http.get(`Wish/CompleteWish?id=${id}`).subscribe();
+  }
 }
