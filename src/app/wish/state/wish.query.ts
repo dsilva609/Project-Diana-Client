@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
-import { QueryEntity } from '@datorama/akita';
-import { WishState, WishStore } from 'src/app/wish/state/wish.store';
+import { Query } from '@datorama/akita';
+import { WishStore } from 'src/app/wish/state/wish.store';
+
+import { WishListResponse } from './wish.model';
+
 
 @Injectable({ providedIn: 'root' })
-export class WishQuery extends QueryEntity<WishState> {
+export class WishQuery extends Query<WishListResponse> {
   constructor(protected store: WishStore) {
     super(store);
   }

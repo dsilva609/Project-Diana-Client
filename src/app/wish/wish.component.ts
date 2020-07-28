@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Wish } from 'src/app/wish/state/wish.model';
+import { WishList } from 'src/app/wish/state/wish.model';
 import { WishQuery } from 'src/app/wish/state/wish.query';
 import { WishService } from 'src/app/wish/state/wish.service';
 
@@ -11,19 +10,21 @@ import { WishService } from 'src/app/wish/state/wish.service';
 })
 export class WishComponent implements OnInit {
   tableColumns: string[] = ['title', 'owned', 'date-added'];
-  wishList: Observable<Wish[]>;
+  albumWishes: WishList[];
+  bookWishes: WishList[];
+  gameWishes: WishList[];
+  movieWishes: WishList[];
 
   constructor(private wishQuery: WishQuery, private wishSerice: WishService) {}
 
   ngOnInit(): void {
     this.wishSerice.getWishList();
 
-    this.wishList = this.wishQuery.selectAll();
-  }
-
-  completeWish(id: number): void {
-    document.getElementById(`complete-wish-btn-${id}`).hidden = true;
-
-    this.wishSerice.completeWish(id);
+    this.wishQuery.select().subscribe((result) => {
+      this.albumWishes = result.albumWishes;
+      this.bookWishes = result.bookWishes;
+      this.gameWishes = result.gameWishes;
+      this.movieWishes = result.movieWishes;
+    });
   }
 }

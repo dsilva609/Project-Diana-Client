@@ -1,15 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Wish } from 'src/app/wish/state/wish.model';
 import { WishStore } from 'src/app/wish/state/wish.store';
+
+import { WishListResponse } from './wish.model';
+
 
 @Injectable({ providedIn: 'root' })
 export class WishService {
   constructor(private wishStore: WishStore, private http: HttpClient) {}
 
   getWishList(): void {
-    this.http.get<Wish[]>('Wish/GetWishList').subscribe((wishes) => {
-      this.wishStore.set(wishes);
+    this.http.get<WishListResponse>('Wish/GetWishList').subscribe((wishes) => {
+      this.wishStore.update(wishes);
     });
   }
 

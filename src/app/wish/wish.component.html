@@ -1,29 +1,173 @@
 <h2>Wish List</h2>
-<table class="table table-striped table-hover">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Title</th>
-      <th>Owned</th>
-      <th>Date Added</th>
-      <th>Notes</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let wish of wishList | async; let i = index">
-      <td>{{ i + 1 }}</td>
-      <td>
-        {{ wish.title }}
-      </td>
 
-      <td>
-        <app-wish-owned
-          [isOwned]="wish.owned"
-          [wishId]="wish.id"
-        ></app-wish-owned>
-      </td>
-      <td>{{ wish.dateAdded }}</td>
-      <td>{{ wish.notes }}</td>
-    </tr>
-  </tbody>
-</table>
+<br />
+
+<div *ngIf="albumWishes.length">
+  <h3>Albums</h3>
+  <table
+    *ngFor="let list of albumWishes"
+    class="table table-striped table-hover"
+  >
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Owned</th>
+        <th>Date Added</th>
+        <th>Notes</th>
+      </tr>
+      <tr>
+        {{
+          list.category
+        }}
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let wish of list.wishes; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>
+          {{ wish.title }}
+        </td>
+
+        <td>
+          <app-wish-owned
+            [isOwned]="wish.owned"
+            [wishId]="wish.id"
+          ></app-wish-owned>
+        </td>
+        <td>{{ wish.dateAdded }}</td>
+        <td>{{ wish.notes }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<br />
+
+<div *ngIf="bookWishes.length">
+  <h3>Books</h3>
+  <table
+    *ngFor="let list of bookWishes"
+    class="table table-striped table-hover"
+  >
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Owned</th>
+        <th>Date Added</th>
+        <th>Notes</th>
+      </tr>
+      <tr>
+        {{
+          list.category
+        }}
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let wish of list.wishes; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>
+          {{ wish.title }}
+        </td>
+
+        <td>
+          <app-wish-owned
+            [isOwned]="wish.owned"
+            [wishId]="wish.id"
+          ></app-wish-owned>
+        </td>
+        <td>{{ wish.dateAdded }}</td>
+        <td>{{ wish.notes }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<br />
+
+<div *ngIf="gameWishes.length">
+  <h3>Games</h3>
+  <table
+    *ngFor="let list of gameWishes"
+    class="table table-striped table-hover"
+  >
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Owned</th>
+        <th>Date Added</th>
+        <th>Notes</th>
+      </tr>
+      <tr>
+        {{
+          list.category
+        }}
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let wish of list.wishes; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>
+          {{ wish.title }}
+        </td>
+
+        <td>
+          <app-wish-owned
+            [isOwned]="wish.owned"
+            [wishId]="wish.id"
+          ></app-wish-owned>
+        </td>
+        <td>{{ wish.dateAdded }}</td>
+        <td>{{ wish.notes }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<br />
+
+<div *ngIf="movieWishes.length">
+  <h3>Movies.Shows</h3>
+  <table
+    *ngFor="let list of movieWishes"
+    class="table table-striped table-hover"
+  >
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Owned</th>
+        <th>Date Added</th>
+        <th>Notes</th>
+      </tr>
+      <tr>
+        {{
+          list.category
+        }}
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let wish of list.wishes; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>
+          {{ wish.title }}
+        </td>
+
+        <td>
+          <app-wish-owned
+            [isOwned]="wish.owned"
+            [wishId]="wish.id"
+          ></app-wish-owned>
+        </td>
+        <td>{{ wish.dateAdded }}</td>
+        <td>{{ wish.notes }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
