@@ -2,11 +2,14 @@ import { Injectable } from '@angular/core';
 import { EntityState, EntityStore, StoreConfig } from '@datorama/akita';
 import { WishListResponse } from 'src/app/wish/wish-list/state/wish-list.model';
 
-export interface WishState extends EntityState<WishListResponse> {}
+export interface WishListState extends EntityState<WishListResponse> {}
 
 @Injectable({ providedIn: 'root' })
-@StoreConfig({ name: 'wish', resettable: true })
-export class WishListStore extends EntityStore<WishState, WishListResponse> {
+@StoreConfig({ name: 'wish-list', resettable: true })
+export class WishListStore extends EntityStore<
+  WishListState,
+  WishListResponse
+> {
   constructor() {
     super();
   }

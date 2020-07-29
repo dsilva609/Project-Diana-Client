@@ -24,7 +24,10 @@
     </thead>
 
     <tbody>
-      <tr *ngFor="let wish of list.wishes; let i = index">
+      <tr
+        *ngFor="let wish of list.wishes; let i = index"
+        (click)="viewWish(wish.id)"
+      >
         <td>{{ i + 1 }}</td>
         <td>
           {{ wish.title }}
@@ -67,7 +70,10 @@
     </thead>
 
     <tbody>
-      <tr *ngFor="let wish of list.wishes; let i = index">
+      <tr
+        *ngFor="let wish of list.wishes; let i = index"
+        (click)="viewWish(wish.id)"
+      >
         <td>{{ i + 1 }}</td>
         <td>
           {{ wish.title }}
@@ -110,7 +116,10 @@
     </thead>
 
     <tbody>
-      <tr *ngFor="let wish of list.wishes; let i = index">
+      <tr
+        *ngFor="let wish of list.wishes; let i = index"
+        (click)="viewWish(wish.id)"
+      >
         <td>{{ i + 1 }}</td>
         <td>
           {{ wish.title }}
@@ -153,7 +162,10 @@
     </thead>
 
     <tbody>
-      <tr *ngFor="let wish of list.wishes; let i = index">
+      <tr
+        *ngFor="let wish of list.wishes; let i = index"
+        (click)="viewWish(wish.id)"
+      >
         <td>{{ i + 1 }}</td>
         <td>
           {{ wish.title }}

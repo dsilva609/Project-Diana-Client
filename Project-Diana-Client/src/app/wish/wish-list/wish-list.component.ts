@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { WishList } from 'src/app/wish/wish-list/state/wish-list.model';
 import { WishListQuery } from 'src/app/wish/wish-list/state/wish-list.query';
 import { WishListService } from 'src/app/wish/wish-list/state/wish-list.service';
@@ -16,6 +17,7 @@ export class WishListComponent implements OnInit {
   movieWishes: WishList[];
 
   constructor(
+    private router: Router,
     private wishListQuery: WishListQuery,
     private wishListSerice: WishListService
   ) {}
@@ -29,5 +31,9 @@ export class WishListComponent implements OnInit {
       this.gameWishes = result.gameWishes;
       this.movieWishes = result.movieWishes;
     });
+  }
+
+  viewWish(wishID: number) {
+    this.router.navigate([`wish/${wishID}`]);
   }
 }
