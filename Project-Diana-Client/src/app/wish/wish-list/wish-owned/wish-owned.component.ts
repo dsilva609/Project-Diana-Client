@@ -1,6 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { WishListService } from 'src/app/wish/wish-list/state/wish-list.service';
 
 @Component({
@@ -14,12 +12,7 @@ export class WishOwnedComponent implements OnInit {
 
   isVisible = false;
 
-  constructor(
-    private iconLibrary: FaIconLibrary,
-    private wishListService: WishListService
-  ) {
-    iconLibrary.addIcons(faCheckCircle);
-  }
+  constructor(private wishListService: WishListService) {}
 
   ngOnInit(): void {}
 

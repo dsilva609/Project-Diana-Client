@@ -9,6 +9,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HttpRequestInterceptor } from 'src/shared/http/http-request.interceptor';
+import { IconsModule } from './shared/icons/icons.module';
 import { JwtModule } from '@auth0/angular-jwt';
 import { LoginComponent } from 'src/app/user/login/login.component';
 import { NavComponent } from 'src/app/shared/nav/nav.component';
@@ -18,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UserComponent } from 'src/app/user/user.component';
 import { WishListComponent } from 'src/app/wish/wish-list/wish-List.component';
 import { WishOwnedComponent } from 'src/app/wish/wish-list/wish-owned/wish-owned.component';
+
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { WishOwnedComponent } from 'src/app/wish/wish-list/wish-owned/wish-owned
     environment.production ? [] : AkitaNgDevtools.forRoot(),
     AkitaNgRouterStoreModule.forRoot(),
     HttpClientModule,
+    IconsModule,
     JwtModule,
     ReactiveFormsModule,
     NgbModule,
