@@ -8,7 +8,7 @@
   *ngIf="!isOwned"
   id="complete-wish-btn-{{ wishId }}"
   class="btn btn-primary btn-sm"
-  (click)="completeWish(wishId)"
+  (click)="completeWish(wishId); $event.stopPropagation()"
 >
   Done
 </button>
