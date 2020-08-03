@@ -1,4 +1,119 @@
-<div>Title: {{ wish.title }}</div>
-<div>Owned: {{ wish.owned }}</div>
-<div>Date Added: {{ wish.dateAdded }}</div>
-<div>Notes: {{ wish.notes }}</div>
+<div class="mb-2">Date Added: {{ wish.dateAdded | date: "long" }}</div>
+<div class="mb-2">Last Updated: {{ wish.dateModified | date: "long" }}</div>
+
+<form [formGroup]="wishForm" (ngSubmit)="onSubmit(wishForm.value)">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="title"
+          id="title"
+          placeholder="Title"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label for="itemType">Item Type</label>
+        <select
+          formControlName="itemType"
+          id="itemType"
+          class="form-control"
+          required
+        >
+          <option disabled>Select Item Type</option>
+          <option
+            *ngFor="let itemType of itemTypes"
+            [ngValue]="itemType.value"
+            [selected]="wish.itemType === itemType.value"
+            >{{ itemType.name }}</option
+          >
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label for="category">Category</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="category"
+          id="category"
+          placeholder="Category"
+        />
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label for="apiID">Api ID</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="apiID"
+          id="apiID"
+          placeholder="Api ID"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label for="imageUrl">Image Url</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="imageUrl"
+          id="imageUrl"
+          placeholder="Image Url"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="form-group">
+        <label for="notes">Notes</label>
+        <textarea
+          class="form-control"
+          formControlName="notes"
+          id="notes"
+          placeholder="Notes"
+        ></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-2">
+      <div class="form-group form-check">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          formControlName="owned"
+          id="owned"
+        />
+        <label for="owned" class="form-check-label">Owned</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-2">
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">Update Wish</button>
+      </div>
+    </div>
+  </div>
+</form>
