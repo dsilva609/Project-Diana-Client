@@ -20,6 +20,8 @@ import { WishOwnedComponent } from 'src/app/wish/wish-list/wish-owned/wish-owned
 import { WishComponent } from 'src/app/wish/wish.component';
 import { environment } from 'src/environments/environment';
 import { HttpRequestInterceptor } from 'src/shared/http/http-request.interceptor';
+import { WishFormComponent } from './wish/wish-form/wish-form.component';
+import { WishSubmissionComponent } from './wish/wish-submission/wish-submission.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { HttpRequestInterceptor } from 'src/shared/http/http-request.interceptor
     NavComponent,
     WishOwnedComponent,
     WishComponent,
+    WishFormComponent,
+    WishSubmissionComponent,
   ],
 
   imports: [

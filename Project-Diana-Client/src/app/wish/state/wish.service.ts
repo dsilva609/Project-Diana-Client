@@ -14,10 +14,22 @@ export class WishService {
     });
   }
 
+  submitWish(wishFormData): Observable<boolean> {
+    return this.http
+      .post<boolean>('Wish/CreateWish', wishFormData)
+      .pipe((createResult) => {
+        return createResult;
+      });
+  }
+
   updateWish(wishFormData): Observable<boolean> {
     return this.http
       .post<boolean>('Wish/UpdateWish', wishFormData)
       .pipe((updateResult) => {
+        if (updateResult) {
+          this.wishStore.update(wishFormData);
+        }
+
         return updateResult;
       });
   }
