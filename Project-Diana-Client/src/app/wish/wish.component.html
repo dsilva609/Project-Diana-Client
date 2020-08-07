@@ -1,14 +1,19 @@
-<div class="mb-2">Date Added: {{ wish.dateAdded | date: "long" }}</div>
-<div class="mb-2">Last Updated: {{ wish.dateModified | date: "long" }}</div>
+<div *ngxSubscribe="wish as dat">
+  <div class="mb-2">Date Added: {{ dat.dateAdded | date: "long" }}</div>
+  <div class="mb-2">Last Updated: {{ dat.dateModified | date: "long" }}</div>
 
-<form [formGroup]="wishUpdateForm" (ngSubmit)="onSubmit(wishUpdateForm.value)">
-  <app-wish-form #wishForm [wishItemType]="wish.itemType"></app-wish-form>
+  <form
+    [formGroup]="wishUpdateForm"
+    (ngSubmit)="onSubmit(wishUpdateForm.value)"
+  >
+    <app-wish-form #wishForm [wishItemType]="dat.itemType"></app-wish-form>
 
-  <div class="row">
-    <div class="col-sm-2">
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">Update Wish</button>
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="form-group">
+          <button class="btn btn-primary" type="submit">Update Wish</button>
+        </div>
       </div>
     </div>
-  </div>
-</form>
+  </form>
+</div>

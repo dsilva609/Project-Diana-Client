@@ -11,23 +11,25 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AppComponent } from 'src/app/app.component';
+import { NgxSubscribeDirective } from 'src/app/shared/helpers/ngx-directive';
 import { IconsModule } from 'src/app/shared/icons/icons.module';
 import { NavComponent } from 'src/app/shared/nav/nav.component';
 import { LoginComponent } from 'src/app/user/login/login.component';
 import { UserComponent } from 'src/app/user/user.component';
+import { WishFormComponent } from 'src/app/wish/wish-form/wish-form.component';
 import { WishListComponent } from 'src/app/wish/wish-list/wish-List.component';
 import { WishOwnedComponent } from 'src/app/wish/wish-list/wish-owned/wish-owned.component';
+import { WishSubmissionComponent } from 'src/app/wish/wish-submission/wish-submission.component';
 import { WishComponent } from 'src/app/wish/wish.component';
 import { environment } from 'src/environments/environment';
 import { HttpRequestInterceptor } from 'src/shared/http/http-request.interceptor';
-import { WishFormComponent } from './wish/wish-form/wish-form.component';
-import { WishSubmissionComponent } from './wish/wish-submission/wish-submission.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
     LoginComponent,
+    NgxSubscribeDirective,
     WishListComponent,
     NavComponent,
     WishOwnedComponent,

@@ -8,9 +8,11 @@ import { WishStore } from 'src/app/wish/state/wish.store';
 export class WishService {
   constructor(protected wishStore: WishStore, private http: HttpClient) {}
 
-  getWishByID(wishID: string): void {
+  getWishByID(wishID: number): void {
     this.http.get<Wish>(`Wish/GetWish/?id=${wishID}`).subscribe((wish) => {
       this.wishStore.update(wish);
+
+      return wish;
     });
   }
 

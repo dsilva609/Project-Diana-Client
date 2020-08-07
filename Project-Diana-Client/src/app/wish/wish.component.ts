@@ -1,14 +1,8 @@
-import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { take } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map, take } from 'rxjs/operators';
 import { Wish } from 'src/app/wish/state/wish.model';
 import { WishQuery } from 'src/app/wish/state/wish.query';
 import { WishService } from 'src/app/wish/state/wish.service';
@@ -22,7 +16,8 @@ import { WishFormComponent } from 'src/app/wish/wish-form/wish-form.component';
 })
 export class WishComponent implements OnInit, AfterViewInit {
   itemTypes: { name: string; value: number }[];
-  wish: Wish;
+  wish: Observable<Wish>;
+  wishID: number;
   wishUpdateForm: FormGroup;
 
   @ViewChild('wishForm') wishForm: WishFormComponent;
@@ -36,39 +31,42 @@ export class WishComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe((params) => {
-      const wishID = this.route.snapshot.paramMap.get('id');
+    this.route.queryParams.subscribe(() => {
+      this.wishID = Number(this.route.snapshot.paramMap.get('id'));
 
-      this.wishService.getWishByID(wishID);
+      this.wishService.getWishByID(this.wishID);
     });
+
+    this.wish = this.wishQuery.select((wish) => wish);
 
     this.wishUpdateForm = new FormGroup({});
-
-    //--not loading correctly
-    this.wishQuery.select().subscribe((wish) => {
-      this.wish = wish;
-    });
   }
 
   ngAfterViewInit(): void {
     this.wishUpdateForm.addControl('wishData', this.wishForm.wishForm);
 
-    this.wishForm.wishForm.patchValue({
-      apiID: this.wish.apiID,
-      category: this.wish.category,
-      imageUrl: this.wish.imageUrl,
-      itemType: this.wish.itemType,
-      notes: this.wish.notes,
-      owned: this.wish.owned,
-      title: this.wish.title,
-      wishID: 0,
-    });
+    this.wish
+      .pipe(
+        map((wish) =>
+          this.wishForm.wishForm.patchValue({
+            apiID: wish.apiID,
+            category: wish.category,
+            imageUrl: wish.imageUrl,
+            itemType: wish.itemType,
+            notes: wish.notes,
+            owned: wish.owned,
+            title: wish.title,
+            wishID: 0,
+          })
+        )
+      )
+      .subscribe();
 
     this.changeDetector.detectChanges();
   }
 
   onSubmit(wishFormData): void {
-    wishFormData.wishData.wishID = this.wish.id;
+    wishFormData.wishData.wishID = this.wishID;
 
     this.wishService
       .updateWish(wishFormData.wishData)
