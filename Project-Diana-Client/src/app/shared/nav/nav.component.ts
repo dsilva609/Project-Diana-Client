@@ -33,8 +33,6 @@ export class NavComponent implements OnInit {
   }
 
   onClickedOutside(event: Event): void {
-    console.log('outside');
-
     this.isCollapsed = true;
   }
 }
