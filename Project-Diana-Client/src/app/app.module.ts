@@ -9,6 +9,7 @@ import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ClickOutsideModule } from 'ng-click-outside';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AppComponent } from 'src/app/app.component';
 import { NgxSubscribeDirective } from 'src/app/shared/helpers/ngx-directive';
@@ -39,17 +40,18 @@ import { HttpRequestInterceptor } from 'src/shared/http/http-request.interceptor
   ],
 
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
     environment.production ? [] : AkitaNgDevtools.forRoot(),
     AkitaNgRouterStoreModule.forRoot(),
+    AppRoutingModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    ClickOutsideModule,
+    FontAwesomeModule,
     HttpClientModule,
     IconsModule,
     JwtModule,
-    ReactiveFormsModule,
     NgbModule,
-    FontAwesomeModule,
+    ReactiveFormsModule,
   ],
   providers: [
     {

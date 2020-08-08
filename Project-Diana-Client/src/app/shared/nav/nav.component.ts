@@ -1,7 +1,7 @@
-import { AuthService } from 'src/app/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/auth/auth.service';
 import { UserService } from 'src/app/user/state/user.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class NavComponent implements OnInit {
     private router: Router,
     private userService: UserService
   ) {
-    this.isCollapsed = false;
+    this.isCollapsed = true;
   }
 
   ngOnInit(): void {}
@@ -30,5 +30,11 @@ export class NavComponent implements OnInit {
     this.userService.logout();
 
     this.router.navigate(['']);
+  }
+
+  onClickedOutside(event: Event): void {
+    console.log('outside');
+
+    this.isCollapsed = true;
   }
 }
