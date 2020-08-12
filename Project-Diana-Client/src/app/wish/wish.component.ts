@@ -31,11 +31,9 @@ export class WishComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(() => {
-      this.wishID = Number(this.route.snapshot.paramMap.get('id'));
+    this.wishID = Number(this.route.snapshot.paramMap.get('id'));
 
-      this.wishService.getWishByID(this.wishID);
-    });
+    this.wishService.getWishByID(this.wishID).subscribe();
 
     this.wish = this.wishQuery.select((wish) => wish);
 

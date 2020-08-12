@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { take } from 'rxjs/operators';
 import { WishListService } from 'src/app/wish/wish-list/state/wish-list.service';
 
 @Component({
@@ -20,6 +21,6 @@ export class WishOwnedComponent implements OnInit {
     this.isVisible = false;
     this.isOwned = true;
 
-    this.wishListService.completeWish(id);
+    this.wishListService.completeWish(id).pipe(take(1)).subscribe();
   }
 }

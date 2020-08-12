@@ -23,7 +23,7 @@ export class WishListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.wishListSerice.getWishList();
+    this.wishListSerice.getWishList().subscribe();
 
     this.wishListQuery.select().subscribe((result) => {
       this.albumWishes = result.albumWishes;
