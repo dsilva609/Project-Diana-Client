@@ -33,7 +33,7 @@ export class WishListComponent implements OnInit {
     });
   }
 
-  viewWish(wishID: number) {
+  viewWish(wishID: number): void {
     this.router.navigate([`wish/${wishID}`]);
   }
 }

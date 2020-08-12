@@ -24,6 +24,7 @@ import { WishSubmissionComponent } from 'src/app/wish/wish-submission/wish-submi
 import { WishComponent } from 'src/app/wish/wish.component';
 import { environment } from 'src/environments/environment';
 import { HttpRequestInterceptor } from 'src/shared/http/http-request.interceptor';
+import { AlbumComponent } from './album/album.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { HttpRequestInterceptor } from 'src/shared/http/http-request.interceptor
     WishComponent,
     WishFormComponent,
     WishSubmissionComponent,
+    AlbumComponent,
   ],
 
   imports: [
