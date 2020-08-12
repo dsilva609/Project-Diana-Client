@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { EntityState, EntityStore, StoreConfig } from '@datorama/akita';
-import { Wish } from 'src/app/wish/state/wish.model';
+import { createWish, Wish } from 'src/app/wish/state/wish.model';
 
 export interface WishState extends EntityState<Wish> {
   id: number | string;
@@ -19,6 +19,6 @@ export interface WishState extends EntityState<Wish> {
 @StoreConfig({ name: 'wish', resettable: true })
 export class WishStore extends EntityStore<WishState, Wish> {
   constructor() {
-    super();
+    super(createWish());
   }
 }

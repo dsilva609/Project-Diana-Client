@@ -3,7 +3,7 @@ export interface Album {
   artist: string;
 }
 
-export function createAlbum(params: Partial<Album>): Album {
+export function createAlbum(): Album {
   return {
     id: 0,
     artist: '',

@@ -10,3 +10,18 @@ export interface Wish {
   owned: boolean;
   title: string;
 }
+
+export function createWish(): Wish {
+  return {
+    id: null,
+    apiID: '',
+    category: '',
+    dateAdded: null,
+    dateModified: null,
+    imageUrl: '',
+    itemType: 0,
+    notes: '',
+    owned: false,
+    title: '',
+  } as Wish;
+}

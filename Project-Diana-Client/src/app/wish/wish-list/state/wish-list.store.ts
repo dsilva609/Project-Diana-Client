@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { EntityState, EntityStore, StoreConfig } from '@datorama/akita';
-import { WishListResponse } from 'src/app/wish/wish-list/state/wish-list.model';
+import { createWishList, WishListResponse } from 'src/app/wish/wish-list/state/wish-list.model';
 
 export interface WishListState extends EntityState<WishListResponse> {}
 
@@ -11,6 +11,6 @@ export class WishListStore extends EntityStore<
   WishListResponse
 > {
   constructor() {
-    super();
+    super(createWishList());
   }
 }
