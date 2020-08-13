@@ -1,8 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { of } from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
 import { Album } from 'src/app/album/state/album.model';
-import { AlbumQuery } from 'src/app/album/state/album.query';
-import { AlbumService } from 'src/app/album/state/album.service';
 
 @Component({
   selector: 'app-album',
@@ -10,15 +7,9 @@ import { AlbumService } from 'src/app/album/state/album.service';
   styleUrls: ['./album.component.scss'],
 })
 export class AlbumComponent implements OnInit {
-  albums = of<Album[]>();
+  @Input() album!: Album;
 
-  constructor(
-    private albumQuery: AlbumQuery,
-    private albumService: AlbumService
-  ) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this.albumService.getAlbumList().subscribe();
-    this.albums = this.albumQuery.selectAll();
-  }
+  ngOnInit(): void {}
 }

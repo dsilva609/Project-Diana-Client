@@ -1,0 +1,10 @@
+.album {
+  border: solid 1px;
+  border-radius: 3%;
+  max-width: 15rem;
+
+  .card-img-top {
+    border-top-left-radius: 3%;
+    border-top-right-radius: 3%;
+  }
+}

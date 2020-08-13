@@ -1,0 +1,3 @@
+<div *ngxSubscribe="albums as albumList" class="d-flex flex-row flex-wrap">
+  <app-album *ngFor="let album of albumList" [album]="album"></app-album>
+</div>

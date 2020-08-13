@@ -1,5 +1,6 @@
-<div *ngxSubscribe="albums as albumList">
-  <div *ngFor="let album of albumList">
-    <div>{{ album.artist }}</div>
+<div class="card album mx-2 my-2">
+  <img class="card-img-top" [src]="album.imageUrl" />
+  <div class="card-body">
+    <div class="card-text">{{ album.artist }} - {{ album.title }}</div>
   </div>
 </div>
