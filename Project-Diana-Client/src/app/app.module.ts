@@ -15,6 +15,7 @@ import { AlbumComponent } from 'src/app/album/album.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AppComponent } from 'src/app/app.component';
 import { NgxSubscribeDirective } from 'src/app/shared/helpers/ngx-directive';
+import { HttpRequestInterceptor } from 'src/app/shared/http/http-request.interceptor';
 import { IconsModule } from 'src/app/shared/icons/icons.module';
 import { NavComponent } from 'src/app/shared/nav/nav.component';
 import { LoginComponent } from 'src/app/user/login/login.component';
@@ -25,7 +26,8 @@ import { WishOwnedComponent } from 'src/app/wish/wish-list/wish-owned/wish-owned
 import { WishSubmissionComponent } from 'src/app/wish/wish-submission/wish-submission.component';
 import { WishComponent } from 'src/app/wish/wish.component';
 import { environment } from 'src/environments/environment';
-import { HttpRequestInterceptor } from 'src/shared/http/http-request.interceptor';
+
+import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import { HttpRequestInterceptor } from 'src/shared/http/http-request.interceptor
     WishSubmissionComponent,
     AlbumComponent,
     AlbumListComponent,
+    FooterComponent,
   ],
 
   imports: [
@@ -65,6 +68,6 @@ import { HttpRequestInterceptor } from 'src/shared/http/http-request.interceptor
     },
     { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent, FooterComponent],
 })
 export class AppModule {}
