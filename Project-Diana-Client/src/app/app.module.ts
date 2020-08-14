@@ -29,6 +29,7 @@ import { environment } from 'src/environments/environment';
 
 import { FooterComponent } from './shared/footer/footer.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,6 +69,6 @@ import { FooterComponent } from './shared/footer/footer.component';
     },
     { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],
-  bootstrap: [AppComponent, FooterComponent],
+  bootstrap: [NavComponent, AppComponent, FooterComponent],
 })
 export class AppModule {}

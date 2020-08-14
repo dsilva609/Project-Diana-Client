@@ -2,9 +2,15 @@
 
 /* Importing Bootstrap SCSS file. */
 @import "~bootstrap/scss/bootstrap";
+@import "src/app/shared/styles/_variables.scss";
+
+body {
+  background-color: $project-diana-blue;
+}
 
 .main-body {
-  margin-top: 5rem;
+  margin-top: 2rem;
+  min-height: calc(100vh - 1rem);
 }
 
 @media (min-width: 1200px) {

@@ -1,5 +1,5 @@
 <nav
-  class="navbar navbar-expand-md navbar-dark bg-dark fixed-top container-fluid"
+  class="navbar navbar-expand-md navbar-dark bg-dark container-fluid"
   (clickOutside)="onClickedOutside($event)"
 >
   <a class="navbar-brand" routerLink="/">Project Diana</a>
@@ -23,10 +23,16 @@
   >
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" routerLink="album">Album</a>
+        <a class="nav-link" routerLink="album">
+          <fa-icon [icon]="['fas', 'music']"></fa-icon>
+          Album</a
+        >
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="wish">Wish</a>
+        <a class="nav-link" routerLink="wish">
+          <fa-icon [icon]="['fas', 'star']"></fa-icon>
+          Wish</a
+        >
       </li>
     </ul>
 
