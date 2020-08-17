@@ -1,0 +1,6 @@
+@import "variables";
+
+@mixin var($property, $varName) {
+  #{$property}: map-get($vars, $varName);
+  #{$property}: var(--#{$varName}, map-get($vars, $varName));
+}
