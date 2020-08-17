@@ -1,0 +1,5 @@
+@import "src/app/shared/styles/_mixins";
+
+.wish-owned-icon {
+  @include var(color, wish-owned-icon-color);
+}

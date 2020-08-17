@@ -1,7 +1,10 @@
 $project-diana-blue: #add8e6;
 $project-diana-light-blue: #bbeafa;
 
+$success: limegreen;
+
 $vars: (
   footer-color: $project-diana-light-blue,
   main-body-color: $project-diana-blue,
+  wish-owned-icon-color: $success,
 );
