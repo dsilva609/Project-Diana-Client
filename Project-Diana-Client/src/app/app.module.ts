@@ -14,10 +14,12 @@ import { AlbumListComponent } from 'src/app/album/album-list/album-list.componen
 import { AlbumComponent } from 'src/app/album/album.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AppComponent } from 'src/app/app.component';
+import { FooterComponent } from 'src/app/shared/footer/footer.component';
 import { NgxSubscribeDirective } from 'src/app/shared/helpers/ngx-directive';
 import { HttpRequestInterceptor } from 'src/app/shared/http/http-request.interceptor';
 import { IconsModule } from 'src/app/shared/icons/icons.module';
 import { NavComponent } from 'src/app/shared/nav/nav.component';
+import { ShowcaseListComponent } from 'src/app/showcase/showcase-list/showcase-list.component';
 import { LoginComponent } from 'src/app/user/login/login.component';
 import { UserComponent } from 'src/app/user/user.component';
 import { WishFormComponent } from 'src/app/wish/wish-form/wish-form.component';
@@ -26,9 +28,6 @@ import { WishOwnedComponent } from 'src/app/wish/wish-list/wish-owned/wish-owned
 import { WishSubmissionComponent } from 'src/app/wish/wish-submission/wish-submission.component';
 import { WishComponent } from 'src/app/wish/wish.component';
 import { environment } from 'src/environments/environment';
-
-import { FooterComponent } from './shared/footer/footer.component';
-
 
 @NgModule({
   declarations: [
@@ -45,6 +44,7 @@ import { FooterComponent } from './shared/footer/footer.component';
     AlbumComponent,
     AlbumListComponent,
     FooterComponent,
+    ShowcaseListComponent,
   ],
 
   imports: [
