@@ -14,6 +14,8 @@ import { AlbumListComponent } from 'src/app/album/album-list/album-list.componen
 import { AlbumComponent } from 'src/app/album/album.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AppComponent } from 'src/app/app.component';
+import { BookListComponent } from 'src/app/book/book-list/book-list.component';
+import { BookComponent } from 'src/app/book/book.component';
 import { FooterComponent } from 'src/app/shared/footer/footer.component';
 import { NgxSubscribeDirective } from 'src/app/shared/helpers/ngx-directive';
 import { HttpRequestInterceptor } from 'src/app/shared/http/http-request.interceptor';
@@ -31,6 +33,7 @@ import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
+    //--TODO: organize these into modules for each feature
     AppComponent,
     UserComponent,
     LoginComponent,
@@ -45,9 +48,12 @@ import { environment } from 'src/environments/environment';
     AlbumListComponent,
     FooterComponent,
     ShowcaseListComponent,
+    BookComponent,
+    BookListComponent,
   ],
 
   imports: [
+    //--TODO: organize these into separate module for third party
     environment.production ? [] : AkitaNgDevtools.forRoot(),
     AkitaNgRouterStoreModule.forRoot(),
     AppRoutingModule,

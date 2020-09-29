@@ -1,0 +1,7 @@
+<div *ngxSubscribe="books as bookList">
+  <div
+    class="d-flex flex-row flex-wrap align-items-center justify-content-start"
+  >
+    <app-book *ngFor="let book of bookList" [book]="book"></app-book>
+  </div>
+</div>
