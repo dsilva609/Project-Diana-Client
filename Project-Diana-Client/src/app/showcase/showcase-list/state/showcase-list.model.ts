@@ -1,4 +1,4 @@
-import { Album } from 'src/app/album/state/album.model';
+import { Album } from 'src/app/album/album.model';
 
 export interface ShowcaseListResponse {
   showcasedAlbums: Album[];

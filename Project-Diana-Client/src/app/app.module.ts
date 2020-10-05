@@ -30,6 +30,7 @@ import { WishOwnedComponent } from 'src/app/wish/wish-list/wish-owned/wish-owned
 import { WishSubmissionComponent } from 'src/app/wish/wish-submission/wish-submission.component';
 import { WishComponent } from 'src/app/wish/wish.component';
 import { environment } from 'src/environments/environment';
+import { DetailsComponent } from './album/details/details.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { environment } from 'src/environments/environment';
     ShowcaseListComponent,
     BookComponent,
     BookListComponent,
+    DetailsComponent,
   ],
 
   imports: [

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { EntityState, EntityStore, StoreConfig } from '@datorama/akita';
-import { Album } from 'src/app/album/state/album.model';
+import { Album } from 'src/app/album/album.model';
 import { createShowcaseList, ShowcaseListResponse } from 'src/app/showcase/showcase-list/state/showcase-list.model';
 
 export interface ShowcaseListState extends EntityState<ShowcaseListResponse> {

@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { of } from 'rxjs';
-import { Album } from 'src/app/album/state/album.model';
-import { AlbumQuery } from 'src/app/album/state/album.query';
-import { AlbumService } from 'src/app/album/state/album.service';
-
+import { AlbumListQuery } from 'src/app/album/album-list/state/albumList.query';
+import { AlbumListService } from 'src/app/album/album-list/state/albumList.service';
+import { Album } from 'src/app/album/album.model';
 
 @Component({
   selector: 'app-album-list',
@@ -16,12 +15,12 @@ export class AlbumListComponent implements OnInit {
   private albumCount = 10;
 
   constructor(
-    private albumQuery: AlbumQuery,
-    private albumService: AlbumService
+    private albumListQuery: AlbumListQuery,
+    private albumListService: AlbumListService
   ) {}
 
   ngOnInit(): void {
-    this.albumService.getAlbumList(this.albumCount).subscribe();
-    this.albums = this.albumQuery.selectAll();
+    this.albumListService.getAlbumList(this.albumCount).subscribe();
+    this.albums = this.albumListQuery.selectAll();
   }
 }

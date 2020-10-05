@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { of } from 'rxjs';
+import { Album } from 'src/app/album/album.model';
 import { ShowcaseListResponse } from 'src/app/showcase/showcase-list/state/showcase-list.model';
 import { ShowcaseListQuery } from 'src/app/showcase/showcase-list/state/showcase-list.query';
 import { ShowcaseListService } from 'src/app/showcase/showcase-list/state/showcase-list.service';
-
-import { Album } from './../../album/state/album.model';
 
 @Component({
   selector: 'app-showcase-list',
