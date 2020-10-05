@@ -2,6 +2,10 @@
   <div
     class="d-flex flex-row flex-wrap align-items-center justify-content-start"
   >
-    <app-book *ngFor="let book of bookList" [book]="book"></app-book>
+    <app-book
+      *ngFor="let book of bookList"
+      [book]="book"
+      [routerLink]="['/book', book.id]"
+    ></app-book>
   </div>
 </div>

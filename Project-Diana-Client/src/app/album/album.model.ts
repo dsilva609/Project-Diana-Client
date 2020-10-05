@@ -3,6 +3,7 @@ export interface Album {
   artist: string;
   imageUrl: string;
   title: string;
+  yearReleased: number;
 }
 
 export function createAlbum(): Album {
@@ -11,5 +12,6 @@ export function createAlbum(): Album {
     artist: '',
     imageUrl: '',
     title: '',
+    yearReleased: 0,
   } as Album;
 }

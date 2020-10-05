@@ -3,6 +3,7 @@ export interface Book {
   author: string;
   imageUrl: string;
   title: string;
+  yearReleased: number;
 }
 
 export function createBook(): Book {
@@ -11,5 +12,6 @@ export function createBook(): Book {
     author: '',
     imageUrl: '',
     title: '',
+    yearReleased: 0,
   } as Book;
 }

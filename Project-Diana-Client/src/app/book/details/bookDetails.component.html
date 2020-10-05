@@ -1,0 +1,8 @@
+<div *ngxSubscribe="book as b">
+  <div>
+    <img [src]="b.imageUrl" />
+  </div>
+  <div>{{ b.title }}</div>
+  <div>{{ b.author }}</div>
+  <div>{{ b.yearReleased }}</div>
+</div>

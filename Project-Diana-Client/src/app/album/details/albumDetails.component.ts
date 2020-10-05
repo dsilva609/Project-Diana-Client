@@ -7,10 +7,10 @@ import { AlbumService } from 'src/app/album/details/state/album.service';
 
 @Component({
   selector: 'app-details',
-  templateUrl: './details.component.html',
-  styleUrls: ['./details.component.scss'],
+  templateUrl: './albumDetails.component.html',
+  styleUrls: ['./albumDetails.component.scss'],
 })
-export class DetailsComponent implements OnInit {
+export class AlbumDetailsComponent implements OnInit {
   album = of<Album>();
 
   constructor(

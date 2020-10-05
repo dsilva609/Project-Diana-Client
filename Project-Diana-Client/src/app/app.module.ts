@@ -12,10 +12,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { AlbumListComponent } from 'src/app/album/album-list/album-list.component';
 import { AlbumComponent } from 'src/app/album/album.component';
+import { AlbumDetailsComponent } from 'src/app/album/details/albumDetails.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AppComponent } from 'src/app/app.component';
 import { BookListComponent } from 'src/app/book/book-list/book-list.component';
 import { BookComponent } from 'src/app/book/book.component';
+import { BookDetailsComponent } from 'src/app/book/details/bookDetails.component';
 import { FooterComponent } from 'src/app/shared/footer/footer.component';
 import { NgxSubscribeDirective } from 'src/app/shared/helpers/ngx-directive';
 import { HttpRequestInterceptor } from 'src/app/shared/http/http-request.interceptor';
@@ -30,7 +32,6 @@ import { WishOwnedComponent } from 'src/app/wish/wish-list/wish-owned/wish-owned
 import { WishSubmissionComponent } from 'src/app/wish/wish-submission/wish-submission.component';
 import { WishComponent } from 'src/app/wish/wish.component';
 import { environment } from 'src/environments/environment';
-import { DetailsComponent } from './album/details/details.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { DetailsComponent } from './album/details/details.component';
     ShowcaseListComponent,
     BookComponent,
     BookListComponent,
-    DetailsComponent,
+    AlbumDetailsComponent,
+    BookDetailsComponent,
   ],
 
   imports: [
