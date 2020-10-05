@@ -7,11 +7,14 @@ import { Album } from 'src/app/album/album.model';
 
 @Injectable({ providedIn: 'root' })
 export class AlbumListService {
-  constructor(protected albumStore: AlbumListStore, private http: HttpClient) {}
+  constructor(
+    protected albumListStore: AlbumListStore,
+    private http: HttpClient
+  ) {}
 
   getAlbumList(albumCount: number): Observable<Album[]> {
     return this.http
       .get<Album[]>(`Album/GetAlbumList?itemCount=${albumCount}`)
-      .pipe(tap((albumList) => this.albumStore.set(albumList)));
+      .pipe(tap((albumList) => this.albumListStore.set(albumList)));
   }
 }

@@ -1,1 +1,8 @@
-<p>details works!</p>
+<div *ngxSubscribe="album as a">
+  <div>
+    <img [src]="a.imageUrl" />
+  </div>
+  <div>{{ a.title }}</div>
+  <div>{{ a.artist }}</div>
+  <div>{{ a.yearReleased }}</div>
+</div>

@@ -2,6 +2,10 @@
   <div
     class="d-flex flex-row flex-wrap align-items-center justify-content-start"
   >
-    <app-album *ngFor="let album of albumList" [album]="album"></app-album>
+    <app-album
+      *ngFor="let album of albumList"
+      [album]="album"
+      [routerLink]="['/album', album.id]"
+    ></app-album>
   </div>
 </div>
