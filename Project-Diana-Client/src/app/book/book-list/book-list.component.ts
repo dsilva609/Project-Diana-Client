@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { of } from 'rxjs';
-import { Book } from 'src/app/book/state/book.model';
-import { BookQuery } from 'src/app/book/state/book.query';
-import { BookService } from 'src/app/book/state/book.service';
+import { BookListQuery } from 'src/app/book/book-list/state/bookList.query';
+import { BookListService } from 'src/app/book/book-list/state/bookList.service';
+import { Book } from 'src/app/book/book.model';
 
 @Component({
   selector: 'app-book-list',
@@ -13,10 +13,13 @@ export class BookListComponent implements OnInit {
   books = of<Book[]>();
 
   private bookCount = 10;
-  constructor(private bookQuery: BookQuery, private bookService: BookService) {}
+  constructor(
+    private bookListQuery: BookListQuery,
+    private bookListService: BookListService
+  ) {}
 
   ngOnInit(): void {
-    this.bookService.getBookList(this.bookCount).subscribe();
-    this.books = this.bookQuery.selectAll();
+    this.bookListService.getBookList(this.bookCount).subscribe();
+    this.books = this.bookListQuery.selectAll();
   }
 }
