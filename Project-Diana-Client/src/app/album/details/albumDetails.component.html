@@ -1,5 +1,6 @@
 <div *ngxSubscribe="album as a">
   <h2>{{ a.title }} By {{ a.artist }} ({{ a.yearReleased }})</h2>
+
   <div class="row">
     <div class="col-sm-6">
       <div>
@@ -23,13 +24,14 @@
           <div>Physical: {{ a.isPhysical | yesNo }}</div>
           <div>Speed: {{ a.speed }}</div>
           <div>Size: {{ a.size }}</div>
+          <div>Country of Origin: {{ a.countryOfOrigin || "N/A" }}</div>
         </div>
       </div>
     </div>
   </div>
 
   <div class="card my-4">
-    <h3 class="card-header">Miscelaneous Information</h3>
+    <h3 class="card-header">Miscellaneous Information</h3>
     <div class="card-body">
       <div class="row">
         <div class="col-sm-6">
@@ -40,6 +42,7 @@
           <div>Date Added: {{ a.dateAdded | date }}</div>
           <div>Last Played: {{ a.lastCompleted | date }}</div>
           <div>Last Updated: {{ a.dateUpdated | date }}</div>
+          <div>Play Count: {{ a.timesCompleted }}</div>
         </div>
       </div>
     </div>
@@ -50,6 +53,7 @@
     <div class="card-body">
       <div>Date Purchased: {{ a.datePurchased | date }}</div>
       <div>Location Purchased: {{ a.locationPurchased || "N/A" }}</div>
+      <div>Country Purchaed: {{ a.countryPurchased || "N/A" }}</div>
       <div>New Purchase: {{ a.isNew | yesNo }}</div>
     </div>
   </div>

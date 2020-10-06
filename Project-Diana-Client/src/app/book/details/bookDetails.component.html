@@ -1,8 +1,61 @@
 <div *ngxSubscribe="book as b">
-  <div>
-    <img [src]="b.imageUrl" />
+  <h2>{{ b.title }} By {{ b.author }} ({{ b.yearReleased }})</h2>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div><img [src]="b.imageUrl" class="book-img" /></div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <h3 class="card-header">Book Details</h3>
+        <div class="card-body">
+          <div>Publisher: {{ b.publisher || "N/A" }}</div>
+          <div>Genre: {{ b.genre || "N/A" }}</div>
+          <div>ISBN-10: {{ b.isbn10 || "N/A" }}</div>
+          <div>ISBN-13: {{ b.isbn13 || "N/A" }}</div>
+        </div>
+      </div>
+
+      <div class="card my-4">
+        <h3 class="card-header">Media Information</h3>
+        <div class="card-body">
+          <div>Type: {{ b.type }}</div>
+          <div>Hardcover: {{ b.hardcover | yesNo }}</div>
+          <div>Language: {{ b.language || "N/A" }}</div>
+          <div>Country of Origin: {{ b.countryOfOrigin || "N/A" }}</div>
+          <div>Physical: {{ b.isPhysical | yesNo }}</div>
+          <div>First Edition: {{ b.isFirstEdition | yesNo }}</div>
+          <div>Reissue: {{ b.isReissue | yesNo }}</div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div>{{ b.title }}</div>
-  <div>{{ b.author }}</div>
-  <div>{{ b.yearReleased }}</div>
+
+  <div class="card my-4">
+    <h3 class="card-header">Miscellaneous Information</h3>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <div>Category: {{ b.category || "N/A" }}</div>
+          <div>Notes: {{ b.notes || "N/A" }}</div>
+        </div>
+        <div class="col-sm-6">
+          <div>Date Added: {{ b.dateAdded | date }}</div>
+          <div>Last Played: {{ b.lastCompleted | date }}</div>
+          <div>Last Updated: {{ b.dateUpdated | date }}</div>
+          <div>Times Completed: {{ b.timesCompleted }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card my-4">
+    <h3 class="card-header">Purchase Information</h3>
+    <div class="card-body">
+      <div>Date Purchased: {{ b.datePurchased | date }}</div>
+      <div>Location Purchased: {{ b.locationPurchased || "N/A" }}</div>
+      <div>Country Purchaed: {{ b.countryPurchased || "N/A" }}</div>
+      <div>New Purchase: {{ b.isNew | yesNo }}</div>
+    </div>
+  </div>
 </div>
