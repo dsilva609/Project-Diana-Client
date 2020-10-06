@@ -33,6 +33,8 @@ import { WishSubmissionComponent } from 'src/app/wish/wish-submission/wish-submi
 import { WishComponent } from 'src/app/wish/wish.component';
 import { environment } from 'src/environments/environment';
 
+import { YesNoPipe } from './shared/pipes/yes-no.pipe';
+
 @NgModule({
   declarations: [
     //--TODO: organize these into modules for each feature
@@ -54,6 +56,7 @@ import { environment } from 'src/environments/environment';
     BookListComponent,
     AlbumDetailsComponent,
     BookDetailsComponent,
+    YesNoPipe,
   ],
 
   imports: [

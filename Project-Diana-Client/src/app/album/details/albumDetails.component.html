@@ -1,8 +1,56 @@
 <div *ngxSubscribe="album as a">
-  <div>
-    <img [src]="a.imageUrl" />
+  <h2>{{ a.title }} By {{ a.artist }} ({{ a.yearReleased }})</h2>
+  <div class="row">
+    <div class="col-sm-6">
+      <div>
+        <img [src]="a.imageUrl" class="album-img" />
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <h3 class="card-header">Album Details</h3>
+        <div class="card-body">
+          <div>Genre: {{ a.genre || "N/A" }}</div>
+          <div>Style: {{ a.style || "N/A" }}</div>
+          <div>Record Label: {{ a.recordLabel || "N/A" }}</div>
+        </div>
+      </div>
+
+      <div class="card my-4">
+        <h3 class="card-header">Media Information</h3>
+        <div class="card-body">
+          <div>Media Type: {{ a.mediaType }}</div>
+          <div>Physical: {{ a.isPhysical | yesNo }}</div>
+          <div>Speed: {{ a.speed }}</div>
+          <div>Size: {{ a.size }}</div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div>{{ a.title }}</div>
-  <div>{{ a.artist }}</div>
-  <div>{{ a.yearReleased }}</div>
+
+  <div class="card my-4">
+    <h3 class="card-header">Miscelaneous Information</h3>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-6">
+          <div>Category: {{ a.category || "N/A" }}</div>
+          <div>Notes: {{ a.notes || "N/A" }}</div>
+        </div>
+        <div class="col-sm-6">
+          <div>Date Added: {{ a.dateAdded | date }}</div>
+          <div>Last Played: {{ a.lastCompleted | date }}</div>
+          <div>Last Updated: {{ a.dateUpdated | date }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card my-4">
+    <h3 class="card-header">Purchase Information</h3>
+    <div class="card-body">
+      <div>Date Purchased: {{ a.datePurchased | date }}</div>
+      <div>Location Purchased: {{ a.locationPurchased || "N/A" }}</div>
+      <div>New Purchase: {{ a.isNew | yesNo }}</div>
+    </div>
+  </div>
 </div>
