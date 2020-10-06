@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { of } from 'rxjs';
-import { BookListQuery } from 'src/app/book/book-list/state/bookList.query';
-import { BookListService } from 'src/app/book/book-list/state/bookList.service';
+import { BookListQuery } from 'src/app/book/book-list/state/book-list.query';
+import { BookListService } from 'src/app/book/book-list/state/book-list.service';
 import { Book } from 'src/app/book/book.model';
 
 @Component({

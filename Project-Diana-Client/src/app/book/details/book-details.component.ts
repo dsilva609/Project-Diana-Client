@@ -7,8 +7,8 @@ import { BookService } from 'src/app/book/details/state/book.service';
 
 @Component({
   selector: 'app-details',
-  templateUrl: './bookDetails.component.html',
-  styleUrls: ['./bookDetails.component.scss'],
+  templateUrl: './book-details.component.html',
+  styleUrls: ['./book-details.component.scss'],
 })
 export class BookDetailsComponent implements OnInit {
   book = of<Book>();

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { QueryEntity } from '@datorama/akita';
-import { AlbumListStore } from 'src/app/album/album-list/state/albumList.store';
+import { AlbumListStore } from 'src/app/album/album-list/state/album-list.store';
 import { Album } from 'src/app/album/album.model';
 import { AlbumState } from 'src/app/album/details/state/album.store';
 

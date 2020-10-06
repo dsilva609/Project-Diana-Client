@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { of } from 'rxjs';
-import { AlbumListQuery } from 'src/app/album/album-list/state/albumList.query';
-import { AlbumListService } from 'src/app/album/album-list/state/albumList.service';
+import { AlbumListQuery } from 'src/app/album/album-list/state/album-list.query';
+import { AlbumListService } from 'src/app/album/album-list/state/album-list.service';
 import { Album } from 'src/app/album/album.model';
 
 @Component({

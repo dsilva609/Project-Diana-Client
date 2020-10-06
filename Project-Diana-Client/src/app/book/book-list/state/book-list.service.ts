@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { BookListStore } from 'src/app/book/book-list/state/bookList.store';
+import { BookListStore } from 'src/app/book/book-list/state/book-list.store';
 import { Book } from 'src/app/book/book.model';
 
 @Injectable({ providedIn: 'root' })

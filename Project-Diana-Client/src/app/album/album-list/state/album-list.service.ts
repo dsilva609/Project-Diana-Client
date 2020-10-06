@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { AlbumListStore } from 'src/app/album/album-list/state/albumList.store';
+import { AlbumListStore } from 'src/app/album/album-list/state/album-list.store';
 import { Album } from 'src/app/album/album.model';
 
 @Injectable({ providedIn: 'root' })

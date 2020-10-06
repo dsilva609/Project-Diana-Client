@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { AlbumListComponent } from 'src/app/album/album-list/album-list.component';
-import { AlbumDetailsComponent } from 'src/app/album/details/albumDetails.component';
+import { AlbumDetailsComponent } from 'src/app/album/details/album-details.component';
 
 export const ALBUM_ROUTES: Routes = [
   {
