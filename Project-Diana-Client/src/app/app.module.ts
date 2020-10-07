@@ -10,6 +10,7 @@ import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ClickOutsideModule } from 'ng-click-outside';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { AlbumListComponent } from 'src/app/album/album-list/album-list.component';
 import { AlbumComponent } from 'src/app/album/album.component';
 import { AlbumDetailsComponent } from 'src/app/album/details/album-details.component';
@@ -23,6 +24,7 @@ import { NgxSubscribeDirective } from 'src/app/shared/helpers/ngx-directive';
 import { HttpRequestInterceptor } from 'src/app/shared/http/http-request.interceptor';
 import { IconsModule } from 'src/app/shared/icons/icons.module';
 import { NavComponent } from 'src/app/shared/nav/nav.component';
+import { YesNoPipe } from 'src/app/shared/pipes/yes-no.pipe';
 import { ShowcaseListComponent } from 'src/app/showcase/showcase-list/showcase-list.component';
 import { LoginComponent } from 'src/app/user/login/login.component';
 import { UserComponent } from 'src/app/user/user.component';
@@ -32,9 +34,6 @@ import { WishOwnedComponent } from 'src/app/wish/wish-list/wish-owned/wish-owned
 import { WishSubmissionComponent } from 'src/app/wish/wish-submission/wish-submission.component';
 import { WishComponent } from 'src/app/wish/wish.component';
 import { environment } from 'src/environments/environment';
-
-import { YesNoPipe } from './shared/pipes/yes-no.pipe';
-
 
 @NgModule({
   declarations: [
@@ -73,6 +72,7 @@ import { YesNoPipe } from './shared/pipes/yes-no.pipe';
     IconsModule,
     JwtModule,
     NgbModule,
+    NgxPaginationModule,
     ReactiveFormsModule,
   ],
   providers: [

@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+import { AlbumListResponse } from 'src/app/album/album-list/state/album-list.model';
 import { AlbumListStore } from 'src/app/album/album-list/state/album-list.store';
-import { Album } from 'src/app/album/album.model';
 
 @Injectable({ providedIn: 'root' })
 export class AlbumListService {
@@ -12,9 +12,19 @@ export class AlbumListService {
     private http: HttpClient
   ) {}
 
-  getAlbumList(albumCount: number): Observable<Album[]> {
+  getAlbumList(albumCount: number, page: number): Observable<number> {
     return this.http
-      .get<Album[]>(`Album/GetAlbumList?itemCount=${albumCount}`)
-      .pipe(tap((albumList) => this.albumListStore.set(albumList)));
+      .get<AlbumListResponse>(
+        `Album/GetAlbumList?itemCount=${albumCount}&page=${
+          page < 1 ? 0 : page - 1
+        }`
+      )
+      .pipe(
+        map((response) => {
+          this.albumListStore.set(response.albums);
+
+          return response.totalCount;
+        })
+      );
   }
 }

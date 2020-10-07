@@ -3,9 +3,22 @@
     class="d-flex flex-row flex-wrap align-items-center justify-content-start"
   >
     <app-album
-      *ngFor="let album of albumList"
+      *ngFor="
+        let album of albumList
+          | paginate
+            : {
+                itemsPerPage: albumCount,
+                currentPage: p,
+                totalItems: totalAlbums
+              }
+      "
       [album]="album"
       [routerLink]="['/album', album.id]"
     ></app-album>
   </div>
+  <pagination-controls
+    class="d-flex justify-content-center"
+    (pageChange)="p = $event; getNextPage($event)"
+    autoHide="true"
+  ></pagination-controls>
 </div>

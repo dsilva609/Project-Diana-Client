@@ -3,9 +3,22 @@
     class="d-flex flex-row flex-wrap align-items-center justify-content-start"
   >
     <app-book
-      *ngFor="let book of bookList"
+      *ngFor="
+        let book of bookList
+          | paginate
+            : {
+                itemsPerPage: bookCount,
+                currentPage: p,
+                totalItems: totalBooks
+              }
+      "
       [book]="book"
       [routerLink]="['/book', book.id]"
     ></app-book>
   </div>
+  <pagination-controls
+    class="d-flex justify-content-center"
+    (pageChange)="p = $event; getNextPage($event)"
+    autoHide="true"
+  ></pagination-controls>
 </div>
