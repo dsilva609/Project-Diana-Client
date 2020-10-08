@@ -18,6 +18,7 @@
           class="d-block img-fluid text-center showcase-image"
           [src]="album.imageUrl"
           [alt]="album.title"
+          [routerLink]="['/album', album.id]"
         />
         <div class="text-center">
           {{ album.artist }} - {{ album.title }} ({{ album.yearReleased }})
