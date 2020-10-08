@@ -13,7 +13,7 @@ import { Book } from 'src/app/book/book.model';
 })
 export class BookListComponent implements OnInit {
   books = of<Book[]>();
-  bookCount = 1;
+  bookCount = 24;
   page = 0;
   totalBooks = 0;
 

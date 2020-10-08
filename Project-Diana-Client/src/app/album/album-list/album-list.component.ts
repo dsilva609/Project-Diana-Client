@@ -13,7 +13,7 @@ import { Album } from 'src/app/album/album.model';
 })
 export class AlbumListComponent implements OnInit {
   albums = of<Album[]>();
-  albumCount = 1;
+  albumCount = 24;
   page = 0;
   totalAlbums = 0;
 
