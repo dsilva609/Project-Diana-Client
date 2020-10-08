@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { AlbumListQuery } from 'src/app/album/album-list/state/album-list.query';
@@ -12,16 +13,21 @@ import { Album } from 'src/app/album/album.model';
 })
 export class AlbumListComponent implements OnInit {
   albums = of<Album[]>();
-  albumCount = 25;
+  albumCount = 1;
+  page = 0;
   totalAlbums = 0;
 
   constructor(
     private albumListQuery: AlbumListQuery,
-    private albumListService: AlbumListService
+    private albumListService: AlbumListService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.getAlbums(0);
+    this.page = this.route.snapshot.queryParams.pageNum ?? 0;
+
+    this.getAlbums(this.page);
   }
 
   getNextPage(pageNumber: number): void {
@@ -35,5 +41,7 @@ export class AlbumListComponent implements OnInit {
       .subscribe();
 
     this.albums = this.albumListQuery.selectAll();
+
+    this.router.navigate(['album'], { queryParams: { pageNum: page } });
   }
 }

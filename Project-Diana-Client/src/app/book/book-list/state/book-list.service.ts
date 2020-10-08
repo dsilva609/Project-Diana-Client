@@ -13,7 +13,7 @@ export class BookListService {
     return this.http
       .get<BookListResponse>(
         `Book/GetBookList?itemCount=${bookCount}&page=${
-          page < 1 ? 0 : page - 1
+          page <= 1 ? 0 : page - 1
         }`
       )
       .pipe(

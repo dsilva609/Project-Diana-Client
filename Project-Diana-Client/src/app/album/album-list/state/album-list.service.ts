@@ -16,7 +16,7 @@ export class AlbumListService {
     return this.http
       .get<AlbumListResponse>(
         `Album/GetAlbumList?itemCount=${albumCount}&page=${
-          page < 1 ? 0 : page - 1
+          page <= 1 ? 0 : page - 1
         }`
       )
       .pipe(

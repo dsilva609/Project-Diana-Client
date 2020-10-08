@@ -35,4 +35,18 @@ export class NavComponent implements OnInit {
   onClickedOutside(event: Event): void {
     this.isCollapsed = true;
   }
+
+  goToAlbums(): void {
+    this.router
+      .navigate(['album'], { queryParams: { pageNum: 1 } })
+      .then(() => {
+        window.location.reload();
+      });
+  }
+
+  goToBooks(): void {
+    this.router.navigate(['book'], { queryParams: { pageNum: 1 } }).then(() => {
+      window.location.reload();
+    });
+  }
 }
