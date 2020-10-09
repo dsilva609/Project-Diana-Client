@@ -55,8 +55,9 @@
       routerLink="/user/login"
       >Login</a
     >
-    <a class="btn btn-primary" *ngIf="isLoggedIn() | async" (click)="logout()"
-      >Logout</a
-    >
+    <ng-container *ngIf="isLoggedIn() | async">
+      <div class="display-name mr-2">{{ displayName }}</div>
+      <a class="btn btn-primary" (click)="logout()">Logout</a>
+    </ng-container>
   </div>
 </nav>

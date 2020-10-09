@@ -1,7 +1,13 @@
+@import "src/app/shared/styles/_mixins.scss";
+
 .navbar {
   max-width: 100%;
 }
 
 .link {
   cursor: pointer;
+}
+
+.display-name {
+  @include var(color, "display-name-color");
 }
