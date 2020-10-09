@@ -24,6 +24,7 @@ export interface Book {
   timesCompleted: number;
   title: string;
   type: string;
+  userID: string;
   yearReleased: number;
 }
 
@@ -54,6 +55,7 @@ export function createBook(): Book {
     timesCompleted: 0,
     title: '',
     type: '',
+    userID: '',
     yearReleased: 0,
   } as Book;
 }
