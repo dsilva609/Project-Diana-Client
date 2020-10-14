@@ -21,8 +21,9 @@ export class AlbumListService {
       .set('itemCount', albumCount.toString())
       .set('page', (page <= 1 ? 0 : page - 1).toString())
       .set('searchQuery', query);
+
     return this.http
-      .get<AlbumListResponse>(`Album/GetAlbumList`, { params: paramList })
+      .get<AlbumListResponse>('Album/GetAlbumList', { params: paramList })
       .pipe(
         map((response) => {
           this.albumListStore.set(response.albums);

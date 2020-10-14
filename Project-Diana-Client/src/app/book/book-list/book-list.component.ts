@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { of } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -16,32 +17,65 @@ export class BookListComponent implements OnInit {
   bookCount = 24;
   page = 0;
   totalBooks = 0;
+  searchForm: FormGroup;
+  searchQuery = '';
 
   constructor(
     private bookListQuery: BookListQuery,
     private bookListService: BookListService,
+    private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) {
+    this.searchForm = this.formBuilder.group({
+      searchQuery: '',
+    });
+  }
 
   ngOnInit(): void {
     this.page = this.route.snapshot.queryParams.pageNum ?? 0;
+    this.searchQuery = this.route.snapshot.queryParams.search ?? '';
 
     this.getBooks(this.page);
+
+    this.router.navigate(['book'], {
+      queryParams: { pageNum: this.page, search: this.searchQuery },
+    });
   }
 
   getNextPage(pageNumber: number): void {
     this.getBooks(pageNumber);
+
+    this.router.navigate(['book'], {
+      queryParams: { pageNum: pageNumber, search: this.searchQuery },
+    });
+  }
+
+  onSearch(query): void {
+    if (!query) {
+      return;
+    }
+
+    this.page = 1;
+    this.searchQuery = query.searchQuery;
+
+    this.getBooks(this.page);
+
+    this.router
+      .navigate(['book'], {
+        queryParams: { pageNum: this.page, search: this.searchQuery },
+      })
+      .then(() => {
+        window.location.reload();
+      });
   }
 
   private getBooks(page: number): void {
     this.bookListService
-      .getBookList(this.bookCount, page)
+      .getBookList(this.bookCount, page, this.searchQuery)
       .pipe(tap((count) => (this.totalBooks = count)))
       .subscribe();
 
     this.books = this.bookListQuery.selectAll();
-
-    this.router.navigate(['book'], { queryParams: { pageNum: page } });
   }
 }

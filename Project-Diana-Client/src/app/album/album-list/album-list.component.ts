@@ -51,15 +51,6 @@ export class AlbumListComponent implements OnInit {
     });
   }
 
-  getAlbums(page: number): void {
-    this.albumListService
-      .getAlbumList(this.albumCount, page, this.searchQuery)
-      .pipe(tap((count) => (this.totalAlbums = count)))
-      .subscribe();
-
-    this.albums = this.albumListQuery.selectAll();
-  }
-
   onSearch(query): void {
     if (!query) {
       return;
@@ -77,5 +68,13 @@ export class AlbumListComponent implements OnInit {
       .then(() => {
         window.location.reload();
       });
+  }
+  private getAlbums(page: number): void {
+    this.albumListService
+      .getAlbumList(this.albumCount, page, this.searchQuery)
+      .pipe(tap((count) => (this.totalAlbums = count)))
+      .subscribe();
+
+    this.albums = this.albumListQuery.selectAll();
   }
 }
