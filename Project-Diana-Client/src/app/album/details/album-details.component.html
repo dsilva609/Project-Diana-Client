@@ -9,7 +9,7 @@
     </div>
     <div class="col-sm-6">
       <ng-container *canEdit="a.userID">
-        <div *ngIf="a.isShowcased" class="d-flex justify-content-end mb-4">
+        <div *ngIf="!a.isShowcased" class="d-flex justify-content-end mb-4">
           <button (click)="addToShowcase()" class="btn btn-outline-primary">
             <fa-icon [icon]="['fas', 'star']"></fa-icon>
           </button>
