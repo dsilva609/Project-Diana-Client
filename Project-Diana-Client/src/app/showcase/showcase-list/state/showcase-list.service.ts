@@ -12,9 +12,9 @@ export class ShowcaseListService {
     private http: HttpClient
   ) {}
 
-  getShowcase(): Observable<ShowcaseListResponse> {
+  getShowcase(userId: string): Observable<ShowcaseListResponse> {
     return this.http
-      .get<ShowcaseListResponse>('Showcase/GetShowcase?userid=1')
+      .get<ShowcaseListResponse>(`Showcase/GetShowcase?userId=${userId}`)
       .pipe(
         tap((showcaseListResponse) => {
           this.showcaseListStore.update(showcaseListResponse);

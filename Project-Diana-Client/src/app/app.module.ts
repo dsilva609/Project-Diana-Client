@@ -20,6 +20,7 @@ import { BookListComponent } from 'src/app/book/book-list/book-list.component';
 import { BookComponent } from 'src/app/book/book.component';
 import { BookDetailsComponent } from 'src/app/book/details/book-details.component';
 import { FooterComponent } from 'src/app/shared/footer/footer.component';
+import { CanEditDirective } from 'src/app/shared/helpers/can-edit.directive';
 import { NgxSubscribeDirective } from 'src/app/shared/helpers/ngx-directive';
 import { HttpRequestInterceptor } from 'src/app/shared/http/http-request.interceptor';
 import { IconsModule } from 'src/app/shared/icons/icons.module';
@@ -34,6 +35,7 @@ import { WishOwnedComponent } from 'src/app/wish/wish-list/wish-owned/wish-owned
 import { WishSubmissionComponent } from 'src/app/wish/wish-submission/wish-submission.component';
 import { WishComponent } from 'src/app/wish/wish.component';
 import { environment } from 'src/environments/environment';
+
 
 @NgModule({
   declarations: [
@@ -57,6 +59,7 @@ import { environment } from 'src/environments/environment';
     AlbumDetailsComponent,
     BookDetailsComponent,
     YesNoPipe,
+    CanEditDirective,
   ],
 
   imports: [

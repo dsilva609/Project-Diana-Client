@@ -13,8 +13,8 @@ export class CanEditDirective {
   ) {}
 
   @Input()
-  set canEdit(id: string) {
-    const { userId } = this.userQuery.getValue();
+  set canEdit(userId: string) {
+    const { id } = this.userQuery.getValue();
 
     if (id === userId) {
       this.viewContainer.createEmbeddedView(this.templateRef);

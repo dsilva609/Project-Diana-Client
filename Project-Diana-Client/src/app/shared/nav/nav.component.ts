@@ -13,6 +13,7 @@ import { UserService } from 'src/app/user/state/user.service';
 })
 export class NavComponent implements OnInit {
   displayName: string;
+  userNum: string;
   isCollapsed: boolean;
 
   constructor(
@@ -27,7 +28,12 @@ export class NavComponent implements OnInit {
   ngOnInit(): void {
     this.userQuery
       .select()
-      .pipe(tap((user) => (this.displayName = user.displayName)))
+      .pipe(
+        tap((user) => {
+          this.displayName = user.displayName;
+          this.userNum = user?.userNum?.toString() ?? '';
+        })
+      )
       .subscribe();
   }
 

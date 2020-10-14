@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { of } from 'rxjs';
 import { Album } from 'src/app/album/album.model';
 import { AlbumQuery } from 'src/app/album/details/state/album.query';
@@ -16,7 +16,8 @@ export class AlbumDetailsComponent implements OnInit {
   constructor(
     private albumQuery: AlbumQuery,
     private albumService: AlbumService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -25,5 +26,13 @@ export class AlbumDetailsComponent implements OnInit {
     this.albumService.getAlbumById(id).subscribe();
 
     this.album = this.albumQuery.select();
+  }
+
+  addToShowcase(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+
+    this.albumService.addToShowcase(id).subscribe();
+
+    this.router.navigate(['showcase']);
   }
 }

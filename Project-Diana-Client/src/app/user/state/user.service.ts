@@ -8,6 +8,7 @@ import { UserStore } from 'src/app/user/state/user.store';
 
 import { LoginResponse } from './user.model';
 
+
 @Injectable({ providedIn: 'root' })
 export class UserService {
   constructor(private userStore: UserStore, private http: HttpClient) {}
@@ -19,6 +20,7 @@ export class UserService {
           id: loginResponse.userId,
           displayName: loginResponse.displayName,
           token: loginResponse.token,
+          userNum: loginResponse.userNum,
         };
 
         this.userStore.update(user);
