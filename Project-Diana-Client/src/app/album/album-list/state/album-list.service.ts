@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -12,13 +12,17 @@ export class AlbumListService {
     private http: HttpClient
   ) {}
 
-  getAlbumList(albumCount: number, page: number): Observable<number> {
+  getAlbumList(
+    albumCount: number,
+    page: number,
+    query: string
+  ): Observable<number> {
+    const paramList = new HttpParams()
+      .set('itemCount', albumCount.toString())
+      .set('page', (page <= 1 ? 0 : page - 1).toString())
+      .set('searchQuery', query);
     return this.http
-      .get<AlbumListResponse>(
-        `Album/GetAlbumList?itemCount=${albumCount}&page=${
-          page <= 1 ? 0 : page - 1
-        }`
-      )
+      .get<AlbumListResponse>(`Album/GetAlbumList`, { params: paramList })
       .pipe(
         map((response) => {
           this.albumListStore.set(response.albums);

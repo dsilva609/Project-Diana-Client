@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { of } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -14,34 +15,67 @@ import { Album } from 'src/app/album/album.model';
 export class AlbumListComponent implements OnInit {
   albums = of<Album[]>();
   albumCount = 24;
-  page = 0;
+  page = 1;
   totalAlbums = 0;
+  searchForm: FormGroup;
+  searchQuery = '';
 
   constructor(
     private albumListQuery: AlbumListQuery,
     private albumListService: AlbumListService,
+    private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) {
+    this.searchForm = this.formBuilder.group({
+      searchQuery: '',
+    });
+  }
 
   ngOnInit(): void {
     this.page = this.route.snapshot.queryParams.pageNum ?? 0;
+    this.searchQuery = this.route.snapshot.queryParams.search ?? '';
 
     this.getAlbums(this.page);
+
+    this.router.navigate(['album'], {
+      queryParams: { pageNum: this.page, search: this.searchQuery },
+    });
   }
 
   getNextPage(pageNumber: number): void {
     this.getAlbums(pageNumber);
+
+    this.router.navigate(['album'], {
+      queryParams: { pageNum: pageNumber, search: this.searchQuery },
+    });
   }
 
   getAlbums(page: number): void {
     this.albumListService
-      .getAlbumList(this.albumCount, page)
+      .getAlbumList(this.albumCount, page, this.searchQuery)
       .pipe(tap((count) => (this.totalAlbums = count)))
       .subscribe();
 
     this.albums = this.albumListQuery.selectAll();
+  }
 
-    this.router.navigate(['album'], { queryParams: { pageNum: page } });
+  onSearch(query): void {
+    if (!query) {
+      return;
+    }
+
+    this.page = 1;
+    this.searchQuery = query.searchQuery;
+
+    this.getAlbums(this.page);
+
+    this.router
+      .navigate(['album'], {
+        queryParams: { pageNum: this.page, search: this.searchQuery },
+      })
+      .then(() => {
+        window.location.reload();
+      });
   }
 }
