@@ -1,4 +1,10 @@
-<h2>Albums</h2>
+<ng-container *canEdit="(showcase | async)?.showcasedAlbums[0]?.userID">
+  <div *ngIf="(showcase | async)?.showcasedAlbums">
+    <div class="btn btn-outline-danger mb-3" (click)="clearAlbumShowcase()">
+      <fa-icon [icon]="['fas', 'redo-alt']"></fa-icon>
+    </div>
+  </div>
+</ng-container>
 
 <div
   id="albumShowcase"

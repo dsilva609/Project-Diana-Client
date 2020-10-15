@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
 import { Album } from 'src/app/album/album.model';
 import { AlbumQuery } from 'src/app/album/details/state/album.query';
@@ -16,8 +16,7 @@ export class AlbumDetailsComponent implements OnInit {
   constructor(
     private albumQuery: AlbumQuery,
     private albumService: AlbumService,
-    private route: ActivatedRoute,
-    private router: Router
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
