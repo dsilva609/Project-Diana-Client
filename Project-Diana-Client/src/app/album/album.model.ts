@@ -11,6 +11,7 @@ export interface Album {
   imageUrl: string;
   isNew: boolean;
   isPhysical: boolean;
+  isShowcased: boolean;
   lastCompleted: string;
   locationPurchased: string;
   mediaType: string;
@@ -39,6 +40,7 @@ export function createAlbum(): Album {
     imageUrl: '',
     isNew: false,
     isPhysical: false,
+    isShowcased: false,
     lastCompleted: '',
     locationPurchased: '',
     mediaType: '',

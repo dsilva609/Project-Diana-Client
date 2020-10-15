@@ -12,7 +12,9 @@ export class AlbumService {
   addToShowcase(id: string): Observable<boolean> {
     return this.http.put(`Album/AddToShowcase/${id}`, null).pipe(
       map((response) => {
-        this.albumStore.update(null);
+        this.albumStore.update({
+          isShowcased: true,
+        });
 
         return true;
       })
@@ -23,5 +25,17 @@ export class AlbumService {
     return this.http
       .get<Album>(`Album/${id}`)
       .pipe(tap((album) => this.albumStore.update(album)));
+  }
+
+  removeFromShowcase(id: string): Observable<boolean> {
+    return this.http.put(`Album/RemoveFromShowcase/${id}`, null).pipe(
+      map((response) => {
+        this.albumStore.update({
+          isShowcased: false,
+        });
+
+        return true;
+      })
+    );
   }
 }

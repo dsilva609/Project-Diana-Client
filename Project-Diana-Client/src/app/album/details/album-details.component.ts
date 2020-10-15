@@ -32,7 +32,11 @@ export class AlbumDetailsComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
 
     this.albumService.addToShowcase(id).subscribe();
+  }
 
-    this.router.navigate(['showcase']);
+  removeFromShowcase(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+
+    this.albumService.removeFromShowcase(id).subscribe();
   }
 }

@@ -16,6 +16,14 @@
         </div>
       </ng-container>
 
+      <ng-container *canEdit="a.userID">
+        <div *ngIf="a.isShowcased" class="d-flex justify-content-end mb-4">
+          <button (click)="removeFromShowcase()" class="btn btn-outline-danger">
+            <fa-icon [icon]="['fas', 'star']"></fa-icon>
+          </button>
+        </div>
+      </ng-container>
+
       <div class="card">
         <h3 class="card-header">Album Details</h3>
         <div class="card-body">
