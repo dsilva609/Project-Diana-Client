@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { tap } from 'rxjs/internal/operators/tap';
+import { tap } from 'rxjs/operators';
 import { Album } from 'src/app/album/album.model';
 import { AlbumQuery } from 'src/app/album/details/state/album.query';
 import { AlbumService } from 'src/app/album/details/state/album.service';
