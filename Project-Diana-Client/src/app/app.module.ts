@@ -36,7 +36,6 @@ import { WishSubmissionComponent } from 'src/app/wish/wish-submission/wish-submi
 import { WishComponent } from 'src/app/wish/wish.component';
 import { environment } from 'src/environments/environment';
 
-
 @NgModule({
   declarations: [
     //--TODO: organize these into modules for each feature

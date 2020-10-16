@@ -10,6 +10,7 @@
     "deprecation": {
       "severity": "warning"
     },
+    "comment-format": [false, "check-space"],
     "component-class-suffix": true,
     "contextual-lifecycle": true,
     "directive-class-suffix": true,
