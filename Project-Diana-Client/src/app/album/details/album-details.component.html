@@ -1,46 +1,61 @@
-<div *ngxSubscribe="album as a">
-  <h2>{{ a.title }} By {{ a.artist }} ({{ a.yearReleased }})</h2>
+<div>
+  <h2>{{ album.title }} By {{ album.artist }} ({{ album.yearReleased }})</h2>
 
   <div class="row">
     <div class="col-sm-6">
       <div>
-        <img [src]="a.imageUrl" class="album-img" />
+        <img [src]="album.imageUrl" class="album-img" />
       </div>
     </div>
     <div class="col-sm-6">
-      <ng-container *canEdit="a.userID">
-        <div *ngIf="!a.isShowcased" class="d-flex justify-content-end mb-4">
-          <button (click)="addToShowcase()" class="btn btn-outline-primary">
-            <fa-icon [icon]="['fas', 'star']"></fa-icon>
-          </button>
-        </div>
-      </ng-container>
+      <div class="d-flex justify-content-end mb-4">
+        <ng-container *canEdit="album.userID">
+          <div *ngIf="!album.isShowcased">
+            <button (click)="addToShowcase()" class="btn btn-outline-primary">
+              <fa-icon [icon]="['fas', 'star']"></fa-icon>
+            </button>
+          </div>
+        </ng-container>
 
-      <ng-container *canEdit="a.userID">
-        <div *ngIf="a.isShowcased" class="d-flex justify-content-end mb-4">
-          <button (click)="removeFromShowcase()" class="btn btn-outline-danger">
-            <fa-icon [icon]="['fas', 'star']"></fa-icon>
-          </button>
-        </div>
-      </ng-container>
+        <ng-container *canEdit="album.userID">
+          <div *ngIf="album.isShowcased">
+            <button
+              (click)="removeFromShowcase()"
+              class="btn btn-outline-danger"
+            >
+              <fa-icon [icon]="['fas', 'star']"></fa-icon>
+            </button>
+          </div>
+        </ng-container>
 
+        <ng-container *canEdit="album.userID">
+          <div class="ml-2">
+            <button
+              (click)="incrementPlayCount()"
+              class="btn btn-outline-primary"
+            >
+              <fa-icon [icon]="['fas', 'plus']"></fa-icon>
+            </button>
+          </div>
+        </ng-container>
+      </div>
       <div class="card">
         <h3 class="card-header">Album Details</h3>
         <div class="card-body">
-          <div>Genre: {{ a.genre || "N/A" }}</div>
-          <div>Style: {{ a.style || "N/A" }}</div>
-          <div>Record Label: {{ a.recordLabel || "N/A" }}</div>
+          <div>Genre: {{ album.genre || "N/A" }}</div>
+          <div>Style: {{ album.style || "N/A" }}</div>
+          <div>Record Label: {{ album.recordLabel || "N/A" }}</div>
         </div>
       </div>
 
       <div class="card my-4">
         <h3 class="card-header">Media Information</h3>
         <div class="card-body">
-          <div>Media Type: {{ a.mediaType }}</div>
-          <div>Physical: {{ a.isPhysical | yesNo }}</div>
-          <div>Speed: {{ a.speed }}</div>
-          <div>Size: {{ a.size }}</div>
-          <div>Country of Origin: {{ a.countryOfOrigin || "N/A" }}</div>
+          <div>Media Type: {{ album.mediaType }}</div>
+          <div>Physical: {{ album.isPhysical | yesNo }}</div>
+          <div>Speed: {{ album.speed }}</div>
+          <div>Size: {{ album.size }}</div>
+          <div>Country of Origin: {{ album.countryOfOrigin || "N/A" }}</div>
         </div>
       </div>
     </div>
@@ -51,14 +66,14 @@
     <div class="card-body">
       <div class="row">
         <div class="col-sm-6">
-          <div>Category: {{ a.category || "N/A" }}</div>
-          <div>Notes: {{ a.notes || "N/A" }}</div>
+          <div>Category: {{ album.category || "N/A" }}</div>
+          <div>Notes: {{ album.notes || "N/A" }}</div>
         </div>
         <div class="col-sm-6">
-          <div>Date Added: {{ a.dateAdded | date }}</div>
-          <div>Last Played: {{ a.lastCompleted | date }}</div>
-          <div>Last Updated: {{ a.dateUpdated | date }}</div>
-          <div>Play Count: {{ a.timesCompleted }}</div>
+          <div>Date Added: {{ album.dateAdded | date }}</div>
+          <div>Last Played: {{ album.lastCompleted | date }}</div>
+          <div>Last Updated: {{ album.dateUpdated | date }}</div>
+          <div>Play Count: {{ album.timesCompleted }}</div>
         </div>
       </div>
     </div>
@@ -67,10 +82,10 @@
   <div class="card my-4">
     <h3 class="card-header">Purchase Information</h3>
     <div class="card-body">
-      <div>Date Purchased: {{ a.datePurchased | date }}</div>
-      <div>Location Purchased: {{ a.locationPurchased || "N/A" }}</div>
-      <div>Country Purchaed: {{ a.countryPurchased || "N/A" }}</div>
-      <div>New Purchase: {{ a.isNew | yesNo }}</div>
+      <div>Date Purchased: {{ album.datePurchased | date }}</div>
+      <div>Location Purchased: {{ album.locationPurchased || "N/A" }}</div>
+      <div>Country Purchaed: {{ album.countryPurchased || "N/A" }}</div>
+      <div>New Purchase: {{ album.isNew | yesNo }}</div>
     </div>
   </div>
 </div>

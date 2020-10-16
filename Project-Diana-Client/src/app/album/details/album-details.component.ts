@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { of } from 'rxjs';
+import { tap } from 'rxjs/internal/operators/tap';
 import { Album } from 'src/app/album/album.model';
 import { AlbumQuery } from 'src/app/album/details/state/album.query';
 import { AlbumService } from 'src/app/album/details/state/album.service';
@@ -11,7 +11,7 @@ import { AlbumService } from 'src/app/album/details/state/album.service';
   styleUrls: ['./album-details.component.scss'],
 })
 export class AlbumDetailsComponent implements OnInit {
-  album = of<Album>();
+  album: Album;
 
   constructor(
     private albumQuery: AlbumQuery,
@@ -20,22 +20,28 @@ export class AlbumDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
+    const albumId = this.route.snapshot.paramMap.get('id');
 
-    this.albumService.getAlbumById(id).subscribe();
+    this.albumService.getAlbumById(albumId).subscribe();
 
-    this.album = this.albumQuery.select();
+    this.albumQuery
+      .select()
+      .pipe(tap((a) => (this.album = a)))
+      .subscribe();
   }
 
   addToShowcase(): void {
-    const id = this.route.snapshot.paramMap.get('id');
+    this.albumService.addToShowcase(this.album.id.toString()).subscribe();
+  }
 
-    this.albumService.addToShowcase(id).subscribe();
+  incrementPlayCount(): void {
+    this.albumService
+      .incrementPlayCount(this.album.id.toString(), this.album.timesCompleted)
+      .pipe(tap((_) => this.album.timesCompleted++))
+      .subscribe();
   }
 
   removeFromShowcase(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-
-    this.albumService.removeFromShowcase(id).subscribe();
+    this.albumService.removeFromShowcase(this.album.id.toString()).subscribe();
   }
 }

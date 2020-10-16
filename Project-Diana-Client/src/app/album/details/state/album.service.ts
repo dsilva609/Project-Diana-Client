@@ -27,6 +27,18 @@ export class AlbumService {
       .pipe(tap((album) => this.albumStore.update(album)));
   }
 
+  incrementPlayCount(id: string, playCount: number): Observable<boolean> {
+    return this.http.put(`Album/IncrementPlayCount/${id}`, null).pipe(
+      map((response) => {
+        this.albumStore.update({
+          timesCompleted: playCount,
+        });
+
+        return true;
+      })
+    );
+  }
+
   removeFromShowcase(id: string): Observable<boolean> {
     return this.http.put(`Album/RemoveFromShowcase/${id}`, null).pipe(
       map((response) => {
