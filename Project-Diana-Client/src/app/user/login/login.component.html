@@ -2,8 +2,14 @@
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
     <p>Enter login information</p>
 
-    <div class="row">
-      <div>
+    <div class="row mb-2">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <fa-icon
+            [icon]="['fas', 'envelope']"
+            class="input-group-text"
+          ></fa-icon>
+        </div>
         <input
           class="form-control"
           type="username"
@@ -14,8 +20,11 @@
       </div>
     </div>
 
-    <div class="row">
-      <div>
+    <div class="row mb-2">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <fa-icon [icon]="['fas', 'key']" class="input-group-text"></fa-icon>
+        </div>
         <input
           class="form-control"
           type="password"
@@ -26,7 +35,7 @@
       </div>
     </div>
 
-    <div class="row my-2">
+    <div class="row">
       <button class="btn btn-primary btn-block" type="submit">Login</button>
     </div>
   </form>
