@@ -1,13 +1,15 @@
 <div>
-  <h2>{{ album.title }} By {{ album.artist }} ({{ album.yearReleased }})</h2>
+  <h2 class="text-center text-md-left">
+    {{ album.title }} By {{ album.artist }} ({{ album.yearReleased }})
+  </h2>
 
-  <div class="row">
-    <div class="col-sm-6">
+  <div class="d-flex flex-column flex-sm-row">
+    <div class="mr-4">
       <div>
-        <img [src]="album.imageUrl" class="album-img" />
+        <img [src]="album.imageUrl" class="img-fluid album-img" />
       </div>
     </div>
-    <div class="col-sm-6">
+    <div class="d-flex flex-column flex-grow-1">
       <div class="d-flex justify-content-end mb-4">
         <ng-container *canEdit="album.userID">
           <div *ngIf="!album.isShowcased">

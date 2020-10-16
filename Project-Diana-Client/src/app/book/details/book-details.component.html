@@ -1,11 +1,13 @@
 <div *ngxSubscribe="book as b">
-  <h2>{{ b.title }} By {{ b.author }} ({{ b.yearReleased }})</h2>
+  <h2 class="text-center text-sm-left">
+    {{ b.title }} By {{ b.author }} ({{ b.yearReleased }})
+  </h2>
 
-  <div class="row">
-    <div class="col-sm-6">
-      <div><img [src]="b.imageUrl" class="book-img" /></div>
+  <div class="d-flex flex-column flex-sm-row book-info">
+    <div class="mr-4">
+      <div><img [src]="b.imageUrl" class="img-fluid book-img" /></div>
     </div>
-    <div class="col-sm-6">
+    <div class="d-flex flex-column flex-grow-1 my-4 my-sm-0">
       <div class="card">
         <h3 class="card-header">Book Details</h3>
         <div class="card-body">
