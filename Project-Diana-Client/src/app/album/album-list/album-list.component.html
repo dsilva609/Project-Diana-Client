@@ -1,26 +1,36 @@
 <div *ngxSubscribe="albums as albumList">
-  <form
-    [formGroup]="searchForm"
-    class="d-flex justify-content-start ml-4 mb-2"
-    (ngSubmit)="onSearch(searchForm.value)"
-  >
-    <div class="row">
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <fa-icon
-            [icon]="['fas', 'search']"
-            class="input-group-text"
-          ></fa-icon>
+  <div class="d-flex justify-content-between">
+    <form
+      [formGroup]="searchForm"
+      class="justify-content-start ml-4 mb-2"
+      (ngSubmit)="onSearch(searchForm.value)"
+    >
+      <div class="row">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <fa-icon
+              [icon]="['fas', 'search']"
+              class="input-group-text"
+            ></fa-icon>
+          </div>
+          <input
+            class="form-control"
+            type="text"
+            formControlName="searchQuery"
+            placeholder="Search"
+          />
         </div>
-        <input
-          class="form-control"
-          type="text"
-          formControlName="searchQuery"
-          placeholder="Search"
-        />
       </div>
+    </form>
+
+    <div
+      *authenticated
+      class="btn btn-primary btn-lg fa-2x"
+      routerLink="create"
+    >
+      <fa-icon [icon]="['fas', 'plus']"></fa-icon>
     </div>
-  </form>
+  </div>
 
   <div
     class="d-flex flex-row flex-wrap align-items-center justify-content-start"

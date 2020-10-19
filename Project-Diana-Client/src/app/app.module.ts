@@ -11,7 +11,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AlbumFormComponent } from 'src/app/album/album-form/album-form.component';
 import { AlbumListComponent } from 'src/app/album/album-list/album-list.component';
+import { AlbumSubmissionComponent } from 'src/app/album/album-submission/album-submission.component';
 import { AlbumComponent } from 'src/app/album/album.component';
 import { AlbumDetailsComponent } from 'src/app/album/details/album-details.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
@@ -20,6 +22,7 @@ import { BookListComponent } from 'src/app/book/book-list/book-list.component';
 import { BookComponent } from 'src/app/book/book.component';
 import { BookDetailsComponent } from 'src/app/book/details/book-details.component';
 import { FooterComponent } from 'src/app/shared/footer/footer.component';
+import { AuthenticatedDirective } from 'src/app/shared/helpers/authenticated.directive';
 import { CanEditDirective } from 'src/app/shared/helpers/can-edit.directive';
 import { NgxSubscribeDirective } from 'src/app/shared/helpers/ngx-directive';
 import { HttpRequestInterceptor } from 'src/app/shared/http/http-request.interceptor';
@@ -59,6 +62,9 @@ import { environment } from 'src/environments/environment';
     BookDetailsComponent,
     YesNoPipe,
     CanEditDirective,
+    AlbumSubmissionComponent,
+    AlbumFormComponent,
+    AuthenticatedDirective,
   ],
 
   imports: [

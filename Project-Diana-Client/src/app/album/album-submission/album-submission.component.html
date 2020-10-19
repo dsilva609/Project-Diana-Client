@@ -1,0 +1,14 @@
+<form
+  [formGroup]="albumSubmissionForm"
+  (ngSubmit)="onSubmit(albumSubmissionForm.value)"
+>
+  <app-album-form #albumForm></app-album-form>
+
+  <div class="row">
+    <div class="col-sm-2">
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">Create</button>
+      </div>
+    </div>
+  </div>
+</form>

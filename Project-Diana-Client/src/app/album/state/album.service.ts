@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Album } from 'src/app/album/album.model';
-import { AlbumStore } from 'src/app/album/details/state/album.store';
+import { AlbumStore } from 'src/app/album/state/album.store';
 
 @Injectable({ providedIn: 'root' })
 export class AlbumService {
@@ -49,5 +49,13 @@ export class AlbumService {
         return true;
       })
     );
+  }
+
+  submitAlbum(albumFormData): Observable<boolean> {
+    return this.http
+      .post<boolean>('Album/CreateAlbum', albumFormData)
+      .pipe((successful) => {
+        return successful;
+      });
   }
 }

@@ -23,11 +23,6 @@ export const WISH_ROUTES: Routes = [
     canActivate: [AuthGuardService],
   },
   {
-    path: ':id',
-    component: WishComponent,
-    canActivate: [AuthGuardService],
-  },
-  {
     path: 'wish/:id',
     component: WishComponent,
     canActivate: [AuthGuardService],

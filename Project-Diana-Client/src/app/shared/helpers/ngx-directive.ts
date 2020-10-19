@@ -1,4 +1,12 @@
-import { ChangeDetectorRef, Directive, Input, OnDestroy, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Directive,
+  Input,
+  OnDestroy,
+  OnInit,
+  TemplateRef,
+  ViewContainerRef,
+} from '@angular/core';
 import { combineLatest, EMPTY, Observable, Subscription } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
@@ -8,7 +16,6 @@ export class NgxSubscribeContext {
 }
 
 @Directive({
-  // tslint:disable-next-line: directive-selector
   selector: '[ngxSubscribe]',
 })
 export class NgxSubscribeDirective implements OnInit, OnDestroy {
