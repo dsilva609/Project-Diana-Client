@@ -30,7 +30,11 @@ export class AlbumService {
   incrementPlayCount(id: string, playCount: number): Observable<boolean> {
     return this.http.put(`Album/IncrementPlayCount/${id}`, null).pipe(
       map((response) => {
+        const updatedTime = new Date().toUTCString();
+
         this.albumStore.update({
+          dateUpdated: updatedTime,
+          lastCompleted: updatedTime,
           timesCompleted: playCount,
         });
 
