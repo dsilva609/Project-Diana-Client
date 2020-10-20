@@ -19,12 +19,21 @@
           />
         </div>
         <div class="d-flex flex-column flex-sm-row">
-          <input
-            type="text"
-            class="form-control mb-2 mr-2"
+          <select
             formControlName="yearReleased"
-            placeholder="Year Released"
-          />
+            id="yearReleased"
+            class="form-control mr-2"
+            required
+          >
+            <option disabled>Select Release Year</option>
+            <option
+              *ngFor="let year of releaseYears"
+              [ngValue]="year.value"
+              [selected]="year.selected"
+            >
+              {{ year.value }}
+            </option>
+          </select>
 
           <input
             type="text"
@@ -71,26 +80,53 @@
           <label for="isPhysical" class="form-check-label">Physical</label>
         </div>
         <div class="d-flex flex-column flex-sm-row">
-          <input
-            type="text"
-            class="form-control mb-2 mr-2"
+          <select
             formControlName="mediaType"
-            placeholder="Media Type"
-          />
-          <input
-            type="text"
-            class="form-control mb-2"
+            id="mediaType"
+            class="form-control mb-2 mr-2"
+            required
+          >
+            <option disabled>Select Media Type</option>
+            <option
+              *ngFor="let mediaType of mediaTypes"
+              [ngValue]="mediaType.value"
+              [selected]="media === mediaType.value"
+            >
+              {{ mediaType.name }}
+            </option>
+          </select>
+          <select
             formControlName="speed"
-            placeholder="Speed"
-          />
+            id="speed"
+            class="form-control mb-2"
+            required
+          >
+            <option disabled>Select Vinyl Speed</option>
+            <option
+              *ngFor="let speed of vinylSpeeds"
+              [ngValue]="speed.value"
+              [selected]="vinylSpeed === speed.value"
+            >
+              {{ speed.name }}
+            </option>
+          </select>
         </div>
         <div class="d-flex flex-column flex-sm-row">
-          <input
-            type="text"
-            class="form-control mb-2 mr-2"
+          <select
             formControlName="size"
-            placeholder="Size"
-          />
+            id="size"
+            class="form-control mb-2 mr-2"
+            required
+          >
+            <option disabled>Select Vinyl Size</option>
+            <option
+              *ngFor="let size of vinylSizes"
+              [ngValue]="size.value"
+              [selected]="vinylSize === size.value"
+            >
+              {{ size.name }}
+            </option>
+          </select>
           <input
             type="text"
             class="form-control mb-2"
@@ -107,22 +143,34 @@
         <div class="d-flex flex-column flex-sm-row">
           <input
             type="text"
-            class="form-control mb-2 mr-2"
+            class="form-control mb-2"
             formControlName="category"
             placeholder="Category"
           />
+        </div>
+        <div class="d-flex flex-column flex-sm-row">
+          <label for="playCount" class="mr-2">Play Count</label>
           <input
             type="number"
-            class="form-control mb-2 w-50"
+            class="form-control mb-2 mr-2"
             formControlName="playCount"
             placeholder="Play Count"
           />
-          <input
-            type="text"
-            class="form-control"
+          <select
             formControlName="completionStatus"
-            placeholder="Completion Status"
-          />
+            id="completionStatus"
+            class="form-control mb-2"
+            required
+          >
+            <option disabled>Select Completion Status</option>
+            <option
+              *ngFor="let status of completionStatuses"
+              [ngValue]="status.value"
+              [selected]="completionStatus === status.value"
+            >
+              {{ status.name }}
+            </option>
+          </select>
         </div>
         <textarea
           type="text"
@@ -141,6 +189,7 @@
             class="form-control mb-2 mr-2"
             formControlName="datePurchased"
             placeholder="Date Purchased"
+            [ngModel]="currentDate | date: 'yyyy-MM-dd'"
           />
           <input
             type="text"

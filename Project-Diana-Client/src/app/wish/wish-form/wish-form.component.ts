@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ITEM_TYPES } from 'src/app/shared/item/item.model';
 
 @Component({
   selector: 'app-wish-form',
@@ -7,7 +8,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./wish-form.component.scss'],
 })
 export class WishFormComponent implements OnInit {
-  itemTypes: { name: string; value: number }[];
+  itemTypes = ITEM_TYPES;
   wishForm: FormGroup;
 
   @Input() wishItemType: number;
@@ -15,8 +16,6 @@ export class WishFormComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
-    this.itemTypes = this.getItemTypes();
-
     this.wishForm = this.formBuilder.group({
       apiID: '',
       category: '',
@@ -27,14 +26,5 @@ export class WishFormComponent implements OnInit {
       title: '',
       wishID: 0,
     });
-  }
-
-  getItemTypes(): { name: string; value: number }[] {
-    return [
-      { name: 'Album', value: 0 },
-      { name: 'Book', value: 1 },
-      { name: 'Game', value: 3 },
-      { name: 'Movie', value: 2 },
-    ];
   }
 }

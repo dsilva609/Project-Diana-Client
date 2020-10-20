@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MEDIA_TYPES, VINYL_SIZES, VINYL_SPEEDS } from 'src/app/album/album.model';
+import { getReleaseYears, ITEM_COMPLETION_STATUSES } from 'src/app/shared/item/item.model';
 
 @Component({
   selector: 'app-album-form',
@@ -8,6 +10,18 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class AlbumFormComponent implements OnInit {
   albumForm: FormGroup;
+  completionStatuses = ITEM_COMPLETION_STATUSES;
+  mediaTypes = MEDIA_TYPES;
+  releaseYears = getReleaseYears();
+  vinylSizes = VINYL_SIZES;
+  vinylSpeeds = VINYL_SPEEDS;
+  currentDate = new Date().toUTCString();
+
+  @Input() completionStatus: number;
+  @Input() media: number;
+  @Input() releaseYear: number;
+  @Input() vinylSize: number;
+  @Input() vinylSpeed: number;
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -18,7 +32,7 @@ export class AlbumFormComponent implements OnInit {
       completionStatus: 0,
       countryOfOrigin: '',
       countryPurchased: '',
-      datePurchased: '',
+      datePurchased: this.currentDate,
       discogsId: 0,
       genre: '',
       imageUrl: '',
@@ -27,13 +41,13 @@ export class AlbumFormComponent implements OnInit {
       locationPurchased: '',
       mediaType: 0,
       notes: '',
-      playCount: '',
+      playCount: 0,
       recordLabel: '',
       size: 0,
       speed: 0,
       style: '',
       title: '',
-      yearReleased: 0,
+      yearReleased: new Date(this.currentDate).getFullYear(),
     });
   }
 }

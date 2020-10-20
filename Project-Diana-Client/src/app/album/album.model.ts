@@ -55,3 +55,21 @@ export function createAlbum(): Album {
     yearReleased: 0,
   } as Album;
 }
+
+export const MEDIA_TYPES = [
+  { name: 'Vinyl', value: 0 },
+  { name: 'CD', value: 1 },
+];
+
+export const VINYL_SPEEDS = [
+  { name: '33 1/3 RPM', value: 0 },
+  { name: '45 RPM', value: 1 },
+  { name: '78 RPM', value: 2 },
+];
+
+export const VINYL_SIZES = [
+  { name: '12"', value: 0 },
+  { name: '7"', value: 1 },
+  { name: '10"', value: 2 },
+  { name: 'Other', value: 3 },
+];
