@@ -27,7 +27,7 @@ export class AlbumFormComponent implements OnInit {
       locationPurchased: '',
       mediaType: 0,
       notes: '',
-      playCount: 0,
+      playCount: '',
       recordLabel: '',
       size: 0,
       speed: 0,
