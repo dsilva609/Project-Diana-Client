@@ -62,4 +62,14 @@ export class AlbumService {
         return successful;
       });
   }
+
+  updateAlbum(albumFormData): Observable<boolean> {
+    return this.http.put<boolean>('Album/UpdateAlbum', albumFormData).pipe(
+      tap((updateResult) => {
+        if (updateResult) {
+          this.albumStore.update(albumFormData);
+        }
+      })
+    );
+  }
 }

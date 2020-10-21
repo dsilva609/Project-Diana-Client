@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
+import { ITEM_TYPES } from 'src/app/shared/item/item.model';
 import { Wish } from 'src/app/wish/state/wish.model';
 import { WishQuery } from 'src/app/wish/state/wish.query';
 import { WishService } from 'src/app/wish/state/wish.service';
@@ -15,7 +16,7 @@ import { WishFormComponent } from 'src/app/wish/wish-form/wish-form.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WishComponent implements OnInit, AfterViewInit {
-  itemTypes: { name: string; value: number }[];
+  itemTypes = ITEM_TYPES;
   wish: Observable<Wish>;
   wishID: number;
   wishUpdateForm: FormGroup;
@@ -74,14 +75,5 @@ export class WishComponent implements OnInit, AfterViewInit {
           this.router.navigateByUrl('/wish');
         }
       });
-  }
-
-  getItemTypes(): { name: string; value: number }[] {
-    return [
-      { name: 'Album', value: 0 },
-      { name: 'Book', value: 1 },
-      { name: 'Game', value: 3 },
-      { name: 'Movie', value: 2 },
-    ];
   }
 }

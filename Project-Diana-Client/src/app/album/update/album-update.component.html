@@ -1,0 +1,19 @@
+<div *ngxSubscribe="album as a">
+  <div class="d-flex justify-content-center mb-4">
+    <img [src]="a.imageUrl" class="img-fluid album-img" />
+  </div>
+  <form
+    [formGroup]="albumUpdateForm"
+    (ngSubmit)="onSubmit(albumUpdateForm.value)"
+  >
+    <app-album-form #albumForm></app-album-form>
+
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="form-group">
+          <button class="btn btn-primary" type="submit">Update Wish</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

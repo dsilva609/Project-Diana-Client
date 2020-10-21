@@ -8,6 +8,7 @@ export interface Album {
   dateAdded: string;
   datePurchased: string;
   dateUpdated: string;
+  discogsID: number;
   genre: string;
   imageUrl: string;
   isNew: boolean;
@@ -38,6 +39,7 @@ export function createAlbum(): Album {
     dateAdded: '',
     datePurchased: '',
     dateUpdated: '',
+    discogsID: 0,
     genre: '',
     imageUrl: '',
     isNew: false,

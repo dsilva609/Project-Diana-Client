@@ -37,7 +37,7 @@ export class AlbumFormComponent implements OnInit {
       countryOfOrigin: '',
       countryPurchased: '',
       datePurchased: this.datePipe.transform(this.currentDate, 'yyyy-MM-dd'),
-      discogsId: 0,
+      discogsID: 0,
       genre: '',
       imageUrl: '',
       isNewPurchase: false,
