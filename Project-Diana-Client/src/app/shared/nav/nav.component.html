@@ -49,7 +49,7 @@
     </ul>
 
     <a
-      class="btn btn-primary mr-2"
+      class="btn btn-primary mt-2 mt-sm-0 mr-2"
       color="primary"
       *ngIf="!(isLoggedIn() | async)"
       routerLink="/user/login"
@@ -57,7 +57,7 @@
     >
     <ng-container *ngIf="isLoggedIn() | async">
       <div class="display-name mr-2">{{ displayName }}</div>
-      <a class="btn btn-primary" (click)="logout()">Logout</a>
+      <a class="btn btn-primary mt-2 mt-sm-0" (click)="logout()">Logout</a>
     </ng-container>
   </div>
 </nav>
