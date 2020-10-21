@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MEDIA_TYPES, VINYL_SIZES, VINYL_SPEEDS } from 'src/app/album/album.model';
@@ -16,6 +17,7 @@ export class AlbumFormComponent implements OnInit {
   vinylSizes = VINYL_SIZES;
   vinylSpeeds = VINYL_SPEEDS;
   currentDate = new Date().toUTCString();
+  datePipe: DatePipe;
 
   @Input() completionStatus: number;
   @Input() media: number;
@@ -23,7 +25,9 @@ export class AlbumFormComponent implements OnInit {
   @Input() vinylSize: number;
   @Input() vinylSpeed: number;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder) {
+    this.datePipe = new DatePipe('en-US');
+  }
 
   ngOnInit(): void {
     this.albumForm = this.formBuilder.group({
@@ -32,7 +36,7 @@ export class AlbumFormComponent implements OnInit {
       completionStatus: 0,
       countryOfOrigin: '',
       countryPurchased: '',
-      datePurchased: this.currentDate,
+      datePurchased: this.datePipe.transform(this.currentDate, 'yyyy-MM-dd'),
       discogsId: 0,
       genre: '',
       imageUrl: '',

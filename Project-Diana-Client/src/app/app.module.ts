@@ -1,4 +1,4 @@
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { DatePipe, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -90,6 +90,7 @@ import { environment } from 'src/environments/environment';
       multi: true,
     },
     { provide: LocationStrategy, useClass: HashLocationStrategy },
+    DatePipe,
   ],
   bootstrap: [NavComponent, AppComponent, FooterComponent],
 })
