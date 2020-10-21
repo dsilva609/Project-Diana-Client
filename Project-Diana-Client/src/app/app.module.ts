@@ -28,6 +28,7 @@ import { NgxSubscribeDirective } from 'src/app/shared/helpers/ngx-directive';
 import { HttpRequestInterceptor } from 'src/app/shared/http/http-request.interceptor';
 import { IconsModule } from 'src/app/shared/icons/icons.module';
 import { NavComponent } from 'src/app/shared/nav/nav.component';
+import { NoDatePipe } from 'src/app/shared/pipes/no-date-pipe';
 import { YesNoPipe } from 'src/app/shared/pipes/yes-no.pipe';
 import { ShowcaseListComponent } from 'src/app/showcase/showcase-list/showcase-list.component';
 import { LoginComponent } from 'src/app/user/login/login.component';
@@ -65,6 +66,7 @@ import { environment } from 'src/environments/environment';
     AlbumSubmissionComponent,
     AlbumFormComponent,
     AuthenticatedDirective,
+    NoDatePipe,
   ],
 
   imports: [

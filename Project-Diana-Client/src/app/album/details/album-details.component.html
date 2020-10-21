@@ -53,10 +53,10 @@
       <div class="card mt-4">
         <h3 class="card-header">Media Information</h3>
         <div class="card-body">
-          <div>Media Type: {{ album.mediaType }}</div>
+          <div>Media Type: {{ getMediaTypeDisplayName(album.mediaType) }}</div>
           <div>Physical: {{ album.isPhysical | yesNo }}</div>
-          <div>Speed: {{ album.speed }}</div>
-          <div>Size: {{ album.size }}</div>
+          <div>Speed: {{ getSpeedDisplayName(album.speed) }}</div>
+          <div>Size: {{ getSizeDisplayName(album.size) }}</div>
           <div>Country of Origin: {{ album.countryOfOrigin || "N/A" }}</div>
         </div>
       </div>
@@ -67,15 +67,21 @@
     <h3 class="card-header">Miscellaneous Information</h3>
     <div class="card-body">
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-4">
           <div>Category: {{ album.category || "N/A" }}</div>
           <div>Notes: {{ album.notes || "N/A" }}</div>
         </div>
-        <div class="col-sm-6">
-          <div>Date Added: {{ album.dateAdded | date }}</div>
-          <div>Last Played: {{ album.lastCompleted | date }}</div>
-          <div>Last Updated: {{ album.dateUpdated | date }}</div>
+        <div class="col-sm-4">
+          <div>
+            Completion Status:
+            {{ getCompletionStatusDisplayName(album.completionStatus) }}
+          </div>
           <div>Play Count: {{ album.timesCompleted }}</div>
+        </div>
+        <div class="col-sm-4">
+          <div>Date Added: {{ album.dateAdded | date | noDate }}</div>
+          <div>Last Played: {{ album.lastCompleted | date | noDate }}</div>
+          <div>Last Updated: {{ album.dateUpdated | date | noDate }}</div>
         </div>
       </div>
     </div>
@@ -84,7 +90,7 @@
   <div class="card mt-4">
     <h3 class="card-header">Purchase Information</h3>
     <div class="card-body">
-      <div>Date Purchased: {{ album.datePurchased | date }}</div>
+      <div>Date Purchased: {{ album.datePurchased | date | noDate }}</div>
       <div>Location Purchased: {{ album.locationPurchased || "N/A" }}</div>
       <div>Country Purchaed: {{ album.countryPurchased || "N/A" }}</div>
       <div>New Purchase: {{ album.isNew | yesNo }}</div>

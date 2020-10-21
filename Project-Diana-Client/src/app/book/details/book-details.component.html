@@ -42,9 +42,9 @@
           <div>Notes: {{ b.notes || "N/A" }}</div>
         </div>
         <div class="col-sm-6">
-          <div>Date Added: {{ b.dateAdded | date }}</div>
-          <div>Last Read: {{ b.lastCompleted | date }}</div>
-          <div>Last Updated: {{ b.dateUpdated | date }}</div>
+          <div>Date Added: {{ b.dateAdded | date | noDate }}</div>
+          <div>Last Read: {{ b.lastCompleted | date | noDate }}</div>
+          <div>Last Updated: {{ b.dateUpdated | date | noDate }}</div>
           <div>Times Completed: {{ b.timesCompleted }}</div>
         </div>
       </div>
@@ -54,7 +54,7 @@
   <div class="card mt-4">
     <h3 class="card-header">Purchase Information</h3>
     <div class="card-body">
-      <div>Date Purchased: {{ b.datePurchased | date }}</div>
+      <div>Date Purchased: {{ b.datePurchased | date | noDate }}</div>
       <div>Location Purchased: {{ b.locationPurchased || "N/A" }}</div>
       <div>Country Purchaed: {{ b.countryPurchased || "N/A" }}</div>
       <div>New Purchase: {{ b.isNew | yesNo }}</div>

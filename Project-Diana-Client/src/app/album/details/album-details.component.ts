@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { tap } from 'rxjs/operators';
-import { Album } from 'src/app/album/album.model';
+import { Album, getMediaTypeDisplayName, getVinylSpeedDisplayName } from 'src/app/album/album.model';
 import { AlbumQuery } from 'src/app/album/state/album.query';
 import { AlbumService } from 'src/app/album/state/album.service';
+import { getCompletionStatusDisplayName } from 'src/app/shared/item/item.model';
 
 @Component({
   selector: 'app-details',
@@ -32,6 +33,22 @@ export class AlbumDetailsComponent implements OnInit {
 
   addToShowcase(): void {
     this.albumService.addToShowcase(this.album.id.toString()).subscribe();
+  }
+
+  getCompletionStatusDisplayName(value: number): string {
+    return getCompletionStatusDisplayName(value);
+  }
+
+  getMediaTypeDisplayName(value: number): string {
+    return getMediaTypeDisplayName(value);
+  }
+
+  getSpeedDisplayName(value: number): string {
+    return getVinylSpeedDisplayName(value);
+  }
+
+  getSizeDisplayName(value: number): string {
+    return getVinylSpeedDisplayName(value);
   }
 
   incrementPlayCount(): void {

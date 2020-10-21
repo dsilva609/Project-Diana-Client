@@ -4,6 +4,10 @@ export const ITEM_COMPLETION_STATUSES = [
   { name: 'Completed', value: 2 },
 ];
 
+export function getCompletionStatusDisplayName(value: number): string {
+  return ITEM_COMPLETION_STATUSES.find((x) => x.value === value)?.name;
+}
+
 export const ITEM_TYPES = [
   { name: 'Album', value: 0 },
   { name: 'Book', value: 1 },
