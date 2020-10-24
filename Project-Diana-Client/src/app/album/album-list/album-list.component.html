@@ -24,7 +24,11 @@
         </div>
       </form>
 
-      <button class="btn btn-outline-primary" routerLink="/album/search">
+      <button
+        *authenticated
+        class="btn btn-outline-primary"
+        routerLink="/album/search"
+      >
         Search Discogs<fa-icon
           [icon]="['fas', 'search']"
           class="ml-2"
