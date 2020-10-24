@@ -1,29 +1,29 @@
 export interface AlbumSearchResult {
   id: number;
   artist: string;
-  country: string;
-  cover_image: string;
+  countryOfOrigin: string;
+  coverImage: string;
   format: string;
   genre: string;
   label: string;
   style: string;
-  thumb: string;
+  thumbnail: string;
   title: string;
-  year: number;
+  yearReleased: number;
 }
 
 export function createAlbumSearchResult(): AlbumSearchResult {
   return {
     id: 0,
     artist: '',
-    country: '',
-    cover_image: '',
+    countryOfOrigin: '',
+    coverImage: '',
     format: '',
     genre: '',
     label: '',
     style: '',
-    thumb: '',
+    thumbnail: '',
     title: '',
-    year: 0,
+    yearReleased: 0,
   } as AlbumSearchResult;
 }

@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center mb-4">
-  <img [src]="searchedAlbum.cover_image" class="img-fluid album-img" />
+  <img [src]="searchedAlbum.coverImage" class="img-fluid album-img" />
 </div>
 <form
   [formGroup]="albumSubmissionForm"
@@ -7,7 +7,7 @@
 >
   <app-album-form
     #albumForm
-    [releaseYear]="searchedAlbum.year"
+    [releaseYear]="searchedAlbum.yearReleased"
   ></app-album-form>
 
   <div class="row">
