@@ -16,6 +16,7 @@ import { AlbumListComponent } from 'src/app/album/album-list/album-list.componen
 import { AlbumSubmissionComponent } from 'src/app/album/album-submission/album-submission.component';
 import { AlbumComponent } from 'src/app/album/album.component';
 import { AlbumDetailsComponent } from 'src/app/album/details/album-details.component';
+import { AlbumSearchComponent } from 'src/app/album/search/album-search.component';
 import { AlbumUpdateComponent } from 'src/app/album/update/album-update.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AppComponent } from 'src/app/app.component';
@@ -69,6 +70,7 @@ import { environment } from 'src/environments/environment';
     AuthenticatedDirective,
     NoDatePipe,
     AlbumUpdateComponent,
+    AlbumSearchComponent,
   ],
 
   imports: [

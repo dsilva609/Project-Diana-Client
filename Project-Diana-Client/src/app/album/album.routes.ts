@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { AlbumListComponent } from 'src/app/album/album-list/album-list.component';
 import { AlbumSubmissionComponent } from 'src/app/album/album-submission/album-submission.component';
 import { AlbumDetailsComponent } from 'src/app/album/details/album-details.component';
+import { AlbumSearchComponent } from 'src/app/album/search/album-search.component';
 import { AlbumUpdateComponent } from 'src/app/album/update/album-update.component';
 import { AuthGuardService } from 'src/app/auth/auth-guard.service';
 
@@ -18,6 +19,11 @@ export const ALBUM_ROUTES: Routes = [
   {
     path: 'album/create',
     component: AlbumSubmissionComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'album/search',
+    component: AlbumSearchComponent,
     canActivate: [AuthGuardService],
   },
   {

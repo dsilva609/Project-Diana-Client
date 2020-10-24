@@ -1,0 +1,51 @@
+<div>
+  <form
+    [formGroup]="searchForm"
+    (ngSubmit)="searchAlbums(searchForm.value)"
+    class="mb-4"
+  >
+    <div>
+      <div class="d-flex">
+        <input
+          type="text"
+          class="form-control mr-2"
+          formControlName="artist"
+          placeholder="Artist"
+        />
+        <input
+          type="text"
+          class="form-control mr-2"
+          formControlName="album"
+          placeholder="Album"
+        />
+        <input type="submit" class="btn btn-primary" value="Search" />
+      </div>
+    </div>
+  </form>
+
+  <div *ngxSubscribe="searchResults as results">
+    <div *ngFor="let result of results">
+      <div class="d-flex mb-3">
+        <img [src]="result.thumb" class="img-fluid mr-2" />
+        <div class="d-flex flex-row flex-grow-1">
+          <div
+            class="d-flex flex-column flex-sm-row align-items-left align-items-sm-center justify-content-between mr-2 flex-grow-1"
+          >
+            <div>{{ result.title }}</div>
+            <div>{{ result.format }}</div>
+            <div>{{ result.country }}</div>
+            <div>{{ result.year }}</div>
+          </div>
+          <div class="d-flex align-items-center">
+            <button
+              class="btn btn-outline-primary"
+              (click)="setAlbumToAdd(result.id)"
+            >
+              Add
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
