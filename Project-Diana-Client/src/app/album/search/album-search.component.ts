@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { of } from 'rxjs';
+import { AlbumSearchResult } from 'src/app/album/search/state/album-search.model';
 import { AlbumSearchQuery } from 'src/app/album/search/state/album-search.query';
 import { AlbumSearchService } from 'src/app/album/search/state/album-search.service';
-
-import { AlbumSearchResult } from './state/album-search.model';
-
 
 @Component({
   selector: 'app-search',
@@ -19,7 +18,8 @@ export class AlbumSearchComponent implements OnInit {
   constructor(
     private albumSearchQuery: AlbumSearchQuery,
     private albumSearchService: AlbumSearchService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {
     this.searchForm = this.formBuilder.group({
       album: '',
@@ -37,5 +37,7 @@ export class AlbumSearchComponent implements OnInit {
 
   setAlbumToAdd(id: number): void {
     this.albumSearchService.setAlbumToAdd(id);
+
+    this.router.navigateByUrl('album/addFromSearch');
   }
 }

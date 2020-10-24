@@ -13,6 +13,7 @@ import { ClickOutsideModule } from 'ng-click-outside';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AlbumFormComponent } from 'src/app/album/album-form/album-form.component';
 import { AlbumListComponent } from 'src/app/album/album-list/album-list.component';
+import { AlbumSearchedComponent } from 'src/app/album/album-submission/album-searched/album-searched.component';
 import { AlbumSubmissionComponent } from 'src/app/album/album-submission/album-submission.component';
 import { AlbumComponent } from 'src/app/album/album.component';
 import { AlbumDetailsComponent } from 'src/app/album/details/album-details.component';
@@ -71,6 +72,7 @@ import { environment } from 'src/environments/environment';
     NoDatePipe,
     AlbumUpdateComponent,
     AlbumSearchComponent,
+    AlbumSearchedComponent,
   ],
 
   imports: [

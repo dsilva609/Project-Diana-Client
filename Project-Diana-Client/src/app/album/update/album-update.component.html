@@ -6,7 +6,7 @@
     [formGroup]="albumUpdateForm"
     (ngSubmit)="onSubmit(albumUpdateForm.value)"
   >
-    <app-album-form #albumForm></app-album-form>
+    <app-album-form #albumForm [releaseYear]="a.yearReleased"></app-album-form>
 
     <div class="row">
       <div class="col-sm-2">

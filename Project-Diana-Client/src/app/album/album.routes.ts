@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { AlbumListComponent } from 'src/app/album/album-list/album-list.component';
+import { AlbumSearchedComponent } from 'src/app/album/album-submission/album-searched/album-searched.component';
 import { AlbumSubmissionComponent } from 'src/app/album/album-submission/album-submission.component';
 import { AlbumDetailsComponent } from 'src/app/album/details/album-details.component';
 import { AlbumSearchComponent } from 'src/app/album/search/album-search.component';
@@ -15,6 +16,11 @@ export const ALBUM_ROUTES: Routes = [
   {
     path: 'album',
     component: AlbumListComponent,
+  },
+  {
+    path: 'album/addFromSearch',
+    component: AlbumSearchedComponent,
+    canActivate: [AuthGuardService],
   },
   {
     path: 'album/create',

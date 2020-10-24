@@ -22,10 +22,10 @@ export class AlbumUpdateComponent implements OnInit, AfterViewInit {
   @ViewChild('albumForm') albumForm: AlbumFormComponent;
 
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
     private albumQuery: AlbumQuery,
-    private albumService: AlbumService
+    private albumService: AlbumService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.datePipe = new DatePipe('en-US');
   }
