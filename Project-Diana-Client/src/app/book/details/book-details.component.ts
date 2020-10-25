@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { tap } from 'rxjs/operators';
-import { Book } from 'src/app/book/book.model';
+import { Book, getBookMediaTypeDisplayName } from 'src/app/book/book.model';
 import { BookQuery } from 'src/app/book/details/state/book.query';
 import { BookService } from 'src/app/book/details/state/book.service';
+import { getCompletionStatusDisplayName } from 'src/app/shared/item/item.model';
 
 @Component({
   selector: 'app-details',
@@ -32,6 +33,14 @@ export class BookDetailsComponent implements OnInit {
 
   addToShowcase(): void {
     this.bookService.addToShowcase(this.book.id.toString()).subscribe();
+  }
+
+  getBookMediaTypeDisplayName(value: number): string {
+    return getBookMediaTypeDisplayName(value);
+  }
+
+  getCompletionStatusDisplayName(value: number): string {
+    return getCompletionStatusDisplayName(value);
   }
 
   incrementReadCount(): void {

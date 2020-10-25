@@ -54,7 +54,7 @@
       <div class="card mt-4">
         <h3 class="card-header">Media Information</h3>
         <div class="card-body">
-          <div>Type: {{ book.type }}</div>
+          <div>Type: {{ getBookMediaTypeDisplayName(book.type) }}</div>
           <div>Hardcover: {{ book.hardcover | yesNo }}</div>
           <div>Language: {{ book.language || "N/A" }}</div>
           <div>Country of Origin: {{ book.countryOfOrigin || "N/A" }}</div>
@@ -70,15 +70,21 @@
     <h3 class="card-header">Miscellaneous Information</h3>
     <div class="card-body">
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-4">
           <div>Category: {{ book.category || "N/A" }}</div>
           <div>Notes: {{ book.notes || "N/A" }}</div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-4">
+          <div>
+            Completion Status:
+            {{ getCompletionStatusDisplayName(book.completionStatus) }}
+          </div>
+          <div>Times Read: {{ book.timesCompleted }}</div>
+        </div>
+        <div class="col-sm-4">
           <div>Date Added: {{ book.dateAdded | date | noDate }}</div>
           <div>Last Read: {{ book.lastCompleted | date | noDate }}</div>
           <div>Last Updated: {{ book.dateUpdated | date | noDate }}</div>
-          <div>Times Completed: {{ book.timesCompleted }}</div>
         </div>
       </div>
     </div>

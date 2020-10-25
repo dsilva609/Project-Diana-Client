@@ -62,11 +62,11 @@ export class AlbumService {
   }
 
   submitAlbum(albumFormData): Observable<boolean> {
-    return this.http
-      .post<boolean>('Album/CreateAlbum', albumFormData)
-      .pipe((successful) => {
+    return this.http.post<boolean>('Album/CreateAlbum', albumFormData).pipe(
+      tap((successful) => {
         return successful;
-      });
+      })
+    );
   }
 
   updateAlbum(albumFormData): Observable<boolean> {

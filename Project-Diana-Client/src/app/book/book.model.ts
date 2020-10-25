@@ -2,6 +2,7 @@ export interface Book {
   id: number;
   author: string;
   category: string;
+  completionStatus: number;
   countryOfOrigin: string;
   countryPurchased: string;
   dateAdded: string;
@@ -34,6 +35,7 @@ export function createBook(): Book {
     id: 0,
     author: '',
     category: '',
+    completionStatus: 0,
     countryOfOrigin: '',
     countryPurchased: '',
     dateAdded: '',
@@ -60,4 +62,14 @@ export function createBook(): Book {
     userID: '',
     yearReleased: 0,
   } as Book;
+}
+
+export const BOOK_MEDIA_TYPES = [
+  { name: 'Novel', value: 0 },
+  { name: 'Comic', value: 1 },
+  { name: 'Manga', value: 2 },
+];
+
+export function getBookMediaTypeDisplayName(value: number): string {
+  return BOOK_MEDIA_TYPES.find((x) => x.value === value).name;
 }

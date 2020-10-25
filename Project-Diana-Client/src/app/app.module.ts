@@ -21,7 +21,9 @@ import { AlbumSearchComponent } from 'src/app/album/search/album-search.componen
 import { AlbumUpdateComponent } from 'src/app/album/update/album-update.component';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AppComponent } from 'src/app/app.component';
+import { BookFormComponent } from 'src/app/book/book-form/book-form.component';
 import { BookListComponent } from 'src/app/book/book-list/book-list.component';
+import { BookSubmissionComponent } from 'src/app/book/book-submission/book-submission.component';
 import { BookComponent } from 'src/app/book/book.component';
 import { BookDetailsComponent } from 'src/app/book/details/book-details.component';
 import { FooterComponent } from 'src/app/shared/footer/footer.component';
@@ -73,6 +75,8 @@ import { environment } from 'src/environments/environment';
     AlbumUpdateComponent,
     AlbumSearchComponent,
     AlbumSearchedComponent,
+    BookFormComponent,
+    BookSubmissionComponent,
   ],
 
   imports: [

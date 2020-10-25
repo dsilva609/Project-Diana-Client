@@ -60,4 +60,12 @@ export class BookService {
       })
     );
   }
+
+  submitBook(bookFormData): Observable<boolean> {
+    return this.http.post<boolean>('Book/CreateBook', bookFormData).pipe(
+      tap((successful) => {
+        return successful;
+      })
+    );
+  }
 }
