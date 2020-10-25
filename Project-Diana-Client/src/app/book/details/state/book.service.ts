@@ -30,6 +30,22 @@ export class BookService {
       .pipe(tap((book) => this.bookStore.update(book)));
   }
 
+  incrementReadCount(id: string, readCount: number): Observable<boolean> {
+    return this.http.put(`Book/IncrementReadCount/${id}`, null).pipe(
+      map((response) => {
+        const updatedTime = new Date().toUTCString();
+
+        this.bookStore.update({
+          dateUpdated: updatedTime,
+          lastCompleted: updatedTime,
+          timesCompleted: readCount,
+        });
+
+        return true;
+      })
+    );
+  }
+
   removeFromShowcase(id: string): Observable<boolean> {
     return this.http.put(`Book/RemoveFromShowcase/${id}`, null).pipe(
       map((response) => {

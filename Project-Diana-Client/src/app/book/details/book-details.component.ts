@@ -34,6 +34,13 @@ export class BookDetailsComponent implements OnInit {
     this.bookService.addToShowcase(this.book.id.toString()).subscribe();
   }
 
+  incrementReadCount(): void {
+    this.bookService
+      .incrementReadCount(this.book.id.toString(), this.book.timesCompleted)
+      .pipe(tap((_) => this.book.timesCompleted++))
+      .subscribe();
+  }
+
   removeFromShowcase(): void {
     this.bookService.removeFromShowcase(this.book.id.toString()).subscribe();
   }

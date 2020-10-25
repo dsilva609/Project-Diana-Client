@@ -22,6 +22,17 @@
           </button>
         </div>
       </ng-container>
+
+      <ng-container *canEdit="book.userID">
+        <div>
+          <button
+            (click)="incrementReadCount()"
+            class="btn btn-outline-primary"
+          >
+            <fa-icon [icon]="['fas', 'plus']"></fa-icon>
+          </button>
+        </div>
+      </ng-container>
     </div>
   </div>
 
