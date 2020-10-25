@@ -22,6 +22,7 @@ export interface Book {
   lastCompleted: string;
   locationPurchased: string;
   notes: string;
+  pageCount: number;
   publisher: string;
   timesCompleted: number;
   title: string;
@@ -55,6 +56,7 @@ export function createBook(): Book {
     lastCompleted: '',
     locationPurchased: '',
     notes: '',
+    pageCount: 0,
     publisher: '',
     timesCompleted: 0,
     title: '',

@@ -26,6 +26,7 @@ import { BookListComponent } from 'src/app/book/book-list/book-list.component';
 import { BookSubmissionComponent } from 'src/app/book/book-submission/book-submission.component';
 import { BookComponent } from 'src/app/book/book.component';
 import { BookDetailsComponent } from 'src/app/book/details/book-details.component';
+import { BookUpdateComponent } from 'src/app/book/update/book-update/book-update.component';
 import { FooterComponent } from 'src/app/shared/footer/footer.component';
 import { AuthenticatedDirective } from 'src/app/shared/helpers/authenticated.directive';
 import { CanEditDirective } from 'src/app/shared/helpers/can-edit.directive';
@@ -77,6 +78,7 @@ import { environment } from 'src/environments/environment';
     AlbumSearchedComponent,
     BookFormComponent,
     BookSubmissionComponent,
+    BookUpdateComponent,
   ],
 
   imports: [

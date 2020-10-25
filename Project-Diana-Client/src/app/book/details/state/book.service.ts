@@ -68,4 +68,14 @@ export class BookService {
       })
     );
   }
+
+  updateBook(bookFormData): Observable<boolean> {
+    return this.http.put<boolean>('Book/UpdateBook', bookFormData).pipe(
+      tap((updateResult) => {
+        if (updateResult) {
+          this.bookStore.update(bookFormData);
+        }
+      })
+    );
+  }
 }

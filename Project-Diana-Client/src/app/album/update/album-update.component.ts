@@ -19,6 +19,7 @@ export class AlbumUpdateComponent implements OnInit, AfterViewInit {
   albumId: string;
   albumUpdateForm: FormGroup;
   datePipe: DatePipe;
+
   @ViewChild('albumForm') albumForm: AlbumFormComponent;
 
   constructor(

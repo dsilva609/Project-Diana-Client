@@ -8,6 +8,17 @@
 
     <div class="d-flex justify-content-center justify-content-sm-end mb-4">
       <ng-container *canEdit="book.userID">
+        <div class="mr-2">
+          <div
+            class="btn btn-outline-primary"
+            [routerLink]="['/book/update', book.id]"
+          >
+            <fa-icon [icon]="['fas', 'pencil-alt']"></fa-icon>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *canEdit="book.userID">
         <div *ngIf="!book.isShowcased" class="mr-2">
           <button (click)="addToShowcase()" class="btn btn-outline-primary">
             <fa-icon [icon]="['fas', 'star']"></fa-icon>
