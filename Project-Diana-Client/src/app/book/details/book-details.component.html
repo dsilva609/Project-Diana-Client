@@ -14,6 +14,14 @@
           </button>
         </div>
       </ng-container>
+
+      <ng-container *canEdit="book.userID">
+        <div *ngIf="book.isShowcased" class="mr-2">
+          <button (click)="removeFromShowcase()" class="btn btn-outline-danger">
+            <fa-icon [icon]="['fas', 'star']"></fa-icon>
+          </button>
+        </div>
+      </ng-container>
     </div>
   </div>
 

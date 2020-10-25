@@ -33,4 +33,8 @@ export class BookDetailsComponent implements OnInit {
   addToShowcase(): void {
     this.bookService.addToShowcase(this.book.id.toString()).subscribe();
   }
+
+  removeFromShowcase(): void {
+    this.bookService.removeFromShowcase(this.book.id.toString()).subscribe();
+  }
 }

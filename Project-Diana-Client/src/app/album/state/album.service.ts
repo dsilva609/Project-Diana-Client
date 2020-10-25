@@ -12,7 +12,10 @@ export class AlbumService {
   addToShowcase(id: string): Observable<boolean> {
     return this.http.put(`Album/AddToShowcase/${id}`, null).pipe(
       map((response) => {
+        const updatedTime = new Date().toUTCString();
+
         this.albumStore.update({
+          dateUpdated: updatedTime,
           isShowcased: true,
         });
 
@@ -46,7 +49,10 @@ export class AlbumService {
   removeFromShowcase(id: string): Observable<boolean> {
     return this.http.put(`Album/RemoveFromShowcase/${id}`, null).pipe(
       map((response) => {
+        const updatedTime = new Date().toUTCString();
+
         this.albumStore.update({
+          dateUpdated: updatedTime,
           isShowcased: false,
         });
 

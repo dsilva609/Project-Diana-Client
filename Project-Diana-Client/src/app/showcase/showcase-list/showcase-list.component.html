@@ -32,6 +32,7 @@
       </div>
 
       <a
+        *ngIf="showcase.showcasedAlbums.length > 1"
         class="carousel-control-prev"
         href="#albumShowcase"
         role="button"
@@ -41,6 +42,7 @@
         <span class="sr-only">Previous</span>
       </a>
       <a
+        *ngIf="showcase.showcasedAlbums.length > 1"
         class="carousel-control-next"
         href="#albumShowcase"
         role="button"
@@ -85,6 +87,7 @@
       </div>
 
       <a
+        *ngIf="showcase.showcasedBooks.length > 1"
         class="carousel-control-prev"
         href="#bookShowcase"
         role="button"
@@ -94,6 +97,7 @@
         <span class="sr-only">Previous</span>
       </a>
       <a
+        *ngIf="showcase.showcasedBooks.length > 1"
         class="carousel-control-next"
         href="#bookShowcase"
         role="button"

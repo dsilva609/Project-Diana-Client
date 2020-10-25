@@ -12,7 +12,12 @@ export class BookService {
   addToShowcase(id: string): Observable<boolean> {
     return this.http.put(`Book/AddToShowcase/${id}`, null).pipe(
       map((response) => {
-        this.bookStore.update({ isShowcased: true });
+        const updatedTime = new Date().toUTCString();
+
+        this.bookStore.update({
+          dateUpdated: updatedTime,
+          isShowcased: true,
+        });
 
         return true;
       })
@@ -23,5 +28,20 @@ export class BookService {
     return this.http
       .get<Book>(`Book/${id}`)
       .pipe(tap((book) => this.bookStore.update(book)));
+  }
+
+  removeFromShowcase(id: string): Observable<boolean> {
+    return this.http.put(`Book/RemoveFromShowcase/${id}`, null).pipe(
+      map((response) => {
+        const updatedTime = new Date().toUTCString();
+
+        this.bookStore.update({
+          dateUpdated: updatedTime,
+          isShowcased: false,
+        });
+
+        return true;
+      })
+    );
   }
 }
