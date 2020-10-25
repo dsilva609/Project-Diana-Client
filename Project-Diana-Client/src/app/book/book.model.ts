@@ -16,9 +16,10 @@ export interface Book {
   isNew: boolean;
   isPhysical: boolean;
   isReissue: boolean;
+  isShowcased: boolean;
   language: string;
   lastCompleted: string;
-  locationPurchaed: string;
+  locationPurchased: string;
   notes: string;
   publisher: string;
   timesCompleted: number;
@@ -47,9 +48,10 @@ export function createBook(): Book {
     isNew: false,
     isPhysical: false,
     isReissue: false,
+    isShowcased: false,
     language: '',
     lastCompleted: '',
-    locationPurchaed: '',
+    locationPurchased: '',
     notes: '',
     publisher: '',
     timesCompleted: 0,

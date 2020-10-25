@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { of } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { Book } from 'src/app/book/book.model';
 import { BookQuery } from 'src/app/book/details/state/book.query';
 import { BookService } from 'src/app/book/details/state/book.service';
@@ -11,7 +11,7 @@ import { BookService } from 'src/app/book/details/state/book.service';
   styleUrls: ['./book-details.component.scss'],
 })
 export class BookDetailsComponent implements OnInit {
-  book = of<Book>();
+  book: Book;
 
   constructor(
     private bookQuery: BookQuery,
@@ -24,6 +24,13 @@ export class BookDetailsComponent implements OnInit {
 
     this.bookService.getBookById(id).subscribe();
 
-    this.book = this.bookQuery.select();
+    this.bookQuery
+      .select()
+      .pipe(tap((b) => (this.book = b)))
+      .subscribe();
+  }
+
+  addToShowcase(): void {
+    this.bookService.addToShowcase(this.book.id.toString()).subscribe();
   }
 }
