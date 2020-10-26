@@ -1,0 +1,20 @@
+<div class="d-flex justify-content-center mb-4">
+  <img [src]="searchedBook.imageUrl" class="img-fluid album-img" />
+</div>
+<form
+  [formGroup]="bookSubmissionForm"
+  (ngSubmit)="onSubmit(bookSubmissionForm.value)"
+>
+  <app-book-form
+    #albumForm
+    [releaseYear]="searchedBook.yearReleased"
+  ></app-book-form>
+
+  <div class="row">
+    <div class="col-sm-2">
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">Create</button>
+      </div>
+    </div>
+  </div>
+</form>

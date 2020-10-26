@@ -1,0 +1,54 @@
+<div>
+  <form
+    [formGroup]="searchForm"
+    (ngSubmit)="searchBooks(searchForm.value)"
+    class="mb-4"
+  >
+    <div>
+      <div class="d-flex">
+        <input
+          type="text"
+          class="form-control mr-2"
+          formControlName="author"
+          placeholder="Author"
+        />
+        <input
+          type="text"
+          class="form-control mr-2"
+          formControlName="title"
+          placeholder="Title"
+        />
+        <input type="submit" class="btn btn-primary" value="Search" />
+      </div>
+    </div>
+  </form>
+
+  <div *ngxSubscribe="searchResults as results">
+    <div *ngFor="let result of results">
+      <div class="d-flex mb-3">
+        <img
+          *ngIf="result.imageUrl !== undefined"
+          [src]="result.imageUrl"
+          class="img-fluid mr-2"
+        />
+        <div class="d-flex flex-row flex-grow-1">
+          <div
+            class="d-flex flex-column flex-sm-row align-items-left align-items-sm-center justify-content-between mr-2 flex-grow-1"
+          >
+            <div>{{ result.title }} By {{ result.author }}</div>
+            <div>{{ result.countryOfOrigin }}</div>
+            <div>{{ result.yearReleased }}</div>
+          </div>
+          <div class="d-flex align-items-center">
+            <button
+              class="btn btn-outline-primary"
+              (click)="setBookToAdd(result.googleBookId)"
+            >
+              Add
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { EntityState, EntityStore, StoreConfig } from '@datorama/akita';
-import { AlbumSearchResult } from 'src/app/album/search/state/album-search.model';
+import { AlbumSearchResult, createAlbumSearchResult } from 'src/app/album/search/state/album-search.model';
 
 export interface AlbumSearchState extends EntityState<AlbumSearchResult> {}
 
@@ -11,6 +11,6 @@ export class AlbumSearchStore extends EntityStore<
   AlbumSearchResult
 > {
   constructor() {
-    super();
+    super(createAlbumSearchResult);
   }
 }

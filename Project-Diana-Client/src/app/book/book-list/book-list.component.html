@@ -3,7 +3,7 @@
     <div class="d-flex flex-column flex-sm-row">
       <form
         [formGroup]="searchForm"
-        class="d-flex justify-content-start ml-4 mb-2"
+        class="d-flex justify-content-start ml-4 mb-2 mr-4"
         (ngSubmit)="onSearch(searchForm.value)"
       >
         <div class="row">
@@ -23,6 +23,17 @@
           </div>
         </div>
       </form>
+
+      <button
+        *authenticated
+        class="btn btn-outline-primary"
+        routerLink="/book/search"
+      >
+        Search Google Books<fa-icon
+          [icon]="['fas', 'search']"
+          class="ml-2"
+        ></fa-icon>
+      </button>
     </div>
 
     <div
