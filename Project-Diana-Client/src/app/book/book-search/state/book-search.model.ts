@@ -1,4 +1,5 @@
 export interface BookSearchResult {
+  id: string;
   author: string;
   countryOfOrigin: string;
   genre: string;
@@ -15,6 +16,7 @@ export interface BookSearchResult {
 
 export function createBookSearchResult(): BookSearchResult {
   return {
+    id: '',
     author: '',
     countryOfOrigin: '',
     genre: '',

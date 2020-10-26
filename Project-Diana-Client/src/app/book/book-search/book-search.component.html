@@ -26,11 +26,7 @@
   <div *ngxSubscribe="searchResults as results">
     <div *ngFor="let result of results">
       <div class="d-flex mb-3">
-        <img
-          *ngIf="result.imageUrl !== undefined"
-          [src]="result.imageUrl"
-          class="img-fluid mr-2"
-        />
+        <img [src]="result.imageUrl" class="img-fluid mr-2" />
         <div class="d-flex flex-row flex-grow-1">
           <div
             class="d-flex flex-column flex-sm-row align-items-left align-items-sm-center justify-content-between mr-2 flex-grow-1"
@@ -42,7 +38,7 @@
           <div class="d-flex align-items-center">
             <button
               class="btn btn-outline-primary"
-              (click)="setBookToAdd(result.googleBookId)"
+              (click)="setBookToAdd(result.id)"
             >
               Add
             </button>
