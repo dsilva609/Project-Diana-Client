@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { of } from 'rxjs';
 import { BookSearchResult } from 'src/app/book/book-search/state/book-search.model';
 import { BookSearchQuery } from 'src/app/book/book-search/state/book-search.query';
@@ -19,6 +19,7 @@ export class BookSearchComponent implements OnInit {
     private bookSearchQuery: BookSearchQuery,
     private bookSearchService: BookSearchService,
     private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
     private router: Router
   ) {
     this.searchForm = this.formBuilder.group({
@@ -28,6 +29,16 @@ export class BookSearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const queryTitle = this.route.snapshot.queryParams.title;
+
+    if (queryTitle) {
+      this.searchForm.patchValue({
+        title: queryTitle,
+      });
+
+      this.searchBooks(this.searchForm.value);
+    }
+
     this.searchResults = this.bookSearchQuery.selectAll();
   }
 

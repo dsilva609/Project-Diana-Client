@@ -41,9 +41,15 @@
 
         <td>
           <app-wish-owned
+            class="mr-2"
             [isOwned]="wish.owned"
             [wishId]="wish.id"
           ></app-wish-owned>
+          <fa-icon
+            [icon]="['fas', 'search']"
+            [routerLink]="['/album/search']"
+            [queryParams]="{ title: wish.title }"
+          ></fa-icon>
         </td>
         <td>{{ wish.dateAdded | date }}</td>
         <td>{{ wish.notes }}</td>
@@ -87,9 +93,15 @@
 
         <td>
           <app-wish-owned
+            class="mr-2"
             [isOwned]="wish.owned"
             [wishId]="wish.id"
           ></app-wish-owned>
+          <fa-icon
+            [icon]="['fas', 'search']"
+            [routerLink]="['/book/search']"
+            [queryParams]="{ title: wish.title }"
+          ></fa-icon>
         </td>
         <td>{{ wish.dateAdded | date }}</td>
         <td>{{ wish.notes }}</td>
