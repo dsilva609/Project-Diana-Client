@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { BookSearchResult } from 'src/app/book/book-search/state/book-search.model';
 import { BookSearchStore } from 'src/app/book/book-search/state/book-search.store';
 
@@ -11,6 +11,14 @@ export class BookSearchService {
     private bookSearchStore: BookSearchStore,
     private http: HttpClient
   ) {}
+
+  getBookByVolumeId(id: string): Observable<BookSearchResult> {
+    return this.http.get<BookSearchResult>(`Book/GetBookByVolumeId/${id}`).pipe(
+      tap((response) => {
+        return response;
+      })
+    );
+  }
 
   searchForBook(searchData): Observable<boolean> {
     const paramList = new HttpParams()

@@ -18,7 +18,7 @@ export const BOOK_ROUTES: Routes = [
     component: BookListComponent,
   },
   {
-    path: 'book/addFromSearch',
+    path: 'book/addFromSearch/:id',
     component: BookSearchedComponent,
     canActivate: [AuthGuardService],
   },

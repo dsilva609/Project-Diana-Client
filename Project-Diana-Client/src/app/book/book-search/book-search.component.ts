@@ -38,6 +38,6 @@ export class BookSearchComponent implements OnInit {
   setBookToAdd(id: string): void {
     this.bookSearchService.setBookToAdd(id);
 
-    this.router.navigateByUrl('book/addFromSearch');
+    this.router.navigate([`book/addFromSearch/${id}`]);
   }
 }
