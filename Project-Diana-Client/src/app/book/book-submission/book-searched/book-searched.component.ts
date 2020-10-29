@@ -5,10 +5,11 @@ import { of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { BookFormComponent } from 'src/app/book/book-form/book-form.component';
 import { BookSearchResult } from 'src/app/book/book-search/state/book-search.model';
-import { BookSearchQuery } from 'src/app/book/book-search/state/book-search.query';
 import { BookSearchService } from 'src/app/book/book-search/state/book-search.service';
 import { BookSearchStore } from 'src/app/book/book-search/state/book-search.store';
 import { BookService } from 'src/app/book/details/state/book.service';
+import { WishQuery } from 'src/app/wish/state/wish.query';
+import { WishService } from 'src/app/wish/state/wish.service';
 
 @Component({
   selector: 'app-book-searched',
@@ -22,12 +23,13 @@ export class BookSearchedComponent implements OnInit, AfterViewInit {
   @ViewChild('bookForm') bookForm: BookFormComponent;
 
   constructor(
-    private bookSearchQuery: BookSearchQuery,
     private bookSearchService: BookSearchService,
     private bookService: BookService,
     private bookSearchStore: BookSearchStore,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private wishQuery: WishQuery,
+    private wishService: WishService
   ) {
     this.bookSubmissionForm = new FormGroup({});
   }
@@ -64,12 +66,17 @@ export class BookSearchedComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit(bookFormData): void {
+    const linkedWishId = this.wishQuery.getActiveId();
+    bookFormData.bookData.linkedWishId = linkedWishId;
+
     this.bookService
       .submitBook(bookFormData.bookData)
       .pipe(
         tap((successful) => {
           if (successful) {
             this.bookSearchStore.reset();
+
+            this.wishService.resetActiveWish(linkedWishId);
 
             this.router.navigateByUrl('/book');
           }

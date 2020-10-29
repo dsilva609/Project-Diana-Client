@@ -47,8 +47,7 @@
           ></app-wish-owned>
           <fa-icon
             [icon]="['fas', 'search']"
-            [routerLink]="['/album/search']"
-            [queryParams]="{ title: wish.title }"
+            (click)="searchForWish(wish.id, '/album/search', wish.title)"
           ></fa-icon>
         </td>
         <td>{{ wish.dateAdded | date }}</td>
@@ -99,8 +98,7 @@
           ></app-wish-owned>
           <fa-icon
             [icon]="['fas', 'search']"
-            [routerLink]="['/book/search']"
-            [queryParams]="{ title: wish.title }"
+            (click)="searchForWish(wish.id, '/book/search', wish.title)"
           ></fa-icon>
         </td>
         <td>{{ wish.dateAdded | date }}</td>

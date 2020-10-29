@@ -19,6 +19,14 @@ export class WishService {
     );
   }
 
+  resetActiveWish(id: number): void {
+    this.wishStore.setActive(null);
+  }
+
+  setActiveWish(id: number): void {
+    this.wishStore.setActive(id);
+  }
+
   submitWish(wishFormData): Observable<boolean> {
     return this.http
       .post<boolean>('Wish/CreateWish', wishFormData)

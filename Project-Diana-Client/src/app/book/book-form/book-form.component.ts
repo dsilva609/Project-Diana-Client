@@ -2,7 +2,10 @@ import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { BOOK_MEDIA_TYPES } from 'src/app/book/book.model';
-import { getReleaseYears, ITEM_COMPLETION_STATUSES } from 'src/app/shared/item/item.model';
+import {
+  getReleaseYears,
+  ITEM_COMPLETION_STATUSES,
+} from 'src/app/shared/item/item.model';
 
 @Component({
   selector: 'app-book-form',
@@ -43,6 +46,7 @@ export class BookFormComponent implements OnInit {
       isPhysical: false,
       isReissue: false,
       language: '',
+      linkedWishId: 0,
       locationPurchased: '',
       notes: '',
       pageCount: 0,
