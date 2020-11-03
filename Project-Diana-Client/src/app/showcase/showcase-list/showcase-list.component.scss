@@ -1,9 +1,20 @@
+@import "src/app/shared/styles/_mixins.scss";
+
 .carousel-background {
   background-repeat: no-repeat !important;
   background-size: cover !important;
 }
+
 .showcase-image {
   margin: 0 auto;
   max-height: 25rem;
   max-width: 25rem;
+}
+
+.showcase-item-background {
+  @include var(background-color, "showcase-item-description-background-color");
+}
+
+.showcase-item-description {
+  @include var(color, "showcase-item-text-color");
 }

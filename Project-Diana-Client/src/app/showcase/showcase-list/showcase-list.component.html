@@ -18,14 +18,14 @@
         [ngStyle]="{ background: getImage(album) }"
         *ngFor="let album of showcase.showcasedAlbums; index as i"
       >
-        <div>
+        <div class="showcase-item-background">
           <img
             class="d-block img-fluid text-center showcase-image"
             [src]="album.imageUrl"
             [alt]="album.title"
             [routerLink]="['/album', album.id]"
           />
-          <div class="text-center">
+          <div class="text-center showcase-item-description">
             {{ album.artist }} - {{ album.title }} ({{ album.yearReleased }})
           </div>
         </div>
@@ -73,14 +73,14 @@
         [ngStyle]="{ background: getImage(book) }"
         *ngFor="let book of showcase.showcasedBooks; index as i"
       >
-        <div>
+        <div class="showcase-item-background">
           <img
             class="d-block img-fluid text-center showcase-image"
             [src]="book.imageUrl"
             [alt]="book.title"
             [routerLink]="['/book', book.id]"
           />
-          <div class="text-center">
+          <div class="text-center showcase-item-description">
             {{ book.author }} - {{ book.title }} ({{ book.yearReleased }})
           </div>
         </div>
