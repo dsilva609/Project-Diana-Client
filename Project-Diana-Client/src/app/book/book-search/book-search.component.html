@@ -26,23 +26,21 @@
   <div *ngxSubscribe="searchResults as results">
     <div *ngFor="let result of results">
       <div class="d-flex mb-3">
-        <img [src]="result.imageUrl" class="img-fluid mr-2" />
+        <img [src]="result.imageUrl" class="img-fluid mr-4" />
         <div class="d-flex flex-row flex-grow-1">
-          <div
-            class="d-flex flex-column flex-sm-row align-items-left align-items-sm-center justify-content-between mr-2 flex-grow-1"
-          >
+          <div class="d-flex flex-column">
             <div>{{ result.title }} By {{ result.author }}</div>
             <div>{{ result.countryOfOrigin }}</div>
             <div>{{ result.yearReleased }}</div>
           </div>
-          <div class="d-flex align-items-center">
-            <button
-              class="btn btn-outline-primary"
-              (click)="setBookToAdd(result.id)"
-            >
-              Add
-            </button>
-          </div>
+        </div>
+        <div class="d-flex align-items-center">
+          <button
+            class="btn btn-outline-primary"
+            (click)="setBookToAdd(result.id)"
+          >
+            Add
+          </button>
         </div>
       </div>
     </div>
