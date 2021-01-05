@@ -10,12 +10,12 @@ import { WISH_ROUTES } from 'src/app/wish/wish.routes';
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(APP_ROUTES),
-    RouterModule.forRoot(ALBUM_ROUTES),
-    RouterModule.forRoot(BOOK_ROUTES),
-    RouterModule.forRoot(SHOWCASE_ROUTES),
-    RouterModule.forRoot(USER_ROUTES),
-    RouterModule.forRoot(WISH_ROUTES),
+    RouterModule.forRoot(APP_ROUTES, { relativeLinkResolution: 'legacy' }),
+    RouterModule.forRoot(ALBUM_ROUTES, { relativeLinkResolution: 'legacy' }),
+    RouterModule.forRoot(BOOK_ROUTES, { relativeLinkResolution: 'legacy' }),
+    RouterModule.forRoot(SHOWCASE_ROUTES, { relativeLinkResolution: 'legacy' }),
+    RouterModule.forRoot(USER_ROUTES, { relativeLinkResolution: 'legacy' }),
+    RouterModule.forRoot(WISH_ROUTES, { relativeLinkResolution: 'legacy' }),
   ],
   exports: [RouterModule],
 })

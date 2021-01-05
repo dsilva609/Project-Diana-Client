@@ -1,11 +1,11 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { WishOwnedComponent } from 'src/app/wish/wish-list/wish-owned/wish-owned.component';
 
 describe('WishOwnedComponent', () => {
   let component: WishOwnedComponent;
   let fixture: ComponentFixture<WishOwnedComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [WishOwnedComponent],
     }).compileComponents();
