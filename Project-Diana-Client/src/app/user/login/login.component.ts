@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { take } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
+import { tap } from 'rxjs/operators';
 import { UserService } from 'src/app/user/state/user.service';
 
 @UntilDestroy()
@@ -17,6 +18,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private toastrService: ToastrService,
     private userService: UserService
   ) {}
 
@@ -30,11 +32,18 @@ export class LoginComponent implements OnInit {
   onSubmit(loginData): void {
     this.userService
       .login(loginData)
-      .pipe(take(1), untilDestroyed(this))
-      .subscribe((successful) => {
-        if (successful) {
-          this.router.navigate(['']);
-        }
-      });
+      .pipe(
+        tap((successful) => {
+          if (successful) {
+            this.router.navigate(['']);
+
+            this.toastrService.info('Welcome!');
+          } else {
+            this.toastrService.error('Error logging in');
+          }
+        }),
+        untilDestroyed(this)
+      )
+      .subscribe();
   }
 }

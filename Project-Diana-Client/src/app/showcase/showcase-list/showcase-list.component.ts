@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { ToastrService } from 'ngx-toastr';
 import { of } from 'rxjs';
 import { Album } from 'src/app/album/album.model';
 import { ShowcaseListResponse } from 'src/app/showcase/showcase-list/state/showcase-list.model';
@@ -22,6 +23,7 @@ export class ShowcaseListComponent implements OnInit {
     private showcaseListQuery: ShowcaseListQuery,
     private showcaseListService: ShowcaseListService,
     private route: ActivatedRoute,
+    private toastrService: ToastrService,
     private userQuery: UserQuery
   ) {}
 
@@ -37,7 +39,12 @@ export class ShowcaseListComponent implements OnInit {
   }
 
   clearAlbumShowcase(): void {
-    this.showcaseListService.clearAlbumShowcase().subscribe();
+    this.showcaseListService
+      .clearAlbumShowcase()
+      .pipe(untilDestroyed(this))
+      .subscribe();
+
+    this.toastrService.success('Album showcase has been cleared');
   }
 
   getImage(album: Album): string {

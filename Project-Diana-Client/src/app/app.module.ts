@@ -1,4 +1,9 @@
-import { CommonModule, DatePipe, HashLocationStrategy, LocationStrategy } from '@angular/common';
+import {
+  CommonModule,
+  DatePipe,
+  HashLocationStrategy,
+  LocationStrategy,
+} from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -11,6 +16,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ToastrModule } from 'ngx-toastr';
 import { AlbumFormComponent } from 'src/app/album/album-form/album-form.component';
 import { AlbumListComponent } from 'src/app/album/album-list/album-list.component';
 import { AlbumSearchedComponent } from 'src/app/album/album-submission/album-searched/album-searched.component';
@@ -101,6 +107,7 @@ import { environment } from 'src/environments/environment';
     NgbModule,
     NgxPaginationModule,
     ReactiveFormsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [
     {

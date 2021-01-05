@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { take } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
+import { tap } from 'rxjs/operators';
 import { WishListService } from 'src/app/wish/wish-list/state/wish-list.service';
 
 @UntilDestroy()
@@ -15,7 +16,10 @@ export class WishOwnedComponent implements OnInit {
 
   isVisible = false;
 
-  constructor(private wishListService: WishListService) {}
+  constructor(
+    private toastrService: ToastrService,
+    private wishListService: WishListService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -25,7 +29,10 @@ export class WishOwnedComponent implements OnInit {
 
     this.wishListService
       .completeWish(id)
-      .pipe(take(1), untilDestroyed(this))
+      .pipe(
+        tap(() => this.toastrService.success('Wish granted')),
+        untilDestroyed(this)
+      )
       .subscribe();
   }
 }

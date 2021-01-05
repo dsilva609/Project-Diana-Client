@@ -9,8 +9,9 @@ import {
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
-import { map, take } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { ITEM_TYPES } from 'src/app/shared/item/item.model';
 import { Wish } from 'src/app/wish/state/wish.model';
 import { WishQuery } from 'src/app/wish/state/wish.query';
@@ -36,6 +37,7 @@ export class WishComponent implements OnInit, AfterViewInit {
     private route: ActivatedRoute,
     private changeDetector: ChangeDetectorRef,
     private router: Router,
+    private toastrService: ToastrService,
     private wishQuery: WishQuery,
     private wishService: WishService
   ) {}
@@ -84,11 +86,16 @@ export class WishComponent implements OnInit, AfterViewInit {
 
     this.wishService
       .updateWish(wishFormData.wishData)
-      .pipe(take(1), untilDestroyed(this))
-      .subscribe((successful) => {
-        if (successful) {
-          this.router.navigateByUrl('/wish');
-        }
-      });
+      .pipe(
+        tap((successful) => {
+          if (successful) {
+            this.router.navigateByUrl('/wish');
+
+            this.toastrService.success('Wish updated');
+          }
+        }),
+        untilDestroyed(this)
+      )
+      .subscribe();
   }
 }

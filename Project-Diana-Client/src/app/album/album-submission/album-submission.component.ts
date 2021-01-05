@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { ToastrService } from 'ngx-toastr';
 import { tap } from 'rxjs/operators';
 import { AlbumFormComponent } from 'src/app/album/album-form/album-form.component';
 import { AlbumService } from 'src/app/album/state/album.service';
@@ -17,7 +18,11 @@ export class AlbumSubmissionComponent implements OnInit, AfterViewInit {
 
   @ViewChild('albumForm') albumForm: AlbumFormComponent;
 
-  constructor(private router: Router, private albumService: AlbumService) {}
+  constructor(
+    private router: Router,
+    private albumService: AlbumService,
+    private toastrService: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.albumSubmissionForm = new FormGroup({});
@@ -34,6 +39,10 @@ export class AlbumSubmissionComponent implements OnInit, AfterViewInit {
         tap((successful) => {
           if (successful) {
             this.router.navigateByUrl('/album');
+
+            this.toastrService.success('New album added');
+          } else {
+            this.toastrService.error('Error adding album');
           }
         }),
         untilDestroyed(this)

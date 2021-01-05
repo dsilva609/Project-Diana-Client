@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/auth.service';
@@ -21,6 +22,7 @@ export class NavComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
+    private toastrService: ToastrService,
     private userQuery: UserQuery,
     private userService: UserService
   ) {
@@ -48,6 +50,8 @@ export class NavComponent implements OnInit {
     this.userService.logout();
 
     this.router.navigate(['']);
+
+    this.toastrService.success('You have successfully logged out');
   }
 
   onClickedOutside(event: Event): void {

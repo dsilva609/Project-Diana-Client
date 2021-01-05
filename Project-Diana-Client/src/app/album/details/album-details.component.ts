@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { ToastrService } from 'ngx-toastr';
 import { tap } from 'rxjs/operators';
 import {
   Album,
@@ -23,7 +24,8 @@ export class AlbumDetailsComponent implements OnInit {
   constructor(
     private albumQuery: AlbumQuery,
     private albumService: AlbumService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private toastrService: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -46,7 +48,16 @@ export class AlbumDetailsComponent implements OnInit {
   addToShowcase(): void {
     this.albumService
       .addToShowcase(this.album.id.toString())
-      .pipe(untilDestroyed(this))
+      .pipe(
+        tap((successful) => {
+          if (successful) {
+            this.toastrService.success('Album added to showcase');
+          } else {
+            this.toastrService.error('Unable to add album to showcase');
+          }
+        }),
+        untilDestroyed(this)
+      )
       .subscribe();
   }
 
@@ -70,7 +81,13 @@ export class AlbumDetailsComponent implements OnInit {
     this.albumService
       .incrementPlayCount(this.album.id.toString(), this.album.timesCompleted)
       .pipe(
-        tap((_) => this.album.timesCompleted++),
+        tap((successful) => {
+          if (successful) {
+            this.album.timesCompleted++;
+
+            this.toastrService.success('Album play count updated');
+          }
+        }),
         untilDestroyed(this)
       )
       .subscribe();
@@ -79,7 +96,14 @@ export class AlbumDetailsComponent implements OnInit {
   removeFromShowcase(): void {
     this.albumService
       .removeFromShowcase(this.album.id.toString())
-      .pipe(untilDestroyed(this))
+      .pipe(
+        tap((successful) => {
+          if (successful) {
+            this.toastrService.success('Album removed from showcase');
+          }
+        }),
+        untilDestroyed(this)
+      )
       .subscribe();
   }
 }

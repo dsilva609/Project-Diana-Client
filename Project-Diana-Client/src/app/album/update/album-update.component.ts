@@ -3,6 +3,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { ToastrService } from 'ngx-toastr';
 import { of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { AlbumFormComponent } from 'src/app/album/album-form/album-form.component';
@@ -28,7 +29,8 @@ export class AlbumUpdateComponent implements OnInit, AfterViewInit {
     private albumQuery: AlbumQuery,
     private albumService: AlbumService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastrService: ToastrService
   ) {
     this.datePipe = new DatePipe('en-US');
   }
@@ -95,6 +97,10 @@ export class AlbumUpdateComponent implements OnInit, AfterViewInit {
         tap((successful) => {
           if (successful) {
             this.router.navigateByUrl('/album');
+
+            this.toastrService.success('Album successfully updated');
+          } else {
+            this.toastrService.error('Error updating album');
           }
         }),
         untilDestroyed(this)

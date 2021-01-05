@@ -3,6 +3,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { ToastrService } from 'ngx-toastr';
 import { of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { BookFormComponent } from 'src/app/book/book-form/book-form.component';
@@ -28,7 +29,8 @@ export class BookUpdateComponent implements OnInit, AfterViewInit {
     private bookQuery: BookQuery,
     private bookService: BookService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastrService: ToastrService
   ) {
     this.datePipe = new DatePipe('en-US');
   }
@@ -101,6 +103,10 @@ export class BookUpdateComponent implements OnInit, AfterViewInit {
         tap((successful) => {
           if (successful) {
             this.router.navigateByUrl('/book');
+
+            this.toastrService.success('Book successfully updated');
+          } else {
+            this.toastrService.error('Error updating book');
           }
         }),
         untilDestroyed(this)

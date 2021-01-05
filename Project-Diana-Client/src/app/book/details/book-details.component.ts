@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { ToastrService } from 'ngx-toastr';
 import { tap } from 'rxjs/operators';
 import { Book, getBookMediaTypeDisplayName } from 'src/app/book/book.model';
 import { BookQuery } from 'src/app/book/details/state/book.query';
@@ -19,7 +20,8 @@ export class BookDetailsComponent implements OnInit {
   constructor(
     private bookQuery: BookQuery,
     private bookService: BookService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private toastrService: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -39,7 +41,14 @@ export class BookDetailsComponent implements OnInit {
   addToShowcase(): void {
     this.bookService
       .addToShowcase(this.book.id.toString())
-      .pipe(untilDestroyed(this))
+      .pipe(
+        tap((successful) => {
+          if (successful) {
+            this.toastrService.success('Book added to showcase');
+          }
+        }),
+        untilDestroyed(this)
+      )
       .subscribe();
   }
 
@@ -55,7 +64,13 @@ export class BookDetailsComponent implements OnInit {
     this.bookService
       .incrementReadCount(this.book.id.toString(), this.book.timesCompleted)
       .pipe(
-        tap((_) => this.book.timesCompleted++),
+        tap((successful) => {
+          if (successful) {
+            this.book.timesCompleted++;
+
+            this.toastrService.success('Book read count updated');
+          }
+        }),
         untilDestroyed(this)
       )
       .subscribe();
@@ -64,7 +79,14 @@ export class BookDetailsComponent implements OnInit {
   removeFromShowcase(): void {
     this.bookService
       .removeFromShowcase(this.book.id.toString())
-      .pipe(untilDestroyed(this))
+      .pipe(
+        tap((successful) => {
+          if (successful) {
+            this.toastrService.success('Book removed from showcase');
+          }
+        }),
+        untilDestroyed(this)
+      )
       .subscribe();
   }
 }

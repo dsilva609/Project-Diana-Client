@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { tap } from 'rxjs/operators';
 import { WishService } from 'src/app/wish/state/wish.service';
 import { WishList } from 'src/app/wish/wish-list/state/wish-list.model';
 import { WishListQuery } from 'src/app/wish/wish-list/state/wish-list.query';
@@ -31,13 +32,16 @@ export class WishListComponent implements OnInit {
 
     this.wishListQuery
       .select()
-      .pipe(untilDestroyed(this))
-      .subscribe((result) => {
-        this.albumWishes = result.albumWishes;
-        this.bookWishes = result.bookWishes;
-        this.gameWishes = result.gameWishes;
-        this.movieWishes = result.movieWishes;
-      });
+      .pipe(
+        tap((result) => {
+          this.albumWishes = result.albumWishes;
+          this.bookWishes = result.bookWishes;
+          this.gameWishes = result.gameWishes;
+          this.movieWishes = result.movieWishes;
+        }),
+        untilDestroyed(this)
+      )
+      .subscribe();
   }
 
   searchForWish(id: number, url: string, wishTitle: string): void {

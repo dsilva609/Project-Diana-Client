@@ -7,7 +7,8 @@ import {
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { take } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
+import { tap } from 'rxjs/operators';
 import { WishService } from 'src/app/wish/state/wish.service';
 import { WishFormComponent } from 'src/app/wish/wish-form/wish-form.component';
 
@@ -22,7 +23,11 @@ export class WishSubmissionComponent implements OnInit, AfterViewInit {
 
   @ViewChild('wishForm') wishForm: WishFormComponent;
 
-  constructor(private router: Router, private wishService: WishService) {}
+  constructor(
+    private router: Router,
+    private wishService: WishService,
+    private toastrService: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.wishSubmissionForm = new FormGroup({});
@@ -35,11 +40,17 @@ export class WishSubmissionComponent implements OnInit, AfterViewInit {
   onSubmit(wishFormData): void {
     this.wishService
       .submitWish(wishFormData.wishData)
-      .pipe(take(1))
-      .subscribe((successful) => {
-        if (successful) {
-          this.router.navigateByUrl('/wish');
-        }
-      });
+      .pipe(
+        tap((successful) => {
+          if (successful) {
+            this.router.navigateByUrl('/wish');
+
+            this.toastrService.success('New wish added');
+          } else {
+            this.toastrService.error('Error adding wish');
+          }
+        })
+      )
+      .subscribe();
   }
 }
