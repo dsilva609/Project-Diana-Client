@@ -1,14 +1,16 @@
+import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
   Router,
   RouterStateSnapshot,
 } from '@angular/router';
-import { AuthService } from 'src/app/auth/auth.service';
-import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { AuthService } from 'src/app/auth/auth.service';
 
+@UntilDestroy()
 @Injectable({
   providedIn: 'root',
 })
@@ -28,7 +30,8 @@ export class AuthGuardService implements CanActivate {
         }
 
         return true;
-      })
+      }),
+      untilDestroyed(this)
     );
   }
 }

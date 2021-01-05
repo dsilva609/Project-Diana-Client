@@ -1,10 +1,12 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { tap } from 'rxjs/operators';
 import { AlbumFormComponent } from 'src/app/album/album-form/album-form.component';
 import { AlbumService } from 'src/app/album/state/album.service';
 
+@UntilDestroy()
 @Component({
   selector: 'app-album-submission',
   templateUrl: './album-submission.component.html',
@@ -33,7 +35,8 @@ export class AlbumSubmissionComponent implements OnInit, AfterViewInit {
           if (successful) {
             this.router.navigateByUrl('/album');
           }
-        })
+        }),
+        untilDestroyed(this)
       )
       .subscribe();
   }

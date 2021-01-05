@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { AlbumListQuery } from 'src/app/album/album-list/state/album-list.query';
 import { AlbumListService } from 'src/app/album/album-list/state/album-list.service';
 import { Album } from 'src/app/album/album.model';
 
+@UntilDestroy()
 @Component({
   selector: 'app-album-list',
   templateUrl: './album-list.component.html',
@@ -72,9 +74,12 @@ export class AlbumListComponent implements OnInit {
   private getAlbums(page: number): void {
     this.albumListService
       .getAlbumList(this.albumCount, page, this.searchQuery)
-      .pipe(tap((count) => (this.totalAlbums = count)))
+      .pipe(
+        tap((count) => (this.totalAlbums = count)),
+        untilDestroyed(this)
+      )
       .subscribe();
 
-    this.albums = this.albumListQuery.selectAll();
+    this.albums = this.albumListQuery.selectAll().pipe(untilDestroyed(this));
   }
 }

@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { BookListQuery } from 'src/app/book/book-list/state/book-list.query';
 import { BookListService } from 'src/app/book/book-list/state/book-list.service';
 import { Book } from 'src/app/book/book.model';
 
+@UntilDestroy()
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
@@ -73,9 +75,12 @@ export class BookListComponent implements OnInit {
   private getBooks(page: number): void {
     this.bookListService
       .getBookList(this.bookCount, page, this.searchQuery)
-      .pipe(tap((count) => (this.totalBooks = count)))
+      .pipe(
+        tap((count) => (this.totalBooks = count)),
+        untilDestroyed(this)
+      )
       .subscribe();
 
-    this.books = this.bookListQuery.selectAll();
+    this.books = this.bookListQuery.selectAll().pipe(untilDestroyed(this));
   }
 }

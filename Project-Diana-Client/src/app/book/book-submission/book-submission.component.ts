@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { tap } from 'rxjs/operators';
 import { BookFormComponent } from 'src/app/book/book-form/book-form.component';
 import { BookSearchStore } from 'src/app/book/book-search/state/book-search.store';
@@ -8,6 +9,7 @@ import { BookService } from 'src/app/book/details/state/book.service';
 import { WishQuery } from 'src/app/wish/state/wish.query';
 import { WishService } from 'src/app/wish/state/wish.service';
 
+@UntilDestroy()
 @Component({
   selector: 'app-book-submission',
   templateUrl: './book-submission.component.html',
@@ -49,7 +51,8 @@ export class BookSubmissionComponent implements OnInit, AfterViewInit {
 
             this.router.navigateByUrl('/book');
           }
-        })
+        }),
+        untilDestroyed(this)
       )
       .subscribe();
   }

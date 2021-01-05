@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { BookFormComponent } from 'src/app/book/book-form/book-form.component';
@@ -11,6 +12,7 @@ import { BookService } from 'src/app/book/details/state/book.service';
 import { WishQuery } from 'src/app/wish/state/wish.query';
 import { WishService } from 'src/app/wish/state/wish.service';
 
+@UntilDestroy()
 @Component({
   selector: 'app-book-searched',
   templateUrl: './book-searched.component.html',
@@ -37,7 +39,9 @@ export class BookSearchedComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
 
-    this.searchedBook = this.bookSearchService.getBookByVolumeId(id);
+    this.searchedBook = this.bookSearchService
+      .getBookByVolumeId(id)
+      .pipe(untilDestroyed(this));
   }
 
   ngAfterViewInit(): void {
@@ -60,7 +64,8 @@ export class BookSearchedComponent implements OnInit, AfterViewInit {
             title: book.title,
             yearReleased: book.yearReleased,
           });
-        })
+        }),
+        untilDestroyed(this)
       )
       .subscribe();
   }
@@ -80,7 +85,8 @@ export class BookSearchedComponent implements OnInit, AfterViewInit {
 
             this.router.navigateByUrl('/book');
           }
-        })
+        }),
+        untilDestroyed(this)
       )
       .subscribe();
   }

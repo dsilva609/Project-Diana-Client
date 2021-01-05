@@ -1,11 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { tap } from 'rxjs/operators';
-import { Album, getMediaTypeDisplayName, getVinylSpeedDisplayName } from 'src/app/album/album.model';
+import {
+  Album,
+  getMediaTypeDisplayName,
+  getVinylSpeedDisplayName,
+} from 'src/app/album/album.model';
 import { AlbumQuery } from 'src/app/album/state/album.query';
 import { AlbumService } from 'src/app/album/state/album.service';
 import { getCompletionStatusDisplayName } from 'src/app/shared/item/item.model';
 
+@UntilDestroy()
 @Component({
   selector: 'app-details',
   templateUrl: './album-details.component.html',
@@ -23,16 +29,25 @@ export class AlbumDetailsComponent implements OnInit {
   ngOnInit(): void {
     const albumId = this.route.snapshot.paramMap.get('id');
 
-    this.albumService.getAlbumById(albumId).subscribe();
+    this.albumService
+      .getAlbumById(albumId)
+      .pipe(untilDestroyed(this))
+      .subscribe();
 
     this.albumQuery
       .select()
-      .pipe(tap((a) => (this.album = a)))
+      .pipe(
+        tap((a) => (this.album = a)),
+        untilDestroyed(this)
+      )
       .subscribe();
   }
 
   addToShowcase(): void {
-    this.albumService.addToShowcase(this.album.id.toString()).subscribe();
+    this.albumService
+      .addToShowcase(this.album.id.toString())
+      .pipe(untilDestroyed(this))
+      .subscribe();
   }
 
   getCompletionStatusDisplayName(value: number): string {
@@ -54,11 +69,17 @@ export class AlbumDetailsComponent implements OnInit {
   incrementPlayCount(): void {
     this.albumService
       .incrementPlayCount(this.album.id.toString(), this.album.timesCompleted)
-      .pipe(tap((_) => this.album.timesCompleted++))
+      .pipe(
+        tap((_) => this.album.timesCompleted++),
+        untilDestroyed(this)
+      )
       .subscribe();
   }
 
   removeFromShowcase(): void {
-    this.albumService.removeFromShowcase(this.album.id.toString()).subscribe();
+    this.albumService
+      .removeFromShowcase(this.album.id.toString())
+      .pipe(untilDestroyed(this))
+      .subscribe();
   }
 }

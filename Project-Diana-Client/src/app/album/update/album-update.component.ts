@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { AlbumFormComponent } from 'src/app/album/album-form/album-form.component';
@@ -9,6 +10,7 @@ import { Album } from 'src/app/album/album.model';
 import { AlbumQuery } from 'src/app/album/state/album.query';
 import { AlbumService } from 'src/app/album/state/album.service';
 
+@UntilDestroy()
 @Component({
   selector: 'app-update',
   templateUrl: './album-update.component.html',
@@ -34,9 +36,12 @@ export class AlbumUpdateComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.albumId = this.route.snapshot.paramMap.get('id');
 
-    this.albumService.getAlbumById(this.albumId).subscribe();
+    this.albumService
+      .getAlbumById(this.albumId)
+      .pipe(untilDestroyed(this))
+      .subscribe();
 
-    this.album = this.albumQuery.select();
+    this.album = this.albumQuery.select().pipe(untilDestroyed(this));
 
     this.albumUpdateForm = new FormGroup({});
   }
@@ -75,7 +80,8 @@ export class AlbumUpdateComponent implements OnInit, AfterViewInit {
             title: album.title,
             yearReleased: album.yearReleased,
           });
-        })
+        }),
+        untilDestroyed(this)
       )
       .subscribe();
   }
@@ -90,7 +96,8 @@ export class AlbumUpdateComponent implements OnInit, AfterViewInit {
           if (successful) {
             this.router.navigateByUrl('/album');
           }
-        })
+        }),
+        untilDestroyed(this)
       )
       .subscribe();
   }

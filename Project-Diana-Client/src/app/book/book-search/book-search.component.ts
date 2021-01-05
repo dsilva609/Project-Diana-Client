@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { of } from 'rxjs';
 import { BookSearchResult } from 'src/app/book/book-search/state/book-search.model';
 import { BookSearchQuery } from 'src/app/book/book-search/state/book-search.query';
 import { BookSearchService } from 'src/app/book/book-search/state/book-search.service';
 
+@UntilDestroy()
 @Component({
   selector: 'app-book-search',
   templateUrl: './book-search.component.html',
@@ -39,11 +41,16 @@ export class BookSearchComponent implements OnInit {
       this.searchBooks(this.searchForm.value);
     }
 
-    this.searchResults = this.bookSearchQuery.selectAll();
+    this.searchResults = this.bookSearchQuery
+      .selectAll()
+      .pipe(untilDestroyed(this));
   }
 
   searchBooks(searchData): void {
-    this.bookSearchService.searchForBook(searchData).subscribe();
+    this.bookSearchService
+      .searchForBook(searchData)
+      .pipe(untilDestroyed(this))
+      .subscribe();
   }
 
   setBookToAdd(id: string): void {

@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/auth.service';
 import { UserQuery } from 'src/app/user/state/user.query';
 import { UserService } from 'src/app/user/state/user.service';
 
+@UntilDestroy()
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -32,13 +34,14 @@ export class NavComponent implements OnInit {
         tap((user) => {
           this.displayName = user.displayName;
           this.userNum = user?.userNum?.toString() ?? '';
-        })
+        }),
+        untilDestroyed(this)
       )
       .subscribe();
   }
 
   isLoggedIn(): Observable<boolean> {
-    return this.authService.isAuthenticated();
+    return this.authService.isAuthenticated().pipe(untilDestroyed(this));
   }
 
   logout(): void {

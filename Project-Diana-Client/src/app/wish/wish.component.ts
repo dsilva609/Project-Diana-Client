@@ -48,7 +48,9 @@ export class WishComponent implements OnInit, AfterViewInit {
       .pipe(untilDestroyed(this))
       .subscribe();
 
-    this.wish = this.wishQuery.select((wish) => wish);
+    this.wish = this.wishQuery
+      .select((wish) => wish)
+      .pipe(untilDestroyed(this));
 
     this.wishUpdateForm = new FormGroup({});
   }

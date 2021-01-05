@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { BookFormComponent } from 'src/app/book/book-form/book-form.component';
@@ -9,6 +10,7 @@ import { Book } from 'src/app/book/book.model';
 import { BookQuery } from 'src/app/book/details/state/book.query';
 import { BookService } from 'src/app/book/details/state/book.service';
 
+@UntilDestroy()
 @Component({
   selector: 'app-book-update',
   templateUrl: './book-update.component.html',
@@ -34,9 +36,12 @@ export class BookUpdateComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.bookId = this.route.snapshot.paramMap.get('id');
 
-    this.bookService.getBookById(this.bookId).subscribe();
+    this.bookService
+      .getBookById(this.bookId)
+      .pipe(untilDestroyed(this))
+      .subscribe();
 
-    this.book = this.bookQuery.select();
+    this.book = this.bookQuery.select().pipe(untilDestroyed(this));
 
     this.bookUpdateForm = new FormGroup({});
   }
@@ -81,7 +86,8 @@ export class BookUpdateComponent implements OnInit, AfterViewInit {
             type: book.type,
             yearReleased: book.yearReleased,
           });
-        })
+        }),
+        untilDestroyed(this)
       )
       .subscribe();
   }
@@ -96,7 +102,8 @@ export class BookUpdateComponent implements OnInit, AfterViewInit {
           if (successful) {
             this.router.navigateByUrl('/book');
           }
-        })
+        }),
+        untilDestroyed(this)
       )
       .subscribe();
   }

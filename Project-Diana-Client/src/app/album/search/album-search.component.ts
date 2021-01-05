@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { of } from 'rxjs';
 import { AlbumSearchResult } from 'src/app/album/search/state/album-search.model';
 import { AlbumSearchQuery } from 'src/app/album/search/state/album-search.query';
 import { AlbumSearchService } from 'src/app/album/search/state/album-search.service';
 
+@UntilDestroy()
 @Component({
   selector: 'app-search',
   templateUrl: './album-search.component.html',
@@ -39,11 +41,16 @@ export class AlbumSearchComponent implements OnInit {
       this.searchAlbums(this.searchForm.value);
     }
 
-    this.searchResults = this.albumSearchQuery.selectAll();
+    this.searchResults = this.albumSearchQuery
+      .selectAll()
+      .pipe(untilDestroyed(this));
   }
 
   searchAlbums(searchData): void {
-    this.albumSearchService.searchForAlbum(searchData).subscribe();
+    this.albumSearchService
+      .searchForAlbum(searchData)
+      .pipe(untilDestroyed(this))
+      .subscribe();
   }
 
   setAlbumToAdd(id: number): void {
