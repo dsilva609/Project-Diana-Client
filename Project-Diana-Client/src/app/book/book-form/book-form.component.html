@@ -6,19 +6,26 @@
         <div class="d-flex flex-column flex-sm-row">
           <input
             type="text"
-            class="form-control mb-2 mr-2"
-            formControlName="author"
-            placeholder="Author"
-          />
-
-          <input
-            type="text"
             class="form-control mb-2"
             formControlName="title"
             placeholder="Title"
           />
+
+          <input
+            type="text"
+            class="form-control mb-2 mr-2"
+            formControlName="author"
+            placeholder="Author"
+          />
         </div>
         <div class="d-flex flex-column flex-sm-row">
+          <input
+            type="text"
+            class="form-control mb-2 mr-2"
+            formControlName="publisher"
+            placeholder="Publisher"
+          />
+
           <select
             formControlName="yearReleased"
             id="yearReleased"
@@ -34,20 +41,13 @@
               {{ year.value }}
             </option>
           </select>
-
+        </div>
+        <div class="d-flex flex-column flex-sm-row">
           <input
             type="text"
             class="form-control mb-2"
             formControlName="genre"
             placeholder="Genre"
-          />
-        </div>
-        <div class="d-flex flex-column flex-sm-row">
-          <input
-            type="text"
-            class="form-control mb-2 mr-2"
-            formControlName="publisher"
-            placeholder="Publisher"
           />
 
           <input
