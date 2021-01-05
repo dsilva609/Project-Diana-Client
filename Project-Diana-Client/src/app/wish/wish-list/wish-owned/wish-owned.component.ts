@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { take } from 'rxjs/operators';
 import { WishListService } from 'src/app/wish/wish-list/state/wish-list.service';
 
+@UntilDestroy()
 @Component({
   selector: 'app-wish-owned',
   templateUrl: './wish-owned.component.html',
@@ -21,6 +23,9 @@ export class WishOwnedComponent implements OnInit {
     this.isVisible = false;
     this.isOwned = true;
 
-    this.wishListService.completeWish(id).pipe(take(1)).subscribe();
+    this.wishListService
+      .completeWish(id)
+      .pipe(take(1), untilDestroyed(this))
+      .subscribe();
   }
 }

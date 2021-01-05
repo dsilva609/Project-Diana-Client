@@ -1,6 +1,14 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { ITEM_TYPES } from 'src/app/shared/item/item.model';
@@ -9,6 +17,7 @@ import { WishQuery } from 'src/app/wish/state/wish.query';
 import { WishService } from 'src/app/wish/state/wish.service';
 import { WishFormComponent } from 'src/app/wish/wish-form/wish-form.component';
 
+@UntilDestroy()
 @Component({
   selector: 'app-wish',
   templateUrl: './wish.component.html',
@@ -34,7 +43,10 @@ export class WishComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.wishID = Number(this.route.snapshot.paramMap.get('id'));
 
-    this.wishService.getWishByID(this.wishID).subscribe();
+    this.wishService
+      .getWishByID(this.wishID)
+      .pipe(untilDestroyed(this))
+      .subscribe();
 
     this.wish = this.wishQuery.select((wish) => wish);
 
@@ -57,7 +69,8 @@ export class WishComponent implements OnInit, AfterViewInit {
             title: wish.title,
             wishID: 0,
           })
-        )
+        ),
+        untilDestroyed(this)
       )
       .subscribe();
 
@@ -69,7 +82,7 @@ export class WishComponent implements OnInit, AfterViewInit {
 
     this.wishService
       .updateWish(wishFormData.wishData)
-      .pipe(take(1))
+      .pipe(take(1), untilDestroyed(this))
       .subscribe((successful) => {
         if (successful) {
           this.router.navigateByUrl('/wish');
