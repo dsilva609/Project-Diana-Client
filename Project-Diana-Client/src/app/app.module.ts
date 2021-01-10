@@ -35,6 +35,7 @@ import { BookSubmissionComponent } from 'src/app/book/book-submission/book-submi
 import { BookComponent } from 'src/app/book/book.component';
 import { BookDetailsComponent } from 'src/app/book/details/book-details.component';
 import { BookUpdateComponent } from 'src/app/book/update/book-update.component';
+import { HomeComponent } from 'src/app/home/home.component';
 import { FooterComponent } from 'src/app/shared/footer/footer.component';
 import { AuthenticatedDirective } from 'src/app/shared/helpers/authenticated.directive';
 import { CanEditDirective } from 'src/app/shared/helpers/can-edit.directive';
@@ -89,6 +90,7 @@ import { environment } from 'src/environments/environment';
     BookUpdateComponent,
     BookSearchComponent,
     BookSearchedComponent,
+    HomeComponent,
   ],
 
   imports: [

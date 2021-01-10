@@ -1,0 +1,11 @@
+<h2>Latest Additions</h2>
+
+<h4>Albums</h4>
+
+<div class="d-flex flex-row flex-wrap align-items-center justify-content-start">
+  <app-album
+    *ngFor="let album of latestAlbums"
+    [album]="album"
+    [routerLink]="['/album', album.id]"
+  ></app-album>
+</div>
