@@ -10,5 +10,6 @@ export const SHOWCASE_ROUTES: Routes = [
   {
     path: 'showcase/:id',
     component: ShowcaseListComponent,
+    data: { title: 'Showcase' },
   },
 ];

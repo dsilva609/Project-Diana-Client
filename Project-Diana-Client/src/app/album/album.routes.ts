@@ -16,29 +16,35 @@ export const ALBUM_ROUTES: Routes = [
   {
     path: 'album',
     component: AlbumListComponent,
+    data: { title: 'Albums' },
   },
   {
     path: 'album/addFromSearch',
     component: AlbumSearchedComponent,
     canActivate: [AuthGuardService],
+    data: { title: 'Albums' },
   },
   {
     path: 'album/create',
     component: AlbumSubmissionComponent,
     canActivate: [AuthGuardService],
+    data: { title: 'Albums' },
   },
   {
     path: 'album/search',
     component: AlbumSearchComponent,
     canActivate: [AuthGuardService],
+    data: { title: 'Albums' },
   },
   {
     path: 'album/update/:id',
     component: AlbumUpdateComponent,
     canActivate: [AuthGuardService],
+    data: { title: 'Albums' },
   },
   {
     path: 'album/:id',
     component: AlbumDetailsComponent,
+    data: { title: 'Albums' },
   },
 ];

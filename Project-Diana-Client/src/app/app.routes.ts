@@ -16,26 +16,32 @@ export const APP_ROUTES: Routes = [
   {
     path: 'album',
     component: AlbumListComponent,
+    data: { title: 'Albums' },
   },
   {
     path: 'book',
     component: BookListComponent,
+    data: { title: 'Books' },
   },
   {
     path: 'home',
     component: HomeComponent,
+    data: { title: 'Home' },
   },
   {
     path: 'showcase',
     component: ShowcaseListComponent,
+    data: { title: 'Showcase' },
   },
   {
     path: 'user',
     component: UserComponent,
+    data: { title: 'User' },
   },
   {
     path: 'wish',
     component: WishListComponent,
     canActivate: [AuthGuardService],
+    data: { title: 'Wish List' },
   },
 ];

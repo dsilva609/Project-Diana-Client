@@ -15,16 +15,19 @@ export const WISH_ROUTES: Routes = [
     path: 'wish',
     component: WishListComponent,
     canActivate: [AuthGuardService],
+    data: { title: 'Wish List' },
     children: [],
   },
   {
     path: 'wish/create',
     component: WishSubmissionComponent,
     canActivate: [AuthGuardService],
+    data: { title: 'Wish List' },
   },
   {
     path: 'wish/:id',
     component: WishComponent,
     canActivate: [AuthGuardService],
+    data: { title: 'Wish List' },
   },
 ];

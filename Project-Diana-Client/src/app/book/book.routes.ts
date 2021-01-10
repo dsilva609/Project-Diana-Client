@@ -16,29 +16,35 @@ export const BOOK_ROUTES: Routes = [
   {
     path: 'book',
     component: BookListComponent,
+    data: { title: 'Books' },
   },
   {
     path: 'book/addFromSearch/:id',
     component: BookSearchedComponent,
     canActivate: [AuthGuardService],
+    data: { title: 'Books' },
   },
   {
     path: 'book/create',
     component: BookSubmissionComponent,
     canActivate: [AuthGuardService],
+    data: { title: 'Books' },
   },
   {
     path: 'book/search',
     component: BookSearchComponent,
     canActivate: [AuthGuardService],
+    data: { title: 'Books' },
   },
   {
     path: 'book/update/:id',
     component: BookUpdateComponent,
     canActivate: [AuthGuardService],
+    data: { title: 'Books' },
   },
   {
     path: 'book/:id',
     component: BookDetailsComponent,
+    data: { title: 'Books' },
   },
 ];
