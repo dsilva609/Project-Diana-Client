@@ -9,3 +9,13 @@
     [routerLink]="['/album', album.id]"
   ></app-album>
 </div>
+
+<h4>Books</h4>
+
+<div class="d-flex flex-row flex-wrap align-items-center justify-content-start">
+  <app-book
+    *ngFor="let book of latestBooks"
+    [book]="book"
+    [routerLink]="['/book', book.id]"
+  ></app-book>
+</div>
