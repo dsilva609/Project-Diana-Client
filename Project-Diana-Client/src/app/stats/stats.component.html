@@ -1,0 +1,63 @@
+<div class="d-flex flex-column flex-sm-row">
+  <div *ngxSubscribe="globalStats as global">
+    <h2>Global</h2>
+    <div>Total: {{ global.totalCount }}</div>
+    <div>Completed: {{ global.completedCount }}</div>
+    <div>Not Completed: {{ global.notCompletedCount }}</div>
+    <div>In Progress: {{ global.inProgressCount }}</div>
+
+    <h3>Albums</h3>
+    <div>Album Count : {{ global.albumStats.albumCount }}</div>
+    <div>Completed: {{ global.albumStats.completedAlbums }}</div>
+    <div>Not Completed: {{ global.albumStats.notCompletedAlbums }}</div>
+    <div>In Progress: {{ global.albumStats.notCompletedAlbums }}</div>
+    <div>Vinyl Count: {{ global.albumStats.vinylCount }}</div>
+    <div>CD Count: {{ global.albumStats.cdCount }}</div>
+    <div>33 RPM Records: {{ global.albumStats.rpm33RecordCount }}</div>
+    <div>45 RPM Records: {{ global.albumStats.rpm45RecordCount }}</div>
+    <div>78 RPM Records: {{ global.albumStats.rpm78RecordCount }}</div>
+    <div>12" Records: {{ global.albumStats.twelveInchRecordCount }}</div>
+    <div>7" Records: {{ global.albumStats.sevenInchRecordCount }}</div>
+    <div>10" Records: {{ global.albumStats.tenInchRecordCount }}</div>
+
+    <h3>Books</h3>
+    <div>Book Count: {{ global.bookStats.bookCount }}</div>
+    <div>Completed: {{ global.bookStats.completedBookCount }}</div>
+    <div>Not Started: {{ global.bookStats.notStartedBookCount }}</div>
+    <div>In Progress: {{ global.bookStats.inProgressBookCount }}</div>
+    <div>Novels: {{ global.bookStats.novelCount }}</div>
+    <div>Comics: {{ global.bookStats.comicCount }}</div>
+    <div>Manga: {{ global.bookStats.mangaCount }}</div>
+  </div>
+
+  <div *ngxSubscribe="userStats as user">
+    <h2>User</h2>
+    <div>Total: {{ user.totalCount }}</div>
+    <div>Completed: {{ user.completedCount }}</div>
+    <div>Not Completed: {{ user.notCompletedCount }}</div>
+    <div>In Progress: {{ user.inProgressCount }}</div>
+
+    <h3>Albums</h3>
+    <div>Album Count : {{ user.albumStats.albumCount }}</div>
+    <div>Completed: {{ user.albumStats.completedAlbums }}</div>
+    <div>Not Completed: {{ user.albumStats.notCompletedAlbums }}</div>
+    <div>In Progress: {{ user.albumStats.notCompletedAlbums }}</div>
+    <div>Vinyl Count: {{ user.albumStats.vinylCount }}</div>
+    <div>CD Count: {{ user.albumStats.cdCount }}</div>
+    <div>33 RPM Records: {{ user.albumStats.rpm33RecordCount }}</div>
+    <div>45 RPM Records: {{ user.albumStats.rpm45RecordCount }}</div>
+    <div>78 RPM Records: {{ user.albumStats.rpm78RecordCount }}</div>
+    <div>12" Records: {{ user.albumStats.twelveInchRecordCount }}</div>
+    <div>7" Records: {{ user.albumStats.sevenInchRecordCount }}</div>
+    <div>10" Records: {{ user.albumStats.tenInchRecordCount }}</div>
+
+    <h3>Books</h3>
+    <div>Book Count: {{ user.bookStats.bookCount }}</div>
+    <div>Completed: {{ user.bookStats.completedBookCount }}</div>
+    <div>Not Started: {{ user.bookStats.notStartedBookCount }}</div>
+    <div>In Progress: {{ user.bookStats.inProgressBookCount }}</div>
+    <div>Novels: {{ user.bookStats.novelCount }}</div>
+    <div>Comics: {{ user.bookStats.comicCount }}</div>
+    <div>Manga: {{ user.bookStats.mangaCount }}</div>
+  </div>
+</div>

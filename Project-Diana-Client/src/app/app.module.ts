@@ -1,9 +1,4 @@
-import {
-  CommonModule,
-  DatePipe,
-  HashLocationStrategy,
-  LocationStrategy,
-} from '@angular/common';
+import { CommonModule, DatePipe, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -46,6 +41,7 @@ import { NavComponent } from 'src/app/shared/nav/nav.component';
 import { NoDatePipe } from 'src/app/shared/pipes/no-date-pipe';
 import { YesNoPipe } from 'src/app/shared/pipes/yes-no.pipe';
 import { ShowcaseListComponent } from 'src/app/showcase/showcase-list/showcase-list.component';
+import { StatsComponent } from 'src/app/stats/stats.component';
 import { LoginComponent } from 'src/app/user/login/login.component';
 import { UserComponent } from 'src/app/user/user.component';
 import { WishFormComponent } from 'src/app/wish/wish-form/wish-form.component';
@@ -91,6 +87,7 @@ import { environment } from 'src/environments/environment';
     BookSearchComponent,
     BookSearchedComponent,
     HomeComponent,
+    StatsComponent,
   ],
 
   imports: [

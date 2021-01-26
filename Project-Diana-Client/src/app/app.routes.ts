@@ -4,6 +4,7 @@ import { AuthGuardService } from 'src/app/auth/auth-guard.service';
 import { BookListComponent } from 'src/app/book/book-list/book-list.component';
 import { HomeComponent } from 'src/app/home/home.component';
 import { ShowcaseListComponent } from 'src/app/showcase/showcase-list/showcase-list.component';
+import { StatsComponent } from 'src/app/stats/stats.component';
 import { UserComponent } from 'src/app/user/user.component';
 import { WishListComponent } from 'src/app/wish/wish-list/wish-List.component';
 
@@ -32,6 +33,11 @@ export const APP_ROUTES: Routes = [
     path: 'showcase',
     component: ShowcaseListComponent,
     data: { title: 'Showcase' },
+  },
+  {
+    path: 'stats',
+    component: StatsComponent,
+    data: { title: 'Stats' },
   },
   {
     path: 'user',
