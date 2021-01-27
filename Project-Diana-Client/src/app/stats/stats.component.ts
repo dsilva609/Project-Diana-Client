@@ -7,8 +7,6 @@ import { Stat } from 'src/app/stats/stats.model';
 import { UserStatsQuery } from 'src/app/stats/user/state/user-stats.query';
 import { UserStatsService } from 'src/app/stats/user/state/user-stats.service';
 
-
-
 @UntilDestroy()
 @Component({
   selector: 'app-stats',
@@ -31,6 +29,7 @@ export class StatsComponent implements OnInit {
       .getGlobalStats()
       .pipe(untilDestroyed(this))
       .subscribe();
+
     this.userStatsService.getUserStats().pipe(untilDestroyed(this)).subscribe();
 
     this.globalStats = this.globalStatsQuery

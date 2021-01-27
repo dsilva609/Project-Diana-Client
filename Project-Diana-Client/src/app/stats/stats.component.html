@@ -1,63 +1,156 @@
-<div class="d-flex flex-column flex-sm-row">
-  <div *ngxSubscribe="globalStats as global">
-    <h2>Global</h2>
-    <div>Total: {{ global.totalCount }}</div>
-    <div>Completed: {{ global.completedCount }}</div>
-    <div>Not Completed: {{ global.notCompletedCount }}</div>
-    <div>In Progress: {{ global.inProgressCount }}</div>
+<ng-container *ngxSubscribe="globalStats as global">
+  <ng-container *ngxSubscribe="userStats as user">
+    <div class="mx-auto w-50 w-sm-25">
+      <div class="d-flex justify-content-around mb-3">
+        <fa-icon [icon]="['fas', 'globe-americas']" size="6x"></fa-icon>
+        <fa-icon [icon]="['fas', 'user']" size="6x"></fa-icon>
+      </div>
 
-    <h3>Albums</h3>
-    <div>Album Count : {{ global.albumStats.albumCount }}</div>
-    <div>Completed: {{ global.albumStats.completedAlbums }}</div>
-    <div>Not Completed: {{ global.albumStats.notCompletedAlbums }}</div>
-    <div>In Progress: {{ global.albumStats.notCompletedAlbums }}</div>
-    <div>Vinyl Count: {{ global.albumStats.vinylCount }}</div>
-    <div>CD Count: {{ global.albumStats.cdCount }}</div>
-    <div>33 RPM Records: {{ global.albumStats.rpm33RecordCount }}</div>
-    <div>45 RPM Records: {{ global.albumStats.rpm45RecordCount }}</div>
-    <div>78 RPM Records: {{ global.albumStats.rpm78RecordCount }}</div>
-    <div>12" Records: {{ global.albumStats.twelveInchRecordCount }}</div>
-    <div>7" Records: {{ global.albumStats.sevenInchRecordCount }}</div>
-    <div>10" Records: {{ global.albumStats.tenInchRecordCount }}</div>
+      <div class="d-flex justify-content-between">
+        <div>{{ global.totalCount }}</div>
+        <h5>Total</h5>
+        <div>{{ user.totalCount }}</div>
+      </div>
 
-    <h3>Books</h3>
-    <div>Book Count: {{ global.bookStats.bookCount }}</div>
-    <div>Completed: {{ global.bookStats.completedBookCount }}</div>
-    <div>Not Started: {{ global.bookStats.notStartedBookCount }}</div>
-    <div>In Progress: {{ global.bookStats.inProgressBookCount }}</div>
-    <div>Novels: {{ global.bookStats.novelCount }}</div>
-    <div>Comics: {{ global.bookStats.comicCount }}</div>
-    <div>Manga: {{ global.bookStats.mangaCount }}</div>
-  </div>
+      <div class="d-flex justify-content-between">
+        <div>{{ global.completedCount }}</div>
+        <h5>Completed</h5>
+        <div>{{ user.completedCount }}</div>
+      </div>
 
-  <div *ngxSubscribe="userStats as user">
-    <h2>User</h2>
-    <div>Total: {{ user.totalCount }}</div>
-    <div>Completed: {{ user.completedCount }}</div>
-    <div>Not Completed: {{ user.notCompletedCount }}</div>
-    <div>In Progress: {{ user.inProgressCount }}</div>
+      <div class="d-flex justify-content-between">
+        <div>{{ global.notCompletedCount }}</div>
+        <h5>Not Completed</h5>
+        <div>{{ user.notCompletedCount }}</div>
+      </div>
 
-    <h3>Albums</h3>
-    <div>Album Count : {{ user.albumStats.albumCount }}</div>
-    <div>Completed: {{ user.albumStats.completedAlbums }}</div>
-    <div>Not Completed: {{ user.albumStats.notCompletedAlbums }}</div>
-    <div>In Progress: {{ user.albumStats.notCompletedAlbums }}</div>
-    <div>Vinyl Count: {{ user.albumStats.vinylCount }}</div>
-    <div>CD Count: {{ user.albumStats.cdCount }}</div>
-    <div>33 RPM Records: {{ user.albumStats.rpm33RecordCount }}</div>
-    <div>45 RPM Records: {{ user.albumStats.rpm45RecordCount }}</div>
-    <div>78 RPM Records: {{ user.albumStats.rpm78RecordCount }}</div>
-    <div>12" Records: {{ user.albumStats.twelveInchRecordCount }}</div>
-    <div>7" Records: {{ user.albumStats.sevenInchRecordCount }}</div>
-    <div>10" Records: {{ user.albumStats.tenInchRecordCount }}</div>
+      <div class="d-flex justify-content-between mb-4">
+        <div>{{ global.inProgressCount }}</div>
+        <h5>In Progress</h5>
+        <div>{{ user.inProgressCount }}</div>
+      </div>
 
-    <h3>Books</h3>
-    <div>Book Count: {{ user.bookStats.bookCount }}</div>
-    <div>Completed: {{ user.bookStats.completedBookCount }}</div>
-    <div>Not Started: {{ user.bookStats.notStartedBookCount }}</div>
-    <div>In Progress: {{ user.bookStats.inProgressBookCount }}</div>
-    <div>Novels: {{ user.bookStats.novelCount }}</div>
-    <div>Comics: {{ user.bookStats.comicCount }}</div>
-    <div>Manga: {{ user.bookStats.mangaCount }}</div>
-  </div>
-</div>
+      <div class="d-flex justify-content-center mb-2">
+        <fa-icon [icon]="['fas', 'music']" size="4x"></fa-icon>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <div>{{ global.albumStats.albumCount }}</div>
+        <h5>Album Count</h5>
+        <div>{{ user.albumStats.albumCount }}</div>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <div>{{ global.albumStats.completedAlbums }}</div>
+        <h5>Completed</h5>
+        <div>{{ user.albumStats.completedAlbums }}</div>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <div>{{ global.albumStats.notCompletedAlbums }}</div>
+        <h5>Not Completed</h5>
+        <div>{{ user.albumStats.notCompletedAlbums }}</div>
+      </div>
+
+      <div class="d-flex justify-content-between mb-3">
+        <div>{{ global.albumStats.inProgressAlbums }}</div>
+        <h5>In Progress</h5>
+        <div>{{ user.albumStats.inProgressAlbums }}</div>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <div>{{ global.albumStats.vinylCount }}</div>
+        <h5>Vinyl Count</h5>
+        <div>{{ user.albumStats.vinylCount }}</div>
+      </div>
+
+      <div class="d-flex justify-content-between mb-3">
+        <div>{{ global.albumStats.cdCount }}</div>
+        <h5>CD Count</h5>
+        <div>{{ user.albumStats.cdCount }}</div>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <div>{{ global.albumStats.rpm33RecordCount }}</div>
+        <h5>33 RPM Records</h5>
+        <div>{{ user.albumStats.rpm33RecordCount }}</div>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <div>{{ global.albumStats.rpm45RecordCount }}</div>
+        <h5>45 RPM Records</h5>
+        <div>{{ user.albumStats.rpm45RecordCount }}</div>
+      </div>
+
+      <div class="d-flex justify-content-between mb-3">
+        <div>{{ global.albumStats.rpm78RecordCount }}</div>
+        <h5>78 RPM records</h5>
+        <div>{{ user.albumStats.rpm78RecordCount }}</div>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <div>{{ global.albumStats.twelveInchRecordCount }}</div>
+        <h5>12" Records</h5>
+        <div>{{ user.albumStats.twelveInchRecordCount }}</div>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <div>{{ global.albumStats.sevenInchRecordCount }}</div>
+        <h5>7" Records</h5>
+        <div>{{ user.albumStats.sevenInchRecordCount }}</div>
+      </div>
+
+      <div class="d-flex justify-content-between mb-3">
+        <div>{{ global.albumStats.tenInchRecordCount }}</div>
+        <h5>10" Records</h5>
+        <div>{{ user.albumStats.tenInchRecordCount }}</div>
+      </div>
+
+      <div class="d-flex justify-content-center mb-2">
+        <fa-icon [icon]="['fas', 'book-open']" size="4x"></fa-icon>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <div>{{ global.bookStats.bookCount }}</div>
+        <h5>Book Count</h5>
+        <div>{{ user.bookStats.bookCount }}</div>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <div>{{ global.bookStats.completedBookCount }}</div>
+        <h5>Completed</h5>
+        <div>{{ user.bookStats.completedBookCount }}</div>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <div>{{ global.bookStats.notStartedBookCount }}</div>
+        <h5>Not Started</h5>
+        <div>{{ user.bookStats.notStartedBookCount }}</div>
+      </div>
+
+      <div class="d-flex justify-content-between mb-3">
+        <div>{{ global.bookStats.inProgressBookCount }}</div>
+        <h5>In Progress</h5>
+        <div>{{ user.bookStats.inProgressBookCount }}</div>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <div>{{ global.bookStats.novelCount }}</div>
+        <h5>Novels</h5>
+        <div>{{ user.bookStats.novelCount }}</div>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <div>{{ global.bookStats.comicCount }}</div>
+        <h5>Comics</h5>
+        <div>{{ user.bookStats.comicCount }}</div>
+      </div>
+
+      <div class="d-flex justify-content-between mb-3">
+        <div>{{ global.bookStats.mangaCount }}</div>
+        <h5>Manga</h5>
+        <div>{{ user.bookStats.mangaCount }}</div>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>
