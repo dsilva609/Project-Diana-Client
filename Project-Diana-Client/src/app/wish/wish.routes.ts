@@ -5,12 +5,9 @@ import { WishSubmissionComponent } from 'src/app/wish/wish-submission/wish-submi
 import { WishComponent } from 'src/app/wish/wish.component';
 
 export const WISH_ROUTES: Routes = [
-  {
-    path: '',
-    canActivate: [AuthGuardService],
+  { path: '',
     redirectTo: 'wish',
-    pathMatch: 'full',
-  },
+    pathMatch: 'full' },
   {
     path: 'wish',
     component: WishListComponent,
