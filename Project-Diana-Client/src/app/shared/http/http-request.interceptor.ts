@@ -1,17 +1,20 @@
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { switchMap, tap } from 'rxjs/operators';
-import { User } from 'src/app/user/state/user.model';
+import { tap } from 'rxjs/operators';
 import { UserQuery } from 'src/app/user/state/user.query';
+import { UserService } from 'src/app/user/state/user.service';
 import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class HttpRequestInterceptor implements HttpInterceptor {
-  private user: User;
-  constructor(private userQuery: UserQuery) {
-    this.userQuery.select().subscribe((data) => (this.user = data));
-  }
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private userQuery: UserQuery,
+    private userService: UserService
+  ) {}
 
   intercept(
     req: HttpRequest<any>,
@@ -23,18 +26,21 @@ export class HttpRequestInterceptor implements HttpInterceptor {
       url: `${apiUrl}/api/${req.url}`,
     });
 
-    return this.userQuery.select().pipe(
-      tap((user) => (this.user = user)), // side effect to set token property on auth service
-      switchMap((data) => {
-        // use transformation operator that maps to an Observable<T>
-        const newRequest = req.clone({
-          setHeaders: {
-            Authorization: `Bearer ${data.token}`,
-          },
-        });
+    this.userQuery
+      .select()
+      .pipe(
+        tap((user) => {
+          if (user.token) {
+            req = req.clone({
+              setHeaders: {
+                Authorization: `Bearer ${user.token}`,
+              },
+            });
+          }
+        })
+      )
+      .subscribe();
 
-        return next.handle(newRequest);
-      })
-    );
+    return next.handle(req);
   }
 }

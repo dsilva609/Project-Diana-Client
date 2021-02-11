@@ -1,6 +1,6 @@
 import { CommonModule, DatePipe, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -32,6 +32,7 @@ import { BookDetailsComponent } from 'src/app/book/details/book-details.componen
 import { BookUpdateComponent } from 'src/app/book/update/book-update.component';
 import { HomeComponent } from 'src/app/home/home.component';
 import { FooterComponent } from 'src/app/shared/footer/footer.component';
+import { appInitializer } from 'src/app/shared/helpers/app.initializer';
 import { AuthenticatedDirective } from 'src/app/shared/helpers/authenticated.directive';
 import { CanEditDirective } from 'src/app/shared/helpers/can-edit.directive';
 import { NgxSubscribeDirective } from 'src/app/shared/helpers/ngx-directive';
@@ -43,6 +44,8 @@ import { YesNoPipe } from 'src/app/shared/pipes/yes-no.pipe';
 import { ShowcaseListComponent } from 'src/app/showcase/showcase-list/showcase-list.component';
 import { StatsComponent } from 'src/app/stats/stats.component';
 import { LoginComponent } from 'src/app/user/login/login.component';
+import { UserQuery } from 'src/app/user/state/user.query';
+import { UserService } from 'src/app/user/state/user.service';
 import { UserComponent } from 'src/app/user/user.component';
 import { WishFormComponent } from 'src/app/wish/wish-form/wish-form.component';
 import { WishListComponent } from 'src/app/wish/wish-list/wish-List.component';
@@ -109,6 +112,12 @@ import { environment } from 'src/environments/environment';
     ToastrModule.forRoot(),
   ],
   providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: appInitializer,
+      multi: true,
+      deps: [UserQuery, UserService],
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpRequestInterceptor,
