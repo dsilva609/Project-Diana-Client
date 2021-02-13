@@ -3,7 +3,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { AkitaNgRouterStoreModule } from '@datorama/akita-ng-router-store';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -17,7 +16,6 @@ import { IconsModule } from 'src/app/shared/icons/icons.module';
 import { NoDatePipe } from 'src/app/shared/pipes/no-date-pipe';
 import { YesNoPipe } from 'src/app/shared/pipes/yes-no.pipe';
 
-
 export const DIRECTIVES = [
   AuthenticatedDirective,
   CanEditDirective,
@@ -30,11 +28,7 @@ export const BOOK_COMPONENTS = [BookComponent];
 
 const HTTP_MODULES = [HttpClientModule];
 const NG_MODULES = [CommonModule, ReactiveFormsModule, RouterModule];
-const THIRD_PARTY_MODULES = [
-  AkitaNgRouterStoreModule.forRoot(),
-  FontAwesomeModule,
-  ToastrModule.forRoot(),
-];
+const THIRD_PARTY_MODULES = [FontAwesomeModule, ToastrModule.forRoot()];
 const UI_MODULES = [ClickOutsideModule, IconsModule, NgxPaginationModule];
 
 @NgModule({
