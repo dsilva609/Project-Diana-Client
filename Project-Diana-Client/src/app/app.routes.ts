@@ -1,12 +1,4 @@
 import { Routes } from '@angular/router';
-import { AlbumListComponent } from 'src/app/album/album-list/album-list.component';
-import { AuthGuardService } from 'src/app/auth/auth-guard.service';
-import { BookListComponent } from 'src/app/book/book-list/book-list.component';
-import { HomeComponent } from 'src/app/home/home.component';
-import { ShowcaseListComponent } from 'src/app/showcase/showcase-list/showcase-list.component';
-import { StatsComponent } from 'src/app/stats/stats.component';
-import { UserComponent } from 'src/app/user/user.component';
-import { WishListComponent } from 'src/app/wish/wish-list/wish-List.component';
 
 export const APP_ROUTES: Routes = [
   {
@@ -16,38 +8,54 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: 'album',
-    component: AlbumListComponent,
-    data: { title: 'Albums' },
+    loadChildren: () =>
+      import('./album/album.module').then((m) => m.AlbumModule),
+    data: {
+      title: 'Albums',
+    },
   },
   {
     path: 'book',
-    component: BookListComponent,
-    data: { title: 'Books' },
+    loadChildren: () => import('./book/book.module').then((m) => m.BookModule),
+    data: {
+      title: 'Books',
+    },
   },
   {
     path: 'home',
-    component: HomeComponent,
-    data: { title: 'Home' },
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+    data: {
+      title: 'Home',
+    },
   },
   {
     path: 'showcase',
-    component: ShowcaseListComponent,
-    data: { title: 'Showcase' },
+    loadChildren: () =>
+      import('./showcase/showcase.module').then((m) => m.ShowcaseModule),
+    data: {
+      title: 'Showcase',
+    },
   },
   {
     path: 'stats',
-    component: StatsComponent,
-    data: { title: 'Stats' },
+    loadChildren: () =>
+      import('./stats/stats.module').then((m) => m.StatsModule),
+    data: {
+      title: 'Stats',
+    },
   },
   {
     path: 'user',
-    component: UserComponent,
-    data: { title: 'User' },
+    loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
+    data: {
+      title: 'User',
+    },
   },
   {
     path: 'wish',
-    component: WishListComponent,
-    canActivate: [AuthGuardService],
-    data: { title: 'Wish List' },
+    loadChildren: () => import('./wish/wish.module').then((m) => m.WishModule),
+    data: {
+      title: 'Wish List',
+    },
   },
 ];

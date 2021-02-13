@@ -3,12 +3,7 @@ import { ShowcaseListComponent } from 'src/app/showcase/showcase-list/showcase-l
 
 export const SHOWCASE_ROUTES: Routes = [
   {
-    path: '',
-    redirectTo: 'showcase',
-    pathMatch: 'full',
-  },
-  {
-    path: 'showcase/:id',
+    path: ':id',
     component: ShowcaseListComponent,
     data: { title: 'Showcase' },
   },

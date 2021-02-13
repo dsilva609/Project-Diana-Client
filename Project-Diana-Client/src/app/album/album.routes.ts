@@ -10,40 +10,35 @@ import { AuthGuardService } from 'src/app/auth/auth-guard.service';
 export const ALBUM_ROUTES: Routes = [
   {
     path: '',
-    redirectTo: 'album',
-    pathMatch: 'full',
-  },
-  {
-    path: 'album',
     component: AlbumListComponent,
     data: { title: 'Albums' },
   },
   {
-    path: 'album/addFromSearch',
+    path: 'addFromSearch',
     component: AlbumSearchedComponent,
     canActivate: [AuthGuardService],
     data: { title: 'Albums' },
   },
   {
-    path: 'album/create',
+    path: 'create',
     component: AlbumSubmissionComponent,
     canActivate: [AuthGuardService],
     data: { title: 'Albums' },
   },
   {
-    path: 'album/search',
+    path: 'search',
     component: AlbumSearchComponent,
     canActivate: [AuthGuardService],
     data: { title: 'Albums' },
   },
   {
-    path: 'album/update/:id',
+    path: 'update/:id',
     component: AlbumUpdateComponent,
     canActivate: [AuthGuardService],
     data: { title: 'Albums' },
   },
   {
-    path: 'album/:id',
+    path: ':id',
     component: AlbumDetailsComponent,
     data: { title: 'Albums' },
   },

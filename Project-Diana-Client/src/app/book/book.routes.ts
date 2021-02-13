@@ -10,40 +10,35 @@ import { BookUpdateComponent } from 'src/app/book/update/book-update.component';
 export const BOOK_ROUTES: Routes = [
   {
     path: '',
-    redirectTo: 'book',
-    pathMatch: 'full',
-  },
-  {
-    path: 'book',
     component: BookListComponent,
     data: { title: 'Books' },
   },
   {
-    path: 'book/addFromSearch/:id',
+    path: 'addFromSearch/:id',
     component: BookSearchedComponent,
     canActivate: [AuthGuardService],
     data: { title: 'Books' },
   },
   {
-    path: 'book/create',
+    path: 'create',
     component: BookSubmissionComponent,
     canActivate: [AuthGuardService],
     data: { title: 'Books' },
   },
   {
-    path: 'book/search',
+    path: 'search',
     component: BookSearchComponent,
     canActivate: [AuthGuardService],
     data: { title: 'Books' },
   },
   {
-    path: 'book/update/:id',
+    path: 'update/:id',
     component: BookUpdateComponent,
     canActivate: [AuthGuardService],
     data: { title: 'Books' },
   },
   {
-    path: 'book/:id',
+    path: ':id',
     component: BookDetailsComponent,
     data: { title: 'Books' },
   },
