@@ -25,13 +25,9 @@
             [disabled]="isBookShowcaseUpdateLoading"
             class="btn btn-outline-primary"
           >
-            <div
-              *ngIf="isBookShowcaseUpdateLoading"
-              class="spinner-border spinner-border-sm"
-              role="status"
-            >
-              <span class="sr-only">Updating...</span>
-            </div>
+            <app-loading-indicator-small
+              [isLoading]="isBookShowcaseUpdateLoading"
+            ></app-loading-indicator-small>
 
             <fa-icon
               *ngIf="!isBookShowcaseUpdateLoading"
@@ -48,13 +44,9 @@
             [disbl]="isBookShowcaseUpdateLoading"
             class="btn btn-outline-danger"
           >
-            <div
-              *ngIf="isBookShowcaseUpdateLoading"
-              class="spinner-border spinner-border-sm"
-              role="status"
-            >
-              <span class="sr-only">Updating...</span>
-            </div>
+            <app-loading-indicator-small
+              [isLoading]="isBookShowcaseUpdateLoading"
+            ></app-loading-indicator-small>
 
             <fa-icon
               *ngIf="!isBookShowcaseUpdateLoading"
@@ -71,13 +63,9 @@
             [disabled]="isIncrementReadCountLoading"
             class="btn btn-outline-primary"
           >
-            <div
-              *ngIf="isIncrementReadCountLoading"
-              class="spinner-border spinner-border-sm"
-              role="status"
-            >
-              <span class="sr-only">Updating...</span>
-            </div>
+            <app-loading-indicator-small
+              [isLoading]="isIncrementReadCountLoading"
+            ></app-loading-indicator-small>
 
             <fa-icon
               *ngIf="!isIncrementReadCountLoading"

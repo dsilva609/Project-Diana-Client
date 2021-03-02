@@ -13,6 +13,9 @@ import { AuthenticatedDirective } from 'src/app/shared/helpers/authenticated.dir
 import { CanEditDirective } from 'src/app/shared/helpers/can-edit.directive';
 import { NgxSubscribeDirective } from 'src/app/shared/helpers/ngx-directive';
 import { IconsModule } from 'src/app/shared/icons/icons.module';
+import {
+  LoadingIndicatorSmallComponent,
+} from 'src/app/shared/loading/loading-indicator-small/loading-indicator-small.component';
 import { NoDatePipe } from 'src/app/shared/pipes/no-date-pipe';
 import { YesNoPipe } from 'src/app/shared/pipes/yes-no.pipe';
 
@@ -21,10 +24,13 @@ export const DIRECTIVES = [
   CanEditDirective,
   NgxSubscribeDirective,
 ];
+
 export const PIPES = [NoDatePipe, YesNoPipe];
 
 export const ALBUM_COMPONENTS = [AlbumComponent];
 export const BOOK_COMPONENTS = [BookComponent];
+
+export const MISC_COMPONENTS = [LoadingIndicatorSmallComponent];
 
 const HTTP_MODULES = [HttpClientModule];
 const NG_MODULES = [CommonModule, ReactiveFormsModule, RouterModule];
@@ -32,13 +38,20 @@ const THIRD_PARTY_MODULES = [FontAwesomeModule, ToastrModule.forRoot()];
 const UI_MODULES = [ClickOutsideModule, IconsModule, NgxPaginationModule];
 
 @NgModule({
-  declarations: [DIRECTIVES, PIPES, ALBUM_COMPONENTS, BOOK_COMPONENTS],
+  declarations: [
+    DIRECTIVES,
+    PIPES,
+    ALBUM_COMPONENTS,
+    BOOK_COMPONENTS,
+    MISC_COMPONENTS,
+  ],
   exports: [
     DIRECTIVES,
     PIPES,
 
     ALBUM_COMPONENTS,
     BOOK_COMPONENTS,
+    MISC_COMPONENTS,
 
     HTTP_MODULES,
     NG_MODULES,

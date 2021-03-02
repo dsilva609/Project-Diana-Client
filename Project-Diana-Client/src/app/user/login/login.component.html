@@ -36,7 +36,20 @@
     </div>
 
     <div class="row">
-      <button class="btn btn-primary btn-block" type="submit">Login</button>
+      <button
+        class="btn btn-primary btn-block"
+        type="submit"
+        [disabled]="
+          isLoggingIn ||
+          !loginForm.get('username').value ||
+          !loginForm.get('password').value
+        "
+      >
+        <app-loading-indicator-small
+          [isLoading]="isLoggingIn"
+        ></app-loading-indicator-small>
+        Login
+      </button>
     </div>
   </form>
 </div>

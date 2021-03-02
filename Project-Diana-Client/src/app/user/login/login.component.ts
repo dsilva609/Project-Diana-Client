@@ -14,6 +14,7 @@ import { UserService } from 'src/app/user/state/user.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  isLoggingIn = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -30,6 +31,8 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(loginData): void {
+    this.isLoggingIn = true;
+
     this.userService
       .login(loginData)
       .pipe(
@@ -39,8 +42,12 @@ export class LoginComponent implements OnInit {
 
             this.toastrService.info('Welcome!');
           } else {
-            this.toastrService.error('Error logging in');
+            this.toastrService.error(
+              'Error logging in. Please check your username and/or password.'
+            );
           }
+
+          this.isLoggingIn = false;
         }),
         untilDestroyed(this)
       )

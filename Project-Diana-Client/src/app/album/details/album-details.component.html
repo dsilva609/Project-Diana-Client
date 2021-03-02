@@ -25,13 +25,9 @@
             [disabled]="isShowcaseAlbumUpdating"
             class="btn btn-outline-primary"
           >
-            <div
-              *ngIf="isShowcaseAlbumUpdating"
-              class="spinner-border spinner-border-sm"
-              role="status"
-            >
-              <span class="sr-only">Updating...</span>
-            </div>
+            <app-loading-indicator-small
+              [isLoading]="isShowcaseAlbumUpdating"
+            ></app-loading-indicator-small>
             <fa-icon
               *ngIf="!isShowcaseAlbumUpdating"
               [icon]="['fas', 'star']"
@@ -47,13 +43,9 @@
             [disabled]="isShowcaseAlbumUpdating"
             class="btn btn-outline-danger"
           >
-            <div
-              *ngIf="isShowcaseAlbumUpdating"
-              class="spinner-border spinner-border-sm"
-              role="status"
-            >
-              <span class="sr-only">Updating...</span>
-            </div>
+            <app-loading-indicator-small
+              [isLoading]="isShowcaseAlbumUpdating"
+            ></app-loading-indicator-small>
 
             <fa-icon
               *ngIf="!isShowcaseAlbumUpdating"
@@ -70,13 +62,9 @@
             [disabled]="isIncrementPlayCountLoading"
             class="btn btn-outline-primary"
           >
-            <div
-              *ngIf="isIncrementPlayCountLoading"
-              class="spinner-border spinner-border-sm"
-              role="status"
-            >
-              <span class="sr-only">Updating...</span>
-            </div>
+            <app-loading-indicator-small
+              [isLoading]="isIncrementPlayCountLoading"
+            ></app-loading-indicator-small>
 
             <fa-icon
               *ngIf="!isIncrementPlayCountLoading"

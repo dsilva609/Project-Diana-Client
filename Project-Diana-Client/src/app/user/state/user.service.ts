@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { resetStores } from '@datorama/akita';
-import { Observable } from 'rxjs';
-import { map, switchMap, take } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { catchError, map, switchMap, take } from 'rxjs/operators';
 import { User } from 'src/app/user/state/user.model';
 import { UserQuery } from 'src/app/user/state/user.query';
 import { UserStore } from 'src/app/user/state/user.store';
@@ -35,6 +35,9 @@ export class UserService {
         this.startRefreshTimer();
 
         return true;
+      }),
+      catchError(() => {
+        return of(false);
       })
     );
   }
