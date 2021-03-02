@@ -3,11 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ToastrService } from 'ngx-toastr';
 import { tap } from 'rxjs/operators';
-import {
-  Album,
-  getMediaTypeDisplayName,
-  getVinylSpeedDisplayName,
-} from 'src/app/album/album.model';
+import { Album, getMediaTypeDisplayName, getVinylSpeedDisplayName } from 'src/app/album/album.model';
 import { AlbumQuery } from 'src/app/album/state/album.query';
 import { AlbumService } from 'src/app/album/state/album.service';
 import { getCompletionStatusDisplayName } from 'src/app/shared/item/item.model';
@@ -20,6 +16,8 @@ import { getCompletionStatusDisplayName } from 'src/app/shared/item/item.model';
 })
 export class AlbumDetailsComponent implements OnInit {
   album: Album;
+  isIncrementPlayCountLoading = false;
+  isShowcaseUpdateLoading = false;
 
   constructor(
     private albumQuery: AlbumQuery,
@@ -46,6 +44,8 @@ export class AlbumDetailsComponent implements OnInit {
   }
 
   addToShowcase(): void {
+    this.isShowcaseUpdateLoading = true;
+
     this.albumService
       .addToShowcase(this.album.id.toString())
       .pipe(
@@ -55,6 +55,8 @@ export class AlbumDetailsComponent implements OnInit {
           } else {
             this.toastrService.error('Unable to add album to showcase');
           }
+
+          this.isShowcaseUpdateLoading = false;
         }),
         untilDestroyed(this)
       )
@@ -78,6 +80,8 @@ export class AlbumDetailsComponent implements OnInit {
   }
 
   incrementPlayCount(): void {
+    this.isIncrementPlayCountLoading = true;
+
     this.albumService
       .incrementPlayCount(this.album.id.toString(), this.album.timesCompleted)
       .pipe(
@@ -87,6 +91,8 @@ export class AlbumDetailsComponent implements OnInit {
 
             this.toastrService.success('Album play count updated');
           }
+
+          this.isIncrementPlayCountLoading = false;
         }),
         untilDestroyed(this)
       )
@@ -94,6 +100,8 @@ export class AlbumDetailsComponent implements OnInit {
   }
 
   removeFromShowcase(): void {
+    this.isShowcaseUpdateLoading = true;
+
     this.albumService
       .removeFromShowcase(this.album.id.toString())
       .pipe(
@@ -101,6 +109,8 @@ export class AlbumDetailsComponent implements OnInit {
           if (successful) {
             this.toastrService.success('Album removed from showcase');
           }
+
+          this.isShowcaseUpdateLoading = false;
         }),
         untilDestroyed(this)
       )

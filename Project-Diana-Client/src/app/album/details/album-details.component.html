@@ -20,7 +20,11 @@
 
       <ng-container *canEdit="album.userID">
         <div *ngIf="!album.isShowcased" class="mr-2">
-          <button (click)="addToShowcase()" class="btn btn-outline-primary">
+          <button
+            (click)="addToShowcase()"
+            [disabled]="isShowcaseAlbumUpdating"
+            class="btn btn-outline-primary"
+          >
             <fa-icon [icon]="['fas', 'star']"></fa-icon>
           </button>
         </div>
@@ -28,7 +32,11 @@
 
       <ng-container *canEdit="album.userID">
         <div *ngIf="album.isShowcased" class="mr-2">
-          <button (click)="removeFromShowcase()" class="btn btn-outline-danger">
+          <button
+            (click)="removeFromShowcase()"
+            [disabled]="isShowcaseAlbumUpdating"
+            class="btn btn-outline-danger"
+          >
             <fa-icon [icon]="['fas', 'star']"></fa-icon>
           </button>
         </div>
@@ -38,6 +46,7 @@
         <div>
           <button
             (click)="incrementPlayCount()"
+            [disabled]="isIncrementPlayCountLoading"
             class="btn btn-outline-primary"
           >
             <fa-icon [icon]="['fas', 'plus']"></fa-icon>

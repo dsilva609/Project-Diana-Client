@@ -16,6 +16,8 @@ import { getCompletionStatusDisplayName } from 'src/app/shared/item/item.model';
 })
 export class BookDetailsComponent implements OnInit {
   book: Book;
+  isBookShowcaseUpdateLoading = false;
+  isIncrementReadCountLoading = false;
 
   constructor(
     private bookQuery: BookQuery,
@@ -39,6 +41,8 @@ export class BookDetailsComponent implements OnInit {
   }
 
   addToShowcase(): void {
+    this.isBookShowcaseUpdateLoading = true;
+
     this.bookService
       .addToShowcase(this.book.id.toString())
       .pipe(
@@ -46,6 +50,8 @@ export class BookDetailsComponent implements OnInit {
           if (successful) {
             this.toastrService.success('Book added to showcase');
           }
+
+          this.isBookShowcaseUpdateLoading = false;
         }),
         untilDestroyed(this)
       )
@@ -61,6 +67,8 @@ export class BookDetailsComponent implements OnInit {
   }
 
   incrementReadCount(): void {
+    this.isIncrementReadCountLoading = false;
+
     this.bookService
       .incrementReadCount(this.book.id.toString(), this.book.timesCompleted)
       .pipe(
@@ -70,6 +78,8 @@ export class BookDetailsComponent implements OnInit {
 
             this.toastrService.success('Book read count updated');
           }
+
+          this.isIncrementReadCountLoading = false;
         }),
         untilDestroyed(this)
       )
@@ -77,6 +87,8 @@ export class BookDetailsComponent implements OnInit {
   }
 
   removeFromShowcase(): void {
+    this.isBookShowcaseUpdateLoading = true;
+
     this.bookService
       .removeFromShowcase(this.book.id.toString())
       .pipe(
@@ -84,6 +96,8 @@ export class BookDetailsComponent implements OnInit {
           if (successful) {
             this.toastrService.success('Book removed from showcase');
           }
+
+          this.isBookShowcaseUpdateLoading = false;
         }),
         untilDestroyed(this)
       )
