@@ -67,7 +67,7 @@ export class BookDetailsComponent implements OnInit {
   }
 
   incrementReadCount(): void {
-    this.isIncrementReadCountLoading = false;
+    this.isIncrementReadCountLoading = true;
 
     this.bookService
       .incrementReadCount(this.book.id.toString(), this.book.timesCompleted)

@@ -25,7 +25,18 @@
             [disabled]="isBookShowcaseUpdateLoading"
             class="btn btn-outline-primary"
           >
-            <fa-icon [icon]="['fas', 'star']"></fa-icon>
+            <div
+              *ngIf="isBookShowcaseUpdateLoading"
+              class="spinner-border"
+              role="status"
+            >
+              <span class="sr-only">Updating...</span>
+            </div>
+
+            <fa-icon
+              *ngIf="!isBookShowcaseUpdateLoading"
+              [icon]="['fas', 'star']"
+            ></fa-icon>
           </button>
         </div>
       </ng-container>
@@ -37,7 +48,18 @@
             [disbl]="isBookShowcaseUpdateLoading"
             class="btn btn-outline-danger"
           >
-            <fa-icon [icon]="['fas', 'star']"></fa-icon>
+            <div
+              *ngIf="isBookShowcaseUpdateLoading"
+              class="spinner-border"
+              role="status"
+            >
+              <span class="sr-only">Updating...</span>
+            </div>
+
+            <fa-icon
+              *ngIf="!isBookShowcaseUpdateLoading"
+              [icon]="['fas', 'star']"
+            ></fa-icon>
           </button>
         </div>
       </ng-container>
@@ -49,7 +71,18 @@
             [disabled]="isIncrementReadCountLoading"
             class="btn btn-outline-primary"
           >
-            <fa-icon [icon]="['fas', 'plus']"></fa-icon>
+            <div
+              *ngIf="isIncrementReadCountLoading"
+              class="spinner-border"
+              role="status"
+            >
+              <span class="sr-only">Updating...</span>
+            </div>
+
+            <fa-icon
+              *ngIf="!isIncrementReadCountLoading"
+              [icon]="['fas', 'plus']"
+            ></fa-icon>
           </button>
         </div>
       </ng-container>
