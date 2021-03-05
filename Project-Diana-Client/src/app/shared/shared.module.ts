@@ -13,9 +13,7 @@ import { AuthenticatedDirective } from 'src/app/shared/helpers/authenticated.dir
 import { CanEditDirective } from 'src/app/shared/helpers/can-edit.directive';
 import { NgxSubscribeDirective } from 'src/app/shared/helpers/ngx-directive';
 import { IconsModule } from 'src/app/shared/icons/icons.module';
-import {
-  LoadingIndicatorSmallComponent,
-} from 'src/app/shared/loading/loading-indicator-small/loading-indicator-small.component';
+import { LoadingIndicatorSmallComponent } from 'src/app/shared/loading/loading-indicator-small/loading-indicator-small.component';
 import { NoDatePipe } from 'src/app/shared/pipes/no-date-pipe';
 import { YesNoPipe } from 'src/app/shared/pipes/yes-no.pipe';
 
