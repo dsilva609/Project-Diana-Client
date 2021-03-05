@@ -37,7 +37,7 @@
     "ng-click-outside": "^7.0.1",
     "ngx-pagination": "^5.0.0",
     "ngx-toastr": "^13.2.0",
-    "rxjs": "~6.6.3",
+    "rxjs": "^6.6.6",
     "tslib": "^2.1.0",
     "zone.js": "~0.10.3"
   },
