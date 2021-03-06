@@ -66,7 +66,7 @@ export class AlbumUpdateComponent implements OnInit, AfterViewInit {
             countryOfOrigin: album.countryOfOrigin,
             countryPurchased: album.countryPurchased,
             datePurchased: date,
-            discogsID: album.discogsID,
+            discogsId: album.discogsId,
             genre: album.genre,
             imageUrl: album.imageUrl,
             isNewPurchase: album.isNew,

@@ -1,11 +1,4 @@
-import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
@@ -28,7 +21,7 @@ import { WishFormComponent } from 'src/app/wish/wish-form/wish-form.component';
 export class WishComponent implements OnInit, AfterViewInit {
   itemTypes = ITEM_TYPES;
   wish: Observable<Wish>;
-  wishID: number;
+  wishId: number;
   wishUpdateForm: FormGroup;
 
   @ViewChild('wishForm') wishForm: WishFormComponent;
@@ -43,10 +36,10 @@ export class WishComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    this.wishID = Number(this.route.snapshot.paramMap.get('id'));
+    this.wishId = Number(this.route.snapshot.paramMap.get('id'));
 
     this.wishService
-      .getWishByID(this.wishID)
+      .getWishById(this.wishId)
       .pipe(untilDestroyed(this))
       .subscribe();
 
@@ -64,14 +57,14 @@ export class WishComponent implements OnInit, AfterViewInit {
       .pipe(
         map((wish) =>
           this.wishForm.wishForm.patchValue({
-            apiID: wish.apiID,
+            apiId: wish.apiId,
             category: wish.category,
             imageUrl: wish.imageUrl,
             itemType: wish.itemType,
             notes: wish.notes,
             owned: wish.owned,
             title: wish.title,
-            wishID: 0,
+            wishId: 0,
           })
         ),
         untilDestroyed(this)
@@ -82,7 +75,7 @@ export class WishComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit(wishFormData): void {
-    wishFormData.wishData.wishID = this.wishID;
+    wishFormData.wishData.wishId = this.wishId;
 
     this.wishService
       .updateWish(wishFormData.wishData)

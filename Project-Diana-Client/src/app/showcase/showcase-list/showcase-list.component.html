@@ -1,5 +1,5 @@
 <ng-container *ngIf="(showcase | async).showcasedAlbums.length; else noalbums">
-  <div *canEdit="(showcase | async)?.showcasedAlbums[0]?.userID">
+  <div *canEdit="(showcase | async)?.showcasedAlbums[0]?.userId">
     <div class="btn btn-outline-danger mb-3" (click)="clearAlbumShowcase()">
       <fa-icon [icon]="['fas', 'redo-alt']"></fa-icon>
     </div>

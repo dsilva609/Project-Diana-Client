@@ -1,6 +1,6 @@
 export interface Wish {
   id: number | string;
-  apiID: string;
+  apiId: string;
   category: string;
   dateAdded: Date;
   dateModified: Date;
@@ -14,7 +14,7 @@ export interface Wish {
 export function createWish(): Wish {
   return {
     id: null,
-    apiID: '',
+    apiId: '',
     category: '',
     dateAdded: null,
     dateModified: null,

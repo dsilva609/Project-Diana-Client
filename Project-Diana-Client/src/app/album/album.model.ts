@@ -8,7 +8,7 @@ export interface Album {
   dateAdded: string;
   datePurchased: string;
   dateUpdated: string;
-  discogsID: number;
+  discogsId: number;
   genre: string;
   imageUrl: string;
   isNew: boolean;
@@ -24,7 +24,7 @@ export interface Album {
   style: string;
   timesCompleted: number;
   title: string;
-  userID: string;
+  userId: string;
   yearReleased: number;
 }
 
@@ -39,7 +39,7 @@ export function createAlbum(): Album {
     dateAdded: '',
     datePurchased: '',
     dateUpdated: '',
-    discogsID: 0,
+    discogsId: 0,
     genre: '',
     imageUrl: '',
     isNew: false,
@@ -55,7 +55,7 @@ export function createAlbum(): Album {
     style: '',
     timesCompleted: 0,
     title: '',
-    userID: '',
+    userId: '',
     yearReleased: 0,
   } as Album;
 }

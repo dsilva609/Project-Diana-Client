@@ -4,7 +4,7 @@ import { createWish, Wish } from 'src/app/wish/state/wish.model';
 
 export interface WishState extends EntityState<Wish> {
   id: number | string;
-  apiID: string;
+  apiId: string;
   category: string;
   dateAdded: Date;
   dateModified: Date;

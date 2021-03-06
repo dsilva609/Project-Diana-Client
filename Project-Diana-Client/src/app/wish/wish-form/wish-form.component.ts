@@ -17,14 +17,14 @@ export class WishFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.wishForm = this.formBuilder.group({
-      apiID: '',
+      apiId: '',
       category: '',
       imageUrl: '',
       itemType: 0,
       notes: '',
       owned: false,
       title: '',
-      wishID: 0,
+      wishId: 0,
     });
   }
 }

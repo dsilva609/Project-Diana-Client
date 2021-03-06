@@ -50,7 +50,7 @@ export class WishListComponent implements OnInit {
     this.router.navigate([url], { queryParams: { title: wishTitle } });
   }
 
-  viewWish(wishID: number): void {
-    this.router.navigate([`wish/${wishID}`]);
+  viewWish(wishId: number): void {
+    this.router.navigate([`wish/${wishId}`]);
   }
 }

@@ -9,8 +9,8 @@ import { WishStore } from 'src/app/wish/state/wish.store';
 export class WishService {
   constructor(protected wishStore: WishStore, private http: HttpClient) {}
 
-  getWishByID(wishID: number): Observable<Wish> {
-    return this.http.get<Wish>(`Wish/GetWish/?id=${wishID}`).pipe(
+  getWishById(wishId: number): Observable<Wish> {
+    return this.http.get<Wish>(`Wish/GetWish/?id=${wishId}`).pipe(
       tap((wish) => {
         this.wishStore.update(wish);
 

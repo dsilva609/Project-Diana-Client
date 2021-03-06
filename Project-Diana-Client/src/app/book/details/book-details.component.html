@@ -7,7 +7,7 @@
     </h2>
 
     <div class="d-flex justify-content-center justify-content-sm-end mb-4">
-      <ng-container *canEdit="book.userID">
+      <ng-container *canEdit="book.userId">
         <div class="mr-2">
           <div
             class="btn btn-outline-primary"
@@ -18,7 +18,7 @@
         </div>
       </ng-container>
 
-      <ng-container *canEdit="book.userID">
+      <ng-container *canEdit="book.userId">
         <div *ngIf="!book.isShowcased" class="mr-2">
           <button
             (click)="addToShowcase()"
@@ -37,7 +37,7 @@
         </div>
       </ng-container>
 
-      <ng-container *canEdit="book.userID">
+      <ng-container *canEdit="book.userId">
         <div *ngIf="book.isShowcased" class="mr-2">
           <button
             (click)="removeFromShowcase()"
@@ -56,7 +56,7 @@
         </div>
       </ng-container>
 
-      <ng-container *canEdit="book.userID">
+      <ng-container *canEdit="book.userId">
         <div>
           <button
             (click)="incrementReadCount()"

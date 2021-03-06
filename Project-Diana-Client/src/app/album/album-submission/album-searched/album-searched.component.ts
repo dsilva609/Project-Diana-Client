@@ -40,7 +40,7 @@ export class AlbumSearchedComponent implements OnInit, AfterViewInit {
     this.albumForm.albumForm.patchValue({
       artist: this.searchedAlbum.artist,
       countryOfOrigin: this.searchedAlbum.countryOfOrigin,
-      discogsID: this.searchedAlbum.id,
+      discogsId: this.searchedAlbum.id,
       genre: this.searchedAlbum.genre,
       imageUrl: this.searchedAlbum.coverImage,
       recordLabel: this.searchedAlbum.label,
