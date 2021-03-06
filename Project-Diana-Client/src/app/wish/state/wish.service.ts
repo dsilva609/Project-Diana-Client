@@ -10,7 +10,7 @@ export class WishService {
   constructor(protected wishStore: WishStore, private http: HttpClient) {}
 
   getWishById(wishId: number): Observable<Wish> {
-    return this.http.get<Wish>(`Wish/GetWish/?id=${wishId}`).pipe(
+    return this.http.get<Wish>(`Wish/GetWish?id=${wishId}`).pipe(
       tap((wish) => {
         this.wishStore.update(wish);
 
@@ -28,22 +28,22 @@ export class WishService {
   }
 
   submitWish(wishFormData): Observable<boolean> {
-    return this.http
-      .post<boolean>('Wish/CreateWish', wishFormData)
-      .pipe((createResult) => {
+    return this.http.post<boolean>('Wish/CreateWish', wishFormData).pipe(
+      tap((createResult) => {
         return createResult;
-      });
+      })
+    );
   }
 
   updateWish(wishFormData): Observable<boolean> {
-    return this.http
-      .post<boolean>('Wish/UpdateWish', wishFormData)
-      .pipe((updateResult) => {
+    return this.http.post<boolean>('Wish/UpdateWish', wishFormData).pipe(
+      tap((updateResult) => {
         if (updateResult) {
           this.wishStore.update(wishFormData);
         }
 
         return updateResult;
-      });
+      })
+    );
   }
 }

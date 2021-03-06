@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { ToastrService } from 'ngx-toastr';
 import { tap } from 'rxjs/operators';
 import { WishService } from 'src/app/wish/state/wish.service';
 import { WishList } from 'src/app/wish/wish-list/state/wish-list.model';
@@ -20,11 +22,18 @@ export class WishListComponent implements OnInit {
   gameWishes: WishList[];
   movieWishes: WishList[];
 
+  selectedWishIdToDelete = 0;
+
+  @ViewChild('confirmDeleteModal') confirmDeleteModal;
+
   constructor(
+    private modalService: NgbModal,
     private router: Router,
+    private toastService: ToastrService,
     private wishListQuery: WishListQuery,
     private wishListSerice: WishListService,
-    private wishService: WishService
+    private wishService: WishService,
+    private wishListService: WishListService
   ) {}
 
   ngOnInit(): void {
@@ -52,5 +61,39 @@ export class WishListComponent implements OnInit {
 
   viewWish(wishId: number): void {
     this.router.navigate([`wish/${wishId}`]);
+  }
+
+  openConfirmDeleteModal(event, wishId: number) {
+    event.stopPropagation();
+
+    this.selectedWishIdToDelete = wishId;
+
+    this.modalService.open(this.confirmDeleteModal);
+  }
+
+  cancelDelete() {
+    this.selectedWishIdToDelete = 0;
+
+    this.modalService.dismissAll();
+  }
+
+  deleteWish() {
+    this.wishListService
+      .deleteWishById(this.selectedWishIdToDelete)
+      .pipe(
+        tap((success) => {
+          this.selectedWishIdToDelete = 0;
+
+          this.modalService.dismissAll();
+
+          if (success) {
+            window.location.reload();
+          } else {
+            this.toastService.error('Unable to delete wish');
+          }
+        }),
+        untilDestroyed(this)
+      )
+      .subscribe();
   }
 }
