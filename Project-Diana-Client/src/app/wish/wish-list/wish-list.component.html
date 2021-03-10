@@ -56,7 +56,9 @@
         <td>
           <fa-icon
             [icon]="['fas', 'trash-alt']"
-            (click)="openConfirmDeleteModal($event, wish.id)"
+            (click)="
+              openConfirmDeleteModal($event, wish.id, list.category, 'album')
+            "
           ></fa-icon>
         </td>
       </tr>
@@ -114,7 +116,9 @@
         <td>
           <fa-icon
             [icon]="['fas', 'trash-alt']"
-            (click)="openConfirmDeleteModal($event, wish.id)"
+            (click)="
+              openConfirmDeleteModal($event, wish.id, list.category, 'book')
+            "
           ></fa-icon>
         </td>
       </tr>
@@ -167,7 +171,9 @@
         <td>
           <fa-icon
             [icon]="['fas', 'trash-alt']"
-            (click)="openConfirmDeleteModal($event, wish.id)"
+            (click)="
+              openConfirmDeleteModal($event, wish.id, list.category, 'game')
+            "
           ></fa-icon>
         </td>
       </tr>
@@ -220,7 +226,9 @@
         <td>
           <fa-icon
             [icon]="['fas', 'trash-alt']"
-            (click)="openConfirmDeleteModal($event, wish.id)"
+            (click)="
+              openConfirmDeleteModal($event, wish.id, list.category, 'movie')
+            "
           ></fa-icon>
         </td>
       </tr>

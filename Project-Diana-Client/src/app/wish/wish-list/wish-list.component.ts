@@ -23,6 +23,8 @@ export class WishListComponent implements OnInit {
   movieWishes: WishList[];
 
   selectedWishIdToDelete = 0;
+  selectedWishCategoryToDelete = '';
+  selectedWishTypeToDelete = '';
 
   @ViewChild('confirmDeleteModal') confirmDeleteModal;
 
@@ -63,10 +65,17 @@ export class WishListComponent implements OnInit {
     this.router.navigate([`wish/${wishId}`]);
   }
 
-  openConfirmDeleteModal(event, wishId: number) {
+  openConfirmDeleteModal(
+    event,
+    wishId: number,
+    category: string,
+    wishType: string
+  ) {
     event.stopPropagation();
 
     this.selectedWishIdToDelete = wishId;
+    this.selectedWishCategoryToDelete = category;
+    this.selectedWishTypeToDelete = wishType;
 
     this.modalService.open(this.confirmDeleteModal);
   }
@@ -82,15 +91,33 @@ export class WishListComponent implements OnInit {
       .deleteWishById(this.selectedWishIdToDelete)
       .pipe(
         tap((success) => {
-          this.selectedWishIdToDelete = 0;
-
           this.modalService.dismissAll();
 
           if (success) {
-            window.location.reload();
+            switch (this.selectedWishTypeToDelete) {
+              case 'album':
+                this.wishListSerice.removeAlbumWish(
+                  this.selectedWishCategoryToDelete,
+                  this.selectedWishIdToDelete
+                );
+                break;
+              case 'book':
+                this.wishListSerice.removeBookWish(
+                  this.selectedWishCategoryToDelete,
+                  this.selectedWishIdToDelete
+                );
+                break;
+
+              default:
+                break;
+            }
           } else {
             this.toastService.error('Unable to delete wish');
           }
+
+          this.selectedWishIdToDelete = 0;
+          this.selectedWishCategoryToDelete = '';
+          this.selectedWishTypeToDelete = '';
         }),
         untilDestroyed(this)
       )

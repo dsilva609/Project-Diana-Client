@@ -26,6 +26,54 @@ export class WishListService {
     );
   }
 
+  removeAlbumWish(category: string, id: number): void {
+    const albumWishes = this.wishListStore.getValue().albumWishes;
+    const albumWishCategoryIndex = albumWishes.findIndex(
+      (list) => list.category === category
+    );
+
+    const filteredWishes = this.wishListStore
+      .getValue()
+      .albumWishes.find((list) => list.category === category)
+      .wishes.filter((w) => w.id !== id);
+
+    albumWishes[albumWishCategoryIndex].wishes = filteredWishes;
+
+    const wishes = this.wishListStore.getValue();
+
+    if (filteredWishes.length) {
+      wishes.albumWishes.wishes = filteredWishes;
+    } else {
+      wishes.albumWishes.splice(albumWishCategoryIndex);
+    }
+
+    this.wishListStore.update(wishes);
+  }
+
+  removeBookWish(category: string, id: number): void {
+    const bookWishes = this.wishListStore.getValue().bookWishes;
+    const bookWishCategoryIndex = bookWishes.findIndex(
+      (list) => list.category === category
+    );
+
+    const filteredWishes = this.wishListStore
+      .getValue()
+      .bookWishes.find((list) => list.category === category)
+      .wishes.filter((w) => w.id !== id);
+
+    bookWishes[bookWishCategoryIndex].wishes = filteredWishes;
+
+    const wishes = this.wishListStore.getValue();
+
+    if (filteredWishes.length) {
+      wishes.bookWishes.wishes = filteredWishes;
+    } else {
+      wishes.bookWishes.splice(bookWishCategoryIndex);
+    }
+
+    this.wishListStore.update(wishes);
+  }
+
   getWishList(): Observable<WishListResponse> {
     return this.http.get<WishListResponse>('Wish/GetWishList').pipe(
       tap((wishes) => {
