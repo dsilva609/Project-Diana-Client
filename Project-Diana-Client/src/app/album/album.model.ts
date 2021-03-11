@@ -87,5 +87,5 @@ export const VINYL_SIZES = [
 ];
 
 export function getVinylSizeDisplayName(value: number): string {
-  return VINYL_SIZES.find((x) => x.value !== value)?.name;
+  return VINYL_SIZES.find((x) => x.value === value)?.name;
 }
