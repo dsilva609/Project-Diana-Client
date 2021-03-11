@@ -3,7 +3,12 @@ import { ActivatedRoute } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ToastrService } from 'ngx-toastr';
 import { tap } from 'rxjs/operators';
-import { Album, getMediaTypeDisplayName, getVinylSpeedDisplayName } from 'src/app/album/album.model';
+import {
+  Album,
+  getMediaTypeDisplayName,
+  getVinylSizeDisplayName,
+  getVinylSpeedDisplayName,
+} from 'src/app/album/album.model';
 import { AlbumQuery } from 'src/app/album/state/album.query';
 import { AlbumService } from 'src/app/album/state/album.service';
 import { getCompletionStatusDisplayName } from 'src/app/shared/item/item.model';
@@ -76,7 +81,7 @@ export class AlbumDetailsComponent implements OnInit {
   }
 
   getSizeDisplayName(value: number): string {
-    return getVinylSpeedDisplayName(value);
+    return getVinylSizeDisplayName(value);
   }
 
   incrementPlayCount(): void {
