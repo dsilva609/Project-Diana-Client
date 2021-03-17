@@ -43,7 +43,7 @@ export class AlbumSearchedComponent implements OnInit, AfterViewInit {
       discogsId: this.searchedAlbum.id,
       genre: this.searchedAlbum.genre,
       imageUrl: this.searchedAlbum.coverImage,
-      recordLabel: this.searchedAlbum.label,
+      recordLabel: this.searchedAlbum.recordLabel,
       style: this.searchedAlbum.style,
       title: this.searchedAlbum.title,
       yearReleased: Number(this.searchedAlbum.yearReleased),

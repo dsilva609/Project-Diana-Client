@@ -5,7 +5,7 @@ export interface AlbumSearchResult {
   coverImage: string;
   format: string;
   genre: string;
-  label: string;
+  recordLabel: string;
   style: string;
   thumbnail: string;
   title: string;
@@ -20,7 +20,7 @@ export function createAlbumSearchResult(): AlbumSearchResult {
     coverImage: '',
     format: '',
     genre: '',
-    label: '',
+    recordLabel: '',
     style: '',
     thumbnail: '',
     title: '',
