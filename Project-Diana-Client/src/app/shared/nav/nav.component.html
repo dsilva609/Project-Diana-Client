@@ -62,7 +62,11 @@
       >Login</a
     >
     <ng-container *ngIf="isLoggedIn() | async">
-      <div class="display-name mr-2">{{ displayName }}</div>
+      <div class="mr-2">
+        <a class="display-name" [routerLink]="['user/settings']">{{
+          displayName
+        }}</a>
+      </div>
       <a class="btn btn-primary mt-2 mt-sm-0" (click)="logout()">Logout</a>
     </ng-container>
   </div>
