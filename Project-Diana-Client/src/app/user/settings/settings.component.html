@@ -1,1 +1,35 @@
-<p>settings works!</p>
+<label for="displayName" class="font-weight-bold">Display Name</label>
+<div class="d-flex align-items-center">
+  <span *ngIf="!isDisplayNameEditing" class="mr-2">{{ userDisplayName }}</span>
+  <input
+    [hidden]="!isDisplayNameEditing"
+    #displayName
+    type="text"
+    class="form-control w-25 mr-2"
+    id="displayName"
+  />
+
+  <fa-icon
+    *ngIf="isDisplayNameEditing"
+    [icon]="['fas', 'times']"
+    size="lg"
+    class="icon text-danger mr-2"
+    (click)="onDisplayNameCancelEdit()"
+  ></fa-icon>
+
+  <fa-icon
+    *ngIf="!isDisplayNameEditing"
+    [icon]="['fas', 'pencil-alt']"
+    size="lg"
+    class="icon text-primary mr-2"
+    (click)="onDisplayNameEdit()"
+  ></fa-icon>
+
+  <fa-icon
+    *ngIf="isDisplayNameEditing"
+    [icon]="['fas', 'check']"
+    size="lg"
+    class="icon text-success"
+    (click)="onDisplayNameSave()"
+  ></fa-icon>
+</div>
