@@ -1,6 +1,10 @@
 <div>
   <div
-    class="d-flex flex-column flex-sm-row justify-content-center justify-content-sm-between"
+    class="
+      d-flex
+      flex-column flex-sm-row
+      justify-content-center justify-content-sm-between
+    "
   >
     <h2 class="text-center text-md-left">
       {{ book.title }} By {{ book.author }} ({{ book.yearReleased }})
@@ -102,6 +106,7 @@
           <div>Physical: {{ book.isPhysical | yesNo }}</div>
           <div>First Edition: {{ book.isFirstEdition | yesNo }}</div>
           <div>Reissue: {{ book.isReissue | yesNo }}</div>
+          <div>Page Count: {{ book.pageCount }}</div>
         </div>
       </div>
     </div>
