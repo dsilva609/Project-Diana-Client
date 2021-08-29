@@ -13,12 +13,14 @@ export interface Album {
   imageUrl: string;
   isNew: boolean;
   isPhysical: boolean;
+  isReissue: boolean;
   isShowcased: boolean;
   lastCompleted: string;
   locationPurchased: string;
   mediaType: number;
   notes: string;
   recordLabel: string;
+  reissueYear: number;
   size: number;
   speed: number;
   style: string;
@@ -44,12 +46,14 @@ export function createAlbum(): Album {
     imageUrl: '',
     isNew: false,
     isPhysical: false,
+    isReissue: false,
     isShowcased: false,
     lastCompleted: '',
     locationPurchased: '',
     mediaType: 0,
     notes: '',
     recordLabel: '',
+    reissueYear: 0,
     size: 0,
     speed: 0,
     style: '',

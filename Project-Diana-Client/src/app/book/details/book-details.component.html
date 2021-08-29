@@ -106,6 +106,7 @@
           <div>Physical: {{ book.isPhysical | yesNo }}</div>
           <div>First Edition: {{ book.isFirstEdition | yesNo }}</div>
           <div>Reissue: {{ book.isReissue | yesNo }}</div>
+          <div *ngIf="book.isReissue">Reissue Year: {{ book.reissueYear }}</div>
           <div>Page Count: {{ book.pageCount }}</div>
         </div>
       </div>

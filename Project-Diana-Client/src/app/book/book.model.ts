@@ -24,6 +24,7 @@ export interface Book {
   notes: string;
   pageCount: number;
   publisher: string;
+  reissueYear: number;
   timesCompleted: number;
   title: string;
   type: number;
@@ -58,6 +59,7 @@ export function createBook(): Book {
     notes: '',
     pageCount: 0,
     publisher: '',
+    reissueYear: 0,
     timesCompleted: 0,
     title: '',
     type: 0,

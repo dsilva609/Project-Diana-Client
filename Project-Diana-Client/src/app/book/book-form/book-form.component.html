@@ -109,13 +109,34 @@
         </div>
 
         <div class="form-check mb-2">
-          <input
-            type="checkbox"
-            class="form-check-input mb-2"
-            id="isReissue"
-            formControlName="isReissue"
-          />
-          <label for="isReissue" class="form-check-label">Reissue</label>
+          <div class="d-flex flex-row">
+            <div class="mr-2">
+              <input
+                type="checkbox"
+                class="form-check-input mb-2"
+                id="isReissue"
+                formControlName="isReissue"
+              />
+              <label for="isReissue" class="form-check-label">Reissue</label>
+            </div>
+            <div>
+              <select
+                formControlName="reissueYear"
+                id="reissueYear"
+                class="form-control mb-2"
+                required
+              >
+                <option disabled>Select Reissue Year</option>
+                <option
+                  *ngFor="let year of releaseYears"
+                  [ngValue]="year.value"
+                  [selected]="year.selected"
+                >
+                  {{ year.value }}
+                </option>
+              </select>
+            </div>
+          </div>
         </div>
         <div class="d-flex flex-column flex-sm-row">
           <select

@@ -84,6 +84,7 @@ export class BookUpdateComponent implements OnInit, AfterViewInit {
             pageCount: book.pageCount,
             publisher: book.publisher,
             readCount: book.timesCompleted,
+            reissueYear: book.reissueYear,
             title: book.title,
             type: book.type,
             yearReleased: book.yearReleased,
