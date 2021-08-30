@@ -68,6 +68,7 @@ export class AlbumUpdateComponent implements OnInit, AfterViewInit {
             datePurchased: date,
             discogsId: album.discogsId,
             genre: album.genre,
+            hasDigitalDownload: album.hasDigitalDownload,
             imageUrl: album.imageUrl,
             isNewPurchase: album.isNew,
             isPhysical: album.isPhysical,

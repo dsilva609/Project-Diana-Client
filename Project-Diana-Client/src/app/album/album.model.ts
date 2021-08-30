@@ -10,6 +10,7 @@ export interface Album {
   dateUpdated: string;
   discogsId: number;
   genre: string;
+  hasDigitalDownload: boolean;
   imageUrl: string;
   isNew: boolean;
   isPhysical: boolean;
@@ -43,6 +44,7 @@ export function createAlbum(): Album {
     dateUpdated: '',
     discogsId: 0,
     genre: '',
+    hasDigitalDownload: false,
     imageUrl: '',
     isNew: false,
     isPhysical: false,

@@ -1,8 +1,15 @@
 import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MEDIA_TYPES, VINYL_SIZES, VINYL_SPEEDS } from 'src/app/album/album.model';
-import { getReleaseYears, ITEM_COMPLETION_STATUSES } from 'src/app/shared/item/item.model';
+import {
+  MEDIA_TYPES,
+  VINYL_SIZES,
+  VINYL_SPEEDS,
+} from 'src/app/album/album.model';
+import {
+  getReleaseYears,
+  ITEM_COMPLETION_STATUSES,
+} from 'src/app/shared/item/item.model';
 
 @Component({
   selector: 'app-album-form',
@@ -39,6 +46,7 @@ export class AlbumFormComponent implements OnInit {
       datePurchased: this.datePipe.transform(this.currentDate, 'yyyy-MM-dd'),
       discogsId: 0,
       genre: '',
+      hasDigitalDownload: false,
       imageUrl: '',
       isNewPurchase: false,
       isPhysical: false,

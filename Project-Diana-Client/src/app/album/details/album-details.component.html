@@ -103,6 +103,9 @@
           <div>Speed: {{ getSpeedDisplayName(album.speed) }}</div>
           <div>Size: {{ getSizeDisplayName(album.size) }}</div>
           <div>Country of Origin: {{ album.countryOfOrigin || "N/A" }}</div>
+          <div>
+            Includes Digital Download: {{ album.hasDigitalDownload | yesNo }}
+          </div>
           <div>Reissue: {{ album.isReissue | yesNo }}</div>
           <div *ngIf="album.isReissue">
             Reissue Year: {{ album.reissueYear }}
