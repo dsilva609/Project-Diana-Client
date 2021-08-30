@@ -114,7 +114,7 @@
                 class="form-control mb-2 mr-2"
                 required
               >
-                <option disabled>Select Reissue Year</option>
+                <option disabled [ngValue]="null">Select Reissue Year</option>
                 <option
                   *ngFor="let year of releaseYears"
                   [ngValue]="year.value"

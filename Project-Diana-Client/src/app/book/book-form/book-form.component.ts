@@ -49,7 +49,7 @@ export class BookFormComponent implements OnInit {
       pageCount: 0,
       publisher: '',
       readCount: 0,
-      reissueYear: new Date(this.currentDate).getFullYear(),
+      reissueYear: null,
       title: '',
       type: 0,
       yearReleased: new Date(this.currentDate).getFullYear(),
