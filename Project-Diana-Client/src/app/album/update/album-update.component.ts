@@ -73,6 +73,11 @@ export class AlbumUpdateComponent implements OnInit, AfterViewInit {
             isNewPurchase: album.isNew,
             isPhysical: album.isPhysical,
             isReissue: album.isReissue,
+            itemStorage: {
+              container: album.itemStorage.container,
+              containerCode: album.itemStorage.containerCode,
+              localStorage: album.itemStorage.location,
+            },
             locationPurchased: album.locationPurchased,
             mediaType: album.mediaType,
             notes: album.notes,

@@ -78,6 +78,11 @@ export class BookUpdateComponent implements OnInit, AfterViewInit {
             isNewPurchase: book.isNew,
             isPhysical: book.isPhysical,
             isReissue: book.isReissue,
+            itemStorage: {
+              container: book.itemStorage.container,
+              containerCode: book.itemStorage.containerCode,
+              location: book.itemStorage.location,
+            },
             language: book.language,
             locationPurchased: book.locationPurchased,
             notes: book.notes,
