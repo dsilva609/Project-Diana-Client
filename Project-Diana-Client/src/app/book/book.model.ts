@@ -1,3 +1,5 @@
+import { ItemStorage } from 'src/app/item-storage/item-storage.model';
+
 export interface Book {
   id: number;
   author: string;
@@ -18,6 +20,7 @@ export interface Book {
   isPhysical: boolean;
   isReissue: boolean;
   isShowcased: boolean;
+  itemStorage: ItemStorage;
   language: string;
   lastCompleted: string;
   locationPurchased: string;
@@ -53,6 +56,7 @@ export function createBook(): Book {
     isPhysical: false,
     isReissue: false,
     isShowcased: false,
+    itemStorage: null,
     language: '',
     lastCompleted: '',
     locationPurchased: '',

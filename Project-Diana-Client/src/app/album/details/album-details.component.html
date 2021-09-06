@@ -140,6 +140,26 @@
   </div>
 
   <div class="card mt-4">
+    <h3 class="card-header">Storage Information</h3>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-4">
+          <div>Container: {{ album.itemStorage.container || "N/A" }}</div>
+        </div>
+        <div class="col-sm-4">
+          <div>
+            Container Code:
+            {{ album.itemStorage.containerCode || "N/A" }}
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div>Location: {{ album.itemStorage.location || "N/A" }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mt-4">
     <h3 class="card-header">Purchase Information</h3>
     <div class="card-body">
       <div>Date Purchased: {{ album.datePurchased | date | noDate }}</div>

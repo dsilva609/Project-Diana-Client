@@ -1,3 +1,5 @@
+import { ItemStorage } from 'src/app/item-storage/item-storage.model';
+
 export interface Album {
   id: number;
   artist: string;
@@ -16,6 +18,7 @@ export interface Album {
   isPhysical: boolean;
   isReissue: boolean;
   isShowcased: boolean;
+  itemStorage: ItemStorage;
   lastCompleted: string;
   locationPurchased: string;
   mediaType: number;
@@ -50,6 +53,7 @@ export function createAlbum(): Album {
     isPhysical: false,
     isReissue: false,
     isShowcased: false,
+    itemStorage: null,
     lastCompleted: '',
     locationPurchased: '',
     mediaType: 0,
