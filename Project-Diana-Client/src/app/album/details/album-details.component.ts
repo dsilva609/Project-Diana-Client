@@ -12,6 +12,7 @@ import {
 import { AlbumQuery } from 'src/app/album/state/album.query';
 import { AlbumService } from 'src/app/album/state/album.service';
 import { getCompletionStatusDisplayName } from 'src/app/shared/item/item.model';
+import { UserQuery } from 'src/app/user/state/user.query';
 
 @UntilDestroy()
 @Component({
@@ -21,6 +22,7 @@ import { getCompletionStatusDisplayName } from 'src/app/shared/item/item.model';
 })
 export class AlbumDetailsComponent implements OnInit {
   album: Album;
+  albumId = '';
   isIncrementPlayCountLoading = false;
   isShowcaseUpdateLoading = false;
 
@@ -28,14 +30,15 @@ export class AlbumDetailsComponent implements OnInit {
     private albumQuery: AlbumQuery,
     private albumService: AlbumService,
     private route: ActivatedRoute,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private userQuery: UserQuery
   ) {}
 
   ngOnInit(): void {
-    const albumId = this.route.snapshot.paramMap.get('id');
+    this.albumId = this.route.snapshot.paramMap.get('id');
 
     this.albumService
-      .getAlbumById(albumId)
+      .getAlbumById(this.albumId)
       .pipe(untilDestroyed(this))
       .subscribe();
 
@@ -52,7 +55,7 @@ export class AlbumDetailsComponent implements OnInit {
     this.isShowcaseUpdateLoading = true;
 
     this.albumService
-      .addToShowcase(this.album.id.toString())
+      .addToShowcase(this.albumId.toString())
       .pipe(
         tap((successful) => {
           if (successful) {
@@ -88,12 +91,11 @@ export class AlbumDetailsComponent implements OnInit {
     this.isIncrementPlayCountLoading = true;
 
     this.albumService
-      .incrementPlayCount(this.album.id.toString(), this.album.timesCompleted)
+      .incrementPlayCount(this.albumId.toString(), this.album.timesCompleted)
       .pipe(
         tap((successful) => {
           if (successful) {
             this.album.timesCompleted++;
-
             this.toastrService.success('Album play count updated');
           }
 
@@ -104,11 +106,17 @@ export class AlbumDetailsComponent implements OnInit {
       .subscribe();
   }
 
+  isViewable(): boolean {
+    return (
+      this.albumQuery.getValue().userId === String(this.userQuery.getValue().id)
+    );
+  }
+
   removeFromShowcase(): void {
     this.isShowcaseUpdateLoading = true;
 
     this.albumService
-      .removeFromShowcase(this.album.id.toString())
+      .removeFromShowcase(this.albumId.toString())
       .pipe(
         tap((successful) => {
           if (successful) {

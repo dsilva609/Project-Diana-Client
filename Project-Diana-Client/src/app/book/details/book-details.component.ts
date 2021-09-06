@@ -7,6 +7,7 @@ import { Book, getBookMediaTypeDisplayName } from 'src/app/book/book.model';
 import { BookQuery } from 'src/app/book/details/state/book.query';
 import { BookService } from 'src/app/book/details/state/book.service';
 import { getCompletionStatusDisplayName } from 'src/app/shared/item/item.model';
+import { UserQuery } from 'src/app/user/state/user.query';
 
 @UntilDestroy()
 @Component({
@@ -16,6 +17,7 @@ import { getCompletionStatusDisplayName } from 'src/app/shared/item/item.model';
 })
 export class BookDetailsComponent implements OnInit {
   book: Book;
+  bookId = '';
   isBookShowcaseUpdateLoading = false;
   isIncrementReadCountLoading = false;
 
@@ -23,13 +25,17 @@ export class BookDetailsComponent implements OnInit {
     private bookQuery: BookQuery,
     private bookService: BookService,
     private route: ActivatedRoute,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private userQuery: UserQuery
   ) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
+    this.bookId = this.route.snapshot.paramMap.get('id');
 
-    this.bookService.getBookById(id).pipe(untilDestroyed(this)).subscribe();
+    this.bookService
+      .getBookById(this.bookId)
+      .pipe(untilDestroyed(this))
+      .subscribe();
 
     this.bookQuery
       .select()
@@ -44,7 +50,7 @@ export class BookDetailsComponent implements OnInit {
     this.isBookShowcaseUpdateLoading = true;
 
     this.bookService
-      .addToShowcase(this.book.id.toString())
+      .addToShowcase(this.bookId)
       .pipe(
         tap((successful) => {
           if (successful) {
@@ -70,12 +76,11 @@ export class BookDetailsComponent implements OnInit {
     this.isIncrementReadCountLoading = true;
 
     this.bookService
-      .incrementReadCount(this.book.id.toString(), this.book.timesCompleted)
+      .incrementReadCount(this.bookId.toString(), this.book.timesCompleted)
       .pipe(
         tap((successful) => {
           if (successful) {
             this.book.timesCompleted++;
-
             this.toastrService.success('Book read count updated');
           }
 
@@ -86,11 +91,17 @@ export class BookDetailsComponent implements OnInit {
       .subscribe();
   }
 
+  isViewable(): boolean {
+    return (
+      this.bookQuery.getValue().userId === String(this.userQuery.getValue().id)
+    );
+  }
+
   removeFromShowcase(): void {
     this.isBookShowcaseUpdateLoading = true;
 
     this.bookService
-      .removeFromShowcase(this.book.id.toString())
+      .removeFromShowcase(this.bookId)
       .pipe(
         tap((successful) => {
           if (successful) {
