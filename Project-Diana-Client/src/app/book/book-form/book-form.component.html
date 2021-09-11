@@ -119,7 +119,7 @@
               />
               <label for="isReissue" class="form-check-label">Reissue</label>
             </div>
-            <div>
+            <div *ngIf="showReissueYear">
               <select
                 formControlName="reissueYear"
                 id="reissueYear"

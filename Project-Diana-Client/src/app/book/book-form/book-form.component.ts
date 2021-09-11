@@ -1,12 +1,15 @@
 import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { tap } from 'rxjs/operators';
 import { BOOK_MEDIA_TYPES } from 'src/app/book/book.model';
 import {
   getReleaseYears,
   ITEM_COMPLETION_STATUSES,
 } from 'src/app/shared/item/item.model';
 
+@UntilDestroy()
 @Component({
   selector: 'app-book-form',
   templateUrl: './book-form.component.html',
@@ -19,6 +22,7 @@ export class BookFormComponent implements OnInit {
   releaseYears = getReleaseYears();
   currentDate = new Date().toUTCString();
   datePipe: DatePipe;
+  showReissueYear: false;
 
   @Input() completionStatus: number;
   @Input() media: number;
@@ -62,5 +66,14 @@ export class BookFormComponent implements OnInit {
       type: 0,
       yearReleased: new Date(this.currentDate).getFullYear(),
     });
+
+    this.bookForm.valueChanges
+      .pipe(
+        tap((data) => {
+          this.showReissueYear = data.isReissue;
+        }),
+        untilDestroyed(this)
+      )
+      .subscribe();
   }
 }

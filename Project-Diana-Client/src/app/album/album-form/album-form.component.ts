@@ -1,6 +1,8 @@
 import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { tap } from 'rxjs/operators';
 import {
   MEDIA_TYPES,
   VINYL_SIZES,
@@ -11,6 +13,7 @@ import {
   ITEM_COMPLETION_STATUSES,
 } from 'src/app/shared/item/item.model';
 
+@UntilDestroy()
 @Component({
   selector: 'app-album-form',
   templateUrl: './album-form.component.html',
@@ -25,6 +28,7 @@ export class AlbumFormComponent implements OnInit {
   vinylSpeeds = VINYL_SPEEDS;
   currentDate = new Date().toUTCString();
   datePipe: DatePipe;
+  showReissueYear = false;
 
   @Input() completionStatus: number;
   @Input() media: number;
@@ -68,5 +72,14 @@ export class AlbumFormComponent implements OnInit {
       title: '',
       yearReleased: new Date(this.currentDate).getFullYear(),
     });
+
+    this.albumForm.valueChanges
+      .pipe(
+        tap((data) => {
+          this.showReissueYear = data.isReissue;
+        }),
+        untilDestroyed(this)
+      )
+      .subscribe();
   }
 }
