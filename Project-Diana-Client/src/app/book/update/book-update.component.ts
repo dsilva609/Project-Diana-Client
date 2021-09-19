@@ -65,7 +65,10 @@ export class BookUpdateComponent implements OnInit, AfterViewInit {
             checkout: {
               checkedOutOn: book.checkout.checkedOutOn,
               checkoutReason: book.checkout.checkoutReason,
-              expectedReturnOn: book.checkout.expectedReturnOn,
+              expectedReturnOn: this.datePipe.transform(
+                book.checkout.expectedReturnOn,
+                'yyyy-MM-dd'
+              ),
               isCheckedOut: book.checkout.isCheckedOut,
             },
             completionStatus: book.completionStatus,

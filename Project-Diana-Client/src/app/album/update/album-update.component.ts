@@ -65,7 +65,10 @@ export class AlbumUpdateComponent implements OnInit, AfterViewInit {
             checkout: {
               checkedOutOn: album.checkout.checkedOutOn,
               checkoutReason: album.checkout.checkoutReason,
-              expectedReturnOn: album.checkout.expectedReturnOn,
+              expectedReturnOn: this.datePipe.transform(
+                album.checkout.expectedReturnOn,
+                'yyyy-MM-dd'
+              ),
               isCheckedOut: album.checkout.isCheckedOut,
             },
             completionStatus: album.completionStatus,
