@@ -40,7 +40,7 @@ export class AlbumFormComponent implements OnInit {
       checkout: this.formBuilder.group({
         checkedOutOn: '',
         checkoutReason: '',
-        expectedReturnOn: '',
+        expectedReturnOn: null,
         isCheckedOut: false,
       }),
       completionStatus: 0,
