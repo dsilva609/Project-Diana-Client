@@ -1,9 +1,11 @@
+import { Checkout } from 'src/app/checkout/checkout.model';
 import { ItemStorage } from 'src/app/item-storage/item-storage.model';
 
 export interface Album {
   id: number;
   artist: string;
   category: string;
+  checkout: Checkout;
   completionStatus: number;
   countryOfOrigin: string;
   countryPurchased: string;

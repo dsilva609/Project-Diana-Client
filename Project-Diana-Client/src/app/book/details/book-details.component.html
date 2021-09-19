@@ -157,6 +157,35 @@
     </div>
   </div>
 
+  <div *ngIf="isViewable()" class="card mt-4">
+    <h3 class="card-header">Checkout Information</h3>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-4">
+          <div>Checked Out: {{ book.checkout.isCheckedOut | yesNo }}</div>
+        </div>
+        <div class="col-sm-4">
+          <div>
+            Checked Out On:
+            {{ book.checkout.checkedOutOn | date | noDate }}
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div>
+            Checkout Reason:
+            {{ book.checkout.checkoutReaason || "N/A" }}
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div>
+            Expected Return On:
+            {{ book.checkout.expectedReturnOn | date | noDate }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="card mt-4">
     <h3 class="card-header">Purchase Information</h3>
     <div class="card-body">

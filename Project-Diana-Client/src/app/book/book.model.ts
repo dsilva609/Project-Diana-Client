@@ -1,9 +1,11 @@
+import { Checkout } from 'src/app/checkout/checkout.model';
 import { ItemStorage } from 'src/app/item-storage/item-storage.model';
 
 export interface Book {
   id: number;
   author: string;
   category: string;
+  checkout: Checkout;
   completionStatus: number;
   countryOfOrigin: string;
   countryPurchased: string;

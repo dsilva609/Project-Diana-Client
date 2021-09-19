@@ -8,7 +8,8 @@ export class NoDatePipe implements PipeTransform {
     return value === '1900-01-01T00:00:00' ||
       value === '0001-01-01T00:00:00' ||
       value === 'Jan 1, 1900' ||
-      value === 'Jan 1, 1'
+      value === 'Jan 1, 1' ||
+      value === null
       ? 'N/A'
       : value;
   }
