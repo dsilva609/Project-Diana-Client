@@ -62,6 +62,12 @@ export class BookUpdateComponent implements OnInit, AfterViewInit {
           this.bookForm.bookForm.patchValue({
             author: book.author,
             category: book.category,
+            checkout: {
+              checkedOutOn: book.checkout.checkedOutOn,
+              checkoutReason: book.checkout.checkoutReason,
+              expectedReturnOn: book.checkout.expectedReturnOn,
+              isCheckedOut: book.checkout.isCheckedOut,
+            },
             completionStatus: book.completionStatus,
             countryOfOrigin: book.countryOfOrigin,
             countryPurchased: book.countryPurchased,

@@ -3,15 +3,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { tap } from 'rxjs/operators';
-import {
-  MEDIA_TYPES,
-  VINYL_SIZES,
-  VINYL_SPEEDS,
-} from 'src/app/album/album.model';
-import {
-  getReleaseYears,
-  ITEM_COMPLETION_STATUSES,
-} from 'src/app/shared/item/item.model';
+import { MEDIA_TYPES, VINYL_SIZES, VINYL_SPEEDS } from 'src/app/album/album.model';
+import { getReleaseYears, ITEM_COMPLETION_STATUSES } from 'src/app/shared/item/item.model';
 
 @UntilDestroy()
 @Component({
@@ -44,6 +37,12 @@ export class AlbumFormComponent implements OnInit {
     this.albumForm = this.formBuilder.group({
       artist: '',
       category: '',
+      checkout: this.formBuilder.group({
+        checkedOutOn: '',
+        checkoutReason: '',
+        expectedReturnOn: '',
+        isCheckedOut: false,
+      }),
       completionStatus: 0,
       countryOfOrigin: '',
       countryPurchased: '',

@@ -4,10 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { tap } from 'rxjs/operators';
 import { BOOK_MEDIA_TYPES } from 'src/app/book/book.model';
-import {
-  getReleaseYears,
-  ITEM_COMPLETION_STATUSES,
-} from 'src/app/shared/item/item.model';
+import { getReleaseYears, ITEM_COMPLETION_STATUSES } from 'src/app/shared/item/item.model';
 
 @UntilDestroy()
 @Component({
@@ -36,6 +33,12 @@ export class BookFormComponent implements OnInit {
     this.bookForm = this.formBuilder.group({
       author: '',
       category: '',
+      checkout: this.formBuilder.group({
+        checkedOutOn: '',
+        checkoutReason: '',
+        expectedReturnOn: '',
+        isCheckedOut: false,
+      }),
       completionStatus: 0,
       countryOfOrigin: '',
       countryPurchased: '',

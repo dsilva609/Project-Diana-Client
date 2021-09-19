@@ -257,6 +257,36 @@
         </div>
       </div>
     </div>
+    <div class="card mb-4" formGroupName="checkout">
+      <h3 class="card-header">Checkout</h3>
+      <div class="card-body">
+        <div class="form-check mb-2">
+          <input
+            type="checkbox"
+            class="form-check-input mb-2"
+            id="isCheckedOut"
+            formControlName="isCheckedOut"
+          />
+          <label for="isCheckedOut" class="form-check-label">Checked Out</label>
+        </div>
+        <div class="d-flex flex-column flex-sm-row">
+          <input
+            type="text"
+            class="form-control mb-2"
+            formControlName="checkoutReason"
+            placeholder="Checkout Reason"
+          />
+        </div>
+        <div class="d-flex flex-column flex-sm-row">
+          <input
+            type="date"
+            class="form-control mb-2"
+            formControlName="expectedReturnOn"
+            placeholder="Expected Return On"
+          />
+        </div>
+      </div>
+    </div>
     <div class="card mb-4">
       <h3 class="card-header">Purchase</h3>
       <div class="card-body">

@@ -62,6 +62,12 @@ export class AlbumUpdateComponent implements OnInit, AfterViewInit {
           this.albumForm.albumForm.patchValue({
             artist: album.artist,
             category: album.category,
+            checkout: {
+              checkedOutOn: album.checkout.checkedOutOn,
+              checkoutReason: album.checkout.checkoutReason,
+              expectedReturnOn: album.checkout.expectedReturnOn,
+              isCheckedOut: album.checkout.isCheckedOut,
+            },
             completionStatus: album.completionStatus,
             countryOfOrigin: album.countryOfOrigin,
             countryPurchased: album.countryPurchased,
