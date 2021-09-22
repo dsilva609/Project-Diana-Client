@@ -16,7 +16,7 @@ import { UserService } from 'src/app/user/state/user.service';
 })
 export class NavComponent implements OnInit {
   displayName: string;
-  userNum: string;
+  userId: string;
   isCollapsed: boolean;
 
   constructor(
@@ -35,7 +35,7 @@ export class NavComponent implements OnInit {
       .pipe(
         tap((user) => {
           this.displayName = user.displayName;
-          this.userNum = user?.userNum?.toString() ?? '';
+          this.userId = user?.id?.toString() ?? '';
         }),
         untilDestroyed(this)
       )
