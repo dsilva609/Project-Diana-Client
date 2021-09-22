@@ -21,7 +21,7 @@ import { WishFormComponent } from 'src/app/wish/wish-form/wish-form.component';
 export class WishComponent implements OnInit, AfterViewInit {
   itemTypes = ITEM_TYPES;
   wish: Observable<Wish>;
-  wishId: number;
+  wishId: string;
   wishUpdateForm: FormGroup;
 
   @ViewChild('wishForm') wishForm: WishFormComponent;
@@ -36,7 +36,7 @@ export class WishComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    this.wishId = Number(this.route.snapshot.paramMap.get('id'));
+    this.wishId = this.route.snapshot.paramMap.get('id');
 
     this.wishService
       .getWishById(this.wishId)

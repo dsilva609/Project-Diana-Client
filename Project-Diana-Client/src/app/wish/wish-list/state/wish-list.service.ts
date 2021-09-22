@@ -9,8 +9,8 @@ import { WishListStore } from 'src/app/wish/wish-list/state/wish-list.store';
 export class WishListService {
   constructor(private wishListStore: WishListStore, private http: HttpClient) {}
 
-  deleteWishById(wishId: number): Observable<boolean> {
-    if (wishId === 0) {
+  deleteWishById(wishId: string): Observable<boolean> {
+    if (!wishId) {
       return;
     }
 
@@ -26,7 +26,7 @@ export class WishListService {
     );
   }
 
-  removeAlbumWish(category: string, id: number): void {
+  removeAlbumWish(category: string, id: string): void {
     const albumWishes = this.wishListStore.getValue().albumWishes;
     const albumWishCategoryIndex = albumWishes.findIndex(
       (list) => list.category === category
@@ -50,7 +50,7 @@ export class WishListService {
     this.wishListStore.update(wishes);
   }
 
-  removeBookWish(category: string, id: number): void {
+  removeBookWish(category: string, id: string): void {
     const bookWishes = this.wishListStore.getValue().bookWishes;
     const bookWishCategoryIndex = bookWishes.findIndex(
       (list) => list.category === category

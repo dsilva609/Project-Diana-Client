@@ -1,5 +1,5 @@
 export interface Wish {
-  id: number | string;
+  id: string;
   apiId: string;
   category: string;
   dateAdded: Date;

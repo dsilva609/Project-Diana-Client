@@ -3,7 +3,7 @@ import { EntityState, EntityStore, StoreConfig } from '@datorama/akita';
 import { createWish, Wish } from 'src/app/wish/state/wish.model';
 
 export interface WishState extends EntityState<Wish> {
-  id: number | string;
+  id: string;
   apiId: string;
   category: string;
   dateAdded: Date;

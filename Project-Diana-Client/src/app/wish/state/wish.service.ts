@@ -9,7 +9,7 @@ import { WishStore } from 'src/app/wish/state/wish.store';
 export class WishService {
   constructor(protected wishStore: WishStore, private http: HttpClient) {}
 
-  getWishById(wishId: number): Observable<Wish> {
+  getWishById(wishId: string): Observable<Wish> {
     return this.http.get<Wish>(`Wish/GetWish?id=${wishId}`).pipe(
       tap((wish) => {
         this.wishStore.update(wish);
@@ -19,11 +19,11 @@ export class WishService {
     );
   }
 
-  resetActiveWish(id: number): void {
+  resetActiveWish(id: string): void {
     this.wishStore.setActive(null);
   }
 
-  setActiveWish(id: number): void {
+  setActiveWish(id: string): void {
     this.wishStore.setActive(id);
   }
 
