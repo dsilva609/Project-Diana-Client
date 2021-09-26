@@ -108,7 +108,8 @@ export class AlbumDetailsComponent implements OnInit {
 
   isViewable(): boolean {
     return (
-      this.albumQuery.getValue().userId === String(this.userQuery.getValue().id)
+      this.userQuery.getValue()?.id &&
+      this.albumQuery.getValue().userId === this.userQuery.getValue().id
     );
   }
 

@@ -93,6 +93,7 @@ export class BookDetailsComponent implements OnInit {
 
   isViewable(): boolean {
     return (
+      this.userQuery.getValue()?.id &&
       this.bookQuery.getValue().userId === String(this.userQuery.getValue().id)
     );
   }
