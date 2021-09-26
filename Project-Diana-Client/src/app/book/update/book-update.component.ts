@@ -110,7 +110,7 @@ export class BookUpdateComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit(bookFormData): void {
-    bookFormData.bookData.bookId = Number(this.bookId);
+    bookFormData.bookData.bookId = this.bookId;
 
     this.bookService
       .updateBook(bookFormData.bookData)

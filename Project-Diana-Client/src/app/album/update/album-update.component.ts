@@ -106,7 +106,7 @@ export class AlbumUpdateComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit(albumFormData): void {
-    albumFormData.albumData.albumId = Number(this.albumId);
+    albumFormData.albumData.albumId = this.albumId;
 
     this.albumService
       .updateAlbum(albumFormData.albumData)

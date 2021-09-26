@@ -2,7 +2,7 @@ import { Checkout } from 'src/app/checkout/checkout.model';
 import { ItemStorage } from 'src/app/item-storage/item-storage.model';
 
 export interface Album {
-  id: number;
+  id: string;
   artist: string;
   category: string;
   checkout: Checkout;
@@ -38,7 +38,7 @@ export interface Album {
 
 export function createAlbum(): Album {
   return {
-    id: 0,
+    id: '',
     artist: '',
     category: '',
     completionStatus: 0,

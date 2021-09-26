@@ -2,7 +2,7 @@ import { Checkout } from 'src/app/checkout/checkout.model';
 import { ItemStorage } from 'src/app/item-storage/item-storage.model';
 
 export interface Book {
-  id: number;
+  id: string;
   author: string;
   category: string;
   checkout: Checkout;
@@ -39,7 +39,7 @@ export interface Book {
 
 export function createBook(): Book {
   return {
-    id: 0,
+    id: '',
     author: '',
     category: '',
     completionStatus: 0,

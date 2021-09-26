@@ -10,7 +10,6 @@ import { environment } from 'src/environments/environment';
 
 import { LoginResponse } from './user.model';
 
-
 @Injectable({ providedIn: 'root' })
 export class UserService {
   constructor(
@@ -27,7 +26,6 @@ export class UserService {
           displayName: loginResponse.displayName,
           refreshToken: loginResponse.refreshToken,
           token: loginResponse.token,
-          userNum: loginResponse.userNum,
         };
 
         this.userStore.update(user);
@@ -58,7 +56,6 @@ export class UserService {
             displayName: response.displayName,
             refreshToken: response.refreshToken,
             token: response.token,
-            userNum: response.userNum,
           };
 
           this.userStore.update(user);

@@ -17,7 +17,6 @@ import { UserQuery } from 'src/app/user/state/user.query';
 })
 export class ShowcaseListComponent implements OnInit {
   showcase = of<ShowcaseListResponse>();
-  userNum: string;
 
   constructor(
     private showcaseListQuery: ShowcaseListQuery,
@@ -34,8 +33,6 @@ export class ShowcaseListComponent implements OnInit {
       .pipe(untilDestroyed(this))
       .subscribe();
     this.showcase = this.showcaseListQuery.select().pipe(untilDestroyed(this));
-
-    this.userNum = this.userQuery.getValue().userNum.toString();
   }
 
   clearAlbumShowcase(): void {
