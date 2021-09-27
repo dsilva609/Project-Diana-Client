@@ -15,8 +15,8 @@ export class BookService {
         const updatedTime = new Date().toUTCString();
 
         this.bookStore.update({
-          dateUpdated: updatedTime,
           isShowcased: true,
+          updatedOn: updatedTime,
         });
 
         return true;
@@ -36,9 +36,9 @@ export class BookService {
         const updatedTime = new Date().toUTCString();
 
         this.bookStore.update({
-          dateUpdated: updatedTime,
-          lastCompleted: updatedTime,
+          lastCompletedOn: updatedTime,
           timesCompleted: readCount,
+          updatedOn: updatedTime,
         });
 
         return true;
@@ -52,8 +52,8 @@ export class BookService {
         const updatedTime = new Date().toUTCString();
 
         this.bookStore.update({
-          dateUpdated: updatedTime,
           isShowcased: false,
+          updatedOn: updatedTime,
         });
 
         return true;

@@ -5,9 +5,9 @@ export interface Wish {
   dateAdded: Date;
   dateModified: Date;
   imageUrl: string;
+  isOwned: boolean;
   itemType: number;
   notes: string;
-  owned: boolean;
   title: string;
 }
 
@@ -19,9 +19,9 @@ export function createWish(): Wish {
     dateAdded: null,
     dateModified: null,
     imageUrl: '',
+    isOwned: false,
     itemType: 0,
     notes: '',
-    owned: false,
     title: '',
   } as Wish;
 }

@@ -46,7 +46,6 @@ export class AlbumFormComponent implements OnInit {
       completionStatus: 0,
       countryOfOrigin: '',
       countryPurchased: '',
-      datePurchased: this.datePipe.transform(this.currentDate, 'yyyy-MM-dd'),
       discogsId: 0,
       genre: '',
       hasDigitalDownload: false,
@@ -63,13 +62,14 @@ export class AlbumFormComponent implements OnInit {
       mediaType: 0,
       notes: '',
       playCount: 0,
+      purchasedOn: this.datePipe.transform(this.currentDate, 'yyyy-MM-dd'),
       recordLabel: '',
       reissueYear: null,
       size: 0,
       speed: 0,
       style: '',
       title: '',
-      yearReleased: new Date(this.currentDate).getFullYear(),
+      yearReleasedOn: new Date(this.currentDate).getFullYear(),
     });
 
     this.albumForm.valueChanges

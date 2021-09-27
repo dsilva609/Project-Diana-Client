@@ -3,15 +3,13 @@ import { ItemStorage } from 'src/app/item-storage/item-storage.model';
 
 export interface Album {
   id: string;
+  addedOn: string;
   artist: string;
   category: string;
   checkout: Checkout;
   completionStatus: number;
   countryOfOrigin: string;
   countryPurchased: string;
-  dateAdded: string;
-  datePurchased: string;
-  dateUpdated: string;
   discogsId: number;
   genre: string;
   hasDigitalDownload: boolean;
@@ -21,10 +19,11 @@ export interface Album {
   isReissue: boolean;
   isShowcased: boolean;
   itemStorage: ItemStorage;
-  lastCompleted: string;
+  lastCompletedOn: string;
   locationPurchased: string;
   mediaType: number;
   notes: string;
+  purchasedOn: string;
   recordLabel: string;
   reissueYear: number;
   size: number;
@@ -32,21 +31,20 @@ export interface Album {
   style: string;
   timesCompleted: number;
   title: string;
+  updatedOn: string;
   userId: string;
-  yearReleased: number;
+  yearReleasedOn: number;
 }
 
 export function createAlbum(): Album {
   return {
     id: '',
+    addedOn: '',
     artist: '',
     category: '',
     completionStatus: 0,
     countryOfOrigin: '',
     countryPurchased: '',
-    dateAdded: '',
-    datePurchased: '',
-    dateUpdated: '',
     discogsId: 0,
     genre: '',
     hasDigitalDownload: false,
@@ -56,10 +54,11 @@ export function createAlbum(): Album {
     isReissue: false,
     isShowcased: false,
     itemStorage: null,
-    lastCompleted: '',
+    lastCompletedOn: '',
     locationPurchased: '',
     mediaType: 0,
     notes: '',
+    purchasedOn: '',
     recordLabel: '',
     reissueYear: 0,
     size: 0,
@@ -67,8 +66,9 @@ export function createAlbum(): Album {
     style: '',
     timesCompleted: 0,
     title: '',
+    updatedOn: '',
     userId: '',
-    yearReleased: 0,
+    yearReleasedOn: 0,
   } as Album;
 }
 

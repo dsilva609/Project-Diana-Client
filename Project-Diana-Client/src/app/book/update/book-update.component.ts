@@ -54,11 +54,6 @@ export class BookUpdateComponent implements OnInit, AfterViewInit {
     this.book
       .pipe(
         tap((book) => {
-          const date = this.datePipe.transform(
-            book.datePurchased,
-            'yyyy-MM-dd'
-          );
-
           this.bookForm.bookForm.patchValue({
             author: book.author,
             category: book.category,
@@ -74,10 +69,6 @@ export class BookUpdateComponent implements OnInit, AfterViewInit {
             completionStatus: book.completionStatus,
             countryOfOrigin: book.countryOfOrigin,
             countryPurchased: book.countryPurchased,
-            datePurchased: this.datePipe.transform(
-              book.datePurchased,
-              'yyyy-MM-dd'
-            ),
             genre: book.genre,
             imageUrl: book.imageUrl,
             isbn10: book.isbn10,
@@ -97,11 +88,15 @@ export class BookUpdateComponent implements OnInit, AfterViewInit {
             notes: book.notes,
             pageCount: book.pageCount,
             publisher: book.publisher,
+            purchasedOn: this.datePipe.transform(
+              book.purchasedOn,
+              'yyyy-MM-dd'
+            ),
             readCount: book.timesCompleted,
             reissueYear: book.reissueYear,
             title: book.title,
             type: book.type,
-            yearReleased: book.yearReleased,
+            yearReleasedOn: book.yearReleasedOn,
           });
         }),
         untilDestroyed(this)

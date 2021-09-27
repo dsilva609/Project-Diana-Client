@@ -15,8 +15,8 @@ export class AlbumService {
         const updatedTime = new Date().toUTCString();
 
         this.albumStore.update({
-          dateUpdated: updatedTime,
           isShowcased: true,
+          updatedOn: updatedTime,
         });
 
         return true;
@@ -36,9 +36,9 @@ export class AlbumService {
         const updatedTime = new Date().toUTCString();
 
         this.albumStore.update({
-          dateUpdated: updatedTime,
-          lastCompleted: updatedTime,
+          lastCompletedOn: updatedTime,
           timesCompleted: playCount,
+          updatedOn: updatedTime,
         });
 
         return true;
@@ -52,8 +52,8 @@ export class AlbumService {
         const updatedTime = new Date().toUTCString();
 
         this.albumStore.update({
-          dateUpdated: updatedTime,
           isShowcased: false,
+          updatedOn: updatedTime,
         });
 
         return true;

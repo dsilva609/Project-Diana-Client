@@ -42,7 +42,6 @@ export class BookFormComponent implements OnInit {
       completionStatus: 0,
       countryOfOrigin: '',
       countryPurchased: '',
-      datePurchased: this.datePipe.transform(this.currentDate, 'yyyy-MM-dd'),
       genre: '',
       imageUrl: '',
       isbn10: '',
@@ -63,11 +62,12 @@ export class BookFormComponent implements OnInit {
       notes: '',
       pageCount: 0,
       publisher: '',
+      purchasedOn: this.datePipe.transform(this.currentDate, 'yyyy-MM-dd'),
       readCount: 0,
       reissueYear: null,
       title: '',
       type: 0,
-      yearReleased: new Date(this.currentDate).getFullYear(),
+      yearReleasedOn: new Date(this.currentDate).getFullYear(),
     });
 
     this.bookForm.valueChanges

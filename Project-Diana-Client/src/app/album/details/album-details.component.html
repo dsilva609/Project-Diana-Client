@@ -7,7 +7,7 @@
     "
   >
     <h2 class="text-center text-md-left">
-      {{ album.title }} By {{ album.artist }} ({{ album.yearReleased }})
+      {{ album.title }} By {{ album.artist }} ({{ album.yearReleasedOn }})
     </h2>
 
     <div class="d-flex justify-content-center justify-content-sm-end mb-4">
@@ -131,9 +131,9 @@
           <div>Play Count: {{ album.timesCompleted }}</div>
         </div>
         <div class="col-sm-4">
-          <div>Date Added: {{ album.dateAdded | date | noDate }}</div>
-          <div>Last Played: {{ album.lastCompleted | date | noDate }}</div>
-          <div>Last Updated: {{ album.dateUpdated | date | noDate }}</div>
+          <div>Date Added: {{ album.addedOn | noDate }}</div>
+          <div>Last Played: {{ album.lastCompletedOn | noDate }}</div>
+          <div>Last Updated: {{ album.updatedOn | noDate }}</div>
         </div>
       </div>
     </div>
@@ -181,7 +181,7 @@
         <div class="col-sm-4">
           <div>
             Expected Return On:
-            {{ album.checkout.expectedReturnOn | date | noDate }}
+            {{ album.checkout.expectedReturnOn | noDate }}
           </div>
         </div>
       </div>
@@ -191,7 +191,7 @@
   <div class="card mt-4">
     <h3 class="card-header">Purchase Information</h3>
     <div class="card-body">
-      <div>Date Purchased: {{ album.datePurchased | date | noDate }}</div>
+      <div>Date Purchased: {{ album.purchasedOn | noDate }}</div>
       <div>Location Purchased: {{ album.locationPurchased || "N/A" }}</div>
       <div>Country Purchaed: {{ album.countryPurchased || "N/A" }}</div>
       <div>New Purchase: {{ album.isNew | yesNo }}</div>

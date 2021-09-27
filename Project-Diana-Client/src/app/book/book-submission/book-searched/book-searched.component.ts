@@ -62,7 +62,7 @@ export class BookSearchedComponent implements OnInit, AfterViewInit {
             pageCount: book.pageCount,
             publisher: book.publisher,
             title: book.title,
-            yearReleased: book.yearReleased,
+            yearReleasedOn: book.yearReleasedOn,
           });
         }),
         untilDestroyed(this)

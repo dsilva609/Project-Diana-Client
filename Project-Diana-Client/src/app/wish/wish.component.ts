@@ -60,9 +60,9 @@ export class WishComponent implements OnInit, AfterViewInit {
             apiId: wish.apiId,
             category: wish.category,
             imageUrl: wish.imageUrl,
+            isOwned: wish.isOwned,
             itemType: wish.itemType,
             notes: wish.notes,
-            owned: wish.owned,
             title: wish.title,
             wishId: 0,
           })

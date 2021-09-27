@@ -7,7 +7,7 @@
     "
   >
     <h2 class="text-center text-md-left">
-      {{ book.title }} By {{ book.author }} ({{ book.yearReleased }})
+      {{ book.title }} By {{ book.author }} ({{ book.yearReleasedOn }})
     </h2>
 
     <div class="d-flex justify-content-center justify-content-sm-end mb-4">
@@ -129,9 +129,9 @@
           <div>Times Read: {{ book.timesCompleted }}</div>
         </div>
         <div class="col-sm-4">
-          <div>Date Added: {{ book.dateAdded | date | noDate }}</div>
-          <div>Last Read: {{ book.lastCompleted | date | noDate }}</div>
-          <div>Last Updated: {{ book.dateUpdated | date | noDate }}</div>
+          <div>Date Added: {{ book.addedOn | noDate }}</div>
+          <div>Last Read: {{ book.lastCompletedOn | noDate }}</div>
+          <div>Last Updated: {{ book.updatedOn | noDate }}</div>
         </div>
       </div>
     </div>
@@ -167,7 +167,7 @@
         <div class="col-sm-4">
           <div>
             Checked Out On:
-            {{ book.checkout.checkedOutOn | date | noDate }}
+            {{ book.checkout.checkedOutOn | noDate }}
           </div>
         </div>
         <div class="col-sm-4">
@@ -179,7 +179,7 @@
         <div class="col-sm-4">
           <div>
             Expected Return On:
-            {{ book.checkout.expectedReturnOn | date | noDate }}
+            {{ book.checkout.expectedReturnOn | noDate }}
           </div>
         </div>
       </div>
@@ -189,7 +189,7 @@
   <div class="card mt-4">
     <h3 class="card-header">Purchase Information</h3>
     <div class="card-body">
-      <div>Date Purchased: {{ book.datePurchased | date | noDate }}</div>
+      <div>Date Purchased: {{ book.purchasedOn | noDate }}</div>
       <div>Location Purchased: {{ book.locationPurchased || "N/A" }}</div>
       <div>Country Purchaed: {{ book.countryPurchased || "N/A" }}</div>
       <div>New Purchase: {{ book.isNew | yesNo }}</div>

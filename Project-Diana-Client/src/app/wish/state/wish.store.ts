@@ -9,9 +9,9 @@ export interface WishState extends EntityState<Wish> {
   dateAdded: Date;
   dateModified: Date;
   imageUrl: string;
+  isOwned: boolean;
   itemType: number;
   notes: string;
-  owned: boolean;
   title: string;
 }
 

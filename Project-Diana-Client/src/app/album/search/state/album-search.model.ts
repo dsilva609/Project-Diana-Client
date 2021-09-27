@@ -9,7 +9,7 @@ export interface AlbumSearchResult {
   style: string;
   thumbnail: string;
   title: string;
-  yearReleased: number;
+  yearReleasedOn: number;
 }
 
 export function createAlbumSearchResult(): AlbumSearchResult {
@@ -24,6 +24,6 @@ export function createAlbumSearchResult(): AlbumSearchResult {
     style: '',
     thumbnail: '',
     title: '',
-    yearReleased: 0,
+    yearReleasedOn: 0,
   } as AlbumSearchResult;
 }

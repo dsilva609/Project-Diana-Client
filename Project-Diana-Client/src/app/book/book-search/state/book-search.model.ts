@@ -11,7 +11,7 @@ export interface BookSearchResult {
   pageCount: number;
   publisher: string;
   title: string;
-  yearReleased: number;
+  yearReleasedOn: number;
 }
 
 export function createBookSearchResult(): BookSearchResult {
@@ -28,6 +28,6 @@ export function createBookSearchResult(): BookSearchResult {
     pageCount: 0,
     publisher: '',
     title: '',
-    yearReleased: 0,
+    yearReleasedOn: 0,
   } as BookSearchResult;
 }

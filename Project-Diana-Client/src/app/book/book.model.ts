@@ -3,15 +3,13 @@ import { ItemStorage } from 'src/app/item-storage/item-storage.model';
 
 export interface Book {
   id: string;
+  addedOn: string;
   author: string;
   category: string;
   checkout: Checkout;
   completionStatus: number;
   countryOfOrigin: string;
   countryPurchased: string;
-  dateAdded: string;
-  datePurchased: string;
-  dateUpdated: string;
   genre: string;
   hardcover: boolean;
   imageUrl: string;
@@ -24,30 +22,30 @@ export interface Book {
   isShowcased: boolean;
   itemStorage: ItemStorage;
   language: string;
-  lastCompleted: string;
+  lastCompletedOn: string;
   locationPurchased: string;
   notes: string;
   pageCount: number;
   publisher: string;
+  purchasedOn: string;
   reissueYear: number;
   timesCompleted: number;
   title: string;
   type: number;
+  updatedOn: string;
   userId: string;
-  yearReleased: number;
+  yearReleasedOn: number;
 }
 
 export function createBook(): Book {
   return {
     id: '',
+    addedOn: '',
     author: '',
     category: '',
     completionStatus: 0,
     countryOfOrigin: '',
     countryPurchased: '',
-    dateAdded: '',
-    datePurchased: '',
-    dateUpdated: '',
     genre: '',
     hardcover: false,
     imageUrl: '',
@@ -60,17 +58,19 @@ export function createBook(): Book {
     isShowcased: false,
     itemStorage: null,
     language: '',
-    lastCompleted: '',
+    lastCompletedOn: '',
     locationPurchased: '',
     notes: '',
     pageCount: 0,
     publisher: '',
+    purchasedOn: '',
     reissueYear: 0,
     timesCompleted: 0,
     title: '',
     type: 0,
+    updatedOn: '',
     userId: '',
-    yearReleased: 0,
+    yearReleasedOn: 0,
   } as Book;
 }
 

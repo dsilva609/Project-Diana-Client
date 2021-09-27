@@ -20,9 +20,9 @@ export class WishFormComponent implements OnInit {
       apiId: '',
       category: '',
       imageUrl: '',
+      isOwned: false,
       itemType: 0,
       notes: '',
-      owned: false,
       title: '',
       wishId: 0,
     });

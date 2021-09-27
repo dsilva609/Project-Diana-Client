@@ -54,10 +54,7 @@ export class AlbumUpdateComponent implements OnInit, AfterViewInit {
     this.album
       .pipe(
         tap((album) => {
-          const date = this.datePipe.transform(
-            album.datePurchased,
-            'yyyy-MM-dd'
-          );
+          const date = this.datePipe.transform(album.purchasedOn, 'yyyy-MM-dd');
 
           this.albumForm.albumForm.patchValue({
             artist: album.artist,
@@ -74,7 +71,6 @@ export class AlbumUpdateComponent implements OnInit, AfterViewInit {
             completionStatus: album.completionStatus,
             countryOfOrigin: album.countryOfOrigin,
             countryPurchased: album.countryPurchased,
-            datePurchased: date,
             discogsId: album.discogsId,
             genre: album.genre,
             hasDigitalDownload: album.hasDigitalDownload,
@@ -91,13 +87,14 @@ export class AlbumUpdateComponent implements OnInit, AfterViewInit {
             mediaType: album.mediaType,
             notes: album.notes,
             playCount: album.timesCompleted,
+            purchasedOn: date,
             recordLabel: album.recordLabel,
             reissueYear: album.reissueYear,
             size: album.size,
             speed: album.speed,
             style: album.style,
             title: album.title,
-            yearReleased: album.yearReleased,
+            yearReleasedOn: album.yearReleasedOn,
           });
         }),
         untilDestroyed(this)
