@@ -11,11 +11,11 @@ export interface Book {
   countryOfOrigin: string;
   countryPurchased: string;
   genre: string;
-  hardcover: boolean;
   imageUrl: string;
   isbn10: string;
   isbn13: string;
   isFirstEdition: boolean;
+  isHardcover: boolean;
   isNew: boolean;
   isPhysical: boolean;
   isReissue: boolean;
@@ -47,11 +47,11 @@ export function createBook(): Book {
     countryOfOrigin: '',
     countryPurchased: '',
     genre: '',
-    hardcover: false,
     imageUrl: '',
     isbn10: '',
     isbn13: '',
     isFirstEdition: false,
+    isHardcover: false,
     isNew: false,
     isPhysical: false,
     isReissue: false,

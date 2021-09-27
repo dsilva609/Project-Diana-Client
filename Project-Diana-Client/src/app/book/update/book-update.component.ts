@@ -74,7 +74,7 @@ export class BookUpdateComponent implements OnInit, AfterViewInit {
             isbn10: book.isbn10,
             isbn13: book.isbn13,
             isFirstEdition: book.isFirstEdition,
-            isHardCover: book.hardcover,
+            isHardcover: book.isHardcover,
             isNewPurchase: book.isNew,
             isPhysical: book.isPhysical,
             isReissue: book.isReissue,

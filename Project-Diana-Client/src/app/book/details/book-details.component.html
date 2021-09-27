@@ -100,7 +100,7 @@
         <h3 class="card-header">Media Information</h3>
         <div class="card-body">
           <div>Type: {{ getBookMediaTypeDisplayName(book.type) }}</div>
-          <div>Hardcover: {{ book.hardcover | yesNo }}</div>
+          <div>Hardcover: {{ book.isHardcover | yesNo }}</div>
           <div>Language: {{ book.language || "N/A" }}</div>
           <div>Country of Origin: {{ book.countryOfOrigin || "N/A" }}</div>
           <div>Physical: {{ book.isPhysical | yesNo }}</div>
