@@ -9,6 +9,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ToastrModule } from 'ngx-toastr';
 import { AlbumComponent } from 'src/app/album/album.component';
 import { BookComponent } from 'src/app/book/book.component';
+import { GameComponent } from 'src/app/game/game.component';
 import { AuthenticatedDirective } from 'src/app/shared/helpers/authenticated.directive';
 import { CanEditDirective } from 'src/app/shared/helpers/can-edit.directive';
 import { NgxSubscribeDirective } from 'src/app/shared/helpers/ngx-directive';
@@ -29,6 +30,7 @@ export const PIPES = [NoDatePipe, YesNoPipe];
 
 export const ALBUM_COMPONENTS = [AlbumComponent];
 export const BOOK_COMPONENTS = [BookComponent];
+export const GAME_COMPONENTS = [GameComponent];
 
 export const MISC_COMPONENTS = [LoadingIndicatorSmallComponent];
 
@@ -43,6 +45,7 @@ const UI_MODULES = [ClickOutsideModule, IconsModule, NgxPaginationModule];
     PIPES,
     ALBUM_COMPONENTS,
     BOOK_COMPONENTS,
+    GAME_COMPONENTS,
     MISC_COMPONENTS,
   ],
   exports: [
@@ -51,6 +54,7 @@ const UI_MODULES = [ClickOutsideModule, IconsModule, NgxPaginationModule];
 
     ALBUM_COMPONENTS,
     BOOK_COMPONENTS,
+    GAME_COMPONENTS,
     MISC_COMPONENTS,
 
     HTTP_MODULES,

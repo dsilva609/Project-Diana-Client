@@ -8,7 +8,7 @@ import { AlbumListStore } from 'src/app/album/album-list/state/album-list.store'
 @Injectable({ providedIn: 'root' })
 export class AlbumListService {
   constructor(
-    protected albumListStore: AlbumListStore,
+    private albumListStore: AlbumListStore,
     private http: HttpClient
   ) {}
 

@@ -1,8 +1,8 @@
 <h2>Latest Additions</h2>
 
-<h4>Albums</h4>
+<h4 *ngIf="latestAlbums">Albums</h4>
 
-<div class="d-flex flex-row flex-wrap align-items-center justify-content-start">
+<div *ngIf="latestAlbums" class="d-flex flex-row flex-wrap align-items-center justify-content-start">
   <app-album
     *ngFor="let album of latestAlbums"
     [album]="album"
@@ -10,12 +10,22 @@
   ></app-album>
 </div>
 
-<h4>Books</h4>
+<h4 *ngIf="latestBooks">Books</h4>
 
-<div class="d-flex flex-row flex-wrap align-items-center justify-content-start">
+<div *ngIf="latestBooks" class="d-flex flex-row flex-wrap align-items-center justify-content-start">
   <app-book
     *ngFor="let book of latestBooks"
     [book]="book"
     [routerLink]="['/book', book.id]"
   ></app-book>
+</div>
+
+<h4 *ngIf="latestGames">Games</h4>
+
+<div *ngIf="latestGames" class="d-flex flex-row flex-wrap align-items-center justify-content-start">
+  <app-game
+    *ngFor="let book of latestGames"
+    [game]="game"
+    [routerLink]="['/game', book.id]"
+  ></app-game>
 </div>

@@ -1,1 +1,70 @@
-<p>game-list works!</p>
+<div *ngxSubscribe="games as gameList">
+    <div class="d-flex justify-content-between">
+      <div class="d-flex flex-column flex-sm-row">
+        <form
+          [formGroup]="searchForm"
+          class="d-flex justify-content-start ml-4 mb-2 mr-4"
+          (ngSubmit)="onSearch(searchForm.value)"
+        >
+          <div class="row">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <fa-icon
+                  [icon]="['fas', 'search']"
+                  class="input-group-text"
+                ></fa-icon>
+              </div>
+              <input
+                class="form-control"
+                type="text"
+                formControlName="searchQuery"
+                placeholder="Search"
+              />
+            </div>
+          </div>
+        </form>
+
+        <!-- <button
+          *authenticated
+          class="btn btn-outline-primary"
+          routerLink="/game/search"
+        >
+          Search Games<fa-icon
+            [icon]="['fas', 'search']"
+            class="ml-2"
+          ></fa-icon>
+        </button> -->
+      </div>
+
+      <div
+        *authenticated
+        class="btn btn-primary btn-lg fa-2x"
+        routerLink="create"
+      >
+        <fa-icon [icon]="['fas', 'plus']"></fa-icon>
+      </div>
+    </div>
+
+    <div
+      class="d-flex flex-row flex-wrap align-items-center justify-content-start"
+    >
+      <app-game
+        *ngFor="
+          let game of gameList
+            | paginate
+              : {
+                  itemsPerPage: gameCount,
+                  currentPage: page,
+                  totalItems: totalGames
+                }
+        "
+        [game]="game"
+        [routerLink]="['/game', game.id]"
+      ></app-game>
+    </div>
+    <pagination-controls
+      class="d-flex justify-content-center"
+      (pageChange)="page = $event; getNextPage($event)"
+      autoHide="true"
+    ></pagination-controls>
+</div>

@@ -1,0 +1,11 @@
+.game {
+  border: solid 1px;
+  border-radius: 3%;
+  cursor: pointer;
+  max-width: 15rem;
+
+  .card-img-top {
+    border-top-left-radius: 3%;
+    border-top-right-radius: 3%;
+  }
+}

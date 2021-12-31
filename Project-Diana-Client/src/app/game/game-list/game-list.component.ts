@@ -17,7 +17,7 @@ import { Game } from 'src/app/game/game.model';
 export class GameListComponent implements OnInit {
   games = of<Game[]>();
   gameCount = 24;
-  page = 0;
+  page = 1;
   totalGames = 0;
   searchForm: FormGroup;
   searchQuery = '';
@@ -28,7 +28,11 @@ export class GameListComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) {
+    this.searchForm = this.formBuilder.group({
+      searchQuery: '',
+    });
+  }
 
   ngOnInit(): void {
     this.page = this.route.snapshot.queryParams.pageNum ?? 0;
