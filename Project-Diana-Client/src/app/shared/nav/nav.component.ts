@@ -71,4 +71,10 @@ export class NavComponent implements OnInit {
       window.location.reload();
     });
   }
+
+  goToGames(): void {
+    this.router.navigate(['game'], { queryParams: { pageNum: 1 } }).then(() => {
+      window.location.reload();
+    });
+  }
 }

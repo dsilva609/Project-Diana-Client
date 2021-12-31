@@ -35,6 +35,12 @@
         </a>
       </li>
       <li class="nav-item">
+        <a class="nav-link link" (click)="goToGames()">
+          <fa-icon [icon]="['fas', 'gamepad']"></fa-icon>
+          Game
+        </a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" [routerLink]="['showcase', userId]">
           <fa-icon [icon]="['fas', 'award']"></fa-icon>
           Showcase</a

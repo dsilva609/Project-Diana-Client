@@ -22,6 +22,13 @@ export const APP_ROUTES: Routes = [
     },
   },
   {
+    path: 'game',
+    loadChildren: () => import('./game/game.module').then((m) => m.GameModule),
+    data: {
+      title: 'Games',
+    },
+  },
+  {
     path: 'home',
     loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
     data: {
