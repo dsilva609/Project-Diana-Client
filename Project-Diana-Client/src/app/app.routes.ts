@@ -36,6 +36,14 @@ export const APP_ROUTES: Routes = [
     },
   },
   {
+    path: 'movie',
+    loadChildren: () =>
+      import('./movie/movie.module').then((m) => m.MovieModule),
+    data: {
+      title: 'Movie',
+    },
+  },
+  {
     path: 'showcase',
     loadChildren: () =>
       import('./showcase/showcase.module').then((m) => m.ShowcaseModule),

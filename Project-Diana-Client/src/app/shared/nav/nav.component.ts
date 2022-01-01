@@ -61,20 +61,24 @@ export class NavComponent implements OnInit {
   goToAlbums(): void {
     this.router
       .navigate(['album'], { queryParams: { pageNum: 1 } })
-      .then(() => {
-        window.location.reload();
-      });
+      .then(() => window.location.reload());
   }
 
   goToBooks(): void {
-    this.router.navigate(['book'], { queryParams: { pageNum: 1 } }).then(() => {
-      window.location.reload();
-    });
+    this.router
+      .navigate(['book'], { queryParams: { pageNum: 1 } })
+      .then(() => window.location.reload());
   }
 
   goToGames(): void {
-    this.router.navigate(['game'], { queryParams: { pageNum: 1 } }).then(() => {
-      window.location.reload();
-    });
+    this.router
+      .navigate(['game'], { queryParams: { pageNum: 1 } })
+      .then(() => window.location.reload());
+  }
+
+  goToMovies(): void {
+    this.router
+      .navigate(['movie'], { queryParams: { pageNum: 1 } })
+      .then(() => window.location.reload());
   }
 }

@@ -6,6 +6,7 @@ import { AlbumListResponse } from 'src/app/album/album-list/state/album-list.mod
 import { BookListResponse } from 'src/app/book/book-list/state/book-list.model';
 import { GameListResponse } from 'src/app/game/game-list/state/game-list.model';
 import { HomeStore } from 'src/app/home/state/home.store';
+import { MovieListResponse } from 'src/app/movie/movie-list/state/movie-list.model';
 
 @Injectable({ providedIn: 'root' })
 export class HomeService {
@@ -48,6 +49,22 @@ export class HomeService {
         map((response) => {
           this.homeStore.update({
             latestGames: response,
+          });
+
+          return response;
+        })
+      );
+  }
+
+  getLatestMovies(itemCount: number): Observable<MovieListResponse> {
+    const paramList = new HttpParams().set('itemCount', itemCount.toString());
+
+    return this.http
+      .get<MovieListResponse>('Movie/GetLatestMovies', { params: paramList })
+      .pipe(
+        map((response) => {
+          this.homeStore.update({
+            latestMovies: response,
           });
 
           return response;

@@ -24,8 +24,19 @@
 
 <div *ngIf="latestGames" class="d-flex flex-row flex-wrap align-items-center justify-content-start">
   <app-game
-    *ngFor="let book of latestGames"
+    *ngFor="let game of latestGames"
     [game]="game"
-    [routerLink]="['/game', book.id]"
+    [routerLink]="['/game', game.id]"
   ></app-game>
+</div>
+
+
+<h4 *ngIf="latestMovies">Movies</h4>
+
+<div *ngIf="latestMovies" class="d-flex flex-row flex-wrap align-items-center justify-content-start">
+  <app-movie
+    *ngFor="let movie of latestMovies"
+    [movie]="movie"
+    [routerLink]="['/movie', movie.id]"
+  ></app-movie>
 </div>
