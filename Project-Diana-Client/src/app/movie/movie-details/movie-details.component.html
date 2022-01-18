@@ -1,4 +1,4 @@
-<div *ngxSubscribe="gameDetails as game">
+<div *ngxSubscribe="movieDetails as movie">
     <div
       class="
         d-flex
@@ -7,60 +7,60 @@
       "
     >
       <h2 class="text-center text-md-left">
-          {{ game.title }} ({{ game.yearReleasedOn }})
+        {{ movie.title }} ({{ movie.yearReleasedOn }})
       </h2>
 
       <div class="d-flex justify-content-center justify-content-sm-end mb-4">
-        <ng-container *canEdit="game.userId">
+        <ng-container *canEdit="movie.userId">
           <div class="mr-2">
             <div
               class="btn btn-outline-primary"
-              [routerLink]="['/game/update', game.id]"
+              [routerLink]="['/movie/update', movie.id]"
             >
               <fa-icon [icon]="['fas', 'pencil-alt']"></fa-icon>
             </div>
           </div>
         </ng-container>
 
-        <ng-container *canEdit="game.userId">
-          <div *ngIf="!game.isShowcased" class="mr-2">
+        <ng-container *canEdit="movie.userId">
+          <div *ngIf="!movie.isShowcased" class="mr-2">
             <button
               (click)="addToShowcase()"
-              [disabled]="isgameShowcaseUpdateLoading"
+              [disabled]="ismovieShowcaseUpdateLoading"
               class="btn btn-outline-primary"
             >
               <app-loading-indicator-small
-                [isLoading]="isgameShowcaseUpdateLoading"
+                [isLoading]="ismovieShowcaseUpdateLoading"
               ></app-loading-indicator-small>
 
               <fa-icon
-                *ngIf="!isgameShowcaseUpdateLoading"
+                *ngIf="!ismovieShowcaseUpdateLoading"
                 [icon]="['fas', 'star']"
               ></fa-icon>
             </button>
           </div>
         </ng-container>
 
-         <ng-container *canEdit="game.userId">
-          <div *ngIf="game.isShowcased" class="mr-2">
+        <ng-container *canEdit="movie.userId">
+          <div *ngIf="movie.isShowcased" class="mr-2">
             <button
               (click)="removeFromShowcase()"
-              [disbl]="isgameShowcaseUpdateLoading"
+              [disbl]="ismovieShowcaseUpdateLoading"
               class="btn btn-outline-danger"
             >
               <app-loading-indicator-small
-                [isLoading]="isgameShowcaseUpdateLoading"
+                [isLoading]="ismovieShowcaseUpdateLoading"
               ></app-loading-indicator-small>
 
               <fa-icon
-                *ngIf="!isgameShowcaseUpdateLoading"
+                *ngIf="!ismovieShowcaseUpdateLoading"
                 [icon]="['fas', 'star']"
               ></fa-icon>
             </button>
           </div>
         </ng-container>
 
-         <ng-container *canEdit="game.userId">
+        <ng-container *canEdit="movie.userId">
           <div>
             <button
               (click)="incrementReadCount()"
@@ -81,30 +81,30 @@
       </div>
     </div>
 
-     <div class="d-flex flex-column flex-sm-row">
+    <div class="d-flex flex-column flex-sm-row">
       <div class="mr-4">
-        <img [src]="game.imageUrl" class="img-fluid game-img" />
+        <img [src]="movie.imageUrl" class="img-fluid movie-img" />
       </div>
       <div class="d-flex flex-column flex-grow-1 mt-4 mt-sm-0">
         <div class="card">
-          <h3 class="card-header">Game Details{{game.title}}</h3>
+          <h3 class="card-header">Movie Details</h3>
           <div class="card-body">
-            <div>Developer: {{game.developer || "N/A"}}</div>
-            <div>Publisher: {{ game.publisher || "N/A" }}</div>
-            <div>Genre: {{ game.genre || "N/A" }}</div>
+            <div>Genre: {{ movie.genre || "N/A" }}</div>
+
           </div>
         </div>
 
         <div class="card mt-4">
           <h3 class="card-header">Media Information</h3>
           <div class="card-body">
-            <div>Type: {{ getGameMediaTypeDisplayName(game.type) }}</div>
-            <div>Language: {{ game.language || "N/A" }}</div>
-            <div>Country of Origin: {{ game.countryOfOrigin || "N/A" }}</div>
-            <div>Physical: {{ game.isPhysical | yesNo }}</div>
-            <div>First Edition: {{ game.isFirstEdition | yesNo }}</div>
-            <div>Reissue: {{ game.isReissue | yesNo }}</div>
-            <div *ngIf="game.isReissue">Reissue Year: {{ game.reissueYear }}</div>
+            <div>Type: {{ getMovieMediaTypeDisplayName(movie.type) }}</div>
+            <div>Language: {{ movie.language || "N/A" }}</div>
+            <div>Country of Origin: {{ movie.countryOfOrigin || "N/A" }}</div>
+            <div>Physical: {{ movie.isPhysical | yesNo }}</div>
+            <div>First Edition: {{ movie.isFirstEdition | yesNo }}</div>
+            <div>Reissue: {{ movie.isReissue | yesNo }}</div>
+            <div *ngIf="movie.isReissue">Reissue Year: {{ movie.reissueYear }}</div>
+
           </div>
         </div>
       </div>
@@ -115,20 +115,20 @@
       <div class="card-body">
         <div class="row">
           <div class="col-sm-4">
-            <div>Category: {{ game.category || "N/A" }}</div>
-            <div>Notes: {{ game.notes || "N/A" }}</div>
+            <div>Category: {{ movie.category || "N/A" }}</div>
+            <div>Notes: {{ movie.notes || "N/A" }}</div>
           </div>
           <div class="col-sm-4">
             <div>
               Completion Status:
-              {{ getCompletionStatusDisplayName(game.completionStatus) }}
+              {{ getCompletionStatusDisplayName(movie.completionStatus) }}
             </div>
-            <div>Times Read: {{ game.timesCompleted }}</div>
+            <div>Times Read: {{ movie.timesCompleted }}</div>
           </div>
           <div class="col-sm-4">
-            <div>Date Added: {{ game.addedOn | noDate }}</div>
-            <div>Last Read: {{ game.lastCompletedOn | noDate }}</div>
-            <div>Last Updated: {{ game.updatedOn | noDate }}</div>
+            <div>Date Added: {{ movie.addedOn | noDate }}</div>
+            <div>Last Read: {{ movie.lastCompletedOn | noDate }}</div>
+            <div>Last Updated: {{ movie.updatedOn | noDate }}</div>
           </div>
         </div>
       </div>
@@ -139,16 +139,16 @@
       <div class="card-body">
         <div class="row">
           <div class="col-sm-4">
-            <div>Container: {{ game.itemStorage.container || "N/A" }}</div>
+            <div>Container: {{ movie.itemStorage.container || "N/A" }}</div>
           </div>
           <div class="col-sm-4">
             <div>
               Container Code:
-              {{ game.itemStorage.containerCode || "N/A" }}
+              {{ movie.itemStorage.containerCode || "N/A" }}
             </div>
           </div>
           <div class="col-sm-4">
-            <div>Location: {{ game.itemStorage.location || "N/A" }}</div>
+            <div>Location: {{ movie.itemStorage.location || "N/A" }}</div>
           </div>
         </div>
       </div>
@@ -159,24 +159,24 @@
       <div class="card-body">
         <div class="row">
           <div class="col-sm-4">
-            <div>Checked Out: {{ game.checkout.isCheckedOut | yesNo }}</div>
+            <div>Checked Out: {{ movie.checkout.isCheckedOut | yesNo }}</div>
           </div>
           <div class="col-sm-4">
             <div>
               Checked Out On:
-              {{ game.checkout.checkedOutOn | noDate }}
+              {{ movie.checkout.checkedOutOn | noDate }}
             </div>
           </div>
           <div class="col-sm-4">
             <div>
               Checkout Reason:
-              {{ game.checkout.checkoutReason || "N/A" }}
+              {{ movie.checkout.checkoutReason || "N/A" }}
             </div>
           </div>
           <div class="col-sm-4">
             <div>
               Expected Return On:
-              {{ game.checkout.expectedReturnOn | noDate }}
+              {{ movie.checkout.expectedReturnOn | noDate }}
             </div>
           </div>
         </div>
@@ -186,10 +186,10 @@
     <div class="card mt-4">
       <h3 class="card-header">Purchase Information</h3>
       <div class="card-body">
-        <div>Date Purchased: {{ game.purchasedOn | noDate }}</div>
-        <div>Location Purchased: {{ game.locationPurchased || "N/A" }}</div>
-        <div>Country Purchaed: {{ game.countryPurchased || "N/A" }}</div>
-        <div>New Purchase: {{ game.isNew | yesNo }}</div>
+        <div>Date Purchased: {{ movie.purchasedOn | noDate }}</div>
+        <div>Location Purchased: {{ movie.locationPurchased || "N/A" }}</div>
+        <div>Country Purchaed: {{ movie.countryPurchased || "N/A" }}</div>
+        <div>New Purchase: {{ movie.isNew | yesNo }}</div>
       </div>
     </div>
-</div>
+  </div>
