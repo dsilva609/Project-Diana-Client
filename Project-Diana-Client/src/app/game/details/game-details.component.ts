@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ToastrService } from 'ngx-toastr';
-import { of } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { GameDetailsService } from 'src/app/game/details/state/game-details.service';
 import { Game, getGameMediaTypeDisplayName } from 'src/app/game/game.model';
 import { getCompletionStatusDisplayName } from 'src/app/shared/item/item.model';
@@ -17,10 +17,10 @@ import { GameDetailsQuery } from './state/game-details.query';
   styleUrls: ['./game-details.component.scss'],
 })
 export class GameDetailsComponent implements OnInit {
-  gameDetails = of<Game>();
+  game: Game;
   gameId = '';
   isGameShowcaseUpdateLoading = false;
-  isIncrementReadCountLoading = false;
+  isIncrementPlayCountLoading = false;
 
   constructor(
     private gameDetailsQuery: GameDetailsQuery,
@@ -38,7 +38,10 @@ export class GameDetailsComponent implements OnInit {
       .pipe(untilDestroyed(this))
       .subscribe();
 
-    this.gameDetails = this.gameDetailsQuery.select();
+    this.gameDetailsQuery
+      .select()
+      .pipe(tap((g) => (this.game = g), untilDestroyed(this)))
+      .subscribe();
   }
 
   getCompletionStatusDisplayName(value: number): string {
@@ -49,11 +52,29 @@ export class GameDetailsComponent implements OnInit {
     return getGameMediaTypeDisplayName(value);
   }
 
+  incrementPlayCount(): void {
+    this.isIncrementPlayCountLoading = true;
+
+    this.gameDetailsService
+      .incrementPlayCount(this.game.id, this.game.timesCompleted)
+      .pipe(
+        tap((successful) => {
+          if (successful) {
+            this.game.timesCompleted++;
+            this.toastrService.success('Game play count updated');
+          }
+
+          this.isIncrementPlayCountLoading = false;
+        }),
+        untilDestroyed(this)
+      )
+      .subscribe();
+  }
+
   isViewable(): boolean {
     return (
       this.userQuery.getValue()?.id &&
-      this.gameDetailsQuery.getValue().userId ==
-        String(this.userQuery.getValue().id)
+      this.game.userId == String(this.userQuery.getValue().id)
     );
   }
 }

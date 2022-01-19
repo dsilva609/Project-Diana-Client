@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ToastrService } from 'ngx-toastr';
-import { of } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { MovieDetailsQuery } from 'src/app/movie/movie-details/state/movie-details.query';
 import { MovieDetailsService } from 'src/app/movie/movie-details/state/movie-details.service';
 import { getMovieMediaTypeDisplayName, Movie } from 'src/app/movie/movie.model';
@@ -16,10 +16,10 @@ import { UserQuery } from 'src/app/user/state/user.query';
   styleUrls: ['./movie-details.component.scss'],
 })
 export class MovieDetailsComponent implements OnInit {
-  movieDetails = of<Movie>();
+  movie: Movie;
   movieId = '';
   isMovieShowcaseUpdateLoading = false;
-  isIncrementReadCountLoading = false;
+  isIncrementPlayCountLoading = false;
 
   constructor(
     private movieDetailsQuery: MovieDetailsQuery,
@@ -37,7 +37,13 @@ export class MovieDetailsComponent implements OnInit {
       .pipe(untilDestroyed(this))
       .subscribe();
 
-    this.movieDetails = this.movieDetailsQuery.select();
+    this.movieDetailsQuery
+      .select()
+      .pipe(
+        tap((m) => (this.movie = m)),
+        untilDestroyed(this)
+      )
+      .subscribe();
   }
 
   getCompletionStatusDisplayName(value: number): string {
@@ -48,11 +54,29 @@ export class MovieDetailsComponent implements OnInit {
     return getMovieMediaTypeDisplayName(value);
   }
 
+  incrementPlayCount(): void {
+    this.isIncrementPlayCountLoading = true;
+
+    this.movieDetailsService
+      .incrementPlayCount(this.movieId, this.movie.timesCompleted)
+      .pipe(
+        tap((successful) => {
+          if (successful) {
+            this.movie.timesCompleted++;
+            this.toastrService.success('Movie play count updated');
+          }
+
+          this.isIncrementPlayCountLoading = false;
+        }),
+        untilDestroyed(this)
+      )
+      .subscribe();
+  }
+
   isViewable(): boolean {
     return (
       this.userQuery.getValue()?.id &&
-      this.movieDetailsQuery.getValue().userId ===
-        String(this.userQuery.getValue().id)
+      this.movie.userId === String(this.userQuery.getValue().id)
     );
   }
 }

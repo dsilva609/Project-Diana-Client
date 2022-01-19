@@ -1,4 +1,4 @@
-<div *ngxSubscribe="movieDetails as movie">
+<div>
     <div
       class="
         d-flex
@@ -63,16 +63,16 @@
         <ng-container *canEdit="movie.userId">
           <div>
             <button
-              (click)="incrementReadCount()"
-              [disabled]="isIncrementReadCountLoading"
+              (click)="incrementPlayCount()"
+              [disabled]="isIncrementPlayCountLoading"
               class="btn btn-outline-primary"
             >
               <app-loading-indicator-small
-                [isLoading]="isIncrementReadCountLoading"
+                [isLoading]="isIncrementPlayCountLoading"
               ></app-loading-indicator-small>
 
               <fa-icon
-                *ngIf="!isIncrementReadCountLoading"
+                *ngIf="!isIncrementPlayCountLoading"
                 [icon]="['fas', 'plus']"
               ></fa-icon>
             </button>
@@ -123,11 +123,11 @@
               Completion Status:
               {{ getCompletionStatusDisplayName(movie.completionStatus) }}
             </div>
-            <div>Times Read: {{ movie.timesCompleted }}</div>
+            <div>Times Played: {{ movie.timesCompleted }}</div>
           </div>
           <div class="col-sm-4">
             <div>Date Added: {{ movie.addedOn | noDate }}</div>
-            <div>Last Read: {{ movie.lastCompletedOn | noDate }}</div>
+            <div>Last Played: {{ movie.lastCompletedOn | noDate }}</div>
             <div>Last Updated: {{ movie.updatedOn | noDate }}</div>
           </div>
         </div>
