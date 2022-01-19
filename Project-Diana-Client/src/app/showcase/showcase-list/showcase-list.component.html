@@ -62,7 +62,7 @@
 <ng-container *ngIf="(showcase | async).showcasedBooks.length; else nobooks">
   <div
     id="bookShowcase"
-    class="carousel slide"
+    class="carousel slide mb-4"
     data-ride="carousel"
     *ngxSubscribe="showcase as showcase"
   >
@@ -112,4 +112,114 @@
 
 <ng-template #nobooks
   >It's lonely in here. Try adding some books to the showcase.</ng-template
+>
+
+<ng-container *ngIf="(showcase | async).showcasedGames.length; else nogames">
+  <div
+    id="gameShowcase"
+    class="carousel slide mb-4"
+    data-ride="carousel"
+    *ngxSubscribe="showcase as showcase"
+  >
+    <div class="carousel-inner">
+      <div
+        class="carousel-item carousel-background"
+        [ngClass]="{ active: i === 0 }"
+        [ngStyle]="{ background: getImage(game) }"
+        *ngFor="let game of showcase.showcasedGames; index as i"
+      >
+        <div class="showcase-item-background">
+          <img
+            class="d-block img-fluid text-center showcase-image"
+            [src]="game.imageUrl"
+            [alt]="game.title"
+            [routerLink]="['/game', game.id]"
+          />
+          <div class="text-center showcase-item-description">
+            {{ game.title }} ({{ game.yearReleasedOn }})
+          </div>
+        </div>
+      </div>
+
+      <a
+        *ngIf="showcase.showcasedGames.length > 1"
+        class="carousel-control-prev"
+        href="#gameShowcase"
+        role="button"
+        data-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a
+        *ngIf="showcase.showcasedGames.length > 1"
+        class="carousel-control-next"
+        href="#gameShowcase"
+        role="button"
+        data-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #nogames
+  >It's lonely in here. Try adding some games to the showcase.</ng-template
+>
+
+<ng-container *ngIf="(showcase | async).showcasedMovies.length; else nomovies">
+  <div
+    id="movieShowcase"
+    class="carousel slide mb-4"
+    data-ride="carousel"
+    *ngxSubscribe="showcase as showcase"
+  >
+    <div class="carousel-inner">
+      <div
+        class="carousel-item carousel-background"
+        [ngClass]="{ active: i === 0 }"
+        [ngStyle]="{ background: getImage(movie) }"
+        *ngFor="let movie of showcase.showcasedMovies; index as i"
+      >
+        <div class="showcase-item-background">
+          <img
+            class="d-block img-fluid text-center showcase-image"
+            [src]="movie.imageUrl"
+            [alt]="movie.title"
+            [routerLink]="['/movie', movie.id]"
+          />
+          <div class="text-center showcase-item-description">
+            {{ movie.title }} ({{ movie.yearReleasedOn }})
+          </div>
+        </div>
+      </div>
+
+      <a
+        *ngIf="showcase.showcasedMovies.length > 1"
+        class="carousel-control-prev"
+        href="#movieShowcase"
+        role="button"
+        data-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a
+        *ngIf="showcase.showcasedMovies.length > 1"
+        class="carousel-control-next"
+        href="#movieShowcase"
+        role="button"
+        data-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #nomovies
+  >It's lonely in here. Try adding some movies to the showcase.</ng-template
 >
