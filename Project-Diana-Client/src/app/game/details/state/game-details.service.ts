@@ -12,6 +12,21 @@ export class GameDetailsService {
     private http: HttpClient
   ) {}
 
+  addToShowcase(id: string): Observable<boolean> {
+    return this.http.put(`Game/AddToShowcase/${id}`, null).pipe(
+      map((response) => {
+        const updatedTime = new Date().toUTCString();
+
+        this.gameDetailsStore.update({
+          isShowcased: true,
+          updatedOn: updatedTime,
+        });
+
+        return true;
+      })
+    );
+  }
+
   getGameById(id: string): Observable<Game> {
     return this.http
       .get<Game>(`Game/${id}`)
@@ -26,6 +41,21 @@ export class GameDetailsService {
         this.gameDetailsStore.update({
           lastCompletedOn: updatedTime,
           timesCompleted: playCount,
+          updatedOn: updatedTime,
+        });
+
+        return true;
+      })
+    );
+  }
+
+  removeFromShowcase(id: string): Observable<boolean> {
+    return this.http.put(`Game/RemoveFromShowcase/${id}`, null).pipe(
+      map((response) => {
+        const updatedTime = new Date().toUTCString();
+
+        this.gameDetailsStore.update({
+          isShowcased: false,
           updatedOn: updatedTime,
         });
 

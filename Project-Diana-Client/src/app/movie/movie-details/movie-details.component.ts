@@ -46,6 +46,26 @@ export class MovieDetailsComponent implements OnInit {
       .subscribe();
   }
 
+  addToShowcase(): void {
+    this.isMovieShowcaseUpdateLoading = true;
+
+    this.movieDetailsService
+      .addToShowcase(this.movieId.toString())
+      .pipe(
+        tap((successful) => {
+          if (successful) {
+            this.toastrService.success('Movie added to showcase');
+          } else {
+            this.toastrService.error('Unable to add movie to showcase');
+          }
+
+          this.isMovieShowcaseUpdateLoading = false;
+        }),
+        untilDestroyed(this)
+      )
+      .subscribe();
+  }
+
   getCompletionStatusDisplayName(value: number): string {
     return getCompletionStatusDisplayName(value);
   }
@@ -78,5 +98,23 @@ export class MovieDetailsComponent implements OnInit {
       this.userQuery.getValue()?.id &&
       this.movie.userId === String(this.userQuery.getValue().id)
     );
+  }
+
+  removeFromShowcase(): void {
+    this.isMovieShowcaseUpdateLoading = true;
+
+    this.movieDetailsService
+      .removeFromShowcase(this.movieId.toString())
+      .pipe(
+        tap((successful) => {
+          if (successful) {
+            this.toastrService.success('Movie removed from showcase');
+          }
+
+          this.isMovieShowcaseUpdateLoading = false;
+        }),
+        untilDestroyed(this)
+      )
+      .subscribe();
   }
 }

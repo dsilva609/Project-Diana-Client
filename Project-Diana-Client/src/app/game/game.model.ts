@@ -19,6 +19,7 @@ export interface Game {
   isNew: boolean;
   isPhysical: boolean;
   isReissue: boolean;
+  isShowcased: boolean;
   itemStorage: ItemStorage;
   language: string;
   lastCompletedOn: string;
@@ -58,6 +59,7 @@ export function createGame(): Game {
     isNew: false,
     isPhysical: false,
     isReissue: false,
+    isShowcased: false,
     itemStorage: null,
     language: '',
     lastCompletedOn: '',

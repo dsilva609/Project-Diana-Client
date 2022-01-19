@@ -44,6 +44,24 @@ export class GameDetailsComponent implements OnInit {
       .subscribe();
   }
 
+  addToShowcase(): void {
+    this.isGameShowcaseUpdateLoading = true;
+
+    this.gameDetailsService
+      .addToShowcase(this.gameId.toString())
+      .pipe(
+        tap((successful) => {
+          successful
+            ? this.toastrService.success('Game added to showcase')
+            : this.toastrService.error('Unable to add game to showcase');
+
+          this.isGameShowcaseUpdateLoading = false;
+        }),
+        untilDestroyed(this)
+      )
+      .subscribe();
+  }
+
   getCompletionStatusDisplayName(value: number): string {
     return getCompletionStatusDisplayName(value);
   }
@@ -56,7 +74,7 @@ export class GameDetailsComponent implements OnInit {
     this.isIncrementPlayCountLoading = true;
 
     this.gameDetailsService
-      .incrementPlayCount(this.game.id, this.game.timesCompleted)
+      .incrementPlayCount(this.game.id.toString(), this.game.timesCompleted)
       .pipe(
         tap((successful) => {
           if (successful) {
@@ -76,5 +94,23 @@ export class GameDetailsComponent implements OnInit {
       this.userQuery.getValue()?.id &&
       this.game.userId == String(this.userQuery.getValue().id)
     );
+  }
+
+  removeFromShowcase(): void {
+    this.isGameShowcaseUpdateLoading = true;
+
+    this.gameDetailsService
+      .removeFromShowcase(this.gameId.toString())
+      .pipe(
+        tap((successful) => {
+          if (successful) {
+            this.toastrService.success('Game removed from showcase');
+          }
+
+          this.isGameShowcaseUpdateLoading = false;
+        }),
+        untilDestroyed(this)
+      )
+      .subscribe();
   }
 }

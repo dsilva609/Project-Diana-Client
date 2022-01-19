@@ -13,6 +13,7 @@ export interface Movie {
   isNew: boolean;
   isPhysical: boolean;
   isReissue: boolean;
+  isShowcased: boolean;
   language: string;
   lastCompletedOn: string;
   locationPurchased: string;
@@ -46,6 +47,7 @@ export function createMovie(): Movie {
     isNew: false,
     isPhysical: false,
     isReissue: false,
+    isShowcased: false,
     language: '',
     lastCompletedOn: '',
     locationPurchased: '',

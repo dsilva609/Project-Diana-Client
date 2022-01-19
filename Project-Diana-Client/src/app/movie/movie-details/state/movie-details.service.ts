@@ -12,6 +12,21 @@ export class MovieDetailsService {
     private http: HttpClient
   ) {}
 
+  addToShowcase(id: string): Observable<boolean> {
+    return this.http.put(`Movie/AddToShowcase/${id}`, null).pipe(
+      map((response) => {
+        const updatedTime = new Date().toUTCString();
+
+        this.movieDetailsStore.update({
+          isShowcased: true,
+          updatedOn: updatedTime,
+        });
+
+        return true;
+      })
+    );
+  }
+
   getMovieById(id: string): Observable<Movie> {
     return this.http
       .get<Movie>(`Movie/${id}`)
@@ -26,6 +41,21 @@ export class MovieDetailsService {
         this.movieDetailsStore.update({
           lastCompletedOn: updatedTime,
           timesCompleted: playCount,
+          updatedOn: updatedTime,
+        });
+
+        return true;
+      })
+    );
+  }
+
+  removeFromShowcase(id: string): Observable<boolean> {
+    return this.http.put(`Movie/RemoveFromShowcase/${id}`, null).pipe(
+      map((response) => {
+        const updatedTime = new Date().toUTCString();
+
+        this.movieDetailsStore.update({
+          isShowcased: false,
           updatedOn: updatedTime,
         });
 
