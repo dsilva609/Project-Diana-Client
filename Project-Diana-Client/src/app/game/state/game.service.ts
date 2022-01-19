@@ -60,4 +60,22 @@ export class GameService {
       })
     );
   }
+
+  submitGame(gameFormData): Observable<boolean> {
+    return this.http.post<boolean>('Game/CreateGame', gameFormData).pipe(
+      tap((successful) => {
+        return successful;
+      })
+    );
+  }
+
+  updateGame(gameFormData): Observable<boolean> {
+    return this.http.put<boolean>('Game/UpdateGame', gameFormData).pipe(
+      tap((updateResult) => {
+        if (updateResult) {
+          this.gameStore.update(gameFormData);
+        }
+      })
+    );
+  }
 }

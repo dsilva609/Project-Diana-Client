@@ -60,4 +60,22 @@ export class MovieService {
       })
     );
   }
+
+  submitMovie(movieFormData): Observable<boolean> {
+    return this.http.post<boolean>('Movie/CreateMovie', movieFormData).pipe(
+      tap((successful) => {
+        return successful;
+      })
+    );
+  }
+
+  updateMovie(movieFormData): Observable<boolean> {
+    return this.http.put<boolean>('Movie/UpdateMovie', movieFormData).pipe(
+      tap((updateResult) => {
+        if (updateResult) {
+          this.movieStore.update(movieFormData);
+        }
+      })
+    );
+  }
 }
