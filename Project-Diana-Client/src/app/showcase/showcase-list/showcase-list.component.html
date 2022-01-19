@@ -166,7 +166,8 @@
 </ng-container>
 
 <ng-template #nogames
-  >It's lonely in here. Try adding some games to the showcase.</ng-template
+  ><div class="mb-4">It's lonely in here. Try adding some games to the showcase.</div>
+  </ng-template
 >
 
 <ng-container *ngIf="(showcase | async).showcasedMovies.length; else nomovies">
@@ -220,6 +221,6 @@
   </div>
 </ng-container>
 
-<ng-template #nomovies
-  >It's lonely in here. Try adding some movies to the showcase.</ng-template
->
+<ng-template #nomovies>
+  <div class="mb-4">It's lonely in here. Try adding some movies to the showcase.</div>
+</ng-template>
