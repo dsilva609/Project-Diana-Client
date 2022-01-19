@@ -3,12 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ToastrService } from 'ngx-toastr';
 import { tap } from 'rxjs/operators';
-import { GameDetailsService } from 'src/app/game/details/state/game-details.service';
 import { Game, getGameMediaTypeDisplayName } from 'src/app/game/game.model';
+import { GameQuery } from 'src/app/game/state/game.query';
+import { GameService } from 'src/app/game/state/game.service';
 import { getCompletionStatusDisplayName } from 'src/app/shared/item/item.model';
 import { UserQuery } from 'src/app/user/state/user.query';
-
-import { GameDetailsQuery } from './state/game-details.query';
 
 @UntilDestroy()
 @Component({
@@ -23,8 +22,8 @@ export class GameDetailsComponent implements OnInit {
   isIncrementPlayCountLoading = false;
 
   constructor(
-    private gameDetailsQuery: GameDetailsQuery,
-    private gameDetailsService: GameDetailsService,
+    private gameQuery: GameQuery,
+    private gameService: GameService,
     private route: ActivatedRoute,
     private toastrService: ToastrService,
     private userQuery: UserQuery
@@ -33,12 +32,12 @@ export class GameDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.gameId = this.route.snapshot.paramMap.get('id');
 
-    this.gameDetailsService
+    this.gameService
       .getGameById(this.gameId)
       .pipe(untilDestroyed(this))
       .subscribe();
 
-    this.gameDetailsQuery
+    this.gameQuery
       .select()
       .pipe(tap((g) => (this.game = g), untilDestroyed(this)))
       .subscribe();
@@ -47,7 +46,7 @@ export class GameDetailsComponent implements OnInit {
   addToShowcase(): void {
     this.isGameShowcaseUpdateLoading = true;
 
-    this.gameDetailsService
+    this.gameService
       .addToShowcase(this.gameId.toString())
       .pipe(
         tap((successful) => {
@@ -73,7 +72,7 @@ export class GameDetailsComponent implements OnInit {
   incrementPlayCount(): void {
     this.isIncrementPlayCountLoading = true;
 
-    this.gameDetailsService
+    this.gameService
       .incrementPlayCount(this.game.id.toString(), this.game.timesCompleted)
       .pipe(
         tap((successful) => {
@@ -99,7 +98,7 @@ export class GameDetailsComponent implements OnInit {
   removeFromShowcase(): void {
     this.isGameShowcaseUpdateLoading = true;
 
-    this.gameDetailsService
+    this.gameService
       .removeFromShowcase(this.gameId.toString())
       .pipe(
         tap((successful) => {

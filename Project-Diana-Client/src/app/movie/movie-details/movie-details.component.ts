@@ -3,9 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ToastrService } from 'ngx-toastr';
 import { tap } from 'rxjs/operators';
-import { MovieDetailsQuery } from 'src/app/movie/movie-details/state/movie-details.query';
-import { MovieDetailsService } from 'src/app/movie/movie-details/state/movie-details.service';
 import { getMovieMediaTypeDisplayName, Movie } from 'src/app/movie/movie.model';
+import { MovieQuery } from 'src/app/movie/state/movie.query';
+import { MovieService } from 'src/app/movie/state/movie.service';
 import { getCompletionStatusDisplayName } from 'src/app/shared/item/item.model';
 import { UserQuery } from 'src/app/user/state/user.query';
 
@@ -22,8 +22,8 @@ export class MovieDetailsComponent implements OnInit {
   isIncrementPlayCountLoading = false;
 
   constructor(
-    private movieDetailsQuery: MovieDetailsQuery,
-    private movieDetailsService: MovieDetailsService,
+    private movieQuery: MovieQuery,
+    private movieService: MovieService,
     private route: ActivatedRoute,
     private toastrService: ToastrService,
     private userQuery: UserQuery
@@ -32,12 +32,12 @@ export class MovieDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.movieId = this.route.snapshot.paramMap.get('id');
 
-    this.movieDetailsService
+    this.movieService
       .getMovieById(this.movieId)
       .pipe(untilDestroyed(this))
       .subscribe();
 
-    this.movieDetailsQuery
+    this.movieQuery
       .select()
       .pipe(
         tap((m) => (this.movie = m)),
@@ -49,7 +49,7 @@ export class MovieDetailsComponent implements OnInit {
   addToShowcase(): void {
     this.isMovieShowcaseUpdateLoading = true;
 
-    this.movieDetailsService
+    this.movieService
       .addToShowcase(this.movieId.toString())
       .pipe(
         tap((successful) => {
@@ -77,7 +77,7 @@ export class MovieDetailsComponent implements OnInit {
   incrementPlayCount(): void {
     this.isIncrementPlayCountLoading = true;
 
-    this.movieDetailsService
+    this.movieService
       .incrementPlayCount(this.movieId, this.movie.timesCompleted)
       .pipe(
         tap((successful) => {
@@ -103,7 +103,7 @@ export class MovieDetailsComponent implements OnInit {
   removeFromShowcase(): void {
     this.isMovieShowcaseUpdateLoading = true;
 
-    this.movieDetailsService
+    this.movieService
       .removeFromShowcase(this.movieId.toString())
       .pipe(
         tap((successful) => {

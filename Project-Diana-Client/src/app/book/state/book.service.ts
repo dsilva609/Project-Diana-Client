@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Book } from 'src/app/book/book.model';
-import { BookStore } from 'src/app/book/details/state/book.store';
+import { BookStore } from 'src/app/book/state/book.store';
 
 @Injectable({ providedIn: 'root' })
 export class BookService {

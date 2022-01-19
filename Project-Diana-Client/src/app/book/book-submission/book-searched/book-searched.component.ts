@@ -8,7 +8,7 @@ import { BookFormComponent } from 'src/app/book/book-form/book-form.component';
 import { BookSearchResult } from 'src/app/book/book-search/state/book-search.model';
 import { BookSearchService } from 'src/app/book/book-search/state/book-search.service';
 import { BookSearchStore } from 'src/app/book/book-search/state/book-search.store';
-import { BookService } from 'src/app/book/details/state/book.service';
+import { BookService } from 'src/app/book/state/book.service';
 import { WishQuery } from 'src/app/wish/state/wish.query';
 import { WishService } from 'src/app/wish/state/wish.service';
 

@@ -8,8 +8,8 @@ import { of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { BookFormComponent } from 'src/app/book/book-form/book-form.component';
 import { Book } from 'src/app/book/book.model';
-import { BookQuery } from 'src/app/book/details/state/book.query';
-import { BookService } from 'src/app/book/details/state/book.service';
+import { BookQuery } from 'src/app/book/state/book.query';
+import { BookService } from 'src/app/book/state/book.service';
 
 @UntilDestroy()
 @Component({

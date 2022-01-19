@@ -4,8 +4,8 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ToastrService } from 'ngx-toastr';
 import { tap } from 'rxjs/operators';
 import { Book, getBookMediaTypeDisplayName } from 'src/app/book/book.model';
-import { BookQuery } from 'src/app/book/details/state/book.query';
-import { BookService } from 'src/app/book/details/state/book.service';
+import { BookQuery } from 'src/app/book/state/book.query';
+import { BookService } from 'src/app/book/state/book.service';
 import { getCompletionStatusDisplayName } from 'src/app/shared/item/item.model';
 import { UserQuery } from 'src/app/user/state/user.query';
 
