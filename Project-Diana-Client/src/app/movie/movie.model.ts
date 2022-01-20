@@ -1,7 +1,11 @@
+import { Checkout } from 'src/app/checkout/checkout.model';
+import { ItemStorage } from 'src/app/item-storage/item-storage.model';
+
 export interface Movie {
   id: string;
   addedOn: string;
   category: string;
+  checkout: Checkout;
   completionStatus: number;
   countryOfOrigin: string;
   countryPurchased: string;
@@ -14,6 +18,7 @@ export interface Movie {
   isPhysical: boolean;
   isReissue: boolean;
   isShowcased: boolean;
+  itemStorage: ItemStorage;
   language: string;
   lastCompletedOn: string;
   locationPurchased: string;
@@ -36,6 +41,7 @@ export function createMovie(): Movie {
     id: '',
     addedOn: '',
     category: '',
+    checkout: null,
     completionStatus: 0,
     countryOfOrigin: '',
     countryPurchased: '',
@@ -48,6 +54,7 @@ export function createMovie(): Movie {
     isPhysical: false,
     isReissue: false,
     isShowcased: false,
+    itemStorage: null,
     language: '',
     lastCompletedOn: '',
     locationPurchased: '',

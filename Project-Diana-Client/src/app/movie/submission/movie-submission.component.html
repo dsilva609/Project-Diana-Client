@@ -1,1 +1,14 @@
-<p>movie-submission works!</p>
+<form
+  [formGroup]="movieSubmissionForm"
+  (ngSubmit)="onSubmit(movieSubmissionForm.value)"
+>
+  <app-movie-form #movieForm></app-movie-form>
+
+  <div class="row">
+    <div class="col-sm-2">
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">Create</button>
+      </div>
+    </div>
+  </div>
+</form>

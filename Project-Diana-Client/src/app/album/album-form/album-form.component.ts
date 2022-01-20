@@ -74,9 +74,7 @@ export class AlbumFormComponent implements OnInit {
 
     this.albumForm.valueChanges
       .pipe(
-        tap((data) => {
-          this.showReissueYear = data.isReissue;
-        }),
+        tap((data) => (this.showReissueYear = data.isReissue)),
         untilDestroyed(this)
       )
       .subscribe();

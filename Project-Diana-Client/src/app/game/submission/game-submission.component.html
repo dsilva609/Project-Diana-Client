@@ -1,1 +1,14 @@
-<p>game-submission works!</p>
+<form
+  [formGroup]="gameSubmissionForm"
+  (ngSubmit)="onSubmit(gameSubmissionForm.value)"
+>
+  <app-game-form #gameForm></app-game-form>
+
+  <div class="row">
+    <div class="col-sm-2">
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">Create</button>
+      </div>
+    </div>
+  </div>
+</form>

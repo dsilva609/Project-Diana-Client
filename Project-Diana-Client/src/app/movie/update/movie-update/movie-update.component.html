@@ -1,1 +1,19 @@
-<p>movie-update works!</p>
+<div *ngxSubscribe="movie as m">
+    <div class="d-flex justify-content-center mb-4">
+      <img [src]="m.imageUrl" class="img-fluid movie-img" />
+    </div>
+    <form
+      [formGroup]="movieUpdateForm"
+      (ngSubmit)="onSubmit(movieUpdateForm.value)"
+    >
+      <app-movie-form #movieForm [releaseYear]="m.yearReleased"></app-movie-form>
+
+      <div class="row">
+        <div class="col-sm-2">
+          <div class="form-group">
+            <button class="btn btn-primary" type="submit">Update movie</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
