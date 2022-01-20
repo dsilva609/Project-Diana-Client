@@ -75,7 +75,6 @@ export class MovieUpdateComponent implements OnInit, AfterViewInit {
             isNew: movie.isNew,
             isPhysical: movie.isPhysical,
             isReissue: movie.isReissue,
-            isShowcased: movie.isShowcased,
             itemStorage: {
               container: movie.itemStorage.container,
               containerCode: movie.itemStorage.containerCode,
@@ -84,7 +83,10 @@ export class MovieUpdateComponent implements OnInit, AfterViewInit {
             language: movie.language,
             locationPurchased: movie.locationPurchased,
             notes: movie.notes,
-            purchasedOn: movie.purchasedOn,
+            purchasedOn: this.datePipe.transform(
+              movie.purchasedOn,
+              'yyyy-MM-dd'
+            ),
             rating: movie.rating,
             reissueYear: movie.reissueYear,
             seasonNumber: movie.seasonNumber,

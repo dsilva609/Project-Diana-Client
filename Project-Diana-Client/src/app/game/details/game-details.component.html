@@ -1,195 +1,199 @@
 <div>
-    <div
-      class="
-        d-flex
-        flex-column flex-sm-row
-        justify-content-center justify-content-sm-between
-      "
-    >
-      <h2 class="text-center text-md-left">
-          {{ game.title }} ({{ game.yearReleasedOn }})
-      </h2>
+  <div
+    class="d-flex flex-column flex-sm-row justify-content-center justify-content-sm-between"
+  >
+    <h2 class="text-center text-md-left">
+      {{ game.title }} ({{ game.yearReleasedOn }})
+    </h2>
 
-      <div class="d-flex justify-content-center justify-content-sm-end mb-4">
-        <ng-container *canEdit="game.userId">
-          <div class="mr-2">
-            <div
-              class="btn btn-outline-primary"
-              [routerLink]="['/game/update', game.id]"
-            >
-              <fa-icon [icon]="['fas', 'pencil-alt']"></fa-icon>
-            </div>
+    <div class="d-flex justify-content-center justify-content-sm-end mb-4">
+      <ng-container *canEdit="game.userId">
+        <div class="mr-2">
+          <div
+            class="btn btn-outline-primary"
+            [routerLink]="['/game/update', game.id]"
+          >
+            <fa-icon [icon]="['fas', 'pencil-alt']"></fa-icon>
           </div>
-        </ng-container>
+        </div>
+      </ng-container>
 
-        <ng-container *canEdit="game.userId">
-          <div *ngIf="!game.isShowcased" class="mr-2">
-            <button
-              (click)="addToShowcase()"
-              [disabled]="isgameShowcaseUpdateLoading"
-              class="btn btn-outline-primary"
-            >
-              <app-loading-indicator-small
-                [isLoading]="isgameShowcaseUpdateLoading"
-              ></app-loading-indicator-small>
+      <ng-container *canEdit="game.userId">
+        <div *ngIf="!game.isShowcased" class="mr-2">
+          <button
+            (click)="addToShowcase()"
+            [disabled]="isgameShowcaseUpdateLoading"
+            class="btn btn-outline-primary"
+          >
+            <app-loading-indicator-small
+              [isLoading]="isgameShowcaseUpdateLoading"
+            ></app-loading-indicator-small>
 
-              <fa-icon
-                *ngIf="!isgameShowcaseUpdateLoading"
-                [icon]="['fas', 'star']"
-              ></fa-icon>
-            </button>
+            <fa-icon
+              *ngIf="!isgameShowcaseUpdateLoading"
+              [icon]="['fas', 'star']"
+            ></fa-icon>
+          </button>
+        </div>
+      </ng-container>
+
+      <ng-container *canEdit="game.userId">
+        <div *ngIf="game.isShowcased" class="mr-2">
+          <button
+            (click)="removeFromShowcase()"
+            [disbl]="isgameShowcaseUpdateLoading"
+            class="btn btn-outline-danger"
+          >
+            <app-loading-indicator-small
+              [isLoading]="isgameShowcaseUpdateLoading"
+            ></app-loading-indicator-small>
+
+            <fa-icon
+              *ngIf="!isgameShowcaseUpdateLoading"
+              [icon]="['fas', 'star']"
+            ></fa-icon>
+          </button>
+        </div>
+      </ng-container>
+
+      <ng-container *canEdit="game.userId">
+        <div>
+          <button
+            (click)="incrementPlayCount()"
+            [disabled]="isIncrementPlayCountLoading"
+            class="btn btn-outline-primary"
+          >
+            <app-loading-indicator-small
+              [isLoading]="isIncrementPlayCountLoading"
+            ></app-loading-indicator-small>
+
+            <fa-icon
+              *ngIf="!isIncrementPlayCountLoading"
+              [icon]="['fas', 'plus']"
+            ></fa-icon>
+          </button>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="d-flex flex-column flex-sm-row">
+    <div class="mr-4">
+      <img [src]="game.imageUrl" class="img-fluid game-img" />
+    </div>
+    <div class="d-flex flex-column flex-grow-1 mt-4 mt-sm-0">
+      <div class="card">
+        <h3 class="card-header">Game Details</h3>
+        <div class="card-body">
+          <div>Developer: {{ game.developer || "N/A" }}</div>
+          <div>Publisher: {{ game.publisher || "N/A" }}</div>
+          <div>Genre: {{ game.genre || "N/A" }}</div>
+          <div>Board Game Geek Id: {{ game.bggId }}</div>
+          <div>Giant Bomb Id: {{ game.giantBombId }}</div>
+        </div>
+      </div>
+
+      <div class="card mt-4">
+        <h3 class="card-header">Media Information</h3>
+        <div class="card-body">
+          <div>Type: {{ getGameMediaTypeDisplayName(game.type) }}</div>
+          <div>Language: {{ game.language || "N/A" }}</div>
+          <div>Rating: {{ getGameRatingDisplayName(game.rating) }}</div>
+          <div>Platform: {{ getGamePlatformDisplayName(game.platform) }}</div>
+          <div>Country of Origin: {{ game.countryOfOrigin || "N/A" }}</div>
+          <div>Physical: {{ game.isPhysical | yesNo }}</div>
+          <div>First Edition: {{ game.isFirstEdition | yesNo }}</div>
+          <div>Reissue: {{ game.isReissue | yesNo }}</div>
+          <div *ngIf="game.isReissue">Reissue Year: {{ game.reissueYear }}</div>
+          <div>Part of Series: {{ game.partOfSeries | yesNo }}</div>
+          <div *ngIf="game.partOfSeries">
+            Series: {{ game.series || "N/A" }}
           </div>
-        </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
 
-         <ng-container *canEdit="game.userId">
-          <div *ngIf="game.isShowcased" class="mr-2">
-            <button
-              (click)="removeFromShowcase()"
-              [disbl]="isgameShowcaseUpdateLoading"
-              class="btn btn-outline-danger"
-            >
-              <app-loading-indicator-small
-                [isLoading]="isgameShowcaseUpdateLoading"
-              ></app-loading-indicator-small>
-
-              <fa-icon
-                *ngIf="!isgameShowcaseUpdateLoading"
-                [icon]="['fas', 'star']"
-              ></fa-icon>
-            </button>
-          </div>
-        </ng-container>
-
-         <ng-container *canEdit="game.userId">
+  <div class="card mt-4">
+    <h3 class="card-header">Miscellaneous Information</h3>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-4">
+          <div>Category: {{ game.category || "N/A" }}</div>
+          <div>Notes: {{ game.notes || "N/A" }}</div>
+        </div>
+        <div class="col-sm-4">
           <div>
-            <button
-              (click)="incrementPlayCount()"
-              [disabled]="isIncrementPlayCountLoading"
-              class="btn btn-outline-primary"
-            >
-              <app-loading-indicator-small
-                [isLoading]="isIncrementPlayCountLoading"
-              ></app-loading-indicator-small>
-
-              <fa-icon
-                *ngIf="!isIncrementPlayCountLoading"
-                [icon]="['fas', 'plus']"
-              ></fa-icon>
-            </button>
+            Completion Status:
+            {{ getCompletionStatusDisplayName(game.completionStatus) }}
           </div>
-        </ng-container>
-      </div>
-    </div>
-
-     <div class="d-flex flex-column flex-sm-row">
-      <div class="mr-4">
-        <img [src]="game.imageUrl" class="img-fluid game-img" />
-      </div>
-      <div class="d-flex flex-column flex-grow-1 mt-4 mt-sm-0">
-        <div class="card">
-          <h3 class="card-header">Game Details</h3>
-          <div class="card-body">
-            <div>Developer: {{game.developer || "N/A"}}</div>
-            <div>Publisher: {{ game.publisher || "N/A" }}</div>
-            <div>Genre: {{ game.genre || "N/A" }}</div>
-          </div>
+          <div>Times Completed: {{ game.timesCompleted }}</div>
         </div>
-
-        <div class="card mt-4">
-          <h3 class="card-header">Media Information</h3>
-          <div class="card-body">
-            <div>Type: {{ getGameMediaTypeDisplayName(game.type) }}</div>
-            <div>Language: {{ game.language || "N/A" }}</div>
-            <div>Country of Origin: {{ game.countryOfOrigin || "N/A" }}</div>
-            <div>Physical: {{ game.isPhysical | yesNo }}</div>
-            <div>First Edition: {{ game.isFirstEdition | yesNo }}</div>
-            <div>Reissue: {{ game.isReissue | yesNo }}</div>
-            <div *ngIf="game.isReissue">Reissue Year: {{ game.reissueYear }}</div>
-          </div>
+        <div class="col-sm-4">
+          <div>Date Added: {{ game.addedOn | noDate }}</div>
+          <div>Last Completed: {{ game.lastCompletedOn | noDate }}</div>
+          <div>Last Updated: {{ game.updatedOn | noDate }}</div>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="card mt-4">
-      <h3 class="card-header">Miscellaneous Information</h3>
-      <div class="card-body">
-        <div class="row">
-          <div class="col-sm-4">
-            <div>Category: {{ game.category || "N/A" }}</div>
-            <div>Notes: {{ game.notes || "N/A" }}</div>
+  <div *ngIf="isViewable()" class="card mt-4">
+    <h3 class="card-header">Storage Information</h3>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-4">
+          <div>Container: {{ game.itemStorage.container || "N/A" }}</div>
+        </div>
+        <div class="col-sm-4">
+          <div>
+            Container Code:
+            {{ game.itemStorage.containerCode || "N/A" }}
           </div>
-          <div class="col-sm-4">
-            <div>
-              Completion Status:
-              {{ getCompletionStatusDisplayName(game.completionStatus) }}
-            </div>
-            <div>Times Completed: {{ game.timesCompleted }}</div>
+        </div>
+        <div class="col-sm-4">
+          <div>Location: {{ game.itemStorage.location || "N/A" }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isViewable()" class="card mt-4">
+    <h3 class="card-header">Checkout Information</h3>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-4">
+          <div>Checked Out: {{ game.checkout.isCheckedOut | yesNo }}</div>
+        </div>
+        <div class="col-sm-4">
+          <div>
+            Checked Out On:
+            {{ game.checkout.checkedOutOn | noDate }}
           </div>
-          <div class="col-sm-4">
-            <div>Date Added: {{ game.addedOn | noDate }}</div>
-            <div>Last Completed: {{ game.lastCompletedOn | noDate }}</div>
-            <div>Last Updated: {{ game.updatedOn | noDate }}</div>
+        </div>
+        <div class="col-sm-4">
+          <div>
+            Checkout Reason:
+            {{ game.checkout.checkoutReason || "N/A" }}
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div>
+            Expected Return On:
+            {{ game.checkout.expectedReturnOn | noDate }}
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <div *ngIf="isViewable()" class="card mt-4">
-      <h3 class="card-header">Storage Information</h3>
-      <div class="card-body">
-        <div class="row">
-          <div class="col-sm-4">
-            <div>Container: {{ game.itemStorage.container || "N/A" }}</div>
-          </div>
-          <div class="col-sm-4">
-            <div>
-              Container Code:
-              {{ game.itemStorage.containerCode || "N/A" }}
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div>Location: {{ game.itemStorage.location || "N/A" }}</div>
-          </div>
-        </div>
-      </div>
+  <div class="card mt-4">
+    <h3 class="card-header">Purchase Information</h3>
+    <div class="card-body">
+      <div>Date Purchased: {{ game.purchasedOn | noDate }}</div>
+      <div>Location Purchased: {{ game.locationPurchased || "N/A" }}</div>
+      <div>Country Purchaed: {{ game.countryPurchased || "N/A" }}</div>
+      <div>New Purchase: {{ game.isNew | yesNo }}</div>
     </div>
-
-    <div *ngIf="isViewable()" class="card mt-4">
-      <h3 class="card-header">Checkout Information</h3>
-      <div class="card-body">
-        <div class="row">
-          <div class="col-sm-4">
-            <div>Checked Out: {{ game.checkout.isCheckedOut | yesNo }}</div>
-          </div>
-          <div class="col-sm-4">
-            <div>
-              Checked Out On:
-              {{ game.checkout.checkedOutOn | noDate }}
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div>
-              Checkout Reason:
-              {{ game.checkout.checkoutReason || "N/A" }}
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div>
-              Expected Return On:
-              {{ game.checkout.expectedReturnOn | noDate }}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card mt-4">
-      <h3 class="card-header">Purchase Information</h3>
-      <div class="card-body">
-        <div>Date Purchased: {{ game.purchasedOn | noDate }}</div>
-        <div>Location Purchased: {{ game.locationPurchased || "N/A" }}</div>
-        <div>Country Purchaed: {{ game.countryPurchased || "N/A" }}</div>
-        <div>New Purchase: {{ game.isNew | yesNo }}</div>
-      </div>
-    </div>
+  </div>
 </div>

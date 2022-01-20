@@ -1,276 +1,353 @@
 <ng-container>
-    <div [formGroup]="gameForm">
-      <div class="card mb-4">
-        <h3 class="card-header">Game</h3>
-        <div class="card-body">
-          <div class="d-flex flex-column flex-sm-row">
-              <input
-              type="text"
-              class="form-control mb-2"
-              formControlName="title"
-              placeholder="Title"
-            />
-          </div>
-          <div class="d-flex flex-column flex-sm-row">
-            <select
-              formControlName="yearReleasedOn"
-              id="yearReleasedOn"
-              class="form-control mb-2 mr-2"
-              required
-            >
-              <option disabled>Select Release Year</option>
-              <option
-                *ngFor="let year of releaseYears"
-                [ngValue]="year.value"
-                [selected]="year.selected"
-              >
-                {{ year.value }}
-              </option>
-            </select>
-
-            <input
-              type="text"
-              class="form-control mb-2"
-              formControlName="genre"
-              placeholder="Genre"
-            />
-          </div>
-          <div class="d-flex flex-column flex-sm-row">
-            <input
-              type="text"
-              class="form-control mb-2 mr-2"
-              formControlName="style"
-              placeholder="Style"
-            />
-          </div>
+  <div [formGroup]="gameForm">
+    <div class="card mb-4">
+      <h3 class="card-header">Game</h3>
+      <div class="card-body">
+        <div class="d-flex flex-column flex-sm-row">
           <input
             type="text"
-            class="form-control"
-            formControlName="imageUrl"
-            placeholder="Image Url"
+            class="form-control mb-2"
+            formControlName="title"
+            placeholder="Title"
           />
         </div>
-      </div>
-
-      <div class="card mb-4">
-        <h3 class="card-header">Media Information</h3>
-        <div class="card-body">
-          <div class="form-check mb-2">
-            <input
-              type="checkbox"
-              class="form-check-input mb-2"
-              id="isPhysical"
-              formControlName="isPhysical"
-            />
-            <label for="isPhysical" class="form-check-label">Physical</label>
-          </div>
-          <div class="form-check mb-2">
-            <input
-              type="checkbox"
-              class="form-check-input mb-2"
-              id="hasDigitalDownload"
-              formControlName="hasDigitalDownload"
-            />
-            <label for="hasDigitalDownload" class="form-check-label"
-              >Includes Digital Download</label
-            >
-          </div>
-          <div class="form-check mb-2">
-            <div class="d-flex flex-row">
-              <div class="mr-2">
-                <input
-                  type="checkbox"
-                  class="form-check-input mb-2"
-                  id="isReissue"
-                  formControlName="isReissue"
-                />
-                <label for="isReissue" class="form-check-label">Reissue</label>
-              </div>
-              <div *ngIf="showReissueYear">
-                <select
-                  formControlName="reissueYear"
-                  id="reissueYear"
-                  class="form-control mb-2 mr-2"
-                  required
-                >
-                  <option disabled [ngValue]="null">Select Reissue Year</option>
-                  <option
-                    *ngFor="let year of releaseYears"
-                    [ngValue]="year.value"
-                    [selected]="year.selected"
-                  >
-                    {{ year.value }}
-                  </option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <div class="d-flex flex-column flex-sm-row">
-            <select
-              formControlName="mediaType"
-              id="mediaType"
-              class="form-control mb-2 mr-2"
-              required
-            >
-              <option disabled>Select Media Type</option>
-              <option
-                *ngFor="let mediaType of mediaTypes"
-                [ngValue]="mediaType.value"
-                [selected]="media === mediaType.value"
-              >
-                {{ mediaType.name }}
-              </option>
-            </select>
-            <input
-              type="text"
-              class="form-control mb-2"
-              formControlName="countryOfOrigin"
-              placeholder="Country of Origin"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div class="card mb-4">
-        <h3 class="card-header">Miscellaneous</h3>
-        <div class="card-body">
-          <div class="d-flex flex-column flex-sm-row">
-            <input
-              type="text"
-              class="form-control mb-2"
-              formControlName="category"
-              placeholder="Category"
-            />
-          </div>
-          <div class="d-flex flex-column flex-sm-row">
-            <label for="playCount" class="mr-2">Play Count</label>
-            <input
-              type="number"
-              class="form-control mb-2 mr-2"
-              formControlName="playCount"
-              placeholder="Play Count"
-            />
-            <select
-              formControlName="completionStatus"
-              id="completionStatus"
-              class="form-control mb-2"
-              required
-            >
-              <option disabled>Select Completion Status</option>
-              <option
-                *ngFor="let status of completionStatuses"
-                [ngValue]="status.value"
-                [selected]="completionStatus === status.value"
-              >
-                {{ status.name }}
-              </option>
-            </select>
-          </div>
-          <textarea
+        <div class="d-flex flex-column flex-sm-row">
+          <input
+            type="text"
+            class="form-control mr-2"
+            formControlName="developer"
+            placeholder="Developer"
+          />
+          <input
             type="text"
             class="form-control mb-2"
-            formControlName="notes"
-            placeholder="Notes"
-          ></textarea>
+            formControlName="publisher"
+            placeholder="Publisher"
+          />
         </div>
-      </div>
-      <div class="card mb-4" formGroupName="itemStorage">
-        <h3 class="card-header">Storage</h3>
-        <div class="card-body">
-          <div class="d-flex flex-column flex-sm-row">
-            <input
-              type="text"
-              class="form-control mb-2"
-              formControlName="container"
-              placeholder="Container"
-            />
-          </div>
-          <div class="d-flex flex-column flex-sm-row">
-            <input
-              type="text"
-              class="form-control mb-2"
-              formControlName="containerCode"
-              placeholder="Container Code"
-            />
-          </div>
-          <div class="d-flex flex-column flex-sm-row">
-            <input
-              type="text"
-              class="form-control mb-2"
-              formControlName="location"
-              placeholder="Location"
-            />
-          </div>
+        <div class="d-flex flex-column flex-sm-row">
+          <select
+            formControlName="yearReleasedOn"
+            id="yearReleasedOn"
+            class="form-control mb-2 mr-2"
+            required
+          >
+            <option disabled>Select Release Year</option>
+            <option
+              *ngFor="let year of releaseYears"
+              [ngValue]="year.value"
+              [selected]="releaseYear === year.value"
+            >
+              {{ year.value }}
+            </option>
+          </select>
+
+          <input
+            type="text"
+            class="form-control mb-2"
+            formControlName="genre"
+            placeholder="Genre"
+          />
         </div>
-      </div>
-      <div class="card mb-4" formGroupName="checkout">
-        <h3 class="card-header">Checkout</h3>
-        <div class="card-body">
-          <div class="form-check mb-2">
-            <input
-              type="checkbox"
-              class="form-check-input mb-2"
-              id="isCheckedOut"
-              formControlName="isCheckedOut"
-            />
-            <label for="isCheckedOut" class="form-check-label">Checked Out</label>
-          </div>
-          <div class="d-flex flex-column flex-sm-row">
-            <input
-              type="text"
-              class="form-control mb-2"
-              formControlName="checkoutReason"
-              placeholder="Checkout Reason"
-            />
-          </div>
-          <div class="d-flex flex-column flex-sm-row">
-            <input
-              type="date"
-              class="form-control mb-2"
-              formControlName="expectedReturnOn"
-              placeholder="Expected Return On"
-            />
-          </div>
+        <div class="d-flex flex-column flex-sm-row">
+          <input
+            type="text"
+            class="form-control mr-2"
+            formControlName="bggId"
+            placeholder="Board Game Geek Id"
+          />
+          <input
+            type="text"
+            class="form-control mb-2"
+            formControlName="giantBombId"
+            placeholder="Giant Bomb Id"
+          />
         </div>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="imageUrl"
+          placeholder="Image Url"
+        />
       </div>
-      <div class="card mb-4">
-        <h3 class="card-header">Purchase</h3>
-        <div class="card-body">
-          <div class="d-flex flex-column flex-sm-row">
-            <input
-              type="date"
-              class="form-control mb-2 mr-2"
-              formControlName="purchasedOn"
-            />
-            <input
-              type="text"
-              class="form-control mb-2"
-              formControlName="locationPurchased"
-              placeholder="Location Purchased"
-            />
-          </div>
-          <div class="d-flex flex-column flex-sm-row">
-            <input
-              type="text"
-              class="form-control mb-2 mr-0 mr-sm-2 w-50"
-              formControlName="countryPurchased"
-              placeholder="Country Purchased"
-            />
-            <div class="form-check">
+    </div>
+
+    <div class="card mb-4">
+      <h3 class="card-header">Media Information</h3>
+      <div class="card-body">
+        <div class="form-check mb-2">
+          <input
+            type="checkbox"
+            class="form-check-input mb-2"
+            id="isPhysical"
+            formControlName="isPhysical"
+          />
+          <label for="isPhysical" class="form-check-label">Physical</label>
+        </div>
+        <div class="form-check mb-2">
+          <div class="d-flex flex-row">
+            <div class="mr-2">
               <input
                 type="checkbox"
                 class="form-check-input mb-2"
-                id="isNewPurchase"
-                formControlName="isNewPurchase"
-                placeholder="New Purchase"
+                id="isReissue"
+                formControlName="isReissue"
               />
-              <label for="isNewPurchase" class="form-check-label"
-                >New Purchase</label
-              >
+              <label for="isReissue" class="form-check-label">Reissue</label>
             </div>
+            <div *ngIf="showReissueYear">
+              <select
+                formControlName="reissueYear"
+                id="reissueYear"
+                class="form-control mb-2 mr-2"
+                required
+              >
+                <option disabled [ngValue]="null">Select Reissue Year</option>
+                <option
+                  *ngFor="let year of releaseYears"
+                  [ngValue]="year.value"
+                  [selected]="year.selected"
+                >
+                  {{ year.value }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="form-check mb-2">
+          <input
+            type="checkbox"
+            class="form-check-input mb-2"
+            id="isFirstEdition"
+            formControlName="isFirstEdition"
+          />
+          <label for="isFirstEdition" class="form-check-label"
+            >First Edition</label
+          >
+        </div>
+        <div class="form-check mb-2">
+          <input
+            type="checkbox"
+            class="form-check-input mb-2"
+            id="partOfSeries"
+            formControlName="partOfSeries"
+          />
+          <label for="partOfSeries" class="form-check-label"
+            >Part of Series</label
+          >
+        </div>
+        <div *ngIf="showSeries">
+          <input
+            type="text"
+            class="form-control mb-2 mr-2"
+            formControlName="series"
+            placeholder="Series"
+          />
+        </div>
+
+        <div class="d-flex flex-column flex-sm-row">
+          <select
+            formControlName="type"
+            id="type"
+            class="form-control mb-2 mr-2"
+            required
+          >
+            <option disabled>Select Media Type</option>
+            <option
+              *ngFor="let mediaType of mediaTypes"
+              [ngValue]="mediaType.value"
+              [selected]="media === mediaType.value"
+            >
+              {{ mediaType.name }}
+            </option>
+          </select>
+          <input
+            type="text"
+            class="form-control mb-2 mr-2"
+            formControlName="language"
+            placeholder="Language"
+          />
+          <input
+            type="text"
+            class="form-control mb-2"
+            formControlName="countryOfOrigin"
+            placeholder="Country of Origin"
+          />
+        </div>
+        <div class="d-flex flex-column flex-sm-row">
+          <select
+            formControlName="rating"
+            id="rating"
+            class="form-control mb-2 mr-2"
+            required
+          >
+            <option disabled>Select Rating</option>
+            <option
+              *ngFor="let rating of mediaRatings"
+              [ngValue]="rating.value"
+              [selected]="mediaRating === rating.value"
+            >
+              {{ rating.name }}
+            </option>
+          </select>
+          <select
+            formControlName="platform"
+            id="platform"
+            class="form-control mb-2 mr-2"
+            required
+          >
+            <option disabled>Select Platform</option>
+            <option
+              *ngFor="let platform of mediaPlatforms"
+              [ngValue]="platform.value"
+              [selected]="mediaPlatform === platform.value"
+            >
+              {{ platform.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mb-4">
+      <h3 class="card-header">Miscellaneous</h3>
+      <div class="card-body">
+        <div class="d-flex flex-column flex-sm-row">
+          <input
+            type="text"
+            class="form-control mb-2"
+            formControlName="category"
+            placeholder="Category"
+          />
+        </div>
+        <div class="d-flex flex-column flex-sm-row">
+          <label for="playCount" class="mr-2">Play Count</label>
+          <input
+            type="number"
+            class="form-control mb-2 mr-2"
+            formControlName="timesCompleted"
+            placeholder="Play Count"
+          />
+          <select
+            formControlName="completionStatus"
+            id="completionStatus"
+            class="form-control mb-2"
+            required
+          >
+            <option disabled>Select Completion Status</option>
+            <option
+              *ngFor="let status of completionStatuses"
+              [ngValue]="status.value"
+              [selected]="completionStatus === status.value"
+            >
+              {{ status.name }}
+            </option>
+          </select>
+        </div>
+        <textarea
+          type="text"
+          class="form-control mb-2"
+          formControlName="notes"
+          placeholder="Notes"
+        ></textarea>
+      </div>
+    </div>
+    <div class="card mb-4" formGroupName="itemStorage">
+      <h3 class="card-header">Storage</h3>
+      <div class="card-body">
+        <div class="d-flex flex-column flex-sm-row">
+          <input
+            type="text"
+            class="form-control mb-2"
+            formControlName="container"
+            placeholder="Container"
+          />
+        </div>
+        <div class="d-flex flex-column flex-sm-row">
+          <input
+            type="text"
+            class="form-control mb-2"
+            formControlName="containerCode"
+            placeholder="Container Code"
+          />
+        </div>
+        <div class="d-flex flex-column flex-sm-row">
+          <input
+            type="text"
+            class="form-control mb-2"
+            formControlName="location"
+            placeholder="Location"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="card mb-4" formGroupName="checkout">
+      <h3 class="card-header">Checkout</h3>
+      <div class="card-body">
+        <div class="form-check mb-2">
+          <input
+            type="checkbox"
+            class="form-check-input mb-2"
+            id="isCheckedOut"
+            formControlName="isCheckedOut"
+          />
+          <label for="isCheckedOut" class="form-check-label">Checked Out</label>
+        </div>
+        <div class="d-flex flex-column flex-sm-row">
+          <input
+            type="text"
+            class="form-control mb-2"
+            formControlName="checkoutReason"
+            placeholder="Checkout Reason"
+          />
+        </div>
+        <div class="d-flex flex-column flex-sm-row">
+          <input
+            type="date"
+            class="form-control mb-2"
+            formControlName="expectedReturnOn"
+            placeholder="Expected Return On"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="card mb-4">
+      <h3 class="card-header">Purchase</h3>
+      <div class="card-body">
+        <div class="d-flex flex-column flex-sm-row">
+          <input
+            type="date"
+            class="form-control mb-2 mr-2"
+            formControlName="purchasedOn"
+          />
+          <input
+            type="text"
+            class="form-control mb-2"
+            formControlName="locationPurchased"
+            placeholder="Location Purchased"
+          />
+        </div>
+        <div class="d-flex flex-column flex-sm-row">
+          <input
+            type="text"
+            class="form-control mb-2 mr-0 mr-sm-2 w-50"
+            formControlName="countryPurchased"
+            placeholder="Country Purchased"
+          />
+          <div class="form-check">
+            <input
+              type="checkbox"
+              class="form-check-input mb-2"
+              id="isNew"
+              formControlName="isNew"
+              placeholder="New Purchase"
+            />
+            <label for="isNewPurchase" class="form-check-label"
+              >New Purchase</label
+            >
           </div>
         </div>
       </div>
     </div>
-  </ng-container>
+  </div>
+</ng-container>

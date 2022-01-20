@@ -78,6 +78,18 @@ export const MOVIE_MEDIA_TYPES = [
   { name: 'DVD', value: 0 },
 ];
 
+export const MOVIE_RATINGS = [
+  { name: 'G', value: 0 },
+  { name: 'PG', value: 1 },
+  { name: 'PG-13', value: 2 },
+  { name: 'R', value: 3 },
+  { name: 'NR', value: 4 },
+];
+
 export function getMovieMediaTypeDisplayName(value: number): string {
   return MOVIE_MEDIA_TYPES.find((x) => x.value === value).name;
+}
+
+export function getMovieRatingDisplayName(value: number): string {
+  return MOVIE_RATINGS.find((x) => x.value === value).name;
 }

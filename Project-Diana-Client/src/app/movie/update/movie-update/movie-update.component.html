@@ -1,19 +1,25 @@
 <div *ngxSubscribe="movie as m">
-    <div class="d-flex justify-content-center mb-4">
-      <img [src]="m.imageUrl" class="img-fluid movie-img" />
-    </div>
-    <form
-      [formGroup]="movieUpdateForm"
-      (ngSubmit)="onSubmit(movieUpdateForm.value)"
-    >
-      <app-movie-form #movieForm [releaseYear]="m.yearReleased"></app-movie-form>
+  <div class="d-flex justify-content-center mb-4">
+    <img [src]="m.imageUrl" class="img-fluid movie-img" />
+  </div>
+  <form
+    [formGroup]="movieUpdateForm"
+    (ngSubmit)="onSubmit(movieUpdateForm.value)"
+  >
+    <app-movie-form
+      #movieForm
+      [completionStatus]="m.completionStatus"
+      [media]="m.type"
+      [mediaRating]="m.rating"
+      [releaseYear]="m.yearReleasedOn"
+    ></app-movie-form>
 
-      <div class="row">
-        <div class="col-sm-2">
-          <div class="form-group">
-            <button class="btn btn-primary" type="submit">Update movie</button>
-          </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="form-group">
+          <button class="btn btn-primary" type="submit">Update movie</button>
         </div>
       </div>
-    </form>
-  </div>
+    </div>
+  </form>
+</div>

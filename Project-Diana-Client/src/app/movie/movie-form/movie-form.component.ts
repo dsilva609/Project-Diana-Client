@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { tap } from 'rxjs/operators';
-import { MOVIE_MEDIA_TYPES } from 'src/app/movie/movie.model';
+import { MOVIE_MEDIA_TYPES, MOVIE_RATINGS } from 'src/app/movie/movie.model';
 import { getReleaseYears, ITEM_COMPLETION_STATUSES } from 'src/app/shared/item/item.model';
 
 @UntilDestroy()
@@ -16,6 +16,7 @@ export class MovieFormComponent implements OnInit {
   movieForm: FormGroup;
   completionStatuses = ITEM_COMPLETION_STATUSES;
   mediaTypes = MOVIE_MEDIA_TYPES;
+  ratings = MOVIE_RATINGS;
   releaseYears = getReleaseYears();
   currentDate = new Date().toUTCString();
   datePipe: DatePipe;
@@ -23,6 +24,7 @@ export class MovieFormComponent implements OnInit {
 
   @Input() completionStatus: number;
   @Input() media: number;
+  @Input() mediaRating: number;
   @Input() releaseYear: number;
 
   constructor(private formBuilder: FormBuilder) {
@@ -49,7 +51,6 @@ export class MovieFormComponent implements OnInit {
       isNew: false,
       isPhysical: false,
       isReissue: false,
-      isShowcased: false,
       itemStorage: this.formBuilder.group({
         container: '',
         containerCode: '',

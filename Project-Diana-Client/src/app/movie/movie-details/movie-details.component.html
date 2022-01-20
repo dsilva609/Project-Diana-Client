@@ -1,195 +1,196 @@
 <div>
-    <div
-      class="
-        d-flex
-        flex-column flex-sm-row
-        justify-content-center justify-content-sm-between
-      "
-    >
-      <h2 class="text-center text-md-left">
-        {{ movie.title }} ({{ movie.yearReleasedOn }})
-      </h2>
+  <div
+    class="d-flex flex-column flex-sm-row justify-content-center justify-content-sm-between"
+  >
+    <h2 class="text-center text-md-left">
+      {{ movie.title }} ({{ movie.yearReleasedOn }})
+    </h2>
 
-      <div class="d-flex justify-content-center justify-content-sm-end mb-4">
-        <ng-container *canEdit="movie.userId">
-          <div class="mr-2">
-            <div
-              class="btn btn-outline-primary"
-              [routerLink]="['/movie/update', movie.id]"
-            >
-              <fa-icon [icon]="['fas', 'pencil-alt']"></fa-icon>
-            </div>
-          </div>
-        </ng-container>
-
-        <ng-container *canEdit="movie.userId">
-          <div *ngIf="!movie.isShowcased" class="mr-2">
-            <button
-              (click)="addToShowcase()"
-              [disabled]="ismovieShowcaseUpdateLoading"
-              class="btn btn-outline-primary"
-            >
-              <app-loading-indicator-small
-                [isLoading]="ismovieShowcaseUpdateLoading"
-              ></app-loading-indicator-small>
-
-              <fa-icon
-                *ngIf="!ismovieShowcaseUpdateLoading"
-                [icon]="['fas', 'star']"
-              ></fa-icon>
-            </button>
-          </div>
-        </ng-container>
-
-        <ng-container *canEdit="movie.userId">
-          <div *ngIf="movie.isShowcased" class="mr-2">
-            <button
-              (click)="removeFromShowcase()"
-              [disbl]="ismovieShowcaseUpdateLoading"
-              class="btn btn-outline-danger"
-            >
-              <app-loading-indicator-small
-                [isLoading]="ismovieShowcaseUpdateLoading"
-              ></app-loading-indicator-small>
-
-              <fa-icon
-                *ngIf="!ismovieShowcaseUpdateLoading"
-                [icon]="['fas', 'star']"
-              ></fa-icon>
-            </button>
-          </div>
-        </ng-container>
-
-        <ng-container *canEdit="movie.userId">
-          <div>
-            <button
-              (click)="incrementPlayCount()"
-              [disabled]="isIncrementPlayCountLoading"
-              class="btn btn-outline-primary"
-            >
-              <app-loading-indicator-small
-                [isLoading]="isIncrementPlayCountLoading"
-              ></app-loading-indicator-small>
-
-              <fa-icon
-                *ngIf="!isIncrementPlayCountLoading"
-                [icon]="['fas', 'plus']"
-              ></fa-icon>
-            </button>
-          </div>
-        </ng-container>
-      </div>
-    </div>
-
-    <div class="d-flex flex-column flex-sm-row">
-      <div class="mr-4">
-        <img [src]="movie.imageUrl" class="img-fluid movie-img" />
-      </div>
-      <div class="d-flex flex-column flex-grow-1 mt-4 mt-sm-0">
-        <div class="card">
-          <h3 class="card-header">Movie Details</h3>
-          <div class="card-body">
-            <div>Genre: {{ movie.genre || "N/A" }}</div>
-
+    <div class="d-flex justify-content-center justify-content-sm-end mb-4">
+      <ng-container *canEdit="movie.userId">
+        <div class="mr-2">
+          <div
+            class="btn btn-outline-primary"
+            [routerLink]="['/movie/update', movie.id]"
+          >
+            <fa-icon [icon]="['fas', 'pencil-alt']"></fa-icon>
           </div>
         </div>
+      </ng-container>
 
-        <div class="card mt-4">
-          <h3 class="card-header">Media Information</h3>
-          <div class="card-body">
-            <div>Type: {{ getMovieMediaTypeDisplayName(movie.type) }}</div>
-            <div>Language: {{ movie.language || "N/A" }}</div>
-            <div>Country of Origin: {{ movie.countryOfOrigin || "N/A" }}</div>
-            <div>Physical: {{ movie.isPhysical | yesNo }}</div>
-            <div>First Edition: {{ movie.isFirstEdition | yesNo }}</div>
-            <div>Reissue: {{ movie.isReissue | yesNo }}</div>
-            <div *ngIf="movie.isReissue">Reissue Year: {{ movie.reissueYear }}</div>
+      <ng-container *canEdit="movie.userId">
+        <div *ngIf="!movie.isShowcased" class="mr-2">
+          <button
+            (click)="addToShowcase()"
+            [disabled]="ismovieShowcaseUpdateLoading"
+            class="btn btn-outline-primary"
+          >
+            <app-loading-indicator-small
+              [isLoading]="ismovieShowcaseUpdateLoading"
+            ></app-loading-indicator-small>
 
-          </div>
+            <fa-icon
+              *ngIf="!ismovieShowcaseUpdateLoading"
+              [icon]="['fas', 'star']"
+            ></fa-icon>
+          </button>
+        </div>
+      </ng-container>
+
+      <ng-container *canEdit="movie.userId">
+        <div *ngIf="movie.isShowcased" class="mr-2">
+          <button
+            (click)="removeFromShowcase()"
+            [disbl]="ismovieShowcaseUpdateLoading"
+            class="btn btn-outline-danger"
+          >
+            <app-loading-indicator-small
+              [isLoading]="ismovieShowcaseUpdateLoading"
+            ></app-loading-indicator-small>
+
+            <fa-icon
+              *ngIf="!ismovieShowcaseUpdateLoading"
+              [icon]="['fas', 'star']"
+            ></fa-icon>
+          </button>
+        </div>
+      </ng-container>
+
+      <ng-container *canEdit="movie.userId">
+        <div>
+          <button
+            (click)="incrementPlayCount()"
+            [disabled]="isIncrementPlayCountLoading"
+            class="btn btn-outline-primary"
+          >
+            <app-loading-indicator-small
+              [isLoading]="isIncrementPlayCountLoading"
+            ></app-loading-indicator-small>
+
+            <fa-icon
+              *ngIf="!isIncrementPlayCountLoading"
+              [icon]="['fas', 'plus']"
+            ></fa-icon>
+          </button>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="d-flex flex-column flex-sm-row">
+    <div class="mr-4">
+      <img [src]="movie.imageUrl" class="img-fluid movie-img" />
+    </div>
+    <div class="d-flex flex-column flex-grow-1 mt-4 mt-sm-0">
+      <div class="card">
+        <h3 class="card-header">Movie Details</h3>
+        <div class="card-body">
+          <div>Director: {{ movie.director || "N/A" }}</div>
+          <div>Distributor: {{ movie.distributor || "N/A" }}</div>
+          <div>Genre: {{ movie.genre || "N/A" }}</div>
+          <div>TMDB Id: {{ movie.tmdbId }}</div>
         </div>
       </div>
-    </div>
 
-    <div class="card mt-4">
-      <h3 class="card-header">Miscellaneous Information</h3>
-      <div class="card-body">
-        <div class="row">
-          <div class="col-sm-4">
-            <div>Category: {{ movie.category || "N/A" }}</div>
-            <div>Notes: {{ movie.notes || "N/A" }}</div>
+      <div class="card mt-4">
+        <h3 class="card-header">Media Information</h3>
+        <div class="card-body">
+          <div>Type: {{ getMovieMediaTypeDisplayName(movie.type) }}</div>
+          <div>Language: {{ movie.language || "N/A" }}</div>
+          <div>Country of Origin: {{ movie.countryOfOrigin || "N/A" }}</div>
+          <div>Physical: {{ movie.isPhysical | yesNo }}</div>
+          <div>First Edition: {{ movie.isFirstEdition | yesNo }}</div>
+          <div>Reissue: {{ movie.isReissue | yesNo }}</div>
+          <div *ngIf="movie.isReissue">
+            Reissue Year: {{ movie.reissueYear }}
           </div>
-          <div class="col-sm-4">
-            <div>
-              Completion Status:
-              {{ getCompletionStatusDisplayName(movie.completionStatus) }}
-            </div>
-            <div>Times Played: {{ movie.timesCompleted }}</div>
-          </div>
-          <div class="col-sm-4">
-            <div>Date Added: {{ movie.addedOn | noDate }}</div>
-            <div>Last Played: {{ movie.lastCompletedOn | noDate }}</div>
-            <div>Last Updated: {{ movie.updatedOn | noDate }}</div>
-          </div>
+          <div>Season Number: {{ movie.seasonNumber || "N/A" }}</div>
+          <div>Rating: {{ getMovieRatingDisplayName(movie.rating) }}</div>
         </div>
-      </div>
-    </div>
-
-    <div *ngIf="isViewable()" class="card mt-4">
-      <h3 class="card-header">Storage Information</h3>
-      <div class="card-body">
-        <div class="row">
-          <div class="col-sm-4">
-            <div>Container: {{ movie.itemStorage.container || "N/A" }}</div>
-          </div>
-          <div class="col-sm-4">
-            <div>
-              Container Code:
-              {{ movie.itemStorage.containerCode || "N/A" }}
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div>Location: {{ movie.itemStorage.location || "N/A" }}</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div *ngIf="isViewable()" class="card mt-4">
-      <h3 class="card-header">Checkout Information</h3>
-      <div class="card-body">
-        <div class="row">
-          <div class="col-sm-4">
-            <div>Checked Out: {{ movie.checkout.isCheckedOut | yesNo }}</div>
-          </div>
-          <div class="col-sm-4">
-            <div>
-              Checked Out On:
-              {{ movie.checkout.checkedOutOn | noDate }}
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div>
-              Checkout Reason:
-              {{ movie.checkout.checkoutReason || "N/A" }}
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div>
-              Expected Return On:
-              {{ movie.checkout.expectedReturnOn | noDate }}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card mt-4">
-      <h3 class="card-header">Purchase Information</h3>
-      <div class="card-body">
-        <div>Date Purchased: {{ movie.purchasedOn | noDate }}</div>
-        <div>Location Purchased: {{ movie.locationPurchased || "N/A" }}</div>
-        <div>Country Purchaed: {{ movie.countryPurchased || "N/A" }}</div>
-        <div>New Purchase: {{ movie.isNew | yesNo }}</div>
       </div>
     </div>
   </div>
+
+  <div class="card mt-4">
+    <h3 class="card-header">Miscellaneous Information</h3>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-4">
+          <div>Category: {{ movie.category || "N/A" }}</div>
+          <div>Notes: {{ movie.notes || "N/A" }}</div>
+        </div>
+        <div class="col-sm-4">
+          <div>
+            Completion Status:
+            {{ getCompletionStatusDisplayName(movie.completionStatus) }}
+          </div>
+          <div>Times Played: {{ movie.timesCompleted }}</div>
+        </div>
+        <div class="col-sm-4">
+          <div>Date Added: {{ movie.addedOn | noDate }}</div>
+          <div>Last Played: {{ movie.lastCompletedOn | noDate }}</div>
+          <div>Last Updated: {{ movie.updatedOn | noDate }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isViewable()" class="card mt-4">
+    <h3 class="card-header">Storage Information</h3>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-4">
+          <div>Container: {{ movie.itemStorage.container || "N/A" }}</div>
+        </div>
+        <div class="col-sm-4">
+          <div>
+            Container Code:
+            {{ movie.itemStorage.containerCode || "N/A" }}
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div>Location: {{ movie.itemStorage.location || "N/A" }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isViewable()" class="card mt-4">
+    <h3 class="card-header">Checkout Information</h3>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-4">
+          <div>Checked Out: {{ movie.checkout.isCheckedOut | yesNo }}</div>
+        </div>
+        <div class="col-sm-4">
+          <div>
+            Checked Out On:
+            {{ movie.checkout.checkedOutOn | noDate }}
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div>
+            Checkout Reason:
+            {{ movie.checkout.checkoutReason || "N/A" }}
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div>
+            Expected Return On:
+            {{ movie.checkout.expectedReturnOn | noDate }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mt-4">
+    <h3 class="card-header">Purchase Information</h3>
+    <div class="card-body">
+      <div>Date Purchased: {{ movie.purchasedOn | noDate }}</div>
+      <div>Location Purchased: {{ movie.locationPurchased || "N/A" }}</div>
+      <div>Country Purchaed: {{ movie.countryPurchased || "N/A" }}</div>
+      <div>New Purchase: {{ movie.isNew | yesNo }}</div>
+    </div>
+  </div>
+</div>

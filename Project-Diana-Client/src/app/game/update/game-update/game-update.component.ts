@@ -69,7 +69,7 @@ export class GameUpdateComponent implements OnInit, AfterViewInit {
               isCheckedOut: game.checkout.isCheckedOut,
             },
             completionStatus: game.completionStatus,
-            countryOfOrigin: game.completionStatus,
+            countryOfOrigin: game.countryOfOrigin,
             countryPurchased: game.countryPurchased,
             developer: game.developer,
             genre: game.genre,
@@ -80,7 +80,6 @@ export class GameUpdateComponent implements OnInit, AfterViewInit {
             isNew: game.isNew,
             isPhysical: game.isPhysical,
             isReissue: game.isReissue,
-            isShowcased: game.isShowcased,
             itemStorage: {
               container: game.itemStorage.container,
               containerCode: game.itemStorage.containerCode,
@@ -92,7 +91,10 @@ export class GameUpdateComponent implements OnInit, AfterViewInit {
             partOfSeries: game.partOfSeries,
             platform: game.platform,
             publisher: game.publisher,
-            purchasedOn: game.purchasedOn,
+            purchasedOn: this.datePipe.transform(
+              game.purchasedOn,
+              'yyyy-MM-dd'
+            ),
             rating: game.rating,
             reissueYear: game.reissueYear,
             series: game.series,

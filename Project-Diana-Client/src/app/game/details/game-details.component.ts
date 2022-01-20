@@ -3,7 +3,12 @@ import { ActivatedRoute } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ToastrService } from 'ngx-toastr';
 import { tap } from 'rxjs/operators';
-import { Game, getGameMediaTypeDisplayName } from 'src/app/game/game.model';
+import {
+  Game,
+  getGameMediaTypeDisplayName,
+  getGamePlatformDisplayName,
+  getGameRatingDisplayName,
+} from 'src/app/game/game.model';
 import { GameQuery } from 'src/app/game/state/game.query';
 import { GameService } from 'src/app/game/state/game.service';
 import { getCompletionStatusDisplayName } from 'src/app/shared/item/item.model';
@@ -67,6 +72,14 @@ export class GameDetailsComponent implements OnInit {
 
   getGameMediaTypeDisplayName(value: number): string {
     return getGameMediaTypeDisplayName(value);
+  }
+
+  getGamePlatformDisplayName(value: number): string {
+    return getGamePlatformDisplayName(value);
+  }
+
+  getGameRatingDisplayName(value: number): string {
+    return getGameRatingDisplayName(value);
   }
 
   incrementPlayCount(): void {

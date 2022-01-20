@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { tap } from 'rxjs/operators';
-import { GAME_MEDIA_TYPES } from 'src/app/game/game.model';
+import { GAME_MEDIA_TYPES, GAME_PLATFORMS, GAME_RATINGS } from 'src/app/game/game.model';
 import { getReleaseYears, ITEM_COMPLETION_STATUSES } from 'src/app/shared/item/item.model';
 
 @UntilDestroy()
@@ -15,14 +15,20 @@ import { getReleaseYears, ITEM_COMPLETION_STATUSES } from 'src/app/shared/item/i
 export class GameFormComponent implements OnInit {
   gameForm: FormGroup;
   completionStatuses = ITEM_COMPLETION_STATUSES;
+  mediaPlatforms = GAME_PLATFORMS;
+  mediaRatings = GAME_RATINGS;
   mediaTypes = GAME_MEDIA_TYPES;
+
   releaseYears = getReleaseYears();
   currentDate = new Date().toUTCString();
   datePipe: DatePipe;
   showReissueYear = false;
+  showSeries = false;
 
   @Input() completionStatus: number;
   @Input() media: number;
+  @Input() mediaPlatform: number;
+  @Input() mediaRating: number;
   @Input() releaseYear: number;
 
   constructor(private formBuilder: FormBuilder) {
@@ -51,7 +57,6 @@ export class GameFormComponent implements OnInit {
       isNew: false,
       isPhysical: false,
       isReissue: false,
-      isShowcased: false,
       itemStorage: this.formBuilder.group({
         container: '',
         containerCode: '',
@@ -69,13 +74,16 @@ export class GameFormComponent implements OnInit {
       series: '',
       timesCompleted: 0,
       title: '',
-      type: '',
+      type: 0,
       yearReleasedOn: new Date(this.currentDate).getFullYear(),
     });
 
     this.gameForm.valueChanges
       .pipe(
-        tap((data) => (this.showReissueYear = data.isReissue)),
+        tap((data) => {
+          this.showReissueYear = data.isReissue;
+          this.showSeries = data.partOfSeries;
+        }),
         untilDestroyed(this)
       )
       .subscribe();

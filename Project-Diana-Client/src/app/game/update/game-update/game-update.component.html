@@ -1,19 +1,26 @@
 <div *ngxSubscribe="game as g">
-    <div class="d-flex justify-content-center mb-4">
-      <img [src]="g.imageUrl" class="img-fluid game-img" />
-    </div>
-    <form
-      [formGroup]="gameUpdateForm"
-      (ngSubmit)="onSubmit(gameUpdateForm.value)"
-    >
-      <app-game-form #gameForm [releaseYear]="g.yearReleased"></app-game-form>
+  <div class="d-flex justify-content-center mb-4">
+    <img [src]="g.imageUrl" class="img-fluid game-img" />
+  </div>
+  <form
+    [formGroup]="gameUpdateForm"
+    (ngSubmit)="onSubmit(gameUpdateForm.value)"
+  >
+    <app-game-form
+      #gameForm
+      [completionStatus]="g.completionStatus"
+      [media]="g.type"
+      [mediaPlatform]="g.platform"
+      [mediaRating]="g.rating"
+      [releaseYear]="g.yearReleased"
+    ></app-game-form>
 
-      <div class="row">
-        <div class="col-sm-2">
-          <div class="form-group">
-            <button class="btn btn-primary" type="submit">Update game</button>
-          </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="form-group">
+          <button class="btn btn-primary" type="submit">Update game</button>
         </div>
       </div>
-    </form>
-  </div>
+    </div>
+  </form>
+</div>

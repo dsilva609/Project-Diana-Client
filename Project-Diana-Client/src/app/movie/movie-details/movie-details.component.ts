@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ToastrService } from 'ngx-toastr';
 import { tap } from 'rxjs/operators';
-import { getMovieMediaTypeDisplayName, Movie } from 'src/app/movie/movie.model';
+import { getMovieMediaTypeDisplayName, getMovieRatingDisplayName, Movie } from 'src/app/movie/movie.model';
 import { MovieQuery } from 'src/app/movie/state/movie.query';
 import { MovieService } from 'src/app/movie/state/movie.service';
 import { getCompletionStatusDisplayName } from 'src/app/shared/item/item.model';
@@ -72,6 +72,10 @@ export class MovieDetailsComponent implements OnInit {
 
   getMovieMediaTypeDisplayName(value: number): string {
     return getMovieMediaTypeDisplayName(value);
+  }
+
+  getMovieRatingDisplayName(value: number): string {
+    return getMovieRatingDisplayName(value);
   }
 
   incrementPlayCount(): void {
