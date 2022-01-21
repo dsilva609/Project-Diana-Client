@@ -3,8 +3,15 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { tap } from 'rxjs/operators';
-import { GAME_MEDIA_TYPES, GAME_PLATFORMS, GAME_RATINGS } from 'src/app/game/game.model';
-import { getReleaseYears, ITEM_COMPLETION_STATUSES } from 'src/app/shared/item/item.model';
+import {
+  GAME_MEDIA_TYPES,
+  GAME_PLATFORMS,
+  GAME_RATINGS,
+} from 'src/app/game/game.model';
+import {
+  getReleaseYears,
+  ITEM_COMPLETION_STATUSES,
+} from 'src/app/shared/item/item.model';
 
 @UntilDestroy()
 @Component({
@@ -65,7 +72,7 @@ export class GameFormComponent implements OnInit {
       language: '',
       locationPurchased: '',
       notes: '',
-      partOfSeries: '',
+      partOfSeries: false,
       platform: 0,
       publisher: '',
       purchasedOn: this.datePipe.transform(this.currentDate, 'YYYY-MM-dd'),

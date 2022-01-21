@@ -34,7 +34,7 @@ export class GameSubmissionComponent implements OnInit, AfterViewInit {
 
   onSubmit(gameFormData): void {
     this.gameService
-      .submitGame(gameFormData.gameForm)
+      .submitGame(gameFormData.gameData)
       .pipe(
         tap((successful) => {
           if (successful) {
