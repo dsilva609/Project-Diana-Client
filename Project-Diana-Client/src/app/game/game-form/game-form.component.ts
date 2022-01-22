@@ -76,7 +76,7 @@ export class GameFormComponent implements OnInit {
       platform: 0,
       publisher: '',
       purchasedOn: this.datePipe.transform(this.currentDate, 'YYYY-MM-dd'),
-      rating: '',
+      rating: 0,
       reissueYear: null,
       series: '',
       timesCompleted: 0,

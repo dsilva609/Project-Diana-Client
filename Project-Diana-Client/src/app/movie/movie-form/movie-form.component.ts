@@ -4,7 +4,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { tap } from 'rxjs/operators';
 import { MOVIE_MEDIA_TYPES, MOVIE_RATINGS } from 'src/app/movie/movie.model';
-import { getReleaseYears, ITEM_COMPLETION_STATUSES } from 'src/app/shared/item/item.model';
+import {
+  getReleaseYears,
+  ITEM_COMPLETION_STATUSES,
+} from 'src/app/shared/item/item.model';
 
 @UntilDestroy()
 @Component({
@@ -66,7 +69,7 @@ export class MovieFormComponent implements OnInit {
       timesCompleted: 0,
       tmdbId: 0,
       title: '',
-      type: 0,
+      type: 1,
       yearReleasedOn: new Date(this.currentDate).getFullYear(),
     });
 

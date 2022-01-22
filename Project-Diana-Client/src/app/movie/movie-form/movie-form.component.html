@@ -47,18 +47,21 @@
             placeholder="Genre"
           />
         </div>
-        <input
-          type="text"
-          class="form-control mb-2 mr-2"
-          formControlName="imageUrl"
-          placeholder="Image Url"
-        />
-        <input
-          type="text"
-          class="form-control"
-          formControlName="tmdbId"
-          placeholder="TMDB Id"
-        />
+        <div class="d-flex flex-column flex-sm-row">
+          <input
+            type="text"
+            class="form-control mb-2 mr-2"
+            formControlName="imageUrl"
+            placeholder="Image Url"
+          />
+          <label for="tmdbId" class="mr-2">TMDB Id</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="tmdbId"
+            placeholder="TMDB Id"
+          />
+        </div>
       </div>
     </div>
 
