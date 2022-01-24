@@ -61,6 +61,10 @@ export class GameService {
     );
   }
 
+  reset(): void {
+    this.gameStore.reset();
+  }
+
   submitGame(gameFormData): Observable<boolean> {
     return this.http.post<boolean>('Game/CreateGame', gameFormData).pipe(
       tap((successful) => {

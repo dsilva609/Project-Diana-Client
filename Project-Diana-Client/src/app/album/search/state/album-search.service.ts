@@ -12,6 +12,9 @@ export class AlbumSearchService {
     private http: HttpClient
   ) {}
 
+  reset(): void {
+    this.albumSearchStore.reset();
+  }
   searchForAlbum(searchData): Observable<boolean> {
     const paramList = new HttpParams()
       .set('album', searchData.album || '')

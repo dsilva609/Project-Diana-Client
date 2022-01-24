@@ -81,6 +81,11 @@ export function createGame(): Game {
   } as Game;
 }
 
+export const GAME_CATEGORY_TYPES = [
+  { name: 'Board Game', value: 1 },
+  { name: 'Video Game', value: 2 },
+];
+
 export const GAME_MEDIA_TYPES = [
   { name: 'DLC', value: 1 },
   { name: 'Expansion', value: 2 },

@@ -2,12 +2,12 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { ToastrService } from 'ngx-toastr';
 import { of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { BookFormComponent } from 'src/app/book/book-form/book-form.component';
 import { BookSearchResult } from 'src/app/book/book-search/state/book-search.model';
 import { BookSearchService } from 'src/app/book/book-search/state/book-search.service';
-import { BookSearchStore } from 'src/app/book/book-search/state/book-search.store';
 import { BookService } from 'src/app/book/state/book.service';
 import { WishQuery } from 'src/app/wish/state/wish.query';
 import { WishService } from 'src/app/wish/state/wish.service';
@@ -27,9 +27,9 @@ export class BookSearchedComponent implements OnInit, AfterViewInit {
   constructor(
     private bookSearchService: BookSearchService,
     private bookService: BookService,
-    private bookSearchStore: BookSearchStore,
     private route: ActivatedRoute,
     private router: Router,
+    private toastrService: ToastrService,
     private wishQuery: WishQuery,
     private wishService: WishService
   ) {
@@ -79,10 +79,9 @@ export class BookSearchedComponent implements OnInit, AfterViewInit {
       .pipe(
         tap((successful) => {
           if (successful) {
-            this.bookSearchStore.reset();
-
+            this.bookSearchService.reset();
             this.wishService.resetActiveWish(linkedWishId);
-
+            this.toastrService.success('New book added');
             this.router.navigateByUrl('/book');
           }
         }),

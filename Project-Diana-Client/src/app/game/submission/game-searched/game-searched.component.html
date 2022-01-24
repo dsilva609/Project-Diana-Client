@@ -1,12 +1,12 @@
-<div *ngxSubscribe="searchedBook as book">
+<div *ngxSubscribe="searchedGame as game">
   <div class="d-flex justify-content-center mb-4">
-    <img [src]="book?.imageUrl" class="img-fluid book-img" />
+    <img [src]="game?.imageUrl" class="img-fluid game-img" />
   </div>
   <form
-    [formGroup]="bookSubmissionForm"
-    (ngSubmit)="onSubmit(bookSubmissionForm.value)"
+    [formGroup]="gameSubmissionForm"
+    (ngSubmit)="onSubmit(gameSubmissionForm.value)"
   >
-    <app-book-form #bookForm [releaseYear]="book?.yearReleased"></app-book-form>
+    <app-game-form #gameForm [releaseYear]="game?.yearReleased"></app-game-form>
 
     <div class="row">
       <div class="col-sm-2">

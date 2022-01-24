@@ -2,11 +2,12 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { ToastrService } from 'ngx-toastr';
 import { tap } from 'rxjs/operators';
 import { AlbumFormComponent } from 'src/app/album/album-form/album-form.component';
 import { AlbumSearchResult } from 'src/app/album/search/state/album-search.model';
 import { AlbumSearchQuery } from 'src/app/album/search/state/album-search.query';
-import { AlbumSearchStore } from 'src/app/album/search/state/album-search.store';
+import { AlbumSearchService } from 'src/app/album/search/state/album-search.service';
 import { AlbumService } from 'src/app/album/state/album.service';
 
 @UntilDestroy()
@@ -23,9 +24,10 @@ export class AlbumSearchedComponent implements OnInit, AfterViewInit {
 
   constructor(
     private albumSearchQuery: AlbumSearchQuery,
+    private albumSearchService: AlbumSearchService,
     private albumService: AlbumService,
-    private albumSearchStore: AlbumSearchStore,
-    private router: Router
+    private router: Router,
+    private toastrService: ToastrService
   ) {
     this.albumSubmissionForm = new FormGroup({});
   }
@@ -56,8 +58,8 @@ export class AlbumSearchedComponent implements OnInit, AfterViewInit {
       .pipe(
         tap((successful) => {
           if (successful) {
-            this.albumSearchStore.reset();
-
+            this.albumSearchService.reset();
+            this.toastrService.success('New album added');
             this.router.navigateByUrl('/album');
           }
         }),

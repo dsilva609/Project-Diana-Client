@@ -13,11 +13,13 @@ export class BookSearchService {
   ) {}
 
   getBookByVolumeId(id: string): Observable<BookSearchResult> {
-    return this.http.get<BookSearchResult>(`Book/GetBookByVolumeId/${id}`).pipe(
-      tap((response) => {
-        return response;
-      })
-    );
+    return this.http
+      .get<BookSearchResult>(`Book/GetBookByVolumeId/${id}`)
+      .pipe(tap((response) => response));
+  }
+
+  reset(): void {
+    this.bookSearchStore.reset();
   }
 
   searchForBook(searchData): Observable<boolean> {
