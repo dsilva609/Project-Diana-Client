@@ -1,0 +1,22 @@
+<div *ngxSubscribe="searchedMovie as movie">
+  <div class="d-flex justify-content-center mb-4">
+    <img [src]="movie?.imageUrl" class="img-fluid movie-img" />
+  </div>
+  <form
+    [formGroup]="movieSubmissionForm"
+    (ngSubmit)="onSubmit(movieSubmissionForm.value)"
+  >
+    <app-movie-form
+      #movieForm
+      [releaseYear]="movie?.yearReleased"
+    ></app-movie-form>
+
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="form-group">
+          <button class="btn btn-primary" type="submit">Create</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

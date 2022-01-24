@@ -73,6 +73,11 @@ export function createMovie(): Movie {
   };
 }
 
+export const MOVIE_CATEGORY_TYPES = [
+  { name: 'Movie', value: 1 },
+  { name: 'TV Show', value: 2 },
+];
+
 export const MOVIE_MEDIA_TYPES = [
   { name: 'Blu Ray', value: 1 },
   { name: 'DVD', value: 0 },

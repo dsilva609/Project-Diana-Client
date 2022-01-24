@@ -61,7 +61,7 @@ export class GameSearchedComponent implements OnInit, AfterViewInit {
             genre: game.genre,
             giantBombId: game.gameCategory === 2 ? game.id : 0,
             imageUrl: game.imageUrl,
-            publisher: game.publisher,
+            publisher: game.publisher || '',
             title: game.title,
             yearReleasedOn: game.yearReleasedOn,
           })
@@ -85,7 +85,8 @@ export class GameSearchedComponent implements OnInit, AfterViewInit {
             this.toastrService.success('New game added');
             this.router.navigateByUrl('/game');
           }
-        })
+        }),
+        untilDestroyed(this)
       )
       .subscribe();
   }

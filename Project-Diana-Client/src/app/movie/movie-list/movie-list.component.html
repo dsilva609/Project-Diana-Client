@@ -1,70 +1,67 @@
 <div *ngxSubscribe="movies as movieList">
-    <div class="d-flex justify-content-between">
-      <div class="d-flex flex-column flex-sm-row">
-        <form
-          [formGroup]="searchForm"
-          class="d-flex justify-content-start ml-4 mb-2 mr-4"
-          (ngSubmit)="onSearch(searchForm.value)"
-        >
-          <div class="row">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <fa-icon
-                  [icon]="['fas', 'search']"
-                  class="input-group-text"
-                ></fa-icon>
-              </div>
-              <input
-                class="form-control"
-                type="text"
-                formControlName="searchQuery"
-                placeholder="Search"
-              />
-            </div>
-          </div>
-        </form>
-
-        <!-- <button
-          *authenticated
-          class="btn btn-outline-primary"
-          routerLink="/movie/search"
-        >
-          Search Movies<fa-icon
-            [icon]="['fas', 'search']"
-            class="ml-2"
-          ></fa-icon>
-        </button> -->
-      </div>
-
-      <div
-        *authenticated
-        class="btn btn-primary btn-lg fa-2x"
-        routerLink="create"
+  <div class="d-flex justify-content-between">
+    <div class="d-flex flex-column flex-sm-row">
+      <form
+        [formGroup]="searchForm"
+        class="d-flex justify-content-start ml-4 mb-2 mr-4"
+        (ngSubmit)="onSearch(searchForm.value)"
       >
-        <fa-icon [icon]="['fas', 'plus']"></fa-icon>
-      </div>
+        <div class="row">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <fa-icon
+                [icon]="['fas', 'search']"
+                class="input-group-text"
+              ></fa-icon>
+            </div>
+            <input
+              class="form-control"
+              type="text"
+              formControlName="searchQuery"
+              placeholder="Search"
+            />
+          </div>
+        </div>
+      </form>
+
+      <button
+        *authenticated
+        class="btn btn-outline-primary"
+        routerLink="/movie/search"
+      >
+        Search Movies<fa-icon [icon]="['fas', 'search']" class="ml-2"></fa-icon>
+      </button>
     </div>
 
     <div
-      class="d-flex flex-row flex-wrap align-items-center justify-content-start"
+      *authenticated
+      class="btn btn-primary btn-lg fa-2x"
+      routerLink="create"
     >
-      <app-movie
-        *ngFor="
-          let movie of movieList
-            | paginate
-              : {
-                  itemsPerPage: movieCount,
-                  currentPage: page,
-                  totalItems: totalMovies
-                }
-        "
-        [movie]="movie"
-        [routerLink]="['/movie', movie.id]"
-      ></app-movie>
+      <fa-icon [icon]="['fas', 'plus']"></fa-icon>
     </div>
-    <pagination-controls
-      class="d-flex justify-content-center"
-      (pageChange)="page = $event; getNextPage($event)"
-      autoHide="true"
-    ></pagination-controls>
+  </div>
+
+  <div
+    class="d-flex flex-row flex-wrap align-items-center justify-content-start"
+  >
+    <app-movie
+      *ngFor="
+        let movie of movieList
+          | paginate
+            : {
+                itemsPerPage: movieCount,
+                currentPage: page,
+                totalItems: totalMovies
+              }
+      "
+      [movie]="movie"
+      [routerLink]="['/movie', movie.id]"
+    ></app-movie>
+  </div>
+  <pagination-controls
+    class="d-flex justify-content-center"
+    (pageChange)="page = $event; getNextPage($event)"
+    autoHide="true"
+  ></pagination-controls>
 </div>
