@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ToastrService } from 'ngx-toastr';
@@ -20,7 +20,7 @@ import { BookService } from 'src/app/book/state/book.service';
 export class BookUpdateComponent implements OnInit, AfterViewInit {
   book = of<Book>();
   bookId: string;
-  bookUpdateForm: FormGroup;
+  bookUpdateForm: UntypedFormGroup;
   datePipe: DatePipe;
 
   @ViewChild('bookForm') bookForm: BookFormComponent;
@@ -45,7 +45,7 @@ export class BookUpdateComponent implements OnInit, AfterViewInit {
 
     this.book = this.bookQuery.select().pipe(untilDestroyed(this));
 
-    this.bookUpdateForm = new FormGroup({});
+    this.bookUpdateForm = new UntypedFormGroup({});
   }
 
   ngAfterViewInit(): void {

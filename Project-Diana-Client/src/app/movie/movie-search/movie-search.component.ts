@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { of } from 'rxjs';
@@ -15,14 +15,14 @@ import { MOVIE_CATEGORY_TYPES } from 'src/app/movie/movie.model';
   styleUrls: ['./movie-search.component.scss'],
 })
 export class MovieSearchComponent implements OnInit {
-  searchForm: FormGroup;
+  searchForm: UntypedFormGroup;
   searchResults = of<MovieSearchResult[]>();
   searchTypes = MOVIE_CATEGORY_TYPES;
 
   constructor(
     private movieSearchQuery: MovieSearchQuery,
     private movieSearchService: MovieSearchService,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private route: ActivatedRoute,
     private router: Router
   ) {

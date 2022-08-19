@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { of } from 'rxjs';
@@ -19,13 +19,13 @@ export class AlbumListComponent implements OnInit {
   albumCount = 24;
   page = 1;
   totalAlbums = 0;
-  searchForm: FormGroup;
+  searchForm: UntypedFormGroup;
   searchQuery = '';
 
   constructor(
     private albumListQuery: AlbumListQuery,
     private albumListService: AlbumListService,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private route: ActivatedRoute,
     private router: Router
   ) {

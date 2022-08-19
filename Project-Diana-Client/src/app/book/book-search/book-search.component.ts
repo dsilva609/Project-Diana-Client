@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { of } from 'rxjs';
@@ -14,13 +14,13 @@ import { BookSearchService } from 'src/app/book/book-search/state/book-search.se
   styleUrls: ['./book-search.component.scss'],
 })
 export class BookSearchComponent implements OnInit {
-  searchForm: FormGroup;
+  searchForm: UntypedFormGroup;
   searchResults = of<BookSearchResult[]>();
 
   constructor(
     private bookSearchQuery: BookSearchQuery,
     private bookSearchService: BookSearchService,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private route: ActivatedRoute,
     private router: Router
   ) {

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ToastrService } from 'ngx-toastr';
@@ -14,7 +14,7 @@ import { MovieService } from 'src/app/movie/state/movie.service';
   styleUrls: ['./movie-submission.component.scss'],
 })
 export class MovieSubmissionComponent implements OnInit, AfterViewInit {
-  movieSubmissionForm: FormGroup;
+  movieSubmissionForm: UntypedFormGroup;
   @ViewChild('movieForm') movieForm: MovieFormComponent;
 
   constructor(
@@ -24,7 +24,7 @@ export class MovieSubmissionComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    this.movieSubmissionForm = new FormGroup({});
+    this.movieSubmissionForm = new UntypedFormGroup({});
   }
 
   ngAfterViewInit(): void {

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ToastrService } from 'ngx-toastr';
@@ -21,7 +21,7 @@ import { WishService } from 'src/app/wish/state/wish.service';
 })
 export class MovieSearchedComponent implements OnInit, AfterViewInit {
   searchedMovie = of<MovieSearchResult>();
-  movieSubmissionForm: FormGroup;
+  movieSubmissionForm: UntypedFormGroup;
 
   @ViewChild('movieForm') movieForm: MovieFormComponent;
 
@@ -34,7 +34,7 @@ export class MovieSearchedComponent implements OnInit, AfterViewInit {
     private wishQuery: WishQuery,
     private wishService: WishService
   ) {
-    this.movieSubmissionForm = new FormGroup({});
+    this.movieSubmissionForm = new UntypedFormGroup({});
   }
 
   ngOnInit(): void {

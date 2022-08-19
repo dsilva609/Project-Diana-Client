@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ToastrService } from 'ngx-toastr';
@@ -20,7 +20,7 @@ import { AlbumService } from 'src/app/album/state/album.service';
 export class AlbumUpdateComponent implements OnInit, AfterViewInit {
   album = of<Album>();
   albumId: string;
-  albumUpdateForm: FormGroup;
+  albumUpdateForm: UntypedFormGroup;
   datePipe: DatePipe;
 
   @ViewChild('albumForm') albumForm: AlbumFormComponent;
@@ -45,7 +45,7 @@ export class AlbumUpdateComponent implements OnInit, AfterViewInit {
 
     this.album = this.albumQuery.select().pipe(untilDestroyed(this));
 
-    this.albumUpdateForm = new FormGroup({});
+    this.albumUpdateForm = new UntypedFormGroup({});
   }
 
   ngAfterViewInit(): void {

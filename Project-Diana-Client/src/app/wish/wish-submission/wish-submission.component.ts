@@ -5,7 +5,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { tap } from 'rxjs/operators';
@@ -19,7 +19,7 @@ import { WishFormComponent } from 'src/app/wish/wish-form/wish-form.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WishSubmissionComponent implements OnInit, AfterViewInit {
-  wishSubmissionForm: FormGroup;
+  wishSubmissionForm: UntypedFormGroup;
 
   @ViewChild('wishForm') wishForm: WishFormComponent;
 
@@ -30,7 +30,7 @@ export class WishSubmissionComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    this.wishSubmissionForm = new FormGroup({});
+    this.wishSubmissionForm = new UntypedFormGroup({});
   }
 
   ngAfterViewInit(): void {

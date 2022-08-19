@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ToastrService } from 'ngx-toastr';
@@ -14,7 +14,7 @@ import { GameService } from 'src/app/game/state/game.service';
   styleUrls: ['./game-submission.component.scss'],
 })
 export class GameSubmissionComponent implements OnInit, AfterViewInit {
-  gameSubmissionForm: FormGroup;
+  gameSubmissionForm: UntypedFormGroup;
 
   @ViewChild('gameForm') gameForm: GameFormComponent;
 
@@ -25,7 +25,7 @@ export class GameSubmissionComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    this.gameSubmissionForm = new FormGroup({});
+    this.gameSubmissionForm = new UntypedFormGroup({});
   }
 
   ngAfterViewInit(): void {

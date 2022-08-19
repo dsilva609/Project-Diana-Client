@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ToastrService } from 'ngx-toastr';
@@ -18,7 +18,7 @@ import { AlbumService } from 'src/app/album/state/album.service';
 })
 export class AlbumSearchedComponent implements OnInit, AfterViewInit {
   searchedAlbum: AlbumSearchResult;
-  albumSubmissionForm: FormGroup;
+  albumSubmissionForm: UntypedFormGroup;
 
   @ViewChild('albumForm') albumForm: AlbumFormComponent;
 
@@ -29,7 +29,7 @@ export class AlbumSearchedComponent implements OnInit, AfterViewInit {
     private router: Router,
     private toastrService: ToastrService
   ) {
-    this.albumSubmissionForm = new FormGroup({});
+    this.albumSubmissionForm = new UntypedFormGroup({});
   }
 
   ngOnInit(): void {

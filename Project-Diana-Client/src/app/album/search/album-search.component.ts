@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { of } from 'rxjs';
@@ -14,13 +14,13 @@ import { AlbumSearchService } from 'src/app/album/search/state/album-search.serv
   styleUrls: ['./album-search.component.scss'],
 })
 export class AlbumSearchComponent implements OnInit {
-  searchForm: FormGroup;
+  searchForm: UntypedFormGroup;
   searchResults = of<AlbumSearchResult[]>();
 
   constructor(
     private albumSearchQuery: AlbumSearchQuery,
     private albumSearchService: AlbumSearchService,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private route: ActivatedRoute,
     private router: Router
   ) {

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ITEM_TYPES } from 'src/app/shared/item/item.model';
 
 @Component({
@@ -9,11 +9,11 @@ import { ITEM_TYPES } from 'src/app/shared/item/item.model';
 })
 export class WishFormComponent implements OnInit {
   itemTypes = ITEM_TYPES;
-  wishForm: FormGroup;
+  wishForm: UntypedFormGroup;
 
   @Input() wishItemType: number;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: UntypedFormBuilder) {}
 
   ngOnInit(): void {
     this.wishForm = this.formBuilder.group({

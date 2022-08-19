@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ToastrService } from 'ngx-toastr';
@@ -20,7 +20,7 @@ import { GameService } from 'src/app/game/state/game.service';
 export class GameUpdateComponent implements OnInit, AfterViewInit {
   game = of<Game>();
   gameId: string;
-  gameUpdateForm: FormGroup;
+  gameUpdateForm: UntypedFormGroup;
   datePipe: DatePipe;
 
   @ViewChild('gameForm') gameForm: GameFormComponent;
@@ -45,7 +45,7 @@ export class GameUpdateComponent implements OnInit, AfterViewInit {
 
     this.game = this.gameQuery.select();
 
-    this.gameUpdateForm = new FormGroup({});
+    this.gameUpdateForm = new UntypedFormGroup({});
   }
 
   ngAfterViewInit(): void {

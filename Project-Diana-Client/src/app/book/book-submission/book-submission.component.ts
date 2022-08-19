@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ToastrService } from 'ngx-toastr';
@@ -17,7 +17,7 @@ import { WishService } from 'src/app/wish/state/wish.service';
   styleUrls: ['./book-submission.component.scss'],
 })
 export class BookSubmissionComponent implements OnInit, AfterViewInit {
-  bookSubmissionForm: FormGroup;
+  bookSubmissionForm: UntypedFormGroup;
 
   @ViewChild('bookForm') bookForm: BookFormComponent;
 
@@ -31,7 +31,7 @@ export class BookSubmissionComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    this.bookSubmissionForm = new FormGroup({});
+    this.bookSubmissionForm = new UntypedFormGroup({});
   }
 
   ngAfterViewInit(): void {

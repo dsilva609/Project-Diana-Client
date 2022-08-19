@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { tap } from 'rxjs/operators';
 import { BOOK_MEDIA_TYPES } from 'src/app/book/book.model';
@@ -13,7 +13,7 @@ import { getReleaseYears, ITEM_COMPLETION_STATUSES } from 'src/app/shared/item/i
   styleUrls: ['./book-form.component.scss'],
 })
 export class BookFormComponent implements OnInit {
-  bookForm: FormGroup;
+  bookForm: UntypedFormGroup;
   completionStatuses = ITEM_COMPLETION_STATUSES;
   mediaTypes = BOOK_MEDIA_TYPES;
   releaseYears = getReleaseYears();
@@ -25,7 +25,7 @@ export class BookFormComponent implements OnInit {
   @Input() media: number;
   @Input() releaseYear: number;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: UntypedFormBuilder) {
     this.datePipe = new DatePipe('en-US');
   }
 

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ToastrService } from 'ngx-toastr';
@@ -20,7 +20,7 @@ import { WishService } from 'src/app/wish/state/wish.service';
 })
 export class BookSearchedComponent implements OnInit, AfterViewInit {
   searchedBook = of<BookSearchResult>();
-  bookSubmissionForm: FormGroup;
+  bookSubmissionForm: UntypedFormGroup;
 
   @ViewChild('bookForm') bookForm: BookFormComponent;
 
@@ -33,7 +33,7 @@ export class BookSearchedComponent implements OnInit, AfterViewInit {
     private wishQuery: WishQuery,
     private wishService: WishService
   ) {
-    this.bookSubmissionForm = new FormGroup({});
+    this.bookSubmissionForm = new UntypedFormGroup({});
   }
 
   ngOnInit(): void {

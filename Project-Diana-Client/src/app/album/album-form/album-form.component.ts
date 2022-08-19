@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { tap } from 'rxjs/operators';
 import { MEDIA_TYPES, VINYL_SIZES, VINYL_SPEEDS } from 'src/app/album/album.model';
@@ -13,7 +13,7 @@ import { getReleaseYears, ITEM_COMPLETION_STATUSES } from 'src/app/shared/item/i
   styleUrls: ['./album-form.component.scss'],
 })
 export class AlbumFormComponent implements OnInit {
-  albumForm: FormGroup;
+  albumForm: UntypedFormGroup;
   completionStatuses = ITEM_COMPLETION_STATUSES;
   mediaTypes = MEDIA_TYPES;
   releaseYears = getReleaseYears();
@@ -29,7 +29,7 @@ export class AlbumFormComponent implements OnInit {
   @Input() vinylSize: number;
   @Input() vinylSpeed: number;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: UntypedFormBuilder) {
     this.datePipe = new DatePipe('en-US');
   }
 

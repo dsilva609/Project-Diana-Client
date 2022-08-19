@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ToastrService } from 'ngx-toastr';
@@ -20,7 +20,7 @@ import { MovieService } from 'src/app/movie/state/movie.service';
 export class MovieUpdateComponent implements OnInit, AfterViewInit {
   movie = of<Movie>();
   movieId: string;
-  movieUpdateForm: FormGroup;
+  movieUpdateForm: UntypedFormGroup;
   datePipe: DatePipe;
 
   @ViewChild('movieForm') movieForm: MovieFormComponent;
@@ -45,7 +45,7 @@ export class MovieUpdateComponent implements OnInit, AfterViewInit {
 
     this.movie = this.movieQuery.select();
 
-    this.movieUpdateForm = new FormGroup({});
+    this.movieUpdateForm = new UntypedFormGroup({});
   }
 
   ngAfterViewInit(): void {

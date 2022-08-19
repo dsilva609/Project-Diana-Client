@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { tap } from 'rxjs/operators';
 import { GAME_MEDIA_TYPES, GAME_PLATFORMS, GAME_RATINGS } from 'src/app/game/game.model';
@@ -13,7 +13,7 @@ import { getReleaseYears, ITEM_COMPLETION_STATUSES } from 'src/app/shared/item/i
   styleUrls: ['./game-form.component.scss'],
 })
 export class GameFormComponent implements OnInit {
-  gameForm: FormGroup;
+  gameForm: UntypedFormGroup;
   completionStatuses = ITEM_COMPLETION_STATUSES;
   mediaPlatforms = GAME_PLATFORMS;
   mediaRatings = GAME_RATINGS;
@@ -31,7 +31,7 @@ export class GameFormComponent implements OnInit {
   @Input() mediaRating: number;
   @Input() releaseYear: number;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: UntypedFormBuilder) {
     this.datePipe = new DatePipe('en-US');
   }
 

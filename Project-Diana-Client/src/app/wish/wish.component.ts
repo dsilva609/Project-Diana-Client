@@ -1,5 +1,5 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ToastrService } from 'ngx-toastr';
@@ -22,7 +22,7 @@ export class WishComponent implements OnInit, AfterViewInit {
   itemTypes = ITEM_TYPES;
   wish: Observable<Wish>;
   wishId: string;
-  wishUpdateForm: FormGroup;
+  wishUpdateForm: UntypedFormGroup;
 
   @ViewChild('wishForm') wishForm: WishFormComponent;
 
@@ -47,7 +47,7 @@ export class WishComponent implements OnInit, AfterViewInit {
       .select((wish) => wish)
       .pipe(untilDestroyed(this));
 
-    this.wishUpdateForm = new FormGroup({});
+    this.wishUpdateForm = new UntypedFormGroup({});
   }
 
   ngAfterViewInit(): void {

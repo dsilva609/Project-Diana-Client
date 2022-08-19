@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { ToastrService } from 'ngx-toastr';
@@ -21,7 +21,7 @@ import { WishService } from 'src/app/wish/state/wish.service';
 })
 export class GameSearchedComponent implements OnInit, AfterViewInit {
   searchedGame = of<GameSearchResult>();
-  gameSubmissionForm: FormGroup;
+  gameSubmissionForm: UntypedFormGroup;
 
   @ViewChild('gameForm') gameForm: GameFormComponent;
 
@@ -34,7 +34,7 @@ export class GameSearchedComponent implements OnInit, AfterViewInit {
     private wishQuery: WishQuery,
     private wishService: WishService
   ) {
-    this.gameSubmissionForm = new FormGroup({});
+    this.gameSubmissionForm = new UntypedFormGroup({});
   }
 
   ngOnInit(): void {
