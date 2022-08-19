@@ -139,9 +139,10 @@
       }
     }
   },
-  "defaultProject": "project-diana-client",
   "cli": {
     "analytics": false,
-    "defaultCollection": "@datorama/akita"
+    "schematicCollections": [
+      "@datorama/akita"
+    ]
   }
 }
